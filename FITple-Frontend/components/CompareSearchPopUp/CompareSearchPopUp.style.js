@@ -4,6 +4,7 @@ export const BackgroundContainer = styled.div`
     position: fixed;
     top:0; left: 0; bottom: 0; right: 0;
     background: rgba(0,0,0,0.5);
+    overflow-y: auto;  /* 추가: 스크롤 가능하도록 설정 */
 `;
 
 export const CompareSearchPopUpContainer = styled.div`
@@ -49,6 +50,13 @@ export const CloseBtn = styled.img`
 
 export const SearchBarContainer = styled.div`
     margin-top: 44px;
+    margin-left: 81px;
+`;
+
+export const CompareCardListContainer = styled.div`
+    margin-top: 40px; 
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 `;

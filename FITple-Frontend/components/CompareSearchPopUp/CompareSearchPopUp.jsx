@@ -1,5 +1,6 @@
+import CompareCard from "../CompareCard/CompareCard"
 import SearchBar from "../SearchBar/SearchBar"
-import { BackArrowBtn, BackgroundContainer, CloseBtn, CompareSearchPopUpContainer, CompareTitle, CompareTitleContainer, SearchBarContainer } from "./CompareSearchPopUp.style"
+import { BackArrowBtn, BackgroundContainer, CloseBtn, CompareCardListContainer, CompareSearchPopUpContainer, CompareTitle, CompareTitleContainer, SearchBarContainer } from "./CompareSearchPopUp.style"
 
 function CompareSearchPopUp() {
 
@@ -15,7 +16,12 @@ function CompareSearchPopUp() {
                 <SearchBarContainer>
                     <SearchBar/>
                 </SearchBarContainer>
-                
+                <CompareCardListContainer>
+                    <CompareCard/>
+                    <CompareCard/>
+                    <CompareCard/>
+                    <CompareCard/>
+                </CompareCardListContainer>
             </CompareSearchPopUpContainer>
         </BackgroundContainer>
       </>
