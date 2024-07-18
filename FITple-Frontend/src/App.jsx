@@ -1,11 +1,12 @@
-import CompareSearchPopUp from '../components/CompareSearchPopUp/CompareSearchPopUp'
+
+import CompareResult from '../components/CompareResult/CompareResult'
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <CompareSearchPopUp></CompareSearchPopUp>
+      <CompareResult></CompareResult>
     </>
   )
 }
