@@ -58,5 +58,17 @@ export const CompareResultContainer = styled.div`
 export const FITpleLogo = styled.img`
     height: 97px;
     width: 62px;
-    margin-top: 135px;
+    margin-top: 25px;
+`;
+
+export const CompareResultSpeechBubble = styled.img`
+    height: 94px;
+    width: 276px;
+    margin-top: 16px;
+`;
+
+export const CompareResultTable = styled.img`
+    height: 316px;
+    width: 393px;
+    margin-top: 23px;
 `;
