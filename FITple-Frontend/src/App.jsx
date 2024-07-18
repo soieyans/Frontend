@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from 'styled-components'
 import LoginPage from '../pages/LoginPage/LoginPage';
+import SignupPage from "../pages/SignupPage/SignupPage";
 
 function App() {
   return (
     <BrowserRouter>
       <AppWrapper>
         <Routes>
-          <Route path='/' element={<LoginPage/>}/>
+          <Route path='/' element={<SignupPage/>}/>
         </Routes>
       </AppWrapper>
     </BrowserRouter>
