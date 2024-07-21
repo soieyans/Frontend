@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from 'styled-components'
 import UserInfoPage from "../pages/UserInfoPage/UserInfoPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
 
 function App() {
   return (
     <BrowserRouter>
       <AppWrapper>
         <Routes>
-          <Route path='/' element={<UserInfoPage/>}/>
+          <Route path='/' element={<LoginPage/>}/>
         </Routes>
       </AppWrapper>
     </BrowserRouter>
