@@ -306,7 +306,7 @@ const UnitText = styled.span`
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 17px;
+    font-size: 1
     pointer-events: none;
 `;
 
