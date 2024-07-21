@@ -1,6 +1,16 @@
 import logo from '../../assets/FITple-logo.svg'
-import styled from 'styled-components'
 import { useState } from 'react'
+import {
+    SignupPageWrapper,
+    FormWrapper,
+    InputBox,
+    ErrorText,
+    MainText,
+    ScrollBox,
+    CheckboxContainer,
+    Checkbox,
+    SubmitButton
+} from './SignupPage.style';
 
 function SignupPage() {
     const [isChecked, setIsChecked] = useState(false);
@@ -11,9 +21,9 @@ function SignupPage() {
 
     const handleButtonClick = () => {
         if (isChecked) {
-        alert('이용약관에 동의하셨습니다.');
+            alert('이용약관에 동의하셨습니다.');
         } else {
-        alert('이용약관에 동의해주세요.');
+            alert('이용약관에 동의해주세요.');
         }
     };
 
@@ -50,46 +60,46 @@ function SignupPage() {
         서비스 이용으로 발생한 분쟁에 대해 소송이 제기될 경우, 회사의 본사 소재지를 관할하는 법원을 전속 관할법원으로 합니다.
     `;
 
-    return(
+    return (
         <SignupPageWrapper>
-            <img width="6%" src={logo} alt="FITple Logo"/>
+            <img width="6%" src={logo} alt="FITple Logo" />
             <FormWrapper>
-                <InputBox type="text" id="login-id" placeholder="아이디"/>
+                <InputBox type="text" id="login-id" placeholder="아이디" />
                 <ErrorText isError={false}>사용 가능한 아이디입니다.</ErrorText>
-                <InputBox type="password" id="login-pw" placeholder="비밀번호"/>
+                <InputBox type="password" id="login-pw" placeholder="비밀번호" />
                 <ErrorText isError={true}>8자리 이상의 비밀번호를 입력해주세요.</ErrorText>
-                <InputBox type="password" id="login-pw2" placeholder="비밀번호 확인"/>
+                <InputBox type="password" id="login-pw2" placeholder="비밀번호 확인" />
                 <ErrorText isError={true}>비밀번호가 일치하지 않습니다.</ErrorText>
-                <InputBox type="password" id="login-email" placeholder="이메일"/>
+                <InputBox type="password" id="login-email" placeholder="이메일" />
                 <ErrorText isError={false}>사용 가능한 이메일 주소입니다.</ErrorText>
 
                 <MainText>이용약관 동의</MainText>
                 <ScrollBox>
                     {termsOfService.split('\n').map((line, index) => (
-                    <p key={index}>{line}</p>
+                        <p key={index}>{line}</p>
                     ))}
                 </ScrollBox>
                 <CheckboxContainer>
-                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
+                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
                     <label>동의함</label>
                 </CheckboxContainer>
-                
+
                 <MainText>개인정보 수집 및 이용 동의</MainText>
                 <ScrollBox>
                     {termsOfService.split('\n').map((line, index) => (
-                    <p key={index}>{line}</p>
+                        <p key={index}>{line}</p>
                     ))}
                 </ScrollBox>
                 <CheckboxContainer>
-                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
+                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
                     <label>동의함</label>
                 </CheckboxContainer>
 
                 <MainText>이메일 마케팅 정보 수신 동의</MainText>
                 <CheckboxContainer>
-                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
+                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
                     <label>동의함</label>
-                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
+                    <Checkbox type="checkbox" checked={!isChecked} onChange={handleCheckboxChange} />
                     <label>동의하지 않음</label>
                 </CheckboxContainer>
 
@@ -98,88 +108,5 @@ function SignupPage() {
         </SignupPageWrapper>
     );
 }
-
-const SignupPageWrapper = styled.div`
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    margin: 30px 0;
-`;
-
-const FormWrapper = styled.div`
-    width: 80%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 15px 0 50px 0;
-`;
-
-const InputBox = styled.input.attrs(props => ({
-        type: props.type || 'text', // 기본값을 'text'로 설정
-        id: props.id,
-        placeholder: props.placeholder // 힌트 텍스트를 props로 받음
-    }))`
-    width: 60%;
-    height: 30px;
-    margin-top: 25px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: white;
-    padding: 5px 15px;
-    font-size: 17px;
-    outline-color: #0075FF;
-`;
-
-const ErrorText = styled.p`
-    color: ${props => (props.isError ? 'red' : '#0075FF')};
-    width: 62%;
-    margin: 5px 0 0 0;
-    padding: 0;
-    font-size: 17px;
-`;
-
-const MainText = styled.p`
-    width: 62%;
-    font-size: 20px;
-    margin: 25px 0 15px 0;
-    padding: 0;
-    font-weight: bold;
-`;
-
-const ScrollBox = styled.div`
-    width: 59%;
-    height: 200px;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow-y: scroll;
-    background-color: #fcfcfc;
-`;
-
-const CheckboxContainer = styled.div`
-    width: 62%;
-    margin: 12px 0;
-`;
-
-const Checkbox = styled.input`
-    margin-right: 10px;
-`;
-
-const SubmitButton = styled.button`
-    width: 64%;
-    height: 50px;
-    background-color: black;
-    // background-color: #0075FF;
-    // background-color: ${({ isActive }) => (isActive ? 'orange' : 'white')};
-    border-radius: 10px;
-    font-size: 17px;
-    color: white;
-    margin-top: 25px;
-`;
 
 export default SignupPage
