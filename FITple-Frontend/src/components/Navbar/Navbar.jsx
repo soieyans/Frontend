@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <Container>
       <MenuBox>
-        <img src={Logo} height={98} width={98} />
+        <img src={Logo} height={70} width={70} />
 
         <MenuItem>옷장</MenuItem>
         <MenuItem>추천</MenuItem>
@@ -20,7 +20,7 @@ const Navbar = () => {
       </MenuBox>
       <SearchBox>
         <div>
-          <img src={SearchIcon} height={40} width={40} />
+          <img src={SearchIcon} height={30} width={30} />
         </div>
         <SearchInputBox placeholder="내 옷 검색하기" />
       </SearchBox>

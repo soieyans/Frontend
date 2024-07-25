@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import SideBar from "../../components/SideBar/SideBar";
 import {
   ProductDetail,
@@ -90,7 +89,6 @@ const ClothmainPage = () => {
 
   return (
     <div>
-      <Navbar />
       <Parent>
         <SideBar onCategoryClick={handleCategoryClick} />
         <ProductContainer>

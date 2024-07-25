@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding-left: 25px;
   padding-right: 62px;
-  padding-top: 21px;
   display: flex;
   justify-content: space-between;
   font-family: "Noto Sans KR";
@@ -11,7 +10,7 @@ export const Container = styled.div`
 export const MenuBox = styled.div`
   display: flex;
   align-items: center;
-  width: 800px;
+  width: 700px;
   justify-content: space-between;
 `;
 export const MenuItem = styled.div`
@@ -24,7 +23,7 @@ export const SearchBox = styled.div`
 `;
 export const SearchInputBox = styled.input`
   width: 336px;
-  height: 61px;
+  height: 51px;
   box-sizing: border-box;
   border-width: 3px;
   border-radius: 30px;
