@@ -1,14 +1,19 @@
-
-import CompareResult from '../components/CompareResult/CompareResult'
-import './App.css'
+import "./App.css";
+import Navbar from "../component/Navbar/Navbar";
+import { Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 function App() {
-
   return (
     <>
-      <CompareResult></CompareResult>
+      {/* Navbar */}
+      <Navbar />
+      {/* 각자 route 설정하기 */}
+      <Routes>
+        <Route />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
