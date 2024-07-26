@@ -1,2 +1,2 @@
-# Frontend
-FITple React 프론트엔드입니다!
+# FITPLE 프론트엔드
+FITple 프론트엔드입니다!
