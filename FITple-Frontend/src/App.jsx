@@ -1,12 +1,18 @@
-//import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
-import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
-import Navbar from "./components/Navbar/Navbar";
+import "./App.css";
+import Navbar from "../component/Navbar/Navbar";
+import { Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
+
 function App() {
   return (
-    <div>
+    <>
+      {/* Navbar */}
       <Navbar />
-      <ClothdetailPage />
-    </div>
+      {/* 각자 route 설정하기 */}
+      <Routes>
+        <Route />
+      </Routes>
+    </>
   );
 }
 
