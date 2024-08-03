@@ -1,1 +1,10 @@
-@import 'reset.css';
+@import "reset.css";
+
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("./fonts/SUIT-Variable.ttf");
+}
+
+body {
+  font-family: "SUIT-Regular";
+}
