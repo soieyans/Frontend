@@ -1,4 +1,4 @@
-import logo from "../../../assets/FITple-logo.svg";
+import logo from "../../../assets/Logo.svg";
 import { useState } from "react";
 import {
   SignupPageWrapper,
@@ -62,7 +62,7 @@ function SignupPage() {
 
   return (
     <SignupPageWrapper>
-      <img width="6%" src={logo} alt="FITple Logo" />
+      <img width="50px" src={logo} alt="FITple Logo" />
       <FormWrapper>
         <InputBox type="text" id="login-id" placeholder="아이디" />
         <ErrorText isError={false}>사용 가능한 아이디입니다.</ErrorText>
@@ -74,36 +74,6 @@ function SignupPage() {
         <ErrorText isError={true}>비밀번호가 일치하지 않습니다.</ErrorText>
         <InputBox type="password" id="login-email" placeholder="이메일" />
         <ErrorText isError={false}>사용 가능한 이메일 주소입니다.</ErrorText>
-
-        <MainText>이용약관 동의</MainText>
-        <ScrollBox>
-          {termsOfService.split("\n").map((line, index) => (
-            <p key={index}>{line}</p>
-          ))}
-        </ScrollBox>
-        <CheckboxContainer>
-          <Checkbox
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleCheckboxChange}
-          />
-          <label>동의함</label>
-        </CheckboxContainer>
-
-        <MainText>개인정보 수집 및 이용 동의</MainText>
-        <ScrollBox>
-          {termsOfService.split("\n").map((line, index) => (
-            <p key={index}>{line}</p>
-          ))}
-        </ScrollBox>
-        <CheckboxContainer>
-          <Checkbox
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleCheckboxChange}
-          />
-          <label>동의함</label>
-        </CheckboxContainer>
 
         <MainText>이메일 마케팅 정보 수신 동의</MainText>
         <CheckboxContainer>
