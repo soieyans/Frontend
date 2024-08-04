@@ -7,6 +7,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
 import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
 import TosPage from "./pages/TosPage/TosPage";
+import FindIdPage from "./pages/FindIdPage/FindIdPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         {/* 회원가입페이지 */}
         <Route path="/tos" element={<TosPage/>}/>
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/findid" element={<FindIdPage/>} />
         {/* 상품디테일 */}
         <Route path="/product" element={<ClothdetailPage />} />
         {/* 이게 메인페이지? */}
