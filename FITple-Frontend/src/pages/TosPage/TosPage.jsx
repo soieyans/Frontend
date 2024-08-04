@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from "../../../assets/Logo.svg";
 import {
     TosPageWrapper,
@@ -6,28 +7,29 @@ import {
     ScrollBox,
     CheckboxContainer,
     Checkbox,
+    CheckboxLabel,
     SubmitButton,
 } from "./TosPage.style";
 
 function TosPage() {
     const [isTosChecked, setIsTosChecked] = useState(false);
     const [isPrivacyChecked, setIsPrivacyChecked] = useState(false);
+    const navigate = useNavigate();
 
     const handleTosChange = (event) => {
-    setIsTosChecked(event.target.checked);
+        setIsTosChecked(event.target.checked);
     };
 
     const handlePrivacyChange = (event) => {
-    setIsPrivacyChecked(event.target.checked);
+        setIsPrivacyChecked(event.target.checked);
     };
 
     const handleButtonClick = () => {
-    if (isTosChecked && isPrivacyChecked) {
-        alert("이용약관 및 개인정보 수집에 동의하셨습니다.");
-        // 다음 페이지로 이동하는 로직 추가
-    } else {
-        alert("모든 약관에 동의해주세요.");
-    }
+        if (isTosChecked && isPrivacyChecked) {
+            navigate('/signup');
+        } else {
+            alert("모든 약관에 동의해주세요.");
+        }
     };
 
     const termsOfService = `
@@ -65,38 +67,44 @@ function TosPage() {
 
     return (
         <TosPageWrapper>
-        <img width="50px" src={logo} alt="FITple Logo" />
-        <MainText>이용약관 동의</MainText>
-        <ScrollBox>
-            {termsOfService.split("\n").map((line, index) => (
-            <p key={index}>{line}</p>
-            ))}
-        </ScrollBox>
-        <CheckboxContainer>
-            <Checkbox
-            type="checkbox"
-            checked={isTosChecked}
-            onChange={handleTosChange}
-            />
-            <label>동의함</label>
-        </CheckboxContainer>
+            <img width="50px" src={logo} alt="FITple Logo" />
+            <MainText> 이용약관 동의</MainText>
+            <ScrollBox>
+                {termsOfService.split("\n").map((line, index) => (
+                <p key={index}>{line}</p>
+                ))}
+            </ScrollBox>
+            <CheckboxContainer>
+                <Checkbox
+                    type="checkbox"
+                    checked={isTosChecked}
+                    onChange={handleTosChange}
+                />
+                <CheckboxLabel>동의함</CheckboxLabel>
+            </CheckboxContainer>
 
-        <MainText>개인정보 수집 및 이용 동의</MainText>
-        <ScrollBox>
-            {termsOfService.split("\n").map((line, index) => (
-            <p key={index}>{line}</p>
-            ))}
-        </ScrollBox>
-        <CheckboxContainer>
-            <Checkbox
-            type="checkbox"
-            checked={isPrivacyChecked}
-            onChange={handlePrivacyChange}
-            />
-            <label>동의함</label>
-        </CheckboxContainer>
+            <MainText> 개인정보 수집 및 이용 동의</MainText>
+            <ScrollBox>
+                {termsOfService.split("\n").map((line, index) => (
+                <p key={index}>{line}</p>
+                ))}
+            </ScrollBox>
+            <CheckboxContainer>
+                <Checkbox
+                    type="checkbox"
+                    checked={isPrivacyChecked}
+                    onChange={handlePrivacyChange}
+                />
+                <CheckboxLabel>동의함</CheckboxLabel>
+            </CheckboxContainer>
 
-        <SubmitButton onClick={handleButtonClick}>다음</SubmitButton>
+            <SubmitButton
+                onClick={handleButtonClick}
+                isTosChecked={isTosChecked}
+                isPrivacyChecked={isPrivacyChecked}
+            >
+                다음
+            </SubmitButton>
         </TosPageWrapper>
     );
 }

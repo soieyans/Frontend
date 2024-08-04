@@ -52,6 +52,21 @@ export const MainText = styled.p`
     font-weight: bold;
 `;
 
+export const ScrollBox = styled.div`
+    width: 59%;
+    height: 200px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow-y: scroll;
+    // background-color: #fcfcfc;
+    background-color: white;
+    p {
+        line-height: 1.6;
+        color: #838383;
+    }
+`;
+
 export const CheckboxContainer = styled.div`
     width: 62%;
     margin: 12px 0;
