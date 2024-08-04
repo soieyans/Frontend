@@ -1,4 +1,4 @@
-import logo from "/assets/FITple-logo.svg";
+import logo from "../../../assets/FITple-logo.svg";
 import {
   LoginPageWrapper,
   MainText,
