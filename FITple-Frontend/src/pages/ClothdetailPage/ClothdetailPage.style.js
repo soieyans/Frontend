@@ -40,6 +40,10 @@ export const ClothdebarContainer = styled.div`
   flex-direction: column;
   margin-left: 400px;
   margin-bottom: 60px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `;
 export const Clothdebar = styled.div`
   //옷 이름 옆 점 세개(추가,수정나오는칸)
@@ -144,4 +148,28 @@ export const MeasureCell = styled.div`
 export const MeasureLabel = styled.div`
   font-style: italic;
   border-left: 1px solid #d9d9d9;
+`;
+/*수정하기 삭제하기*/
+export const EditButtons = styled.div`
+  display: flex;
+  position: absolute;
+  left: 70rem;
+  top: 15rem;
+  flex-direction: column;
+  justify-content: center;
+  opacity: ${(props) => (props.isEdit ? 1 : 0)};
+  transition: opacity 0.2s ease-in-out;
+`;
+export const EditButton = styled.button`
+  padding: 15px 50px;
+  border: 1px solid #000000;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "SUIT Variable", sans-serif;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  cursor: pointer;
+  &:hover {
+    background-color: #626262;
+  }
 `;

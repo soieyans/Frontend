@@ -21,11 +21,16 @@ import {
   TableCell,
   MeasureCell,
   MeasureLabel,
+  EditButtons,
+  EditButton,
 } from "./ClothdetailPage.style";
 import { useState } from "react";
-
 const ClothdetailPage = () => {
   const [note, setNote] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
+  const handleEdit = () => {
+    setIsEdit(!isEdit);
+  };
   const handleInputchange = (e) => {
     setNote(e.target.value);
   };
@@ -45,10 +50,16 @@ const ClothdetailPage = () => {
               <b>에센셜 풀집 후디</b>
             </ClothName>
 
-            <ClothdebarContainer>
+            <ClothdebarContainer onClick={handleEdit}>
               <Clothdebar />
               <Clothdebar />
               <Clothdebar />
+              {isEdit && (
+                <EditButtons isEdit={isEdit}>
+                  <EditButton>수정하기</EditButton>
+                  <EditButton>삭제하기</EditButton>
+                </EditButtons>
+              )}
             </ClothdebarContainer>
           </ClothNamebox>
           <DetailNamebox>
