@@ -7,6 +7,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
 import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<ClothmainPage />} />
         {/* 프로필페이지 */}
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/user" element={<UserInfoPage />} />
       </Routes>
     </>
   );
