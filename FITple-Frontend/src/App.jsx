@@ -8,7 +8,8 @@ import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
 import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
 import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 import { useLocation } from "react-router-dom";
-
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import RecomMainPage from "./pages/RecomMainPage/RecomMainPage";
 function App() {
   const location = useLocation();
   console.log("Current path:", location.pathname);
@@ -25,6 +26,8 @@ function App() {
         <Route path="/user" element={<UserInfoPage />} />
         <Route path="/cloth" element={<ClothmainPage />} />
         <Route path="/detail" element={<ClothdetailPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/recommend" element={<RecomMainPage />} />
       </Routes>
     </>
   );
