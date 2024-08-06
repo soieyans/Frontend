@@ -3,7 +3,6 @@ import styled from "styled-components";
 // 수영 : width 100% -> width 717px으로 수정하고 padding제거했습니다!
 // 컴포넌트에서 margin삭제하고 informWarp에 마진추가하였습니다
 export const Container = styled.div`
-  border: 1px solid blue;
   position: relative;
   box-sizing: border-box;
   width: 717px;
