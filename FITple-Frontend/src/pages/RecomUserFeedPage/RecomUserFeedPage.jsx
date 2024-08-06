@@ -1,4 +1,10 @@
-import { Container, Wrap,SubWrap, IndividualWrap } from "./RecomUserFeedPage.style";
+import {
+  Container,
+  Wrap,
+  SubWrap,
+  IndividualWrap,
+  InformWrap,
+} from "./RecomUserFeedPage.style";
 import Infom from "../../components/Infom/Infom";
 import FeedButton from "../../components/FeedButton/FeedButton";
 import FeedNav from "../../components/FeedNav/FeedNav";
@@ -12,7 +18,11 @@ import HeartIconEmpty from "/assets/HeartEmpty.svg";
 function RecomUserFeedPage() {
   return (
     <Container>
-      <Infom />
+      {/* Infom을 한번더 inFormWrap으로 감싸서 위 영역과 아래 영역을 나눴습니다! */}
+      <InformWrap>
+        <Infom />
+      </InformWrap>
+
       <Wrap>
         <IndividualWrap>
           <FeedButton icon={CloIcon} alt="옷장" />

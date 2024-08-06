@@ -6,6 +6,10 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
 import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
+import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
+import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
 
 function App() {
   return (
@@ -22,6 +26,11 @@ function App() {
         <Route path="/product" element={<ClothdetailPage />} />
         {/* 이게 메인페이지? */}
         <Route path="/" element={<ClothmainPage />} />
+        {/* 프로필페이지 */}
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/user" element={<UserInfoPage />} />
+        <Route path="/change" element={<ChangepwdPage />} />
+        <Route path="/check" element={<RecomUserFeedPage />} />
       </Routes>
     </>
   );
