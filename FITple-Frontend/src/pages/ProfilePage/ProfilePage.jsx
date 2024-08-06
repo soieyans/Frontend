@@ -14,6 +14,7 @@ import { useState } from "react";
 import ProfileLove from "../../components/ProfileLove/ProfileLove";
 import ProfileFavor from "../../components/ProfileFavor/ProfileFavor";
 import ProfileMyBody from "../../components/ProfileMyBody/ProfileMyBody";
+import Infom from "../../components/Infom/Infom";
 
 const ProfilePage = () => {
   const [selectItem, setSelectItem] = useState(0);
@@ -41,6 +42,7 @@ const ProfilePage = () => {
       <ProfileContainer>
         <ProfileBox>
           {/* 컴포넌트 사용 */}
+          <Infom />
           <Box>컴포넌트 사용</Box>
           {/* 옵션 버튼 */}
           <OptionBtn onClick={() => showOptionBox()}>

@@ -9,6 +9,7 @@ import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
+import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/user" element={<UserInfoPage />} />
         <Route path="/change" element={<ChangepwdPage />} />
+        <Route path="/check" element={<RecomUserFeedPage />} />
       </Routes>
     </>
   );
