@@ -1,7 +1,6 @@
 import React from "react";
 import OptionIcon from "../../../assets/Option.svg";
 import {
-  Box,
   ProfileContainer,
   ClothContainer,
   OptionBtn,

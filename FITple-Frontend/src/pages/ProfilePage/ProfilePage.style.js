@@ -13,11 +13,6 @@ export const ClothContainer = styled.div`
   border-radius: 30px 30px 0 0;
 `;
 
-export const Box = styled.div`
-  width: 748px;
-  height: 204px;
-  border: 1px solid red;
-`;
 export const OptionBtn = styled.button`
   cursor: pointer;
   width: fit-content;
