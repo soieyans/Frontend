@@ -12,6 +12,14 @@ export const BackIcon = styled.div`
   height: 40px;
   background: url(assets/back.svg);
 `;
+// *모양
+export const SS = styled.div`
+  font-family: "SUIT";
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff84a9;
+`;
+
 export const FullStar = styled.div`
   width: 38px;
   height: 37px;
@@ -115,6 +123,7 @@ export const NoteArea = styled.textarea`
   margin-left: 20px;
 `;
 export const DetailName = styled.div`
+  display: flex;
   font-size: 20px;
   font-family: "SUIT Variable", sans-serif;
   font-weight: 600;

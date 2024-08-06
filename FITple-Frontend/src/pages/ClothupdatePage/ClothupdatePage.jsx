@@ -1,5 +1,6 @@
 import {
   BackIcon,
+  SS,
   Parent1,
   Parent2,
   Parent3,
@@ -89,19 +90,26 @@ const ClothupdatePage = () => {
             </CurvedRectangle>
           </DetailNamebox>
           <DetailNamebox>
-            <DetailName>상세정보</DetailName>
+            <DetailName>
+              제품명 <SS>*</SS>
+            </DetailName>
+
             <CurvedRectangle>
               <NoteArea>에센셜 풀집 후디</NoteArea>
             </CurvedRectangle>
           </DetailNamebox>
           <DetailNamebox>
-            <DetailName>제품번호</DetailName>
+            <DetailName>
+              제품번호<SS>*</SS>
+            </DetailName>
             <CurvedRectangle>
               <NoteArea></NoteArea>
             </CurvedRectangle>
           </DetailNamebox>
           <DetailNamebox>
-            <DetailName>분류</DetailName>
+            <DetailName>
+              분류<SS>*</SS>
+            </DetailName>
             <CurvedRectangle>
               <Dropdefault>{selectedValue}</Dropdefault>
               <Toggledown onClick={handleToggle}>&lt;</Toggledown>
