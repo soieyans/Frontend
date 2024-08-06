@@ -29,6 +29,7 @@ export const SubWrap = styled.div`
 export const InformWrap = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 42px;
 `;
 
 export const IndividualWrap = styled.div`

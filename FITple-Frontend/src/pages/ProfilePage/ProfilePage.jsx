@@ -43,7 +43,6 @@ const ProfilePage = () => {
         <ProfileBox>
           {/* 컴포넌트 사용 */}
           <Infom />
-          <Box>컴포넌트 사용</Box>
           {/* 옵션 버튼 */}
           <OptionBtn onClick={() => showOptionBox()}>
             <img src={OptionIcon} />

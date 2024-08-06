@@ -7,6 +7,7 @@ export const ProfileContainer = styled.div`
 export const ProfileBox = styled.div`
   display: flex;
   position: relative;
+  border: 1px solid red;
 `;
 export const ClothContainer = styled.div`
   box-shadow: 8px -8px 20px 0px #c9c7c730;
