@@ -6,7 +6,7 @@ import {
   UserStyle,
   Follow,
   UserImg,
-} from "./RecomUser.style";
+} from "./RecomUserCard.style";
 import SetUserImg from "/assets/UserImg.svg";
 
 function RecomUser() {

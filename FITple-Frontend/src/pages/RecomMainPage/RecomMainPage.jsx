@@ -1,4 +1,4 @@
-import RecomUser from "../../components/RecomUserCard/RecomUser";
+import RecomUser from "../../components/RecomUserCard/RecomUserCard";
 import {
   Container,
   Highlight,

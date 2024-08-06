@@ -1,59 +1,77 @@
 import styled from "styled-components";
-
 export const Container = styled.div`
-  padding-left: 89px;
-  padding-right: 98px;
-  padding-top: 20px;
-  box-sizing:border-box;
   display: flex;
-  justify-content: space-between;
-  font-family: "Noto Sans KR";
+  justify-content: center;
+  margin-top: 20px;
 `;
 
-export const MenuBox = styled.div`
+export const NavBarBox = styled.div`
   display: flex;
   align-items: center;
-  width: 715px;
   justify-content: space-between;
+  width: 87%;
 `;
 
-export const MenuTitle = styled.div`
+export const MainBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 57%;
+`;
+export const LogoBox = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 28px;
   font-weight: 900;
 `;
-
-export const MenuItem = styled.div`
+export const LogoTitle = styled.p`
+  margin-left: 0.8em;
+`;
+export const LogoItem = styled.div`
+  cursor: pointer;
+`;
+export const MenuBox = styled.div`
   font-size: 20px;
   font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+`;
 
+export const MenuItem = styled.div`
+  cursor: pointer;
   &:hover {
-    font-size: 24px;
-    color: #0276FE; /* 색상 코드에 '#' 추가 */
+    color: #0276fe;
+    font-weight: 800;
   }
 `;
-
 export const SearchBox = styled.div`
+  height: 61px;
+  width: 31%;
   display: flex;
   align-items: center;
+  position: relative;
 `;
-
 export const SearchInputBox = styled.input`
-  width: 395px;
-  height: 61px;
-  box-sizing: border-box;
-  border-width: 2px;
-  border-radius: 30px;
-  border-color:#0276FE;
+  width: 100%;
+  height: 100%;
   font-size: 16px;
   font-weight: 500;
-  line-height: 36.2px;
-  text-align: left;
-  margin-left:143px;
-  padding-left: 67px; /* 이미지 공간 확보를 위한 패딩 */
+  box-sizing: border-box;
+  border: 2px solid #0276fe;
+  border-radius: 30px;
+  padding-left: 55px;
+  color: #838383;
+  outline: none;
+  box-shadow: 0px 1px 3px #0000001a, 0px 5px 5px #00000017,
+    0px 11px 6px #0000000d, 0px 19px 8px #00000003, 0px 29px 8px #00000000;
+`;
 
-  /* 배경 이미지 설정 */
-  background-image: url('/assets/SearchIcon.svg');
-  background-repeat: no-repeat;
-  background-position: 28px center; /* 이미지 위치 조정 */
-  background-size: 27px; /* 이미지 크기 조정 */
+export const SearchIconBox = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  padding: 0px;
+  left: 28px;
 `;

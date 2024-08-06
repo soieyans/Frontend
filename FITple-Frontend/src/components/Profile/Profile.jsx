@@ -5,10 +5,10 @@ function Profile() {
     <Container>
       <Items>160cm 48kg</Items>
       <SubItems>
-        <img src="/assets/Heart.svg" height={16}></img>세미오버, 슬림
+        <img src="/assets/HeartGray.svg" height={16}/>세미오버, 슬림
       </SubItems>
       <SubItems>
-        <img src="/assets/Hanger.svg" height={16}></img>
+        <img src="/assets/HangerGray.svg" height={16}/>
         페미닌, 모던시크
       </SubItems>
     </Container>

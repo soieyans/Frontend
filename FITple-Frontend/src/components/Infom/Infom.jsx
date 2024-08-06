@@ -5,7 +5,6 @@ import Profile from "../../components/Profile/Profile";
 import Followcom from "../../components/Follow/Follow";
 import Follower from "../../components/Follower/Follower";
 import OneLine from "../../components/OneLine/OneLine";
-
 import FollowButton from "../../components/FollowButton/FollowButton";
 
 function Infom() {

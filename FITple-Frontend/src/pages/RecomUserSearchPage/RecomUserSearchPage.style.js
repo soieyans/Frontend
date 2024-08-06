@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     position:relative;
     width:100%;
+    
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -14,6 +15,28 @@ export const Container = styled.div`
 
 `
 
+export const Blur =styled.div`
+    width:100%;
+    height:541px;
+    position:absolute;
+    top:-430px;
+    background-color: #0075FF;
+    filter: blur(75px); 
+    z-index:-1;
+`
+
+export const Title = styled.div`
+    margin-top:186px;
+    font-size:40px;
+    font-weight:800;
+    color:#0276FE;
+`
+
+export const SubTitle = styled.div`
+    font-size:20px;
+    font-weight:600;
+    color:#838383;
+`
 export const Back = styled.img`
     position:absolute;
     top:47px;
@@ -23,28 +46,29 @@ export const Back = styled.img`
 `
 
 export const SearchWrap = styled.div`
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 `
 
 export const SearchInputBox = styled.input`
-width: 690px;
-height: 61px;
-box-sizing: border-box;
-border-width: 3px;
-border-radius: 30px;
-font-size: 25px;
-font-weight: 500;
-line-height: 36.2px;
-padding-left:32px;
-margin-left: 12px;
-`;
+    width: 690px;
+    height: 61px;
+    box-sizing: border-box;
+    border-width: 3px;
+    border-radius: 30px;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 36.2px;
+    padding-left:32px;
+    margin-left: 12px;
+`
 
 export const SearchBox = styled.div`
+    width:1108px;
     display: flex;
     flex-wrap: wrap; 
-    justify-content: space-between; 
+    
     padding:0 74px;
-    gap:30px;
+    gap:36px;
 
 `

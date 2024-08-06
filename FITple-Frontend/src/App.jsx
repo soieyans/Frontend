@@ -3,6 +3,7 @@ import RecomUserCloInfomPage from "./pages/RecomUserCloInfomPage/RecomUserCloInf
 import RecomMainPage from "./pages/RecomMainPage/RecomMainPage";
 import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
 import RecomUserSearchPage from "./pages/RecomUserSearchPage/RecomUserSearchPage";
+import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
 import "./App.css";
 
 
@@ -10,7 +11,7 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <RecomUserCloInfomPage></RecomUserCloInfomPage>
+      <RecomAllPage/>
     </>
   );
 }

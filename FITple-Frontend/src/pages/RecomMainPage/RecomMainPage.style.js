@@ -11,7 +11,7 @@ export const Container = styled.div`
 `
 
 export const SubTitleWrap = styled.div`
-    padding-top:40px;
+    padding-top:140px;
     position:relative;
     display:flex;
     justify-content:space-between;

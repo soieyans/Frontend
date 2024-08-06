@@ -10,7 +10,6 @@ export const Container = styled.div`
 `
 export const Items = styled.div`
     font-size:24px;
-    font-weight:700;
 `
 export const SubItems = styled.div`
     font-size:16px;

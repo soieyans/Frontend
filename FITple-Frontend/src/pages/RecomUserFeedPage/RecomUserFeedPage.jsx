@@ -4,9 +4,9 @@ import FeedButton from "../../components/FeedButton/FeedButton";
 import FeedNav from "../../components/FeedNav/FeedNav";
 import Closet from "../../components/Closet/Closet";
 
-import CloIcon from "/assets/Closet.svg";
+import CloIcon from "/assets/ClosetBlue.svg";
 import CloIconEmpty from "/assets/ClosetEmpty.svg";
-import HeartIcon from "/assets/Heart.svg";
+import HeartIcon from "/assets/HeartBlue.svg";
 import HeartIconEmpty from "/assets/HeartEmpty.svg";
 
 function RecomUserFeedPage() {
