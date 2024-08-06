@@ -1,8 +1,10 @@
+import React from "react";
 import Logo from "/assets/Logo.svg";
 import SearchIcon from "/assets/SearchIcon.svg";
 import {
   NavBarBox,
   MenuBox,
+  LogoItem,
   LogoBox,
   MainBox,
   MenuItem,
@@ -44,5 +46,6 @@ const Navbar = () => {
     </Container>
   );
 };
+
 
 export default Navbar;
