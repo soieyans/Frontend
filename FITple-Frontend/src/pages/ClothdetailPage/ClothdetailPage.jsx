@@ -37,6 +37,8 @@ import {
 } from "./ClothdetailPage.style";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
+import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 const ClothdetailPage = () => {
   const navigate = useNavigate();
   //노트
@@ -50,6 +52,11 @@ const ClothdetailPage = () => {
   const handleNavigate = () => {
     navigate("/clothupdate");
   };
+  const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
+  const handleDeleteCloth = () => {
+    setisDeletePopupOpen(!isDeletePopupOpen);
+  };
+
   const handleInputchange = (e) => {
     setNote(e.target.value);
   };
@@ -125,8 +132,29 @@ const ClothdetailPage = () => {
                   <EditButton onClick={handleNavigate}>
                     옷 정보 수정하기
                   </EditButton>
-                  <EditButton>옷 정보 삭제하기</EditButton>
+                  <EditButton onClick={handleDeleteCloth}>
+                    옷 정보 삭제하기
+                  </EditButton>
                 </EditButtons>
+              )}
+              {isDeletePopupOpen && (
+                <Modal
+                  isOpen={isDeletePopupOpen}
+                  onRequestClose={() => setisDeletePopupOpen(false)}
+                  style={{
+                    overlay: { backgroundColor: "rgba(81, 78, 78, 0.162)" },
+                    content: {
+                      border: "none",
+                      backgroundColor: "transparent",
+                      overflow: "hidden",
+                    },
+                  }}
+                >
+                  <DeletePopUp
+                    isOpen={isDeletePopupOpen}
+                    onClose={() => setisDeletePopupOpen(false)}
+                  />
+                </Modal>
               )}
             </ClothdebarContainer>
           </ClothNamebox>

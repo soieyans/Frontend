@@ -124,7 +124,7 @@ export const CurrentCloth = styled.div`
   color: #000000;
   margin-left: 370px;
 `;
-
+//상세 정보 옷사진 나중에 fetch로 받아오기
 export const ProductDeImage = styled.img`
   width: 400px;
   height: 400px;
@@ -230,6 +230,7 @@ export const MeasureContainer = styled.div`
   margin-top: 20px;
   margin-left: 150px;
 `;
+//단위변경
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -283,18 +284,7 @@ export const MeasureArea = styled.textarea`
   margin-left: 130px;
   margin-right: 20px;
 `;
-export const StyledButton = styled.button`
-  width: 500px;
-  height: 50px;
-  background-color: #0075ff;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 30px;
-`;
+//비교
 export const ChangeButton = styled.div`
   position: fixed;
   background: url(assets/changebutton.svg);
@@ -304,6 +294,7 @@ export const ChangeButton = styled.div`
   left: 1280px;
   cursor: pointer;
 `;
+// 하얀찜
 export const EmptyBookmark = styled.div`
   position: fixed;
   background: url(assets/emptybookmark.svg);
@@ -313,6 +304,7 @@ export const EmptyBookmark = styled.div`
   left: 1280px;
   cursor: pointer;
 `;
+//파란색찜
 export const FilledBookmark = styled.div`
   position: fixed;
   background: url(assets/filledbookmark.svg);
