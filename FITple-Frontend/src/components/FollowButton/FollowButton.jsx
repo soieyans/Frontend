@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Container } from "./FollowButton.style"
+import { useState } from "react";
+import { Container } from "./FollowButton.style";
 
 function FollowButton() {
   const [isClicked, setIsClicked] = useState(false);

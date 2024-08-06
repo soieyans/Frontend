@@ -7,7 +7,7 @@ import Follower from "../../components/Follower/Follower";
 import OneLine from "../../components/OneLine/OneLine";
 import FollowButton from "../../components/FollowButton/FollowButton";
 
-function Infom() {
+function Infom({ showFollowButton = true }) {
   return (
     <Container>
       <Wrap>
@@ -16,16 +16,25 @@ function Infom() {
         </SubWrap>
         <UserName>핏플3</UserName>
         <SubWrap>
-          <Profile></Profile>
+          <Profile />
         </SubWrap>
         <SubWrap>
-          <Follower></Follower>
-          <Followcom></Followcom>
+          <Follower />
+          <Followcom />
         </SubWrap>
       </Wrap>
       <Wrap>
-        <OneLine></OneLine>
-        <FollowButton></FollowButton>
+        {/* showFollowButton이 True면 기본 값유지 False면 FollowButton제거하고  OneLine 크기증가*/}
+        {showFollowButton ? (
+          <>
+            <OneLine />
+            <FollowButton />
+          </>
+        ) : (
+          <>
+            <OneLine width={"100%"} />
+          </>
+        )}
       </Wrap>
     </Container>
   );
