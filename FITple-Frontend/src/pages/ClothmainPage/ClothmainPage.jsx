@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SideBar from "../../components/SideBar/SideBar";
+import PlusOpen from "../../components/PlusOpen/PlusOpen";
 import {
   ProductDetail,
   ProductImage,
@@ -95,6 +96,12 @@ const ClothmainPage = () => {
     setFilteredData(clothData);
   }, []);
 
+  //plusopen 클릭시 이벤트 처리 함수
+  const [isplusopen, setIsplusopen] = useState(false);
+  const handlePlusOpen = () => {
+    setIsplusopen(!isplusopen);
+  };
+
   return (
     <div>
       <Parent>
@@ -115,7 +122,9 @@ const ClothmainPage = () => {
               </ProductDetail>
             </ProductItem>
           ))}
-          <PLUSbutton />
+          <PLUSbutton onClick={handlePlusOpen}>
+            {isplusopen && <PlusOpen isplusopen={isplusopen} />}
+          </PLUSbutton>
         </ProductContainer>
       </Parent>
     </div>
