@@ -221,29 +221,7 @@ export const EmptyStar = styled.div`
   height: 37px;
   background: url(assets/Star5.svg);
 `;
-export const MeasureContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-left: 150px;
-`;
-//단위변경
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-export const UnitButton = styled.button`
-  background-color: ${(props) => (props.active ? "#0075ff" : "#f8f8f8")};
-  border-radius: 20px;
-  color: ${(props) => (props.active ? "white" : "black")};
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-`;
+
 export const MeasureName = styled.div`
   font-size: 20px;
   font-family: "SUIT Variable", sans-serif;

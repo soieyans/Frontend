@@ -20,13 +20,10 @@ import {
   DropdownItem,
   DropdownList,
   Dropdefault,
-  MeasureContainer,
   MeasureArea,
   MeasureNamebox,
   MeasureName,
   CurvedRectangle3,
-  ButtonContainer,
-  UnitButton,
   StyledButton,
 } from "./ClothupdatePage.style";
 import { useState } from "react";
@@ -61,11 +58,6 @@ const ClothupdatePage = () => {
       );
     }
     return stars;
-  };
-  //실축 사이즈
-  const [selectedUnit, setSelectedUnit] = useState("cm");
-  const handleUnitChange = (unit) => {
-    setSelectedUnit(unit);
   };
   return (
     <div>
@@ -182,70 +174,54 @@ const ClothupdatePage = () => {
           </DetailNamebox>
           <DetailNamebox>
             <DetailName>실축 사이즈</DetailName>
-            <MeasureContainer>
-              <ButtonContainer>
-                <UnitButton
-                  onClick={() => handleUnitChange("cm")}
-                  active={selectedUnit === "cm"}
-                >
-                  cm
-                </UnitButton>
-                <UnitButton
-                  onClick={() => handleUnitChange("inch")}
-                  active={selectedUnit === "inch"}
-                >
-                  inch
-                </UnitButton>
-              </ButtonContainer>
-            </MeasureContainer>
             <MeasureNamebox>
               <MeasureName>총장</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>40</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>어깨너비</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>71</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>가슴단면</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>73</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>암홀단면</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>소매단면</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>소매길이</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>밑단단면</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <StyledButton>옷 정보 수정하기</StyledButton>
           </DetailNamebox>
