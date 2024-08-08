@@ -20,17 +20,18 @@ import {
   DropdownItem,
   DropdownList,
   Dropdefault,
-  MeasureContainer,
   MeasureArea,
   MeasureNamebox,
   MeasureName,
   CurvedRectangle3,
-  ButtonContainer,
-  UnitButton,
   StyledButton,
   Registerimage,
+  SearchIconBox,
 } from "./ClothregisterPage.style";
 import { useState } from "react";
+import SearchIcon from "/assets/SearchIcon.svg";
+import BrandSearch from "../../components/BrandSearch/BrandSearch";
+import Modal from "react-modal";
 
 const ClothregisterPage = () => {
   //더미데이터
@@ -101,10 +102,10 @@ const ClothregisterPage = () => {
     }
     return stars;
   };
-  //실축 사이즈
-  const [selectedUnit, setSelectedUnit] = useState("cm");
-  const handleUnitChange = (unit) => {
-    setSelectedUnit(unit);
+  //브랜드 검색
+  const [brand, setBrand] = useState(false);
+  const handleBrand = () => {
+    setBrand(!brand);
   };
   return (
     <div>
@@ -127,9 +128,28 @@ const ClothregisterPage = () => {
           <DetailNamebox>
             <DetailName>브랜드</DetailName>
             <CurvedRectangle>
-              <NoteArea></NoteArea>
+              <SearchIconBox onClick={handleBrand}>
+                <img src={SearchIcon} />
+              </SearchIconBox>
             </CurvedRectangle>
+            {brand && (
+              <Modal
+                isOpen={brand}
+                onRequestClose={() => handleBrand(false)}
+                style={{
+                  overlay: { backgroundColor: "rgba(81, 78, 78, 0.162)" },
+                  content: {
+                    border: "none",
+                    backgroundColor: "transparent",
+                    overflow: "hidden",
+                  },
+                }}
+              >
+                <BrandSearch onClose={handleBrand} />
+              </Modal>
+            )}
           </DetailNamebox>
+
           <DetailNamebox>
             <DetailName>
               제품명 <SS>*</SS>
@@ -144,7 +164,9 @@ const ClothregisterPage = () => {
               제품번호<SS>*</SS>
             </DetailName>
             <CurvedRectangle>
-              <NoteArea></NoteArea>
+              <SearchIconBox>
+                <img src={SearchIcon} />
+              </SearchIconBox>
             </CurvedRectangle>
           </DetailNamebox>
           <DetailNamebox>
@@ -230,70 +252,54 @@ const ClothregisterPage = () => {
           </DetailNamebox>
           <DetailNamebox>
             <DetailName>실축 사이즈</DetailName>
-            <MeasureContainer>
-              <ButtonContainer>
-                <UnitButton
-                  onClick={() => handleUnitChange("cm")}
-                  active={selectedUnit === "cm"}
-                >
-                  cm
-                </UnitButton>
-                <UnitButton
-                  onClick={() => handleUnitChange("inch")}
-                  active={selectedUnit === "inch"}
-                >
-                  inch
-                </UnitButton>
-              </ButtonContainer>
-            </MeasureContainer>
             <MeasureNamebox>
               <MeasureName>총장</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea></MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>어깨너비</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea></MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>가슴단면</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea></MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>암홀단면</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>소매단면</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>소매길이</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>밑단단면</MeasureName>
               <CurvedRectangle3>
                 <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
-              <MeasureName>{selectedUnit}</MeasureName>
+              <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <StyledButton>옷 정보 등록하기</StyledButton>
           </DetailNamebox>
