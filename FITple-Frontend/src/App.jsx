@@ -15,6 +15,7 @@ import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
 import LayoutNonNav from "./layout/LayoutNonNav";
 import Layout from "./layout/Layout";
 import LayoutNavBlue from "./layout/LayoutNavBlue";
+import SearchMainPage from "./pages/SearchMainPage/SearchMainPage";
 function App() {
   return (
     <>
@@ -34,7 +35,9 @@ function App() {
           <Route path="/recommendall" element={<RecomAllPage />} />
         </Route>
         {/* 파란색 Navbar 있는 layout */}
-        <Route element={<LayoutNavBlue />}></Route>
+        <Route element={<LayoutNavBlue />}>
+          <Route path="/search" element={<SearchMainPage />} />
+        </Route>
       </Routes>
     </>
   );
