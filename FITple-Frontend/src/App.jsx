@@ -1,36 +1,37 @@
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
 import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
-import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import RecomMainPage from "./pages/RecomMainPage/RecomMainPage";
+import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
 import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
+// import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
 
+import LayoutNonNav from "./layout/LayoutNonNav";
+import Layout from "./layout/Layout";
 function App() {
   return (
     <>
-      {/* Navbar */}
-      <Navbar />
-      {/* 각자 route 설정하기 */}
       <Routes>
-        {/* 로그인페이지 */}
-        <Route path="/login" element={<LoginPage />} />
-        {/* 회원가입페이지 */}
-        <Route path="/signup" element={<SignupPage />} />
-        {/* 상품디테일 */}
-        <Route path="/product" element={<ClothdetailPage />} />
-        {/* 이게 메인페이지? */}
-        <Route path="/" element={<ClothmainPage />} />
-        {/* 프로필페이지 */}
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/user" element={<UserInfoPage />} />
-        <Route path="/change" element={<ChangepwdPage />} />
-        <Route path="/check" element={<RecomUserFeedPage />} />
+        {/* Navbar 없는 layout */}
+        <Route element={<LayoutNonNav />}>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/user" element={<UserInfoPage />} />
+        </Route>
+        {/* Navbar 있는 layout */}
+        <Route element={<Layout />}>
+          <Route path="/cloth" element={<ClothmainPage />} />
+          <Route path="/detail" element={<ClothdetailPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/recommend" element={<RecomMainPage />} />
+          <Route path="/recommendall" element={<RecomAllPage />} />
+        </Route>
       </Routes>
     </>
   );

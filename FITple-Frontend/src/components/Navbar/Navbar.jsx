@@ -4,7 +4,6 @@ import SearchIcon from "/assets/SearchIcon.svg";
 import {
   NavBarBox,
   MenuBox,
-  LogoItem,
   LogoBox,
   MainBox,
   MenuItem,
@@ -23,16 +22,16 @@ const Navbar = () => {
         {/* 로고 & 메뉴 영역 */}
         <MainBox>
           {/* 로고 */}
-          <LogoBox>
+          <LogoBox to="/cloth">
             <img src={Logo} />
             <LogoTitle>FITple</LogoTitle>
           </LogoBox>
           {/* 메뉴 */}
           <MenuBox>
-            <MenuItem>옷장</MenuItem>
-            <MenuItem>추천</MenuItem>
+            <MenuItem to="/cloth">옷장</MenuItem>
+            <MenuItem to="/recommend">추천</MenuItem>
             <MenuItem>검색</MenuItem>
-            <MenuItem>프로필</MenuItem>
+            <MenuItem to="/profile">프로필</MenuItem>
           </MenuBox>
         </MainBox>
         {/* 오른쪽 검색 영역 */}
@@ -46,6 +45,5 @@ const Navbar = () => {
     </Container>
   );
 };
-
 
 export default Navbar;
