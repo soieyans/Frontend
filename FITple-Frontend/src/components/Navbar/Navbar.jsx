@@ -29,9 +29,9 @@ const Navbar = () => {
           {/* 메뉴 */}
           <MenuBox>
             <MenuItem to="/cloth">옷장</MenuItem>
-            <MenuItem>추천</MenuItem>
+            <MenuItem to="/recommend">추천</MenuItem>
             <MenuItem>검색</MenuItem>
-            <MenuItem>프로필</MenuItem>
+            <MenuItem to="/profile">프로필</MenuItem>
           </MenuBox>
         </MainBox>
         {/* 오른쪽 검색 영역 */}
@@ -45,6 +45,5 @@ const Navbar = () => {
     </Container>
   );
 };
-
 
 export default Navbar;
