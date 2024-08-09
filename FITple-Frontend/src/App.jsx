@@ -10,6 +10,7 @@ import TosPage from "./pages/TosPage/TosPage";
 import FindIdPage from "./pages/FindIdPage/FindIdPage";
 import FindPwPage from "./pages/FindPwPage/FindPwPage";
 import RePwPage from "./pages/RePwPage/RePwPage";
+import IdPage from "./pages/IdPage/IdPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/tos" element={<TosPage/>}/>
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/findid" element={<FindIdPage/>} />
+        <Route path="/findid/showid" element={<IdPage/>} />
         <Route path="/findpw" element={<FindPwPage/>} />
         <Route path="/repw" element={<RePwPage/>} />
         {/* 상품디테일 */}

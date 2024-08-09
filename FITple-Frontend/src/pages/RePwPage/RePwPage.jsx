@@ -6,8 +6,6 @@ import {
     FormWrapper,
     InputBox,
     SubmitButton,
-    OptionWrapper,
-    OptionButton,
 } from "./RePwPage.style";
 
 function RePwPage() {
