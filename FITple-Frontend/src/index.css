@@ -8,3 +8,7 @@
 body {
   font-family: "SUIT-Regular";
 }
+/* inputBox placeholder 글씨체 변경 */
+::placeholder {
+  font-family: "SUIT-Regular";
+}

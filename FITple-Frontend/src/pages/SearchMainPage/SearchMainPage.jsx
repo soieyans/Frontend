@@ -40,6 +40,7 @@ const SearchMainPage = () => {
           <SearchBox
             src={SearchIconWhite}
             placeholder={"ex) 아디다스 에센셜 풀집 후디"}
+            white
           />
         </SearchContainer>
       </MainContainer>

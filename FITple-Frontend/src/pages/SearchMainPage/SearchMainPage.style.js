@@ -43,7 +43,7 @@ export const TitleBackground = styled.div`
   margin: 0 32px;
 `;
 export const SearchContainer = styled.div`
-  border: 1px solid white;
+  border: 1px solid red;
   width: 504px;
 `;
 export const ItemContainer = styled.div``;
