@@ -43,10 +43,7 @@ const Navbar = ({ blue }) => {
         </MainBox>
         {/* 오른쪽 검색 영역 */}
         <SearchContainer blue={blue}>
-          {/* <SearchIconBox>
-            <img src={SearchIcon} />
-          </SearchIconBox>
-          <SearchInputBox placeholder="내 옷 검색하기" /> */}
+          {/* SearchBox 컴포넌트화 */}
           <SearchBox src={SearchIcon} placeholder={"내 옷 검색하기"} />
         </SearchContainer>
       </NavBarBox>

@@ -1,3 +1,4 @@
+import SearchBox from "../../components/SearchBox/SearchBox";
 import {
   Box,
   Container,
@@ -32,7 +33,10 @@ const SearchMainPage = () => {
             </Title>
           </TitleBox>
         </TitleContainer>
-        <div>검색 컨테이너</div>
+        <div>
+          <div>내 아이템들을 검색해서 등록해보세요!</div>
+          <SearchBox />
+        </div>
       </MainContainer>
       {/* 밑에 아이템 나오는 영역 */}
       <ItemContainer>아래</ItemContainer>
