@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from "../../../assets/Logo.svg";
 import {
-    FindPwPageWrapper,
+    FindIdPageWrapper,
     MainText,
     FormWrapper,
     InputBox,
@@ -25,7 +25,7 @@ function FindPwPage() {
     }, [id, name, email]);
 
     return (
-        <FindPwPageWrapper>
+        <FindIdPageWrapper>
         <img src={logo} width="50px" alt="FITple Logo" />
         <MainText>FITple</MainText>
         <FormWrapper>
@@ -33,7 +33,7 @@ function FindPwPage() {
             type="text" 
             id="findpw-id" 
             placeholder="아이디를 입력해주세요" 
-            value={id}
+            value={email}
             onChange={(e) => setId(e.target.value)}
             />
             <InputBox 
@@ -55,7 +55,7 @@ function FindPwPage() {
         <OptionWrapper>
             <OptionButton>로그인 화면으로 돌아가기</OptionButton>
         </OptionWrapper>
-        </FindPwPageWrapper>
+        </FindIdPageWrapper>
     );
 }
 

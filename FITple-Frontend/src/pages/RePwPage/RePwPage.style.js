@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FindPwPageWrapper = styled.div`
+export const RePwPageWrapper = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -56,22 +56,4 @@ export const SubmitButton = styled.button`
     cursor: ${props => (props.isActive ? 'pointer' : 'default')};
     border: none; 
     box-shadow: none;
-`;
-
-export const OptionWrapper = styled.div`
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-`;
-
-export const OptionButton = styled.button`
-    margin-top: 30px;
-    font-size: 17px;
-    color: black;
-    text-decoration: underline solid black;
-    background-color: white;
-    border: none;
-    cursor: pointer;
 `;
