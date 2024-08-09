@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from "../../../assets/Logo.svg";
 import {
-    FindIdPageWrapper,
+    FindPwPageWrapper,
     MainText,
     FormWrapper,
     InputBox,
@@ -25,7 +25,7 @@ function FindPwPage() {
     }, [id, name, email]);
 
     return (
-        <FindIdPageWrapper>
+        <FindPwPageWrapper>
         <img src={logo} width="50px" alt="FITple Logo" />
         <MainText>FITple</MainText>
         <FormWrapper>
@@ -55,7 +55,7 @@ function FindPwPage() {
         <OptionWrapper>
             <OptionButton>로그인 화면으로 돌아가기</OptionButton>
         </OptionWrapper>
-        </FindIdPageWrapper>
+        </FindPwPageWrapper>
     );
 }
 
