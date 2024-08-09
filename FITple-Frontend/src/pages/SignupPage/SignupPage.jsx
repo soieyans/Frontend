@@ -1,33 +1,33 @@
-import logo from '../../assets/FITple-logo.svg'
-import { useState } from 'react'
+import logo from "../../../assets/FITple-logo.svg";
+import { useState } from "react";
 import {
-    SignupPageWrapper,
-    FormWrapper,
-    InputBox,
-    ErrorText,
-    MainText,
-    ScrollBox,
-    CheckboxContainer,
-    Checkbox,
-    SubmitButton
-} from './SignupPage.style';
+  SignupPageWrapper,
+  FormWrapper,
+  InputBox,
+  ErrorText,
+  MainText,
+  ScrollBox,
+  CheckboxContainer,
+  Checkbox,
+  SubmitButton,
+} from "./SignupPage.style";
 
 function SignupPage() {
-    const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
-    const handleCheckboxChange = (event) => {
-        setIsChecked(event.target.checked);
-    };
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
 
-    const handleButtonClick = () => {
-        if (isChecked) {
-            alert('이용약관에 동의하셨습니다.');
-        } else {
-            alert('이용약관에 동의해주세요.');
-        }
-    };
+  const handleButtonClick = () => {
+    if (isChecked) {
+      alert("이용약관에 동의하셨습니다.");
+    } else {
+      alert("이용약관에 동의해주세요.");
+    }
+  };
 
-    const termsOfService = `
+  const termsOfService = `
         제 1 조 (목적)
         이 약관은 회사가 제공하는 서비스의 이용 조건 및 절차, 기타 필요한 사항을 규정함을 목적으로 합니다.
 
@@ -60,53 +60,71 @@ function SignupPage() {
         서비스 이용으로 발생한 분쟁에 대해 소송이 제기될 경우, 회사의 본사 소재지를 관할하는 법원을 전속 관할법원으로 합니다.
     `;
 
-    return (
-        <SignupPageWrapper>
-            <img width="6%" src={logo} alt="FITple Logo" />
-            <FormWrapper>
-                <InputBox type="text" id="login-id" placeholder="아이디" />
-                <ErrorText isError={false}>사용 가능한 아이디입니다.</ErrorText>
-                <InputBox type="password" id="login-pw" placeholder="비밀번호" />
-                <ErrorText isError={true}>8자리 이상의 비밀번호를 입력해주세요.</ErrorText>
-                <InputBox type="password" id="login-pw2" placeholder="비밀번호 확인" />
-                <ErrorText isError={true}>비밀번호가 일치하지 않습니다.</ErrorText>
-                <InputBox type="password" id="login-email" placeholder="이메일" />
-                <ErrorText isError={false}>사용 가능한 이메일 주소입니다.</ErrorText>
+  return (
+    <SignupPageWrapper>
+      <img width="6%" src={logo} alt="FITple Logo" />
+      <FormWrapper>
+        <InputBox type="text" id="login-id" placeholder="아이디" />
+        <ErrorText isError={false}>사용 가능한 아이디입니다.</ErrorText>
+        <InputBox type="password" id="login-pw" placeholder="비밀번호" />
+        <ErrorText isError={true}>
+          8자리 이상의 비밀번호를 입력해주세요.
+        </ErrorText>
+        <InputBox type="password" id="login-pw2" placeholder="비밀번호 확인" />
+        <ErrorText isError={true}>비밀번호가 일치하지 않습니다.</ErrorText>
+        <InputBox type="password" id="login-email" placeholder="이메일" />
+        <ErrorText isError={false}>사용 가능한 이메일 주소입니다.</ErrorText>
 
-                <MainText>이용약관 동의</MainText>
-                <ScrollBox>
-                    {termsOfService.split('\n').map((line, index) => (
-                        <p key={index}>{line}</p>
-                    ))}
-                </ScrollBox>
-                <CheckboxContainer>
-                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
-                    <label>동의함</label>
-                </CheckboxContainer>
+        <MainText>이용약관 동의</MainText>
+        <ScrollBox>
+          {termsOfService.split("\n").map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
+        </ScrollBox>
+        <CheckboxContainer>
+          <Checkbox
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />
+          <label>동의함</label>
+        </CheckboxContainer>
 
-                <MainText>개인정보 수집 및 이용 동의</MainText>
-                <ScrollBox>
-                    {termsOfService.split('\n').map((line, index) => (
-                        <p key={index}>{line}</p>
-                    ))}
-                </ScrollBox>
-                <CheckboxContainer>
-                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
-                    <label>동의함</label>
-                </CheckboxContainer>
+        <MainText>개인정보 수집 및 이용 동의</MainText>
+        <ScrollBox>
+          {termsOfService.split("\n").map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
+        </ScrollBox>
+        <CheckboxContainer>
+          <Checkbox
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />
+          <label>동의함</label>
+        </CheckboxContainer>
 
-                <MainText>이메일 마케팅 정보 수신 동의</MainText>
-                <CheckboxContainer>
-                    <Checkbox type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
-                    <label>동의함</label>
-                    <Checkbox type="checkbox" checked={!isChecked} onChange={handleCheckboxChange} />
-                    <label>동의하지 않음</label>
-                </CheckboxContainer>
+        <MainText>이메일 마케팅 정보 수신 동의</MainText>
+        <CheckboxContainer>
+          <Checkbox
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />
+          <label>동의함</label>
+          <Checkbox
+            type="checkbox"
+            checked={!isChecked}
+            onChange={handleCheckboxChange}
+          />
+          <label>동의하지 않음</label>
+        </CheckboxContainer>
 
-                <SubmitButton>회원가입</SubmitButton>
-            </FormWrapper>
-        </SignupPageWrapper>
-    );
+        <SubmitButton>회원가입</SubmitButton>
+      </FormWrapper>
+    </SignupPageWrapper>
+  );
 }
 
-export default SignupPage
+export default SignupPage;

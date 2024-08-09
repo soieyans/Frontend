@@ -31,6 +31,8 @@ import {
 import { useState } from "react";
 import SearchIcon from "/assets/SearchIcon.svg";
 import BrandSearch from "../../components/BrandSearch/BrandSearch";
+import BrandNumberSearch from "../../components/BrandNumberSearch/BrandNumberSearch";
+import RegisterPopUp from "../../components/RegisterPopUp/RegisterPopUp";
 import Modal from "react-modal";
 
 const ClothregisterPage = () => {
@@ -107,6 +109,17 @@ const ClothregisterPage = () => {
   const handleBrand = () => {
     setBrand(!brand);
   };
+  //제품번호 검색
+  const [number, setNumber] = useState(false);
+  const handleNumber = () => {
+    setNumber(!number);
+  };
+  //옷정보등록하기
+  const [registerpopup, setRegisterpopup] = useState(false);
+  const handleRegister = () => {
+    setRegisterpopup(!registerpopup);
+  };
+
   return (
     <div>
       <Parent1>
@@ -164,10 +177,26 @@ const ClothregisterPage = () => {
               제품번호<SS>*</SS>
             </DetailName>
             <CurvedRectangle>
-              <SearchIconBox>
+              <SearchIconBox onClick={handleNumber}>
                 <img src={SearchIcon} />
               </SearchIconBox>
             </CurvedRectangle>
+            {number && (
+              <Modal
+                isOpen={number}
+                onRequestClose={() => handleNumber(false)}
+                style={{
+                  overlay: { backgroundColor: "rgba(81, 78, 78, 0.162)" },
+                  content: {
+                    border: "none",
+                    backgroundColor: "transparent",
+                    overflow: "hidden",
+                  },
+                }}
+              >
+                <BrandNumberSearch onClose={handleNumber} />
+              </Modal>
+            )}
           </DetailNamebox>
           <DetailNamebox>
             <DetailName>
@@ -301,7 +330,25 @@ const ClothregisterPage = () => {
               </CurvedRectangle3>
               <MeasureName>cm</MeasureName>
             </MeasureNamebox>
-            <StyledButton>옷 정보 등록하기</StyledButton>
+            <StyledButton onClick={handleRegister}>
+              옷 정보 등록하기
+            </StyledButton>
+            {registerpopup && (
+              <Modal
+                isOpen={registerpopup}
+                onRequestClose={() => handleRegister(false)}
+                style={{
+                  overlay: { backgroundColor: "rgba(81, 78, 78, 0.162)" },
+                  content: {
+                    border: "none",
+                    backgroundColor: "transparent",
+                    overflow: "hidden",
+                  },
+                }}
+              >
+                <RegisterPopUp onClose={handleRegister} />
+              </Modal>
+            )}
           </DetailNamebox>
         </Parent3>
       </Parent1>

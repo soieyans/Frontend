@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
@@ -17,11 +18,13 @@ export const MainBox = styled.div`
   justify-content: space-between;
   width: 57%;
 `;
-export const LogoBox = styled.div`
+export const LogoBox = styled(Link)`
+  color: black;
   display: flex;
   align-items: center;
   font-size: 28px;
   font-weight: 900;
+  text-decoration: none;
 `;
 export const LogoTitle = styled.p`
   margin-left: 0.8em;
@@ -38,8 +41,10 @@ export const MenuBox = styled.div`
   width: 65%;
 `;
 
-export const MenuItem = styled.div`
+export const MenuItem = styled(Link)`
   cursor: pointer;
+  text-decoration: none;
+  color: black;
   &:hover {
     color: #0276fe;
     font-weight: 800;
