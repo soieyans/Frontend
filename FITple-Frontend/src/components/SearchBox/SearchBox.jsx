@@ -1,13 +1,13 @@
 import React from "react";
-import { SearchIconBox, SearchInputBox } from "./SearchBox.style";
+import { Container, SearchIconBox, SearchInputBox } from "./SearchBox.style";
 const SearchBox = ({ src, placeholder }) => {
   return (
-    <>
+    <Container>
       <SearchIconBox>
         <img src={src} />
       </SearchIconBox>
       <SearchInputBox placeholder={placeholder} />
-    </>
+    </Container>
   );
 };
 

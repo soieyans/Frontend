@@ -42,5 +42,8 @@ export const TitleBackground = styled.div`
   padding: 0 24px;
   margin: 0 32px;
 `;
-export const SearchContainer = styled.div``;
+export const SearchContainer = styled.div`
+  border: 1px solid white;
+  width: 504px;
+`;
 export const ItemContainer = styled.div``;

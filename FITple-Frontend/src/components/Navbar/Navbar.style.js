@@ -54,9 +54,7 @@ export const MenuItem = styled(Link)`
   }
 `;
 export const SearchContainer = styled.div`
-  height: 61px;
   width: 31%;
   display: ${(props) => (props.blue ? "none" : "flex")};
   align-items: center;
-  position: relative;
 `;

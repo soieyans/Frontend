@@ -1,10 +1,12 @@
 import SearchBox from "../../components/SearchBox/SearchBox";
+import SearchIconWhite from "../../../assets/searchIcon-white.svg";
 import {
   Box,
   Container,
   ImpactText,
   ItemContainer,
   MainContainer,
+  SearchContainer,
   SubTitle,
   Title,
   TitleBackground,
@@ -33,10 +35,13 @@ const SearchMainPage = () => {
             </Title>
           </TitleBox>
         </TitleContainer>
-        <div>
+        <SearchContainer>
           <div>내 아이템들을 검색해서 등록해보세요!</div>
-          <SearchBox />
-        </div>
+          <SearchBox
+            src={SearchIconWhite}
+            placeholder={"ex) 아디다스 에센셜 풀집 후디"}
+          />
+        </SearchContainer>
       </MainContainer>
       {/* 밑에 아이템 나오는 영역 */}
       <ItemContainer>아래</ItemContainer>
