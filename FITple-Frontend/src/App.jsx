@@ -8,12 +8,13 @@ import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
 import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
 import TosPage from "./pages/TosPage/TosPage";
 import FindIdPage from "./pages/FindIdPage/FindIdPage";
+import FindPwPage from "./pages/FindPwPage/FindPwPage";
 
 function App() {
   return (
     <>
       {/* Navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
       {/* 각자 route 설정하기 */}
       <Routes>
         {/* 로그인페이지 */}
@@ -22,6 +23,7 @@ function App() {
         <Route path="/tos" element={<TosPage/>}/>
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/findid" element={<FindIdPage/>} />
+        <Route path="/findpw" element={<FindPwPage/>} />
         {/* 상품디테일 */}
         <Route path="/product" element={<ClothdetailPage />} />
         {/* 이게 메인페이지? */}
