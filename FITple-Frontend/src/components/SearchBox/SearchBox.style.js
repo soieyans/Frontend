@@ -14,6 +14,7 @@ export const SearchIconBox = styled.button`
   left: 28px;
 `;
 export const SearchInputBox = styled.input`
+  background-color: transparent;
   width: 100%;
   font-size: 16px;
   font-weight: 500;
