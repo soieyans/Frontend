@@ -8,8 +8,6 @@ import {
   MainBox,
   MenuItem,
   SearchContainer,
-  SearchIconBox,
-  SearchInputBox,
   Container,
   LogoTitle,
 } from "./Navbar.style";
