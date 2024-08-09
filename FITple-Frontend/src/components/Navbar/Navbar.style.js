@@ -53,7 +53,7 @@ export const MenuItem = styled(Link)`
     font-weight: 800;
   }
 `;
-export const SearchBox = styled.div`
+export const SearchContainer = styled.div`
   height: 61px;
   width: 31%;
   display: ${(props) => (props.blue ? "none" : "flex")};

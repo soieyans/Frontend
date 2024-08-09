@@ -7,12 +7,13 @@ import {
   LogoBox,
   MainBox,
   MenuItem,
-  SearchBox,
+  SearchContainer,
   SearchIconBox,
   SearchInputBox,
   Container,
   LogoTitle,
 } from "./Navbar.style";
+import SearchBox from "../SearchBox/SearchBox";
 
 const Navbar = ({ blue }) => {
   return (
@@ -41,12 +42,13 @@ const Navbar = ({ blue }) => {
           </MenuBox>
         </MainBox>
         {/* 오른쪽 검색 영역 */}
-        <SearchBox blue={blue}>
-          <SearchIconBox>
+        <SearchContainer blue={blue}>
+          {/* <SearchIconBox>
             <img src={SearchIcon} />
           </SearchIconBox>
-          <SearchInputBox placeholder="내 옷 검색하기" />
-        </SearchBox>
+          <SearchInputBox placeholder="내 옷 검색하기" /> */}
+          <SearchBox src={SearchIcon} placeholder={"내 옷 검색하기"} />
+        </SearchContainer>
       </NavBarBox>
     </Container>
   );
