@@ -11,6 +11,7 @@ import FindIdPage from "./pages/FindIdPage/FindIdPage";
 import FindPwPage from "./pages/FindPwPage/FindPwPage";
 import RePwPage from "./pages/RePwPage/RePwPage";
 import IdPage from "./pages/IdPage/IdPage";
+import PwPage from "./pages/PwPage/PwPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/findid" element={<FindIdPage/>} />
         <Route path="/findid/showid" element={<IdPage/>} />
         <Route path="/findpw" element={<FindPwPage/>} />
+        <Route path="/findpw/showpw" element={<PwPage/>} />
         <Route path="/repw" element={<RePwPage/>} />
         {/* 상품디테일 */}
         <Route path="/product" element={<ClothdetailPage />} />
