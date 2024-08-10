@@ -1,13 +1,13 @@
-import profile from '../../assets/profile.svg'
+import logo from "../../../assets/Logo.svg";
+import uploadButton from "../../../assets/btn_image_upload.svg";
 import { useState } from 'react'
 import {
     UserInfoPageWrapper,
     MainText,
     SubText,
-    Container,
     InfoContainer,
     InfoWrapper,
-    TextWrapper,
+    InputSet,
     InputWrapper,
     InputBox,
     GenderWrapper,
@@ -46,37 +46,31 @@ function UserInfoPage() {
 
     const fits = ['슬림', '레귤러', '세미오버', '오버'];
     const styles = [
-        '심플베이직', '캐주얼', '시크', '러블리', '빈티지', '보헤미안',
-        '모던', '펑크', '오피스룩', '로맨틱'
+        '심플베이직', '캐주얼', '시크', '러블리', '아메카지', '유니크', '유니섹스', '스트릿', '스포티'
     ];
 
     return(
         <UserInfoPageWrapper>
-            <MainText>회원정보</MainText>
-
+            <img width="50px" src={logo} alt="FITple Logo" />
             <InfoContainer>
                 <MainText>기본 정보</MainText>
+                <img width="150px" src={uploadButton} alt="uploadButton" />
                 <InfoWrapper>
-                    <img width="120px" src={profile} alt="proflie-icon" />
-                    <TextWrapper>
-                        <SubText>이름</SubText>
-                        <SubText>성별</SubText>
-                        <SubText>선호 핏</SubText>
-                        <SubText>스타일</SubText>
-                        <Container></Container>
-                        <SubText>한줄소개</SubText>
-                    </TextWrapper>
                     <InputWrapper>
-                        <InputBox type="text" id="login-id" placeholder="이름을 입력해주세요"/>
+                        <SubText>닉네임</SubText>
+                        <InputBox type="text" id="userinfo-nickname"/>
+                        <SubText>성별</SubText>
                         <GenderWrapper>
                             <GenderButton isSelected={selectedGender === 'male'} onClick={() => setSelectedGender('male')}>남성</GenderButton>
                             <GenderButton isSelected={selectedGender === 'female'} onClick={() => setSelectedGender('female')}>여성</GenderButton>
                         </GenderWrapper>
+                        <SubText>선호 핏</SubText>
                         <FitWrapper>
                             {fits.map((fit) => (
                                 <FitButton key={fit} isSelected={selectedFits.includes(fit)} onClick={() => handleFitClick(fit)}>{fit}</FitButton>
                             ))}
                         </FitWrapper>
+                        <SubText>선호 스타일</SubText>
                         <StyleWrapper>
                             {styles.map((style) => (
                                 <StyleButton
@@ -88,52 +82,75 @@ function UserInfoPage() {
                                 </StyleButton>
                             ))}
                         </StyleWrapper>
-                        <InputBox type="text" id="login-id" placeholder="한 줄 소개를 입력해주세요"/>
+                        <SubText>한 줄 소개</SubText>
+                        <InputBox type="text" id="userinfo-infotext"/>
                     </InputWrapper>
                 </InfoWrapper>
             </InfoContainer>
 
             <InfoContainer>
-                <MainText>체형정보</MainText>
+                <MainText>체형 정보</MainText>
                 <BodyInfoContainer>
-                    <TextWrapper>
-                        <SubText>키</SubText>
-                        <SubText>몸무게</SubText>
-                        <SubText>어깨너비</SubText>
-                        <SubText>가슴둘레</SubText>
-                        <SubText>팔길이</SubText>
-                        <SubText>허리둘레</SubText>
-                        <SubText>허벅지둘레</SubText>
-                        <SubText>엉덩이둘레</SubText>
-                    </TextWrapper>
-                    <InputWrapper>
-                        <BodyInputWrapper>
-                            <BodyInputBox placeholder="" /><UnitText>cm</UnitText>
-                        </BodyInputWrapper>
-                        <BodyInputWrapper>
-                            <BodyInputBox placeholder="" /><UnitText>kg</UnitText>
-                        </BodyInputWrapper>
-                        <BodyInputWrapper>
-                            <BodyInputBox placeholder="" /><UnitText>cm</UnitText>
-                        </BodyInputWrapper>
-                        <BodyInputWrapper>
-                            <BodyInputBox placeholder="" /><UnitText>cm</UnitText>
-                        </BodyInputWrapper>
-                        <BodyInputWrapper>
-                            <BodyInputBox placeholder="" /><UnitText>cm</UnitText>
-                        </BodyInputWrapper>
-                        <BodyInputWrapper>
-                            <BodyInputBox placeholder="" /><UnitText>cm</UnitText>
-                        </BodyInputWrapper>
-                        <BodyInputWrapper>
-                            <BodyInputBox placeholder="" /><UnitText>cm</UnitText>
-                        </BodyInputWrapper>
-                        <BodyInputWrapper>
-                            <BodyInputBox placeholder="" /><UnitText>cm</UnitText>
-                        </BodyInputWrapper>
-                    </InputWrapper>
+                        <InputSet>
+                            <SubText>키</SubText>
+                            <BodyInputWrapper>
+                                <BodyInputBox placeholder="" />
+                                <UnitText>cm</UnitText>
+                            </BodyInputWrapper>
+                        </InputSet>
+                        <InputSet>
+                            <SubText>몸무게</SubText>
+                            <BodyInputWrapper>
+                                <BodyInputBox placeholder="" />
+                                <UnitText>kg</UnitText>
+                            </BodyInputWrapper>
+                        </InputSet>
+                        <InputSet>
+                            <SubText>어깨 너비</SubText>
+                            <BodyInputWrapper>
+                                <BodyInputBox placeholder="" />
+                                <UnitText>cm</UnitText>
+                            </BodyInputWrapper>
+                        </InputSet>
+                        <InputSet>
+                            <SubText>가슴둘레</SubText>
+                            <BodyInputWrapper>
+                                <BodyInputBox placeholder="" />
+                                <UnitText>cm</UnitText>
+                            </BodyInputWrapper>
+                        </InputSet>
+                        <InputSet>
+                            <SubText>팔 길이</SubText>
+                            <BodyInputWrapper>
+                                <BodyInputBox placeholder="" />
+                                <UnitText>cm</UnitText>
+                            </BodyInputWrapper>
+                        </InputSet>
+                        <InputSet>
+                            <SubText>허리 둘레</SubText>
+                            <BodyInputWrapper>
+                                <BodyInputBox placeholder="" />
+                                <UnitText>cm</UnitText>
+                            </BodyInputWrapper>
+                        </InputSet>
+                        <InputSet>
+                            <SubText>허벅지 둘레</SubText>
+                            <BodyInputWrapper>
+                                <BodyInputBox placeholder="" />
+                                <UnitText>cm</UnitText>
+                            </BodyInputWrapper>
+                        </InputSet>
+                        <InputSet>
+                            <SubText>엉덩이 둘레</SubText>
+                            <BodyInputWrapper>
+                                <BodyInputBox placeholder="" />
+                                <UnitText>cm</UnitText>
+                            </BodyInputWrapper>
+                        </InputSet>
                 </BodyInfoContainer>
             </InfoContainer>
+
+
 
             <SubmitButton>저장</SubmitButton>
 

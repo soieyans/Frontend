@@ -12,6 +12,7 @@ import FindPwPage from "./pages/FindPwPage/FindPwPage";
 import RePwPage from "./pages/RePwPage/RePwPage";
 import IdPage from "./pages/IdPage/IdPage";
 import PwPage from "./pages/PwPage/PwPage";
+import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         {/* 회원가입페이지 */}
         <Route path="/tos" element={<TosPage/>}/>
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/userinfo" element={<UserInfoPage/>} />
         <Route path="/findid" element={<FindIdPage/>} />
         <Route path="/findid/showid" element={<IdPage/>} />
         <Route path="/findpw" element={<FindPwPage/>} />
