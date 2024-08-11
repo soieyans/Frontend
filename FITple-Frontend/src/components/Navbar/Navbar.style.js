@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 export const Container = styled.div`
-  background-color: ${(props) => (props.blue ? "#0075FF" : "white")};
+  background-color: ${(props) => (props.$blue ? "#0075FF" : "white")};
   display: flex;
   justify-content: center;
   padding-top: 20px;
@@ -29,7 +29,7 @@ export const LogoBox = styled(Link)`
 `;
 export const LogoTitle = styled.p`
   margin-left: 0.8em;
-  color: ${(props) => (props.blue ? "white" : "black")};
+  color: ${(props) => (props.$blue ? "white" : "black")};
 `;
 export const LogoItem = styled.div`
   cursor: pointer;
@@ -41,6 +41,7 @@ export const MenuBox = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 65%;
+  color: white;
 `;
 
 export const MenuItem = styled(Link)`
@@ -49,12 +50,12 @@ export const MenuItem = styled(Link)`
   text-decoration: none;
   &:hover {
     transform: scale(1.2);
-    color: ${(props) => (props.blue ? "white" : "#0276fe")};
+    color: ${(props) => (props.$blue ? "white" : "#0276fe")};
     font-weight: 800;
   }
 `;
 export const SearchContainer = styled.div`
   width: 31%;
-  display: ${(props) => (props.blue ? "none" : "flex")};
+  display: ${(props) => (props.$blue ? "none" : "flex")};
   align-items: center;
 `;

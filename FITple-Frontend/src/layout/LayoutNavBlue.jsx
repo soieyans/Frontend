@@ -6,7 +6,7 @@ const LayoutNavBlue = () => {
   return (
     <>
       {/* Navbar 파란색 */}
-      <Navbar blue={true} />
+      <Navbar $blue />
       <Outlet />
     </>
   );
