@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import SideBar from "../../components/SideBar/SideBar";
-
 import {
   ProductDetail,
   ProductImage,
