@@ -48,7 +48,7 @@ export const SubmitButton = styled.button`
     width: 64%;
     height: 56px;
     background-color: ${props => (props.isActive ? '#0276FE' : 'black')};
-    border-color: ${props => (props.isActive ? '#0276FE' : 'black')};
+    border: ${props => (props.isActive ? '1px solid #0276FE' : '1px sollid black')};
     border-radius: 10px;
     font-size: 17px;
     color: white;

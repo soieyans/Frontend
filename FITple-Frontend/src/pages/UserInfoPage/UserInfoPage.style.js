@@ -210,4 +210,5 @@ export const SubmitButton = styled.button`
     font-size: 17px;
     color: white;
     margin-top: 25px;
+    cursor: pointer;
 `;

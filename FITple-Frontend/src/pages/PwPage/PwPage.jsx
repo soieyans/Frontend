@@ -1,4 +1,5 @@
 import logo from "../../../assets/Logo.svg";
+import { useNavigate } from "react-router-dom";
 import {
     PwPageWrapper,
     MainText,
@@ -10,6 +11,11 @@ import {
 } from "./PwPage.style";
 
 function PwPage() {
+    const navigate = useNavigate();
+
+    const handleRePwClick = () => {
+        navigate('/repw');
+    }
 
     return (
         <PwPageWrapper>
@@ -18,7 +24,7 @@ function PwPage() {
             <FormWrapper>
                 <TextWrapper $isLast={false}>
                     <LabelText>이름</LabelText>
-                    <InfoText>김핏플</InfoText>
+                    <InfoText>핏플</InfoText>
                 </TextWrapper>
                 <TextWrapper $isLast={false}>
                     <LabelText>이메일</LabelText>
@@ -26,9 +32,9 @@ function PwPage() {
                 </TextWrapper>
                 <TextWrapper $isLast={true}>
                     <LabelText>아이디</LabelText>
-                    <InfoText>fitpleZ</InfoText>
+                    <InfoText>fitple</InfoText>
                 </TextWrapper>
-                <Button $isActive={true}>비밀번호 재설정</Button>
+                <Button $isActive={true} onClick={handleRePwClick}>비밀번호 재설정</Button>
             </FormWrapper>
         </PwPageWrapper>
     );

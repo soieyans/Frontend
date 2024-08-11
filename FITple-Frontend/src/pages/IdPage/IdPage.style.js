@@ -63,7 +63,7 @@ export const Button = styled.button`
     font-size: 17px;
     color: ${props => (props.$isActive ? 'white' : 'black')};
     margin-top: 15px;
-    cursor: ${props => (props.$isActive ? 'pointer' : 'default')};
+    cursor: pointer;
     border: none; 
     box-shadow: none;
 `;

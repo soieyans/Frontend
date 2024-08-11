@@ -1,6 +1,7 @@
 import logo from "../../../assets/Logo.svg";
 import uploadButton from "../../../assets/btn_image_upload.svg";
-import { useState } from 'react'
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
     UserInfoPageWrapper,
     MainText,
@@ -27,6 +28,7 @@ function UserInfoPage() {
     const [selectedGender, setSelectedGender] = useState(null);
     const [selectedFits, setSelectedFits] = useState([]);
     const [selectedStyles, setSelectedStyles] = useState([]);
+    const navigate = useNavigate();
 
     const handleStyleClick = (style) => {
         setSelectedStyles((prevSelectedStyles) =>
@@ -49,7 +51,12 @@ function UserInfoPage() {
         '심플베이직', '캐주얼', '시크', '러블리', '아메카지', '유니크', '유니섹스', '스트릿', '스포티'
     ];
 
-    return(
+    const handleSubmit = () => {
+        alert("회원가입이 완료되었습니다.");
+        navigate('/login');  // LoginPage로 이동
+    };
+
+    return (
         <UserInfoPageWrapper>
             <img width="50px" src={logo} alt="FITple Logo" />
             <InfoContainer>
@@ -91,71 +98,68 @@ function UserInfoPage() {
             <InfoContainer>
                 <MainText>체형 정보</MainText>
                 <BodyInfoContainer>
-                        <InputSet>
-                            <SubText>키</SubText>
-                            <BodyInputWrapper>
-                                <BodyInputBox placeholder="" />
-                                <UnitText>cm</UnitText>
-                            </BodyInputWrapper>
-                        </InputSet>
-                        <InputSet>
-                            <SubText>몸무게</SubText>
-                            <BodyInputWrapper>
-                                <BodyInputBox placeholder="" />
-                                <UnitText>kg</UnitText>
-                            </BodyInputWrapper>
-                        </InputSet>
-                        <InputSet>
-                            <SubText>어깨 너비</SubText>
-                            <BodyInputWrapper>
-                                <BodyInputBox placeholder="" />
-                                <UnitText>cm</UnitText>
-                            </BodyInputWrapper>
-                        </InputSet>
-                        <InputSet>
-                            <SubText>가슴둘레</SubText>
-                            <BodyInputWrapper>
-                                <BodyInputBox placeholder="" />
-                                <UnitText>cm</UnitText>
-                            </BodyInputWrapper>
-                        </InputSet>
-                        <InputSet>
-                            <SubText>팔 길이</SubText>
-                            <BodyInputWrapper>
-                                <BodyInputBox placeholder="" />
-                                <UnitText>cm</UnitText>
-                            </BodyInputWrapper>
-                        </InputSet>
-                        <InputSet>
-                            <SubText>허리 둘레</SubText>
-                            <BodyInputWrapper>
-                                <BodyInputBox placeholder="" />
-                                <UnitText>cm</UnitText>
-                            </BodyInputWrapper>
-                        </InputSet>
-                        <InputSet>
-                            <SubText>허벅지 둘레</SubText>
-                            <BodyInputWrapper>
-                                <BodyInputBox placeholder="" />
-                                <UnitText>cm</UnitText>
-                            </BodyInputWrapper>
-                        </InputSet>
-                        <InputSet>
-                            <SubText>엉덩이 둘레</SubText>
-                            <BodyInputWrapper>
-                                <BodyInputBox placeholder="" />
-                                <UnitText>cm</UnitText>
-                            </BodyInputWrapper>
-                        </InputSet>
+                    <InputSet>
+                        <SubText>키</SubText>
+                        <BodyInputWrapper>
+                            <BodyInputBox placeholder="" />
+                            <UnitText>cm</UnitText>
+                        </BodyInputWrapper>
+                    </InputSet>
+                    <InputSet>
+                        <SubText>몸무게</SubText>
+                        <BodyInputWrapper>
+                            <BodyInputBox placeholder="" />
+                            <UnitText>kg</UnitText>
+                        </BodyInputWrapper>
+                    </InputSet>
+                    <InputSet>
+                        <SubText>어깨 너비</SubText>
+                        <BodyInputWrapper>
+                            <BodyInputBox placeholder="" />
+                            <UnitText>cm</UnitText>
+                        </BodyInputWrapper>
+                    </InputSet>
+                    <InputSet>
+                        <SubText>가슴둘레</SubText>
+                        <BodyInputWrapper>
+                            <BodyInputBox placeholder="" />
+                            <UnitText>cm</UnitText>
+                        </BodyInputWrapper>
+                    </InputSet>
+                    <InputSet>
+                        <SubText>팔 길이</SubText>
+                        <BodyInputWrapper>
+                            <BodyInputBox placeholder="" />
+                            <UnitText>cm</UnitText>
+                        </BodyInputWrapper>
+                    </InputSet>
+                    <InputSet>
+                        <SubText>허리 둘레</SubText>
+                        <BodyInputWrapper>
+                            <BodyInputBox placeholder="" />
+                            <UnitText>cm</UnitText>
+                        </BodyInputWrapper>
+                    </InputSet>
+                    <InputSet>
+                        <SubText>허벅지 둘레</SubText>
+                        <BodyInputWrapper>
+                            <BodyInputBox placeholder="" />
+                            <UnitText>cm</UnitText>
+                        </BodyInputWrapper>
+                    </InputSet>
+                    <InputSet>
+                        <SubText>엉덩이 둘레</SubText>
+                        <BodyInputWrapper>
+                            <BodyInputBox placeholder="" />
+                            <UnitText>cm</UnitText>
+                        </BodyInputWrapper>
+                    </InputSet>
                 </BodyInfoContainer>
             </InfoContainer>
 
-
-
-            <SubmitButton>저장</SubmitButton>
-
+            <SubmitButton onClick={handleSubmit}>저장</SubmitButton>
         </UserInfoPageWrapper>
     );
 }
 
-export default UserInfoPage
+export default UserInfoPage;

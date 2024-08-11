@@ -46,12 +46,15 @@ export const InputBox = styled.input.attrs(props => ({
 `;
 
 export const ErrorText = styled.p`
-    color: ${props => (props.isError ? '#838383' : '#0075FF')};
+    color: ${props => 
+        props.isError ? '#FF004C' : '#00E016'
+    };
     width: 62%;
     margin: 10px 0 30px 0;
     padding: 0;
     font-size: 14px;
 `;
+
 
 export const CheckboxContainer = styled.div`
     width: 62%;

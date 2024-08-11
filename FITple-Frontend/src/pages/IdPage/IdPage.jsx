@@ -1,4 +1,5 @@
 import logo from "../../../assets/Logo.svg";
+import { useNavigate } from "react-router-dom";
 import {
     IdPageWrapper,
     MainText,
@@ -10,6 +11,11 @@ import {
 } from "./IdPage.style";
 
 function IdPage() {
+    const navigate = useNavigate();
+
+    const handleIdFindClick = () => {
+        navigate('/findpw');
+    }
 
     return (
         <IdPageWrapper>
@@ -18,7 +24,7 @@ function IdPage() {
             <FormWrapper>
                 <TextWrapper $isLast={false}>
                     <LabelText>이름</LabelText>
-                    <InfoText>김핏플</InfoText>
+                    <InfoText>핏플</InfoText>
                 </TextWrapper>
                 <TextWrapper $isLast={false}>
                     <LabelText>이메일</LabelText>
@@ -26,10 +32,10 @@ function IdPage() {
                 </TextWrapper>
                 <TextWrapper $isLast={true}>
                     <LabelText>아이디</LabelText>
-                    <InfoText>fitpleZ</InfoText>
+                    <InfoText>fitple</InfoText>
                 </TextWrapper>
                 <Button $isActive={true}>로그인하기</Button>
-                <Button $isActive={false}>비밀번호 찾기</Button>
+                <Button $isActive={false} onClick={handleIdFindClick}>비밀번호 찾기</Button>
             </FormWrapper>
         </IdPageWrapper>
     );
