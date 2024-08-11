@@ -1,7 +1,6 @@
 import styled from "styled-components";
 export const Container = styled.div``;
 export const MainContainer = styled.div`
-  border: 3px solid black;
   background-color: #0075ff;
   color: white;
   display: flex;
@@ -48,5 +47,11 @@ export const SearchContainer = styled.div`
   border: 1px solid red;
   width: 504px;
   margin-top: 72px;
+`;
+export const SearchText = styled.div`
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
 `;
 export const ItemContainer = styled.div``;

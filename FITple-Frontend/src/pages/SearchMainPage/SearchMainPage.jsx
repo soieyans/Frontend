@@ -7,6 +7,7 @@ import {
   ItemContainer,
   MainContainer,
   SearchContainer,
+  SearchText,
   SubTitle,
   Title,
   TitleBackground,
@@ -35,7 +36,7 @@ const SearchMainPage = () => {
         </TitleBox>
 
         <SearchContainer>
-          <div>내 아이템들을 검색해서 등록해보세요!</div>
+          <SearchText>내 아이템들을 검색해서 등록해보세요!</SearchText>
           <SearchBox
             src={SearchIconWhite}
             placeholder={"ex) 아디다스 에센셜 풀집 후디"}

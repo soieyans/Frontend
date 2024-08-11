@@ -9,8 +9,8 @@ import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RecomMainPage from "./pages/RecomMainPage/RecomMainPage";
 import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
+import RecomUserCloInfomPage from "./pages/RecomUserCloInfomPage/RecomUserCloInfomPage";
 import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
-// import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
 
 import LayoutNonNav from "./layout/LayoutNonNav";
 import Layout from "./layout/Layout";
@@ -33,6 +33,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
+          <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
+          <Route path="/recommenduser" element={<RecomUserCloInfomPage />} />
         </Route>
         {/* 파란색 Navbar 있는 layout */}
         <Route element={<LayoutNavBlue />}>
