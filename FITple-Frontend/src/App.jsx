@@ -17,6 +17,7 @@ import LayoutNonNav from "./layout/LayoutNonNav";
 import Layout from "./layout/Layout";
 import LayoutNavBlue from "./layout/LayoutNavBlue";
 import SearchMainPage from "./pages/SearchMainPage/SearchMainPage";
+import BrandPage from "./pages/BrandPage/BrandPage";
 function App() {
   return (
     <>
@@ -38,6 +39,7 @@ function App() {
           <Route path="/recommendall" element={<RecomAllPage />} />
           <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
           <Route path="/recommenduser" element={<RecomUserCloInfomPage />} />
+          <Route path="/brand" element={<BrandPage />} />
         </Route>
         {/* 파란색 Navbar 있는 layout */}
         <Route element={<LayoutNavBlue />}>

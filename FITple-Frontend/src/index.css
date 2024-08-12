@@ -5,10 +5,6 @@
   src: url("./fonts/SUIT-Variable.ttf");
 }
 
-body {
-  font-family: "SUIT-Regular";
-}
-/* inputBox placeholder 글씨체 변경 */
-::placeholder {
+body * {
   font-family: "SUIT-Regular";
 }

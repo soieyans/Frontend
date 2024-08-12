@@ -45,7 +45,7 @@ const SearchMainPage = () => {
         </SearchContainer>
       </MainContainer>
       {/* 밑에 아이템 나오는 영역 */}
-      <ItemContainer>아래</ItemContainer>
+      <ItemContainer>컴포넌트사용</ItemContainer>
     </Container>
   );
 };
