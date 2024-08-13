@@ -27,6 +27,7 @@ export const ComparePopUpInnerContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 `;
 
 export const ComparePopUpMainText = styled.div`
@@ -46,6 +47,11 @@ export const CompareIMGUploadContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: background 0.5s;
+    &:hover {
+        background: #838383;
+    }
+    cursor: pointer;
 `;
 
 export const CompareIMGUploadCameraLogo = styled.img`
@@ -82,4 +88,14 @@ export const CompareInputUploadText = styled.div`
     margin-top: 14px;
     text-align: center;
     text-decoration: underline;
+    cursor: pointer;
+`;
+
+export const CloseBtn = styled.img`
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    right: 38px;
 `;
