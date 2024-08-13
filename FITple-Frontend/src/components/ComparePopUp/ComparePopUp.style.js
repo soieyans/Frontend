@@ -6,3 +6,80 @@ export const BackgroundContainer = styled.div`
     background: rgba(0,0,0,0.5);
     overflow-y: auto;  /* 추가: 스크롤 가능하도록 설정 */
 `;
+
+export const ComparePopUpContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const ComparePopUpBackground = styled.div`
+    margin-top: 92px;
+    width: 400px;
+    height: 560px;
+    background: white;
+    border-radius: 41px;
+    border: 1px;
+    border-color: #838383;
+`;
+
+export const ComparePopUpInnerContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const ComparePopUpMainText = styled.div`
+    font-family: 'SUIT Variable', sans-serif;
+    color: #0276FE;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 50px;
+`;
+
+export const CompareIMGUploadContainer = styled.div`
+    background: #D9D9D9;
+    margin-top: 63px;
+    height: 248px;
+    width: 248px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const CompareIMGUploadCameraLogo = styled.img`
+    height: 74px;
+    width: 74px;
+    margin-top: 57px;
+`;
+
+export const CompareIMGUploadText = styled.div`
+    font-family: 'SUIT Variable', sans-serif;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 6px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: underline;
+`;
+
+export const CompareIMGOrText = styled.div`
+    font-family: 'SUIT Variable', sans-serif;
+    color: #838383;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 14px;
+    text-align: center;
+`;
+
+export const CompareInputUploadText = styled.div`
+    font-family: 'SUIT Variable', sans-serif;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 14px;
+    text-align: center;
+    text-decoration: underline;
+`;
