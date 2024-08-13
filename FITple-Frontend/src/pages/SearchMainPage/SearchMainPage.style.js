@@ -1,12 +1,16 @@
 import styled from "styled-components";
-export const Container = styled.div``;
+export const Container = styled.div`
+  position: relative;
+  overflow: hidden;
+`;
 export const MainContainer = styled.div`
-  background-color: #0075ff;
+  border: 2px solid red;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 32px;
+  padding: 62px 0 41px 0;
+  position: relative;
 `;
 export const TitleContainer = styled.div``;
 export const TitleBox = styled.div`
@@ -54,4 +58,25 @@ export const SearchText = styled.div`
   text-align: center;
   margin-bottom: 20px;
 `;
-export const ItemContainer = styled.div``;
+export const ItemContainer = styled.div`
+  border: 1px solid blue;
+  height: 600px;
+`;
+
+export const Blur = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 536px;
+  top: -117px;
+  transform: scaleX(1.1);
+  z-index: -1;
+  /* main/blue */
+  background: #0075ff;
+  filter: blur(50px);
+`;
+
+export const SunIconImg = styled.img`
+  position: absolute;
+  left: 0;
+  top: 210px;
+`;

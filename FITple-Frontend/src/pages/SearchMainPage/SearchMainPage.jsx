@@ -1,6 +1,8 @@
 import SearchBox from "../../components/SearchBox/SearchBox";
 import SearchIconWhite from "../../../assets/searchIcon-white.svg";
+import SunIcon from "../../../assets/Sun.svg";
 import {
+  Blur,
   Box,
   Container,
   ImpactText,
@@ -9,6 +11,7 @@ import {
   SearchContainer,
   SearchText,
   SubTitle,
+  SunIconImg,
   Title,
   TitleBackground,
   TitleBox,
@@ -19,9 +22,10 @@ import React from "react";
 const SearchMainPage = () => {
   return (
     <Container>
+      <Blur />
       {/* 위에 파란색 영역 */}
       <MainContainer>
-        {/* 타이틀 영역 */}
+        <SunIconImg src={SunIcon} />
         <TitleBox>
           <SubTitle>
             옷장에 <ImpactText>많이 담긴</ImpactText> 아이템이에요.
@@ -45,7 +49,7 @@ const SearchMainPage = () => {
         </SearchContainer>
       </MainContainer>
       {/* 밑에 아이템 나오는 영역 */}
-      <ItemContainer>컴포넌트사용</ItemContainer>
+      <ItemContainer></ItemContainer>
     </Container>
   );
 };
