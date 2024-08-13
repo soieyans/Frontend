@@ -25,6 +25,10 @@ export const ProductImage = styled.img`
   background-size: cover; /* 이미지 크기 설정 */
   margin-bottom: 10px; /* 하단 여백 */
 `;
+export const Imgcontainer = styled.div`
+  display: flex;
+  position: relative;
+`;
 
 export const ProductName = styled.div`
   font-size: 20px;
@@ -48,4 +52,24 @@ export const ProductContainer = styled.div`
 export const Parent = styled.div`
   display: flex;
   align-items: flex-start;
+`;
+
+export const FilledHeart = styled.div`
+  background: url(assets/filledheart.svg);
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 33.33px;
+  height: 30.58px;
+  z-index: 1;
+`;
+
+export const PLUSbutton = styled.div`
+  background: url(assets/plus.svg);
+  position: fixed;
+  width: 97px;
+  height: 97px;
+  right: 100px;
+  top: 500px;
+  cursor: pointer;
 `;
