@@ -65,3 +65,41 @@ export const Searchtitle = styled.div`
   color: #0276fe;
   margin-left: 30px;
 `;
+
+export const BrandContainer = styled.div`
+  width: 340px;
+  height: 92px;
+  position: relative;
+  border: 1px solid #838383;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 40px;
+  border-radius: 10px;
+  margin-top: 10px;
+`;
+export const BrandNameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+`;
+
+export const Brandname = styled.div`
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+`;
+export const ENBrand = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  color: #838383;
+  margin-top: 5px;
+`;
+export const BrandImg = styled.img`
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-left: 20px;
+`;
