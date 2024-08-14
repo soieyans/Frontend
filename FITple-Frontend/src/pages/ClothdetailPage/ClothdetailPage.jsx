@@ -40,6 +40,7 @@ const ClothdetailPage = () => {
   const navigate = useNavigate();
   //노트
   const [note, setNote] = useState("");
+
   //수정하기,삭제하기 칸 열 기
 
   const [isEdit, setIsEdit] = useState(false);

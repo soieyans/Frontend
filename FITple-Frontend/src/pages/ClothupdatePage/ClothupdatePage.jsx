@@ -27,8 +27,13 @@ import {
   StyledButton,
 } from "./ClothupdatePage.style";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ClothupdatePage = () => {
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/cloth");
+  };
   //드롭다운
   const [isToggle, setIsToggle] = useState(false);
   const [selectedValue, setSelectedValue] = useState("아우터");
@@ -63,7 +68,7 @@ const ClothupdatePage = () => {
     <div>
       <Parent1>
         <Parent2>
-          <BackIcon />
+          <BackIcon onClick={handleNavigate} />
           <ProductDeImage />
           <Imgcontainer>
             <ProductDeImagemin />
