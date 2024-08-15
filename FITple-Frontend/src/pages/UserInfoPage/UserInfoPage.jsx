@@ -14,17 +14,25 @@ function UserInfoPage() {
     const [selectedStyles, setSelectedStyles] = useState([]);
     const navigate = useNavigate();
 
-  const handleStyleClick = (style) => {
-    setSelectedStyles((prevSelectedStyles) =>
-      prevSelectedStyles.includes(style)
-        ? prevSelectedStyles.filter((selectedStyle) => selectedStyle !== style)
-        : [...prevSelectedStyles, style]
-    );
-  };
-  
+    const handleStyleClick = (style) => {
+        setSelectedStyles((prevSelectedStyles) =>
+            prevSelectedStyles.includes(style)
+                ? prevSelectedStyles.filter((selectedStyle) => selectedStyle !== style)
+                : [...prevSelectedStyles, style]
+        );
+    };
+
+    const handleFitClick = (fit) => {
+        setSelectedFits((prevSelectedFits) =>
+            prevSelectedFits.includes(fit)
+                ? prevSelectedFits.filter((selectedFit) => selectedFit !== fit)
+                : [...prevSelectedFits, fit]
+        );
+    };
+
     const handleSubmit = () => {
         alert("회원가입이 완료되었습니다.");
-        navigate('/login');
+        navigate('/login');  // LoginPage로 이동
     };
 
     return (
