@@ -52,7 +52,6 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
-          <Route path="/a" element={<CompareLoading />} /> {/* 확인용 */}
         </Route>
       </Routes>
     </>
