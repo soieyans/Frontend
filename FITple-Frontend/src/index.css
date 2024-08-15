@@ -5,6 +5,6 @@
   src: url("./fonts/SUIT-Variable.ttf");
 }
 
-body {
+body * {
   font-family: "SUIT-Regular";
 }

@@ -18,13 +18,15 @@ import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RecomMainPage from "./pages/RecomMainPage/RecomMainPage";
 import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
-//import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
-// import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
-
+import RecomUserCloInfomPage from "./pages/RecomUserCloInfomPage/RecomUserCloInfomPage";
+import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
+import ClothupdatePage from "./pages/ClothupdatePage/ClothupdatePage";
+import RecomUserSearchPage from "./pages/RecomUserSearchPage/RecomUserSearchPage";
 import LayoutNonNav from "./layout/LayoutNonNav";
 import Layout from "./layout/Layout";
-import ClothupdatePage from "./pages/ClothupdatePage/ClothupdatePage";
-
+import LayoutNavBlue from "./layout/LayoutNavBlue";
+import SearchMainPage from "./pages/SearchMainPage/SearchMainPage";
+import BrandPage from "./pages/BrandPage/BrandPage";
 function App() {
   return (
     <>
@@ -52,6 +54,17 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
+          <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
+          <Route path="/recommenduser" element={<RecomUserCloInfomPage />} />
+          <Route path="/brand" element={<BrandPage />} />
+          <Route
+            path="/recommendUserSearch"
+            element={<RecomUserSearchPage />}
+          />
+        </Route>
+        {/* 파란색 Navbar 있는 layout */}
+        <Route element={<LayoutNavBlue />}>
+          <Route path="/search" element={<SearchMainPage />} />
         </Route>
       </Routes>
     </>
