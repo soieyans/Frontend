@@ -38,8 +38,10 @@ const BrandSearch = ({ onClose }) => {
 
   //텍스트 입력시 필터링
   useEffect(() => {
-    const filtered = ClothData.filter((item) =>
-      item.brand.toLowerCase().includes(searchTerm.toLowerCase())
+    const filtered = ClothData.filter(
+      (item) =>
+        item.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.enbrand.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filtered);
   }, [searchTerm]);
