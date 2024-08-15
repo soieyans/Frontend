@@ -17,7 +17,7 @@ import {
   ClothdebarContainer,
   Clothdebar,
 } from "./ClothmainPage.style";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 
@@ -94,7 +94,6 @@ const clothData = [
 
 const ClothmainPage = () => {
   const [filteredData, setFilteredData] = useState([]); // 필터링된 데이터 상태 관리
-  const navigate = useNavigate();
   // 카테고리 클릭 시 이벤트 처리 함수
   const handleCategoryClick = (category) => {
     if (category === "전체") {
@@ -127,9 +126,7 @@ const ClothmainPage = () => {
       return newState;
     });
   };
-  const handleNavigate = () => {
-    navigate("/clothupdate");
-  };
+
   const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
   const handleDeleteCloth = () => {
     setisDeletePopupOpen(!isDeletePopupOpen);
@@ -160,9 +157,9 @@ const ClothmainPage = () => {
                 <Clothdebar />
                 {isEdit && (
                   <EditButtons isEdit={isEdit[index]}>
-                    <EditButton onClick={handleNavigate}>
-                      옷 정보 수정하기
-                    </EditButton>
+                    <Link to="/clothupdate">
+                      <EditButton>옷 정보 수정하기</EditButton>
+                    </Link>
 
                     <EditButton onClick={handleDeleteCloth}>
                       옷 정보 삭제하기

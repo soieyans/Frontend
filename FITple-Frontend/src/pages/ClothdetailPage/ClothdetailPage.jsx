@@ -33,11 +33,10 @@ import {
   FilledBookmark,
 } from "./ClothdetailPage.style";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 const ClothdetailPage = () => {
-  const navigate = useNavigate();
   //노트
   const [note, setNote] = useState("");
 
@@ -47,9 +46,7 @@ const ClothdetailPage = () => {
   const toggleEdit = () => {
     setIsEdit(!isEdit);
   };
-  const handleNavigate = () => {
-    navigate("/clothupdate");
-  };
+
   const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
   const handleDeleteCloth = () => {
     setisDeletePopupOpen(!isDeletePopupOpen);
@@ -122,9 +119,9 @@ const ClothdetailPage = () => {
               <Clothdebar />
               {isEdit && (
                 <EditButtons isEdit={isEdit}>
-                  <EditButton onClick={handleNavigate}>
-                    옷 정보 수정하기
-                  </EditButton>
+                  <Link to="/clothupdate">
+                    <EditButton>옷 정보 수정하기</EditButton>
+                  </Link>
                   <EditButton onClick={handleDeleteCloth}>
                     옷 정보 삭제하기
                   </EditButton>

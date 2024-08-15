@@ -29,7 +29,7 @@ import {
   SearchIconBox,
 } from "./ClothregisterPage.style";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchIcon from "/assets/SearchIcon.svg";
 import BrandSearch from "../../components/BrandSearch/BrandSearch";
 import BrandNumberSearch from "../../components/BrandNumberSearch/BrandNumberSearch";
@@ -37,10 +37,6 @@ import RegisterPopUp from "../../components/RegisterPopUp/RegisterPopUp";
 import Modal from "react-modal";
 
 const ClothregisterPage = () => {
-  const navigate = useNavigate();
-  const handleNavigate = () => {
-    navigate("/cloth");
-  };
   //더미데이터
   const clothingCategories = [
     { value: "아우터", label: "아우터" },
@@ -129,7 +125,9 @@ const ClothregisterPage = () => {
     <div>
       <Parent1>
         <Parent2>
-          <BackIcon onClick={handleNavigate} />
+          <Link to="/cloth">
+            <BackIcon />
+          </Link>
           <ProductDeImage>
             <Registerimage />
           </ProductDeImage>
