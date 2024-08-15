@@ -11,6 +11,7 @@ import {
   Brandname,
   ENBrand,
   BrandNameContainer,
+  Nosearch,
 } from "./BrandSearch.style";
 import SearchIcon from "/assets/SearchIcon.svg";
 import XIcon from "/assets/Xicon.svg";
@@ -34,18 +35,17 @@ const ClothData = [
 const BrandSearch = ({ onClose }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+
   //텍스트 입력시 필터링
-  const filterBrand = (searchTerm) => {
+  useEffect(() => {
     const filtered = ClothData.filter((item) =>
       item.brand.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filtered);
-  };
+  }, [searchTerm]);
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    filterBrand(searchTerm);
   };
-  useEffect(() => {}, []);
 
   const handleClose = () => {
     onClose();
@@ -69,7 +69,7 @@ const BrandSearch = ({ onClose }) => {
         />
       </SearchBox>
       <div>
-        {filteredData.length > 0 ? (
+        {filteredData.length > 0 && searchTerm !== "" ? (
           filteredData.map((item) => (
             <BrandContainer key={item.brand}>
               <BrandImg src={item.img} />
@@ -80,7 +80,7 @@ const BrandSearch = ({ onClose }) => {
             </BrandContainer>
           ))
         ) : (
-          <div>검색 결과가 없습니다.</div>
+          <Nosearch>검색 결과가 없습니다.</Nosearch>
         )}
       </div>
     </Container>

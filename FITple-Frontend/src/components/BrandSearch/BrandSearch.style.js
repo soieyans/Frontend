@@ -103,3 +103,11 @@ export const BrandImg = styled.img`
   border-radius: 50%;
   margin-left: 20px;
 `;
+
+export const Nosearch = styled.div`
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  margin-top: 20px;
+  margin-left: 30px;
+`;
