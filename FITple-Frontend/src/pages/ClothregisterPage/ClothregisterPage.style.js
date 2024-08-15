@@ -11,6 +11,7 @@ export const BackIcon = styled.div`
   width: 11px;
   height: 40px;
   background: url(assets/back.svg);
+  cursor: pointer;
 `;
 // *모양
 export const SS = styled.div`

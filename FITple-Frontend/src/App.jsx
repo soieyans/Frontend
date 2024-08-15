@@ -38,6 +38,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
+<<<<<<< HEAD
           <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
           <Route path="/recommenduser" element={<RecomUserCloInfomPage />} />
           <Route path="/brand" element={<BrandPage />} />
@@ -49,6 +50,9 @@ function App() {
         {/* 파란색 Navbar 있는 layout */}
         <Route element={<LayoutNavBlue />}>
           <Route path="/search" element={<SearchMainPage />} />
+=======
+          <Route path="/a" element={<CompareLoading />} /> {/* 확인용 */}
+>>>>>>> a9f210400ab0daf6e2f56ad60661af10b69254c9
         </Route>
       </Routes>
     </>

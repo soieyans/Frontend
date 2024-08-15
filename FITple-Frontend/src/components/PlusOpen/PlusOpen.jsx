@@ -1,14 +1,12 @@
 import { PlusOpenButton, PlusOpenButtons } from "./PlusOpen.style";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PlusOpen = () => {
-  const navigate = useNavigate();
-  const handleNavigate = () => {
-    navigate("/clothregister");
-  };
   return (
     <PlusOpenButtons>
-      <PlusOpenButton onClick={handleNavigate}>직접 등록하기</PlusOpenButton>
+      <Link to="/clothregister">
+        <PlusOpenButton>직접 등록하기</PlusOpenButton>
+      </Link>
       <PlusOpenButton>검색하기</PlusOpenButton>
     </PlusOpenButtons>
   );
