@@ -6,7 +6,15 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
 import ClothregisterPage from "./pages/ClothregisterPage/ClothregisterPage";
 import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
+
+import TosPage from "./pages/TosPage/TosPage";
+import FindIdPage from "./pages/FindIdPage/FindIdPage";
+import FindPwPage from "./pages/FindPwPage/FindPwPage";
+import RePwPage from "./pages/RePwPage/RePwPage";
+import IdPage from "./pages/IdPage/IdPage";
+import PwPage from "./pages/PwPage/PwPage";
 import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
+
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RecomMainPage from "./pages/RecomMainPage/RecomMainPage";
 import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
@@ -25,9 +33,17 @@ function App() {
       <Routes>
         {/* Navbar 없는 layout */}
         <Route element={<LayoutNonNav />}>
-          <Route path="/" element={<LoginPage />} />
+          {/* 로그인페이지 */}
+          <Route path="/login" element={<LoginPage />} />
+          {/* 회원가입페이지 */}
+          <Route path="/tos" element={<TosPage/>}/>
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/user" element={<UserInfoPage />} />
+          <Route path="/userinfo" element={<UserInfoPage/>} />
+          <Route path="/findid" element={<FindIdPage/>} />
+          <Route path="/findid/showid" element={<IdPage/>} />
+          <Route path="/findpw" element={<FindPwPage/>} />
+          <Route path="/findpw/showpw" element={<PwPage/>} />
+          <Route path="/repw" element={<RePwPage/>} />
           <Route path="/clothregister" element={<ClothregisterPage />} />
         </Route>
         {/* Navbar 있는 layout */}
@@ -38,7 +54,6 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
-<<<<<<< HEAD
           <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
           <Route path="/recommenduser" element={<RecomUserCloInfomPage />} />
           <Route path="/brand" element={<BrandPage />} />
@@ -50,9 +65,6 @@ function App() {
         {/* 파란색 Navbar 있는 layout */}
         <Route element={<LayoutNavBlue />}>
           <Route path="/search" element={<SearchMainPage />} />
-=======
-          <Route path="/a" element={<CompareLoading />} /> {/* 확인용 */}
->>>>>>> a9f210400ab0daf6e2f56ad60661af10b69254c9
         </Route>
       </Routes>
     </>
