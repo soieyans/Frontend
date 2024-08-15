@@ -27,6 +27,11 @@ export const LogoBox = styled(Link)`
   text-decoration: none;
   margin-right: 84px;
 `;
+export const LogoImg = styled.img`
+  width: 31px;
+  height: 48.5px;
+`;
+
 export const LogoTitle = styled.p`
   margin-left: 0.8em;
   color: ${(props) => (props.$blue ? "white" : "black")};

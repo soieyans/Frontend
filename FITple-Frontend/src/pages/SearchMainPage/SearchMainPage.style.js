@@ -4,7 +4,6 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 export const MainContainer = styled.div`
-  border: 2px solid red;
   color: white;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,6 @@ export const MainContainer = styled.div`
 export const TitleContainer = styled.div``;
 export const TitleBox = styled.div`
   width: fit-content;
-  border: 3px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,11 +31,9 @@ export const Title = styled.div`
   font-size: 56px;
   font-weight: 400;
   display: flex;
-  border: 1px solid red;
   align-items: center;
 `;
 export const Box = styled.span`
-  border: 1px solid blue;
   font-size: 100px;
   font-weight: 700;
 `;
@@ -48,7 +44,6 @@ export const TitleBackground = styled.div`
   margin: 0 32px;
 `;
 export const SearchContainer = styled.div`
-  border: 1px solid red;
   width: 504px;
   margin-top: 72px;
 `;
@@ -59,7 +54,6 @@ export const SearchText = styled.div`
   margin-bottom: 20px;
 `;
 export const ItemContainer = styled.div`
-  border: 1px solid blue;
   height: 600px;
 `;
 
@@ -79,4 +73,40 @@ export const SunIconImg = styled.img`
   position: absolute;
   left: 0;
   top: 210px;
+`;
+
+export const FireIconImg = styled.img`
+  position: absolute;
+  left: 0;
+  top: 21px;
+`;
+
+export const SpringIconImg = styled.img`
+  position: absolute;
+  left: 201px;
+  top: 297px;
+`;
+
+export const HeartIconImg = styled.img`
+  position: absolute;
+  left: 417px;
+  top: 141px;
+  z-index: -1;
+`;
+
+export const ThumbIconImg = styled.img`
+  position: absolute;
+  right: 97px;
+  top: 0px;
+`;
+
+export const ThunderIconImg = styled.img`
+  position: absolute;
+  right: 5px;
+  top: 191px;
+`;
+export const StartRedIconImg = styled.img`
+  position: absolute;
+  right: 190px;
+  top: 295px;
 `;

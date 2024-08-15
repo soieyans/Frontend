@@ -70,7 +70,7 @@ const BrandPage = () => {
             ))}
           </SubMenuWrap>
           {/* 아이템들 */}
-          {/* <ItemWrap>
+          <ItemWrap>
             <UserItem />
             <UserItem />
             <UserItem />
@@ -78,14 +78,14 @@ const BrandPage = () => {
             <UserItem />
             <UserItem />
             <UserItem />
-          </ItemWrap> */}
+          </ItemWrap>
           {/* 아이템이 없을때 */}
-          <NonWrap>
+          {/* <NonWrap>
             <RegisterBox>
               <RegisterText>해당 제품은 등록되어 있지 않아요.</RegisterText>
               <RegisterBTN>직접 등록하기</RegisterBTN>
             </RegisterBox>
-          </NonWrap>
+          </NonWrap> */}
         </Wrap>
       </ItemContainer>
     </>
