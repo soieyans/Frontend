@@ -27,6 +27,7 @@ import {
   StyledButton,
 } from "./ClothupdatePage.style";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ClothupdatePage = () => {
   //드롭다운
@@ -63,7 +64,9 @@ const ClothupdatePage = () => {
     <div>
       <Parent1>
         <Parent2>
-          <BackIcon />
+          <Link to="/cloth">
+            <BackIcon />
+          </Link>
           <ProductDeImage />
           <Imgcontainer>
             <ProductDeImagemin />

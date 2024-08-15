@@ -29,6 +29,7 @@ import {
   SearchIconBox,
 } from "./ClothregisterPage.style";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SearchIcon from "/assets/SearchIcon.svg";
 import BrandSearch from "../../components/BrandSearch/BrandSearch";
 import BrandNumberSearch from "../../components/BrandNumberSearch/BrandNumberSearch";
@@ -124,7 +125,9 @@ const ClothregisterPage = () => {
     <div>
       <Parent1>
         <Parent2>
-          <BackIcon />
+          <Link to="/cloth">
+            <BackIcon />
+          </Link>
           <ProductDeImage>
             <Registerimage />
           </ProductDeImage>
