@@ -1,11 +1,12 @@
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import ClothdetailPage from "./pages/ClothdetailPage/ClothdetailPage";
+import ClothregisterPage from "./pages/ClothregisterPage/ClothregisterPage";
 import ClothmainPage from "./pages/ClothmainPage/ClothmainPage";
+
 import TosPage from "./pages/TosPage/TosPage";
 import FindIdPage from "./pages/FindIdPage/FindIdPage";
 import FindPwPage from "./pages/FindPwPage/FindPwPage";
@@ -14,28 +15,45 @@ import IdPage from "./pages/IdPage/IdPage";
 import PwPage from "./pages/PwPage/PwPage";
 import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import RecomMainPage from "./pages/RecomMainPage/RecomMainPage";
+import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
+//import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
+// import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
+
+import LayoutNonNav from "./layout/LayoutNonNav";
+import Layout from "./layout/Layout";
+import ClothupdatePage from "./pages/ClothupdatePage/ClothupdatePage";
+
 function App() {
   return (
     <>
-      {/* Navbar */}
-      {/* <Navbar /> */}
-      {/* 각자 route 설정하기 */}
       <Routes>
-        {/* 로그인페이지 */}
-        <Route path="/login" element={<LoginPage />} />
-        {/* 회원가입페이지 */}
-        <Route path="/tos" element={<TosPage/>}/>
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/userinfo" element={<UserInfoPage/>} />
-        <Route path="/findid" element={<FindIdPage/>} />
-        <Route path="/findid/showid" element={<IdPage/>} />
-        <Route path="/findpw" element={<FindPwPage/>} />
-        <Route path="/findpw/showpw" element={<PwPage/>} />
-        <Route path="/repw" element={<RePwPage/>} />
-        {/* 상품디테일 */}
-        <Route path="/product" element={<ClothdetailPage />} />
-        {/* 이게 메인페이지? */}
-        <Route path="/" element={<ClothmainPage />} />
+        {/* Navbar 없는 layout */}
+        <Route element={<LayoutNonNav />}>
+          {/* 로그인페이지 */}
+          <Route path="/login" element={<LoginPage />} />
+          {/* 회원가입페이지 */}
+          <Route path="/tos" element={<TosPage/>}/>
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/userinfo" element={<UserInfoPage/>} />
+          <Route path="/findid" element={<FindIdPage/>} />
+          <Route path="/findid/showid" element={<IdPage/>} />
+          <Route path="/findpw" element={<FindPwPage/>} />
+          <Route path="/findpw/showpw" element={<PwPage/>} />
+          <Route path="/repw" element={<RePwPage/>} />
+          <Route path="/clothregister" element={<ClothregisterPage />} />
+        </Route>
+        {/* Navbar 있는 layout */}
+        <Route element={<Layout />}>
+          <Route path="/cloth" element={<ClothmainPage />} />
+          <Route path="/clothdetail" element={<ClothdetailPage />} />
+          <Route path="/clothupdate" element={<ClothupdatePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/recommend" element={<RecomMainPage />} />
+          <Route path="/recommendall" element={<RecomAllPage />} />
+          <Route path="/a" element={<CompareLoading />} /> {/* 확인용 */}
+        </Route>
       </Routes>
     </>
   );
