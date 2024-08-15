@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SideBar from "../../components/SideBar/SideBar";
+import PlusOpen from "../../components/PlusOpen/PlusOpen";
 import {
   ProductDetail,
   ProductImage,
@@ -7,6 +8,9 @@ import {
   ProductName,
   ProductContainer,
   Parent,
+  FilledHeart,
+  Imgcontainer,
+  PLUSbutton,
 } from "./ClothmainPage.style";
 
 const clothData = [
@@ -16,6 +20,7 @@ const clothData = [
     size: "XL",
     detail: "오버핏",
     type: "아우터",
+    wish: "찜",
   },
   {
     id: 1,
@@ -23,6 +28,7 @@ const clothData = [
     size: "L",
     detail: "오버핏",
     type: "아우터",
+    wish: "찜",
   },
   {
     id: 2,
@@ -30,6 +36,7 @@ const clothData = [
     size: "M",
     detail: "여유로운 핏",
     type: "상의",
+    wish: "찜",
   },
   {
     id: 3,
@@ -37,6 +44,7 @@ const clothData = [
     size: "L",
     detail: "짧고 편안함",
     type: "바지",
+    wish: "찜",
   },
   {
     id: 4,
@@ -44,6 +52,7 @@ const clothData = [
     size: "38",
     detail: "여성스러운 디자인",
     type: "스커트",
+    wish: "찜",
   },
   {
     id: 5,
@@ -87,6 +96,12 @@ const ClothmainPage = () => {
     setFilteredData(clothData);
   }, []);
 
+  //plusopen 클릭시 이벤트 처리 함수
+  const [isplusopen, setIsplusopen] = useState(false);
+  const handlePlusOpen = () => {
+    setIsplusopen(!isplusopen);
+  };
+
   return (
     <div>
       <Parent>
@@ -95,15 +110,21 @@ const ClothmainPage = () => {
           {filteredData.length === 0 && <div>검색 결과가 없습니다.</div>}
           {filteredData.map((item) => (
             <ProductItem key={item.id}>
-              <ProductImage
-                image={`../../assets/${item.type}_${item.id}.jpg`}
-              />
+              <Imgcontainer>
+                <ProductImage
+                  image={`../../assets/${item.type}_${item.id}.jpg`}
+                />
+                {item.wish === "찜" && <FilledHeart />}
+              </Imgcontainer>
               <ProductName>{item.name}</ProductName>
               <ProductDetail>
                 {item.size}•{item.detail}
               </ProductDetail>
             </ProductItem>
           ))}
+          <PLUSbutton onClick={handlePlusOpen}>
+            {isplusopen && <PlusOpen isplusopen={isplusopen} />}
+          </PLUSbutton>
         </ProductContainer>
       </Parent>
     </div>
