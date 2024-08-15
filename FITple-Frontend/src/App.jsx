@@ -14,7 +14,7 @@ import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
 
 import LayoutNonNav from "./layout/LayoutNonNav";
 import Layout from "./layout/Layout";
-import CompareSearchPopUp from "./components/CompareSearchPopUp/CompareSearchPopUp";
+import CompareLoading from "./components/CompareLoading/CompareLoading";
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
-          <Route path="/a" element={<CompareSearchPopUp />} /> {/* 확인용 */}
+          <Route path="/a" element={<CompareLoading />} /> {/* 확인용 */}
         </Route>
       </Routes>
     </>
