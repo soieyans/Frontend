@@ -10,6 +10,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RecomMainPage from "./pages/RecomMainPage/RecomMainPage";
 import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
 import RecomUserFeedPage from "./pages/RecomUserFeedPage/RecomUserFeedPage";
+import RecomUserCloInfomPage from "./pages/RecomUserCloInfomPage/RecomUserCloInfomPage";
 // import RecomAllPage from "./pages/RecomAllPage/RecomAllPage";
 
 import LayoutNonNav from "./layout/LayoutNonNav";
@@ -31,6 +32,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
+          <Route path="/recommenduser" element={<RecomUserFeedPage/>}/>
+          <Route path="/goods" element={<RecomUserCloInfomPage/>}/>
         </Route>
       </Routes>
     </>

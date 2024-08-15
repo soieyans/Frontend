@@ -9,7 +9,7 @@ import {
 
 function Goods() {
   return (
-    <Container>
+    <Container to={`/goods`}>
       <SetGoodsImg></SetGoodsImg>
 
       <Brand>아디다스</Brand>

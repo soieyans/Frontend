@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "size": "S",
+    "name": "슬림핏 티셔츠",
+    "detail": "부드럽고 가벼운 소재로 편안함.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 2,
+    "size": "M",
+    "name": "클래식 청바지",
+    "detail": "어디에나 잘 어울리는 기본 스타일.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 3,
+    "size": "L",
+    "name": "후드 집업",
+    "detail": "캐주얼한 느낌의 편안한 착용감.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 4,
+    "size": "M",
+    "name": "스니커즈",
+    "detail": "트렌디한 디자인, 데일리 슈즈로 최적.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 5,
+    "size": "XL",
+    "name": "롱코트",
+    "detail": "겨울철 따뜻함을 제공하는 스타일.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 6,
+    "size": "S",
+    "name": "스포츠 브라",
+    "detail": "운동 시 편안함과 지지력을 제공.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 7,
+    "size": "L",
+    "name": "반팔 원피스",
+    "detail": "여름에 적합한 경량 원피스.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 8,
+    "size": "M",
+    "name": "배기팬츠",
+    "detail": "편안한 착용감과 스타일리시한 디자인.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 9,
+    "size": "S",
+    "name": "니트 스웨터",
+    "detail": "부드럽고 따뜻한 겨울 아이템.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 10,
+    "size": "XL",
+    "name": "레깅스",
+    "detail": "활동적인 라이프스타일에 적합.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 11,
+    "size": "L",
+    "name": "캐주얼 블라우스",
+    "detail": "여성스러움을 강조하는 디자인.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 12,
+    "size": "M",
+    "name": "운동화",
+    "detail": "편안한 착용감으로 하루 종일 신기 좋음.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 13,
+    "size": "S",
+    "name": "자켓",
+    "detail": "선선한 날씨에 적합한 경량 자켓.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 14,
+    "size": "L",
+    "name": "롱스커트",
+    "detail": "우아함과 편안함을 동시에.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 15,
+    "size": "M",
+    "name": "크롭탑",
+    "detail": "트렌디하고 발랄한 느낌.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 16,
+    "size": "XL",
+    "name": "오버사이즈 셔츠",
+    "detail": "편안한 착용감과 멋스러운 핏.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 17,
+    "size": "S",
+    "name": "패딩 조끼",
+    "detail": "추운 날씨에 적합한 따뜻한 아이템.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 18,
+    "size": "M",
+    "name": "모자",
+    "detail": "햇볕을 막아주는 필수 아이템.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 19,
+    "size": "L",
+    "name": "슬리퍼",
+    "detail": "편안한 착용감으로 휴식 시 좋음.",
+    "isFavorite": false,
+    "itemImg": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 20,
+    "size": "M",
+    "name": "스카프",
+    "detail": "스타일을 더해주는 액세서리.",
+    "isFavorite": true,
+    "itemImg": "https://via.placeholder.com/150"
+  }
+]

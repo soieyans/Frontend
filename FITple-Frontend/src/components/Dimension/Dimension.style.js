@@ -15,26 +15,22 @@ export const Title = styled.div`
     color: #0075FF;
 `
 
-export const Convert =styled.div`
-    border-radius:30;
+export const Wrap =styled.div`
     display:flex;
-    justify-content:center;
-    gap:5px;
-
-`
-
-export const Cm = styled.div`
-`
-export const Inch =styled.div`
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
 `
 
 export const Item = styled.div`
     text-align:center;
     display:flex;
-    justify-content:center;
+    width:400px;
+    justify-content:right;
     gap:12px;
     color:#838383;
     font-size:24px;
+    
 `
 export const Num = styled.div`
     width:200px;

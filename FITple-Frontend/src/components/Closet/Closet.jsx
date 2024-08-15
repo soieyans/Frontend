@@ -3,8 +3,8 @@ import { Container } from "./Closet.style"
 
 function Closet() {
   return (
-    <Container>
-        <Goods></Goods>
+    <Container >
+        <Goods ></Goods>
         <Goods></Goods>
         <Goods></Goods>
         <Goods></Goods>

@@ -9,6 +9,8 @@ import {
   OptionButton,
 } from "./LoginPage.style";
 
+import Test from '../RecomMainPage/RecomMainPage'
+
 function LoginPage() {
   return (
     <LoginPageWrapper>
@@ -23,6 +25,7 @@ function LoginPage() {
         <OptionButton>회원가입</OptionButton>
         <OptionButton>ID/PW 찾기</OptionButton>
       </OptionWrapper>
+      <Test/>
     </LoginPageWrapper>
   );
 }

@@ -1,11 +1,16 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled(Link)`
     position: relative;
     width:250px;
     height:337px;
     display:flex;
     flex-direction:column;
+    cursor: pointer;
+    text-decoration: none; /* 기본 링크 스타일 제거 */
+    color: inherit; /* 부모의 색상 상속 */
+
 `
 export const SetGoodsImg = styled.img`
     width:250px;
