@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginPageWrapper = styled.div`
+export const RePwPageWrapper = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -48,28 +48,12 @@ export const SubmitButton = styled.button`
     width: 64%;
     height: 56px;
     background-color: ${props => (props.isActive ? '#0276FE' : 'black')};
-    border: ${props => (props.isActive ? '1px solid #0276FE' : '1px sollid black')};
+    border-color: ${props => (props.isActive ? '#0276FE' : 'black')};
     border-radius: 10px;
     font-size: 17px;
     color: white;
     margin-top: 25px;
     cursor: ${props => (props.isActive ? 'pointer' : 'default')};
-`;
-
-export const OptionWrapper = styled.div`
-    width: 20%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-`;
-
-export const OptionButton = styled.button`
-    margin-top: 30px;
-    font-size: 17px;
-    color: #0276FE;
-    text-decoration: underline solid #0276FE;
-    background-color: white;
-    border: none;
-    cursor: pointer;
+    border: none; 
+    box-shadow: none;
 `;

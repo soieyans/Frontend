@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SignupPageWrapper = styled.div`
+export const TosPageWrapper = styled.div`
     width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -10,55 +10,33 @@ export const SignupPageWrapper = styled.div`
     margin: 30px 0;
 `;
 
-export const FormWrapper = styled.div`
-    width: 80%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 15px 0 50px 0;
-`;
-
-export const InputText = styled.p`
+export const MainText = styled.p`
     width: 62%;
-    font-size: 18px;
+    font-size: 20px;
+    margin: 40px 0 15px 0;
     padding: 0;
+    font-weight: bold;
     color: #0276FE;
-    margin-top: 10px;
-    font-weight: 500;
 `;
 
-export const InputBox = styled.input.attrs(props => ({
-    type: props.type || 'text',
-    id: props.id,
-    placeholder: props.placeholder
-}))`
-    width: 60%;
-    height: 40px;
-    margin-top: 10px;
-    border: 1px solid #838383;
-    border-radius: 10px;
+export const ScrollBox = styled.div`
+    width: 59%;
+    height: 200px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow-y: scroll;
+    // background-color: #fcfcfc;
     background-color: white;
-    padding: 5px 15px;
-    font-size: 17px;
-    outline-color: #0075FF;
+    p {
+        line-height: 1.6;
+        color: #838383;
+    }
 `;
-
-export const ErrorText = styled.p`
-    color: ${props => 
-        props.isError ? '#FF004C' : '#00E016'
-    };
-    width: 62%;
-    margin: 10px 0 30px 0;
-    padding: 0;
-    font-size: 14px;
-`;
-
 
 export const CheckboxContainer = styled.div`
     width: 62%;
-    margin: 20px 0;
+    margin: 12px 0;
     display: flex;
     flex-direction: row;
 `;
@@ -91,15 +69,20 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 
 export const CheckboxLabel = styled.p`
     margin-top: 2px;
-    margin-right: 8px;
 `;
 
 export const SubmitButton = styled.button`
-    width: 64%;
+    width: 62%;
     height: 50px;
-    background-color: black;
-    border-radius: 10px;
+    background-color: #0276FE;
+    border: none; 
+    box-shadow: none;
+    border-radius: 8px;
     font-size: 17px;
     color: white;
-    margin-top: 25px;
+    margin-top: 40px;
+    cursor: ${({ isTosChecked, isPrivacyChecked }) =>
+        isTosChecked && isPrivacyChecked ? 'pointer' : 'default'};
+    opacity: ${({ isTosChecked, isPrivacyChecked }) =>
+        isTosChecked && isPrivacyChecked ? 1 : 0.5};
 `;
