@@ -80,4 +80,3 @@ export const SearchIconBox = styled.button`
   padding: 0px;
   left: 28px;
 `;
-
