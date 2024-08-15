@@ -21,7 +21,6 @@ export const ComparePopUpBackground = styled.div`
     border-radius: 41px;
     border: 1px;
     border-color: #838383;
-    position: relative;
 `;
 
 export const ComparePopUpInnerContainer = styled.div`
@@ -29,7 +28,6 @@ export const ComparePopUpInnerContainer = styled.div`
     flex-direction: column;
     align-items: center;
 `;
-
 
 export const ComparePopUpInnerMainContainer = styled.div`
     display: flex;
@@ -61,76 +59,86 @@ export const BackArrowBtn = styled.img`
     margin-left: 38px;
 `;
 
-export const CompareSearchContainer = styled.div`
-    margin-top: 32px;
+export const CompareSubText = styled.div`
+    font-family: 'SUIT Variable', sans-serif;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 27px;
+`;
+
+export const CompareInputContainer = styled.div`
+    margin-top: 19px;
     width: 338px;
     height: 334px;
-`;
-
-export const CompareSearchEditBtn = styled.img`
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    bottom: -18px;
-    right: 16px;
-    cursor: pointer;
-`;
-
-export const CompareSearchBorderContainer = styled.div`
-    border: 1px solid #838383;
-    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+export const CompareInputCard = styled.div`
+    margin-bottom: 12px;
+    border-radius: 15px;
+    border: 1px solid #838383;
+    width: 338px;
+    height: 200px;
     position: relative;
-    min-height: 134px;
 `;
 
-export const CompareSearchCardScroll = styled.div`
-    width: 323px;
-    height: 110px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    display: block; /* block으로 변경하여 크기 제한 문제 해결 */
-    overflow-x: auto; /* 가로 스크롤 추가 */
-    overflow-y: hidden; /* 세로 스크롤 제거 */
-    white-space: nowrap; /* 자식 요소가 줄 바꿈 없이 한 줄로 유지되도록 설정 */
-`;
-
-export const CompareSearchCard = styled.div`
+export const CompareInputAndTextContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    width: 686px;
-    height: 55px;
-    margin-bottom: 33px;
-    margin-top: 27px;
 `;
 
-export const CompareSizeContainer = styled.div`
+export const CompareInputAndText = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 22px;
 `;
 
-export const CompareSizeText = styled.div`
+export const CompareInputText = styled.div`
     font-family: 'SUIT Variable', sans-serif;
     color: #838383;
     font-size: 16px;
     font-weight: 500;
 `;
 
-export const CompareSizeContents = styled.div`
-    margin-top: 5px;
+export const CompareInput = styled.input`
+    margin-top: 8px;
+    border-radius: 10px;
+    border: 1px solid #0276FE;
+    width: 56px;
+    height: 32px;
+    text-align: center;
     font-family: 'SUIT Variable', sans-serif;
     color: #000000;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
 `;
 
-export const CompareStartBtn = styled.button`
+export const CompareInputCardDelBtn = styled.div`
+    font-family: 'SUIT Variable', sans-serif;
+    color: #000000;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+`;
+
+export const AddInputCardBtn = styled.img`
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+    margin-top: 8px;
+`;
+
+export const CompareInputCardConfirmBtn = styled.button`
     background-color: #0075FF;
     height: 43px;
     width: 220px;
@@ -143,6 +151,4 @@ export const CompareStartBtn = styled.button`
     border-radius: 10px;
     border: 0;
     cursor: pointer;
-    position: absolute;
-    bottom: 36px;
 `;
