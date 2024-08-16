@@ -29,7 +29,7 @@ function RecomUserFeedPage() {
           <FeedButton icon={HeartIcon} alt="즐겨찾는 곳" />
         </IndividualWrap>
         <SubWrap>
-          <FeedNav></FeedNav>
+          <FeedNav />
           <Closet />
         </SubWrap>
       </Wrap>
