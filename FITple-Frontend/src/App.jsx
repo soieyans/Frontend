@@ -27,12 +27,14 @@ import Layout from "./layout/Layout";
 import LayoutNavBlue from "./layout/LayoutNavBlue";
 import SearchMainPage from "./pages/SearchMainPage/SearchMainPage";
 import BrandPage from "./pages/BrandPage/BrandPage";
+import MainPage from "./pages/MainPage/MainPage";
 function App() {
   return (
     <>
       <Routes>
         {/* Navbar 없는 layout */}
         <Route element={<LayoutNonNav />}>
+          <Route path="/" element={<MainPage/>}/>
           {/* 로그인페이지 */}
           <Route path="/login" element={<LoginPage />} />
           {/* 회원가입페이지 */}
