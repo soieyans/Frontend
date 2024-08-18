@@ -12,13 +12,25 @@ export const Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
+    padding: 16px 120px;
     background-color: #fff;
     border-bottom: 1px solid #e0e0e0;
 `;
 
+export const LogoContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
 export const Logo = styled.img`
     height: 40px;
+`;
+
+export const MainText = styled.p`
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 10px;
 `;
 
 export const Button = styled.button`
@@ -26,7 +38,7 @@ export const Button = styled.button`
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
 
