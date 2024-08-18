@@ -2,8 +2,14 @@ import React from 'react';
 import { Container, Header, LogoContainer, Logo, MainText, Button, ImageWrapper } from './MainPage.style';
 import fitpleLogo from '../../../assets/Logo.svg';
 import mainPageImage from '../../../assets/mainpage.svg';
+import { useNavigate } from "react-router-dom";
 
-const MainPage = () => {
+function MainPage() {
+    const navigate = useNavigate();
+    const handleLoginClick = () => {
+        navigate('/login');
+    };
+
     return (
         <Container>
         <Header>
@@ -11,7 +17,7 @@ const MainPage = () => {
                 <Logo src={fitpleLogo} alt="Fitple Logo" />
                 <MainText>FITple</MainText>
             </LogoContainer>
-            <Button>로그인 / 회원가입</Button>
+            <Button onClick={handleLoginClick}>로그인 / 회원가입</Button>
         </Header>
         <ImageWrapper>
             <img src={mainPageImage} alt="Main Page" />
