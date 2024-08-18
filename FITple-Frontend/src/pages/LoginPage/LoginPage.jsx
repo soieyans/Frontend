@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/Logo.svg";
+import { login } from "../../../data/LoginApi";
 import {
   LoginPageWrapper,
   MainText,
@@ -18,25 +19,51 @@ function LoginPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (loginId && loginPw) {
-      setIsButtonActive(true);
-    } else {
-      setIsButtonActive(false);
-    }
+    setIsButtonActive(!!(loginId && loginPw));
   }, [loginId, loginPw]);
 
-  // TODO : 데모데이 촬영용으로 임시 개발. 추후 삭제
-  const handleLoginClick = () => {
-    alert('가입되지 않은 회원입니다.');
+  const handleLogin = async () => {
+    if (!isButtonActive) return;
+
+    try {
+      const response = await login(loginId, loginPw);
+
+      switch (response.status) {
+        case 200:
+          alert("로그인 성공!");
+          navigate('/cloth');
+          break;
+        case 400:
+          alert("잘못된 요청! 존재하지 않는 회원입니다.");
+          break;
+        case 401:
+          alert("아이디가 존재하지 않습니다.");
+          break;
+        case 402:
+          alert("정보를 다시 입력해주세요.");
+          break;
+        case 403:
+          alert("비밀번호가 일치하지 않습니다.");
+          break;
+        case 500:
+          alert("진행 중 오류가 생겼습니다.");
+          break;
+        default:
+          alert("알 수 없는 오류가 발생했습니다.");
+          break;
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
-  const handleSignupClick = () => { // 회원가입 버튼 클릭 시 TosPage로 이동
+  const handleSignupClick = () => {
     navigate('/tos');
   };
 
   const handleIdFindClick = () => {
     navigate('/findid');
-  }
+  };
 
   return (
     <LoginPageWrapper>
@@ -57,9 +84,13 @@ function LoginPage() {
           value={loginPw}
           onChange={(e) => setLoginPw(e.target.value)}
         />
-        {/* // TODO : 데모데이 촬영용으로 임시 개발. 추후 삭제 */}
-        <SubmitButton isActive={isButtonActive} onClick={handleLoginClick}>로그인</SubmitButton>
-        {/* <SubmitButton isActive={isButtonActive}>로그인</SubmitButton> */}
+        <SubmitButton 
+          isActive={isButtonActive} 
+          onClick={handleLogin}
+          disabled={!isButtonActive}
+        >
+          로그인
+        </SubmitButton>
       </FormWrapper>
       <OptionWrapper>
         <OptionButton onClick={handleSignupClick}>회원가입</OptionButton>
