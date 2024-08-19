@@ -33,7 +33,6 @@ const BrandPage = () => {
     "원피스",
     "신발",
   ];
-  console.log(inputValue);
   return (
     <>
       {/* 위에 Container */}
