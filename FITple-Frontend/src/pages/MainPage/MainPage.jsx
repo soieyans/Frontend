@@ -12,13 +12,13 @@ function MainPage() {
 
     return (
         <Container>
-        <Header>
+        {/* <Header>
             <LogoContainer>
                 <Logo src={fitpleLogo} alt="Fitple Logo" />
                 <MainText>FITple</MainText>
             </LogoContainer>
             <Button onClick={handleLoginClick}>로그인 / 회원가입</Button>
-        </Header>
+        </Header> */}
         <ImageWrapper>
             <img src={mainPageImage} alt="Main Page" />
         </ImageWrapper>
