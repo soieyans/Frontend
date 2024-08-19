@@ -124,5 +124,4 @@ export const Clothdebar = styled.div`
 
 export const SideBarWrap = styled.div`
   margin-top: 40px;
-  border: 1px solid red;
 `;
