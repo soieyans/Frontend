@@ -27,7 +27,7 @@ const Navbar = ({ ...props }) => {
             <LogoTitle {...props}>FITple</LogoTitle>
           </LogoBox>
           {/* 메뉴 */}
-          <MenuBox>
+          <MenuBox {...props}>
             <MenuItem to="/cloth" {...props}>
               옷장
             </MenuItem>
