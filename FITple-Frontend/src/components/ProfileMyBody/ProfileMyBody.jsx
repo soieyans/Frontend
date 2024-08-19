@@ -1,7 +1,13 @@
 import React from "react";
+import UserBodyInfo from "../UserInfoBody/UserInfoBody";
+import { Container } from "./ProfileMyBody.style";
 
 const ProfileMyBody = () => {
-  return <div>3번째 페이지</div>;
+  return (
+    <Container>
+      <UserBodyInfo $profile />
+    </Container>
+  );
 };
 
 export default ProfileMyBody;

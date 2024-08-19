@@ -1,7 +1,22 @@
 import React from "react";
+import { Container, ItemListWrap, SideBarWrap } from "./ProfileFavor.style";
+import SideBar from "../SideBar/SideBar";
+import ItemList from "../ItemList/ItemList";
+import { Wrap } from "../UserItem/UserItem.style";
 
 const ProfileFavor = () => {
-  return <div>두번째 화면</div>;
+  return (
+    <Container>
+      <Wrap>
+        <SideBarWrap>
+          <SideBar />
+        </SideBarWrap>
+        <ItemListWrap>
+          <ItemList $user />
+        </ItemListWrap>
+      </Wrap>
+    </Container>
+  );
 };
 
 export default ProfileFavor;
