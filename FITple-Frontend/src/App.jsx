@@ -28,24 +28,27 @@ import LayoutNavBlue from "./layout/LayoutNavBlue";
 import SearchMainPage from "./pages/SearchMainPage/SearchMainPage";
 import BrandPage from "./pages/BrandPage/BrandPage";
 import MainPage from "./pages/MainPage/MainPage";
+import LayoutMain from "./layout/LayoutMain";
 function App() {
   return (
     <>
       <Routes>
+        <Route element={<LayoutMain />}>
+          <Route path="/" element={<MainPage />} />
+        </Route>
         {/* Navbar 없는 layout */}
         <Route element={<LayoutNonNav />}>
-          <Route path="/" element={<MainPage/>}/>
           {/* 로그인페이지 */}
           <Route path="/login" element={<LoginPage />} />
           {/* 회원가입페이지 */}
-          <Route path="/tos" element={<TosPage/>}/>
+          <Route path="/tos" element={<TosPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/userinfo" element={<UserInfoPage/>} />
-          <Route path="/findid" element={<FindIdPage/>} />
-          <Route path="/findid/showid" element={<IdPage/>} />
-          <Route path="/findpw" element={<FindPwPage/>} />
-          <Route path="/findpw/showpw" element={<PwPage/>} />
-          <Route path="/repw" element={<RePwPage/>} />
+          <Route path="/userinfo" element={<UserInfoPage />} />
+          <Route path="/findid" element={<FindIdPage />} />
+          <Route path="/findid/showid" element={<IdPage />} />
+          <Route path="/findpw" element={<FindPwPage />} />
+          <Route path="/findpw/showpw" element={<PwPage />} />
+          <Route path="/repw" element={<RePwPage />} />
           <Route path="/clothregister" element={<ClothregisterPage />} />
         </Route>
         {/* Navbar 있는 layout */}
