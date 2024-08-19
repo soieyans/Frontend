@@ -121,3 +121,16 @@ export const Clothdebar = styled.div`
   height: 7px;
   margin-bottom: 3px;
 `;
+export const LoadMoreButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "SUIT Variable", sans-serif;
+  color: #000000;
+  background-color: #f5f5f5;
+  cursor: pointer;
+`;

@@ -16,6 +16,7 @@ import {
   EditButton,
   ClothdebarContainer,
   Clothdebar,
+  LoadMoreButton, // 더보기 버튼 스타일 추가
 } from "./ClothmainPage.style";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
@@ -28,22 +29,29 @@ const ClothmainPage = () => {
   const [isPlusOpen, setIsPlusOpen] = useState(false);
   const [isEdit, setIsEdit] = useState([]);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
-  const [cursorId, setCursorId] = useState(null); // For pagination if needed
+  const [cursorId, setCursorId] = useState(null); // 초기값을 null로 설정
+  const [hasMore, setHasMore] = useState(true); // 더 로드할 데이터가 있는지 여부
 
   // Fetch data from the API
-  const fetchData = async (category = null, clothId = null, size = 10) => {
+  const fetchData = async (
+    category = null,
+    clothId = null,
+    cursor = null,
+    size = 8
+  ) => {
     try {
       const query = new URLSearchParams();
       if (category) query.append("category", category);
       if (clothId) query.append("clothId", clothId);
       if (size) query.append("size", size);
+      if (cursor) query.append("cursorId", cursor);
 
       const response = await fetch(
         `${localhost}/FITple/my/closet/main?${query.toString()}`,
         {
           method: "GET",
           headers: {
-            Authorization: "1111", // Replace with the actual access token
+            Authorization: "secret", // Replace with the actual access token
           },
         }
       );
@@ -51,46 +59,36 @@ const ClothmainPage = () => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
+
       const result = await response.json();
 
       // Check if 'data' and 'closetData' are present in the result
       if (result && result.data && result.data.closetData) {
-        setData(result.data.closetData);
-        setCursorId(result.data.cursorId); // Store cursorId for pagination
+        if (cursor) {
+          // If cursor exists, append new data
+          setData((prevData) => [...prevData, ...result.data.closetData]);
+        } else {
+          // If no cursor, replace data
+          setData(result.data.closetData);
+        }
+        setCursorId(result.data.cursorId); // Update cursorId for pagination
+        setHasMore(result.data.closetData.length > 0); // If no more data, stop pagination
       } else {
         console.error("Unexpected response structure:", result);
-        setData([]); // Reset data if the structure is unexpected
+        if (!cursor) setData([]); // Reset data if the structure is unexpected and no cursor
+        setHasMore(false);
       }
     } catch (error) {
       console.error("Error fetching cloth data:", error);
-      setData([]); // Reset data in case of an error
-    }
-  };
-
-  // Fetch detailed information for a specific cloth
-  const fetchClothDetail = async (clothId) => {
-    try {
-      const response = await fetch(`${localhost}/FITple/my/closet/${clothId}`, {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer your_access_token_here", // Replace with the actual access token
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const result = await response.json();
-      return result.data.clothData;
-    } catch (error) {
-      console.error("Error fetching cloth detail:", error);
+      if (!cursor) setData([]); // Reset data in case of an error and no cursor
+      setHasMore(false);
     }
   };
 
   // Handle category selection
   const filterDataByCategory = (category) => {
     setCurrentCategory(category);
+    setCursorId(null); // Reset cursor when changing category
     fetchData(category);
   };
 
@@ -113,9 +111,16 @@ const ClothmainPage = () => {
     setIsDeletePopupOpen((prev) => !prev);
   };
 
+  // Load more data when the "Load More" button is clicked
+  const loadMoreData = () => {
+    if (hasMore) {
+      fetchData(currentCategory, null, cursorId);
+    }
+  };
+
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData(currentCategory);
+  }, [currentCategory]);
 
   return (
     <Parent>
@@ -158,6 +163,10 @@ const ClothmainPage = () => {
           {isPlusOpen && <PlusOpen />}
         </PLUSbutton>
       </ProductContainer>
+
+      {hasMore && (
+        <LoadMoreButton onClick={loadMoreData}>더보기</LoadMoreButton>
+      )}
 
       {isDeletePopupOpen && (
         <Modal
