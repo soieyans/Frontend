@@ -41,9 +41,9 @@ export const LogoItem = styled.div`
   cursor: pointer;
 `;
 export const MenuBox = styled.div`
+  display: ${(props) => (props.$login ? "none" : "flex")};
   font-size: 20px;
   font-weight: 700;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 65%;
@@ -76,6 +76,7 @@ export const LoginBTN = styled(Link)`
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
+  white-space: nowrap;
   &:hover {
     background-color: #0056b3;
   }
