@@ -134,3 +134,8 @@ export const LoadMoreButton = styled.div`
   background-color: #f5f5f5;
   cursor: pointer;
 `;
+
+export const SideBarWrap = styled.div`
+  margin-top: 40px;
+  border: 1px solid red;
+`;

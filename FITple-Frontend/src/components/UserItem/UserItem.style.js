@@ -8,12 +8,13 @@ export const ItemImg = styled.img`
   width: 250px;
   height: 250px;
   border-radius: 20px;
+  margin-bottom: 8px;
 `;
 
 export const UserInfo = styled.div`
-  display: flex;
+  display: ${(props) => (props.$user ? "flex" : "none")};
   align-items: center;
-  margin-top: 8px;
+  margin-bottom: 8px;
 `;
 export const UserImg = styled.img`
   width: 32px;
@@ -24,7 +25,6 @@ export const UserImg = styled.img`
 
 export const ItemWrap = styled.div`
   font-size: 20px;
-  margin-top: 8px;
 `;
 
 export const Brand = styled.p`
@@ -48,4 +48,9 @@ export const ItemName = styled.p`
 export const Size = styled.p`
   font-size: 16px;
   font-weight: 500;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
