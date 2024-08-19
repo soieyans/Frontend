@@ -29,6 +29,7 @@ import SearchMainPage from "./pages/SearchMainPage/SearchMainPage";
 import BrandPage from "./pages/BrandPage/BrandPage";
 import MainPage from "./pages/MainPage/MainPage";
 import LayoutMain from "./layout/LayoutMain";
+
 function App() {
   return (
     <>
