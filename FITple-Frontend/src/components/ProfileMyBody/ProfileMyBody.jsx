@@ -5,7 +5,7 @@ import { Container } from "./ProfileMyBody.style";
 const ProfileMyBody = () => {
   return (
     <Container>
-      <UserBodyInfo />
+      <UserBodyInfo $profile />
     </Container>
   );
 };

@@ -2,10 +2,6 @@ import styled from "styled-components";
 export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-top: 40px;
-  left: 20px;
-  height: 413px;
   width: 140px;
 `;
 
