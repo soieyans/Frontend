@@ -9,6 +9,8 @@ import {
   SearchContainer,
   Container,
   LogoTitle,
+  LogoImg,
+  LoginBTN,
 } from "./Navbar.style";
 import SearchBox from "../SearchBox/SearchBox";
 
@@ -21,11 +23,11 @@ const Navbar = ({ ...props }) => {
         <MainBox>
           {/* 로고 */}
           <LogoBox to="/cloth">
-            <img src={Logo} />
+            <LogoImg src={Logo} />
             <LogoTitle {...props}>FITple</LogoTitle>
           </LogoBox>
           {/* 메뉴 */}
-          <MenuBox>
+          <MenuBox {...props}>
             <MenuItem to="/cloth" {...props}>
               옷장
             </MenuItem>
@@ -40,10 +42,10 @@ const Navbar = ({ ...props }) => {
             </MenuItem>
           </MenuBox>
         </MainBox>
-        {/* 오른쪽 검색 영역 */}
+        {/* search box */}
         <SearchContainer {...props}>
-          {/* SearchBox 컴포넌트화 */}
-          <SearchBox src={SearchIcon} placeholder={"내 옷 검색하기"} />
+          {/* <SearchBox src={SearchIcon} placeholder={"내 옷 검색하기"} /> */}
+          <LoginBTN to="/login">로그인 / 회원가입</LoginBTN>
         </SearchContainer>
       </NavBarBox>
     </Container>

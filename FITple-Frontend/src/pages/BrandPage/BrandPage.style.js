@@ -72,10 +72,6 @@ export const SubMenuItem = styled.div`
 
 export const ItemWrap = styled.div`
   margin-top: 48px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 32px;
-  grid-row-gap: 40px;
 `;
 
 export const NonWrap = styled.div`

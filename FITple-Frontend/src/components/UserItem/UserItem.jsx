@@ -10,13 +10,13 @@ import {
   UserImg,
   UserInfo,
 } from "./UserItem.style";
-const UserItem = () => {
+const UserItem = ({ ...props }) => {
   return (
     <Container>
       {/* 아이템 이미지 */}
       <ItemImg src="https://blog.kakaocdn.net/dn/mmiWC/btszy4hoVjM/JAHukeXLibgX76VaWsAqp1/img.jpg" />
       {/* 유저정보 */}
-      <UserInfo>
+      <UserInfo {...props}>
         {/* 유저 프로필 */}
         <UserImg src="https://blog.kakaocdn.net/dn/mmiWC/btszy4hoVjM/JAHukeXLibgX76VaWsAqp1/img.jpg" />
         <p>핏플1004</p>

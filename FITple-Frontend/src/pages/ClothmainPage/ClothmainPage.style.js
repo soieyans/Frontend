@@ -53,12 +53,14 @@ export const ProductContainer = styled.div`
   justify-content: flex-start; /* 아이템 사이 공간 최대한 활용 */
   width: 90%;
   margin-bottom: auto;
+
   overflow: hidden;
 `;
 
 export const Parent = styled.div`
   display: flex;
   align-items: flex-start;
+  margin-left: 140px;
 `;
 
 export const FilledHeart = styled.div`
@@ -118,4 +120,8 @@ export const Clothdebar = styled.div`
   width: 7px;
   height: 7px;
   margin-bottom: 3px;
+`;
+
+export const SideBarWrap = styled.div`
+  margin-top: 40px;
 `;

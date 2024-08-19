@@ -20,6 +20,7 @@ import BrandBox from "../../components/BrandBox/BrandBox";
 import SearchIcon from "../../../assets/SearchIcon.svg";
 import { useState } from "react";
 import UserItem from "../../components/UserItem/UserItem";
+import ItemList from "../../components/ItemList/ItemList";
 
 const BrandPage = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -33,7 +34,6 @@ const BrandPage = () => {
     "원피스",
     "신발",
   ];
-  console.log(inputValue);
   return (
     <>
       {/* 위에 Container */}
@@ -71,14 +71,9 @@ const BrandPage = () => {
           </SubMenuWrap>
           {/* 아이템들 */}
           <ItemWrap>
-            <UserItem />
-            <UserItem />
-            <UserItem />
-            <UserItem />
-            <UserItem />
-            <UserItem />
-            <UserItem />
+            <ItemList />
           </ItemWrap>
+
           {/* 아이템이 없을때 */}
           {/* <NonWrap>
             <RegisterBox>

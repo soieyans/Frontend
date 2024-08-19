@@ -2,11 +2,6 @@ import styled from "styled-components";
 export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  margin-top: 40px;
-  margin-right: 60px;
-  left: 20px;
-  height: 413px;
   width: 140px;
 `;
 
@@ -18,7 +13,7 @@ export const Menu = styled.div`
   font-family: "SUIT Variable", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
+  font-size: ${(props) => (props.selected ? "32px" : "24px")};
   cursor: pointer; /* 클릭 시 커서 모양 변경 */
   color: ${(props) =>
     props.selected
@@ -27,8 +22,8 @@ export const Menu = styled.div`
   &::before {
     content: "";
     position: absolute;
-    width: 80%;
-    height: 10%;
+    width: 75%;
+    height: 35%;
     background-color: #0276fe;
     opacity: 0.3;
     bottom: 10px;
