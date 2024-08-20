@@ -36,6 +36,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
+import ComparePopUp from "../../components/ComparePopUp/ComparePopUp";
 const ClothdetailPage = () => {
   //노트
   const [note, setNote] = useState("");
@@ -81,10 +82,19 @@ const ClothdetailPage = () => {
   const handleBookmark = () => {
     setIsBookmark(!isBookmark);
   };
+  //비교하기 팝업 열기
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const popupOpen = () => {
+    setIsPopupOpen(true);
+  };
+  const popupClose = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
     <div>
       <Parent1>
-        <ChangeButton />
+        <ChangeButton onClick={popupOpen}/>
         {isBookmark ? (
           <FilledBookmark onClick={handleBookmark} />
         ) : (
@@ -225,6 +235,7 @@ const ClothdetailPage = () => {
           </MeasureNamebox>
         </Parent3>
       </Parent2>
+      {isPopupOpen && <ComparePopUp popupClose={popupClose} /> /* 팝업 열기 */}
     </div>
   );
 };
