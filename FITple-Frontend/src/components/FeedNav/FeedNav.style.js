@@ -12,6 +12,7 @@ export const Container = styled.div`
 `
 
 export const Items = styled.div`
+    height:32px;
     position:relative;
     font-size:24px;
     font-weight:bold;
