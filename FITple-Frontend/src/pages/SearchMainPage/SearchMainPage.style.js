@@ -11,10 +11,9 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0 41px 0;
   position: relative;
-  width: 1440px;
   height: fit-content;
+  padding: 40px 0;
 `;
 export const TitleContainer = styled.div``;
 export const TitleBox = styled.div`
@@ -50,7 +49,6 @@ export const TitleBackground = styled.div`
 `;
 export const SearchContainer = styled.div`
   width: 504px;
-  margin-top: 30px;
 `;
 export const SearchText = styled.div`
   font-size: 24px;
@@ -62,13 +60,12 @@ export const ItemContainer = styled.div`
   box-sizing: border-box;
   padding: 50px 114px;
   width: 100%;
-  border: 2px solid red;
 `;
 
 export const Blur = styled.div`
   position: absolute;
   width: 100%;
-  height: 470px;
+  height: 300px;
   top: -117px;
   transform: scaleX(1.2);
   z-index: -1;
