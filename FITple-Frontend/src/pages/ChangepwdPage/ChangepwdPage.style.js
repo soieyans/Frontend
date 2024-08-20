@@ -1,7 +1,8 @@
 import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 export const PWDContainer = styled.form`
   width: 1000px;
@@ -48,4 +49,11 @@ export const InputPWD = styled.input`
   border: 1px solid #838383;
   padding-left: 24px;
   color: #838383;
+`;
+
+export const LogoImg = styled.img`
+  width: fit-content;
+  height: fit-content;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;

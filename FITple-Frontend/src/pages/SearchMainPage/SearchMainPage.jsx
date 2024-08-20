@@ -15,9 +15,11 @@ import {
   HeartIconImg,
   ImpactText,
   ItemContainer,
+  ItemListWrap,
   MainContainer,
   SearchContainer,
   SearchText,
+  SideBarWrap,
   SpringIconImg,
   StartRedIconImg,
   SubTitle,
@@ -28,10 +30,19 @@ import {
   TitleBackground,
   TitleBox,
   TitleContainer,
+  Wrap,
 } from "./SearchMainPage.style";
 import React from "react";
+import SideBar from "../../components/SideBar/SideBar";
+import ItemList from "../../components/ItemList/ItemList";
 
 const SearchMainPage = () => {
+  const getData = async () => {
+    const response = await fetch("http://localhost:3000/FITple/search/main");
+    const data = await response.json();
+    console.log("response", data);
+  };
+  getData();
   return (
     <Container>
       <Blur />
@@ -67,7 +78,16 @@ const SearchMainPage = () => {
         </SearchContainer>
       </MainContainer>
       {/* 밑에 아이템 나오는 영역 */}
-      <ItemContainer></ItemContainer>
+      <ItemContainer>
+        <Wrap>
+          <SideBarWrap>
+            <SideBar />
+          </SideBarWrap>
+          <ItemListWrap>
+            <ItemList />
+          </ItemListWrap>
+        </Wrap>
+      </ItemContainer>
     </Container>
   );
 };

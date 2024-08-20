@@ -29,7 +29,8 @@ import SearchMainPage from "./pages/SearchMainPage/SearchMainPage";
 import BrandPage from "./pages/BrandPage/BrandPage";
 import MainPage from "./pages/MainPage/MainPage";
 import LayoutMain from "./layout/LayoutMain";
-
+import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
+import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
 function App() {
   return (
     <>
@@ -57,7 +58,10 @@ function App() {
           <Route path="/cloth" element={<ClothmainPage />} />
           <Route path="/clothdetail" element={<ClothdetailPage />} />
           <Route path="/clothupdate" element={<ClothupdatePage />} />
+          {/* 프로필페이지 */}
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/edit" element={<ProfileEditPage />} />
+          <Route path="/profile/edit/repw" element={<ChangepwdPage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
           <Route path="/recommendFeed" element={<RecomUserFeedPage />} />

@@ -6,11 +6,14 @@ import {
   SaveBTN,
   SubTitle,
   InputPWD,
+  LogoImg,
 } from "./ChangepwdPage.style";
+import Logo from "../../../assets/Logo.svg";
 
 const ChangepwdPage = () => {
   return (
     <Container>
+      <LogoImg src={Logo} />
       <PWDContainer>
         <EditBox>
           <SubTitle>비밀번호 수정</SubTitle>
