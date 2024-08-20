@@ -88,7 +88,7 @@ export const CompareSearchBorderContainer = styled.div`
 
 export const CompareSearchCardScroll = styled.div`
     width: 323px;
-    height: 110px;
+    min-height: 110px;
     display: flex;
     flex-direction: row;
     align-items: center;
