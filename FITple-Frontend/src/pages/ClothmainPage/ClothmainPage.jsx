@@ -25,38 +25,26 @@ import {
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
-import useAuthStore from "../../../data/store/userAuthStore";
 
 const ClothmainPage = () => {
   const [filteredData, setFilteredData] = useState([]);
-  const [isEdit, setIsEdit] = useState([]);
+  const [isEdit, setIsEdit] = useState({});
   const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
 
-  const { token } = useAuthStore();
-
   // Fetch data from the API
-  const fetchClothData = async (category = "", clothId = "", size = 8) => {
-    console.log("토큰유효", token);
-
-    const params = new URLSearchParams({ category, clothId, size });
-
+  const fetchClothData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/FITple/my/closet/main?${params.toString()}`,
+        `http://localhost:3000/FITple/my/closet/main?`,
         {
           method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
           credentials: "include",
         }
       );
 
       if (response.ok) {
         const data = await response.json();
-        setFilteredData(data.closetData || []);
-        setIsEdit(data.closetData.map(() => false));
+        setFilteredData(data);
       } else {
         console.error("Failed to fetch cloth data:", response.statusText);
       }
@@ -69,12 +57,11 @@ const ClothmainPage = () => {
     fetchClothData();
   }, []);
 
-  const toggleEdit = (index) => {
-    setIsEdit((prev) => {
-      const newState = [...prev];
-      newState[index] = !newState[index];
-      return newState;
-    });
+  const toggleEdit = (clothId) => {
+    setIsEdit((prev) => ({
+      ...prev,
+      [clothId]: !prev[clothId],
+    }));
   };
 
   const handleDeleteCloth = () => {
@@ -95,7 +82,7 @@ const ClothmainPage = () => {
             <SearchIcon />
             <SearchBar placeholder="" />
           </SerchContainer>
-          {filteredData.map((item, index) => (
+          {filteredData.map((item) => (
             <ProductItem key={item.cloth_id}>
               <Imgcontainer>
                 <ProductImage
@@ -105,11 +92,11 @@ const ClothmainPage = () => {
               </Imgcontainer>
 
               <ProductBrand>{item.brand}</ProductBrand>
-              <ClothdebarContainer onClick={() => toggleEdit(index)}>
+              <ClothdebarContainer onClick={() => toggleEdit(item.cloth_id)}>
                 <Clothdebar />
                 <Clothdebar />
                 <Clothdebar />
-                {isEdit[index] && (
+                {isEdit[item.cloth_id] && (
                   <EditButtons>
                     <Link to="/clothupdate">
                       <EditButton>옷 정보 수정하기</EditButton>
