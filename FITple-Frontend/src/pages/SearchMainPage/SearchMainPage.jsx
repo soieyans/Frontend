@@ -35,27 +35,28 @@ import {
 import React from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import ItemList from "../../components/ItemList/ItemList";
+import { searchMain } from "../../../data/SearchMainApi";
 
 const SearchMainPage = () => {
   const getData = async () => {
-    const response = await fetch("http://localhost:3000/FITple/search/main");
-    const data = await response.json();
-    console.log("response", data);
+    const response = await searchMain(undefined, undefined, 5);
+    console.log(response);
   };
   getData();
+
   return (
     <Container>
       <Blur />
       {/* 위에 파란색 영역 */}
       <MainContainer>
-        <SunIconImg src={SunIcon} />
+        {/* <SunIconImg src={SunIcon} />
         <FireIconImg src={FireIcon} />
         <SpringIconImg src={SpringIcon} />
         <HeartIconImg src={HeartRedIcon} />
         <ThumbIconImg src={ThumbIcon} />
         <ThunderIconImg src={ThunderIcon} />
-        <StartRedIconImg src={StarRedIcon} />
-        <TitleBox>
+        <StartRedIconImg src={StarRedIcon} /> */}
+        {/* <TitleBox>
           <SubTitle>
             옷장에 <ImpactText>많이 담긴</ImpactText> 아이템이에요.
           </SubTitle>
@@ -66,7 +67,7 @@ const SearchMainPage = () => {
             </TitleBackground>
             <Box>)</Box>
           </Title>
-        </TitleBox>
+        </TitleBox> */}
 
         <SearchContainer>
           <SearchText>내 아이템들을 검색해서 등록해보세요!</SearchText>

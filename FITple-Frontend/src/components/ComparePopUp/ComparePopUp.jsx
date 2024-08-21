@@ -1,7 +1,6 @@
-import { BackgroundContainer, CloseBtn, CompareIMGOrText, CompareIMGUploadCameraLogo, CompareIMGUploadContainer, CompareIMGUploadText, CompareInputUploadText, ComparePopUpBackground, ComparePopUpContainer, ComparePopUpInnerContainer, ComparePopUpMainText } from "./ComparePopUp.style"
+import { BackgroundContainer, CloseBtn, CompareIMGOrText, CompareIMGUploadCameraLogo, CompareIMGUploadContainer, CompareIMGUploadText, CompareInputUploadText, ComparePopUpBackground, ComparePopUpContainer, ComparePopUpInnerContainer, ComparePopUpMainText } from "./ComparePopUp.style";
 
-
-function ComparePopUp({popupClose}) {
+function ComparePopUp({popupClose, compareInputPopUpOpen}) {
 
     return (
       <>
@@ -18,7 +17,7 @@ function ComparePopUp({popupClose}) {
                     <CompareIMGUploadText>사이즈 정보<br/>이미지 업로드하기</CompareIMGUploadText>
                   </CompareIMGUploadContainer>
                   <CompareIMGOrText>혹은</CompareIMGOrText>
-                  <CompareInputUploadText>수기로 사이즈 등록하기</CompareInputUploadText>
+                  <CompareInputUploadText onClick={compareInputPopUpOpen}>수기로 사이즈 등록하기</CompareInputUploadText>
                 </ComparePopUpInnerContainer>
               </ComparePopUpBackground>
             </ComparePopUpContainer>

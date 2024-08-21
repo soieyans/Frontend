@@ -69,11 +69,12 @@ export const CompareSubText = styled.div`
 
 export const CompareInputContainer = styled.div`
     margin-top: 19px;
-    width: 338px;
+    width: 358px;
     height: 334px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 `;
 
 export const CompareInputCard = styled.div`
@@ -81,7 +82,7 @@ export const CompareInputCard = styled.div`
     border-radius: 15px;
     border: 1px solid #838383;
     width: 338px;
-    height: 200px;
+    min-height: 200px;
     position: relative;
 `;
 

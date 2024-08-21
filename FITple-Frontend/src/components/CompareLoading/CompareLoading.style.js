@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const BackgroundContainer = styled.div`
     position: fixed;
@@ -87,9 +87,19 @@ export const CompareLoadingBar = styled.div`
     background-color: #EFEFEF;
 `;
 
+const fillBar = keyframes`
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+`;
+
 export const CompareLoadingInnerBar = styled.div`
     height: 15px;
-    width: 170px;
+    width: 0; /* 애니메이션 시작 시 폭 0 */
     border-radius: 50px;
     background-color: #0276FE;
+    animation: ${fillBar} 1s forwards; /* 애니메이션 적용 */
 `;

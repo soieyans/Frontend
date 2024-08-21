@@ -1,7 +1,7 @@
 import { BackgroundContainer, ComparePopUpContainer, ComparePopUpBackground, ComparePopUpInnerContainer, ComparePopUpInnerMainContainer, BackArrowBtn, ComparePopUpMainText, CloseBtn, FITpleLogo, CompareResultSpeechBubble, MeasureContainer, MeasureText, CompareTableContainer, CompareTableHeader, CompareTableHeaderText, CompareTableScrollContainer, CompareTableFirstRow, CompareTableFirstRowText, CompareTableFirstRowTextContainer, CompareTableCompareRowTextContainer, CompareTableCompareRowText, CompareTableCompareRowFitBackground } from "./CompareResult.style"
 
 
-function CompareResult() {
+function CompareResult({popupClose, compareData, cleanCompareData, compareSearchPopUpOpen}) {
 
   return (
     <>
@@ -10,9 +10,9 @@ function CompareResult() {
           <ComparePopUpBackground>
             <ComparePopUpInnerContainer>
               <ComparePopUpInnerMainContainer>
-                <BackArrowBtn src="../assets/_.svg" />
+                <BackArrowBtn src="../assets/_.svg" onClick={compareSearchPopUpOpen}/>
                 <ComparePopUpMainText>사이즈 비교</ComparePopUpMainText>
-                <CloseBtn src="../assets/X(Compare).svg" />
+                <CloseBtn src="../assets/X(Compare).svg" onClick={()=>{popupClose(); cleanCompareData();}}/>
               </ComparePopUpInnerMainContainer>
               <FITpleLogo src="../assets/핏플 로고.svg" />
               <CompareResultSpeechBubble src="../assets/말풍선.svg" />
