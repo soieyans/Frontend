@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/Logo.svg";
 import { login } from "../../../data/LoginApi";
+import useAuthStore from '../../../data/store/userAuthStore';
 import {
   LoginPageWrapper,
   MainText,
@@ -17,6 +18,8 @@ function LoginPage() {
   const [loginPw, setLoginPw] = useState("");
   const [isButtonActive, setIsButtonActive] = useState(false);
   const navigate = useNavigate();
+  
+  const setToken = useAuthStore((state) => state.setToken); // Zustand 스토어에서 토큰 설정
 
   useEffect(() => {
     setIsButtonActive(!!(loginId && loginPw));
@@ -27,9 +30,13 @@ function LoginPage() {
 
     try {
       const response = await login(loginId, loginPw);
+      const data = await response.json();  // 응답 데이터를 JSON으로 파싱
 
       switch (response.status) {
         case 200:
+          setToken(data.result);  // 로그인 성공 시 토큰을 Zustand 스토어에 저장
+          console.log('토큰 발급 완료');
+          console.log(data.result);
           alert("로그인 성공!");
           navigate('/cloth');
           break;
