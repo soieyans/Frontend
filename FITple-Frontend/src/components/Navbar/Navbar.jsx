@@ -11,10 +11,14 @@ import {
   LogoTitle,
   LogoImg,
   LoginBTN,
+  MenuItemWhite,
 } from "./Navbar.style";
 import SearchBox from "../SearchBox/SearchBox";
+import { useLocation } from "react-router-dom";
 
 const Navbar = ({ ...props }) => {
+  const location = useLocation();
+
   return (
     <Container {...props}>
       {/* 전체 Navbar 가운데 정렬 */}
@@ -28,16 +32,16 @@ const Navbar = ({ ...props }) => {
           </LogoBox>
           {/* 메뉴 */}
           <MenuBox {...props}>
-            <MenuItem to="/cloth" {...props}>
+            <MenuItem to="/cloth" {...props} $active={location.pathname === "/cloth"}>
               옷장
             </MenuItem>
-            <MenuItem to="/recommend" {...props}>
+            <MenuItem to="/recommend" {...props} $active={location.pathname === "/recommend"}>
               추천
             </MenuItem>
-            <MenuItem to="/search" {...props}>
+            <MenuItemWhite to="/search" {...props} $active={location.pathname === "/search"}>
               검색
-            </MenuItem>
-            <MenuItem to="/profile" {...props}>
+            </MenuItemWhite>
+            <MenuItem to="/profile" {...props} $active={location.pathname === "/profile"}>
               프로필
             </MenuItem>
           </MenuBox>
