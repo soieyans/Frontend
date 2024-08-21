@@ -151,7 +151,7 @@ export const SearchIcon = styled.div`
   width: 30px;
   height: 30px;
   position: absolute;
-  left: 640px;
+  left: 660px;
   top: 145px;
 `;
 export const SearchBar = styled.input`

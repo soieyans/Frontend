@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Parent1 = styled.div`
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: 20px;
 `;
 export const BackIcon = styled.div`

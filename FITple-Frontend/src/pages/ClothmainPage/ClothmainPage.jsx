@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import SideBar from "../../components/SideBar/SideBar";
-import PlusOpen from "../../components/PlusOpen/PlusOpen";
 import {
   ProductDetail,
   ProductImage,
@@ -30,7 +29,6 @@ import useAuthStore from "../../../data/store/userAuthStore";
 
 const ClothmainPage = () => {
   const [filteredData, setFilteredData] = useState([]);
-  const [isplusopen, setIsplusopen] = useState(false);
   const [isEdit, setIsEdit] = useState([]);
   const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
 
@@ -48,7 +46,7 @@ const ClothmainPage = () => {
         {
           method: "GET",
           headers: {
-            Authorization: `${token}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           credentials: "include",
@@ -70,10 +68,6 @@ const ClothmainPage = () => {
   useEffect(() => {
     fetchClothData();
   }, []);
-
-  const handlePlusOpen = () => {
-    setIsplusopen(!isplusopen);
-  };
 
   const toggleEdit = (index) => {
     setIsEdit((prev) => {
@@ -99,7 +93,7 @@ const ClothmainPage = () => {
               <SerchTitle2>을 검색해보세요.</SerchTitle2>
             </SerchTitleContainer>
             <SearchIcon />
-            <SearchBar placeholder="옷을 검색하세요" />
+            <SearchBar placeholder="" />
           </SerchContainer>
           {filteredData.map((item, index) => (
             <ProductItem key={item.cloth_id}>
@@ -154,9 +148,9 @@ const ClothmainPage = () => {
               </ProductDetail>
             </ProductItem>
           ))}
-          <PLUSbutton onClick={handlePlusOpen}>
-            {isplusopen && <PlusOpen isplusopen={isplusopen} />}
-          </PLUSbutton>
+          <Link to="/clothregister">
+            <PLUSbutton />
+          </Link>
         </ProductContainer>
       </Parent>
     </div>

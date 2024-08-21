@@ -6,13 +6,13 @@ export const Parent1 = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   margin-top: 20px;
-  margin-left: 60px;
+  margin-left: 190px;
 `;
 export const Parent2 = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 80px;
+  margin-left: 280px;
 `;
 export const Parent3 = styled.div`
   display: flex;
@@ -109,7 +109,7 @@ export const Clothdebar = styled.div`
 
 export const BackIcon = styled.div`
   //뒤로가기 아이콘
-  width: 22.45px;
+  width: 15px;
   height: 38.83px;
   background: url(assets/back.svg);
   margin-left: 70px;
@@ -122,7 +122,7 @@ export const CurrentCloth = styled.div`
   font-family: "SUIT Variable", sans-serif;
   font-weight: 600;
   color: #000000;
-  margin-left: 370px;
+  margin-left: 430px;
 `;
 //상세 정보 옷사진 나중에 fetch로 받아오기
 export const ProductDeImage = styled.img`

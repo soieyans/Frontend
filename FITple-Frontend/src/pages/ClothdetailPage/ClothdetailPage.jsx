@@ -129,7 +129,9 @@ function ClothdetailPage() {
         ) : (
           <EmptyBookmark onClick={handleBookmark} />
         )}
-        <BackIcon />
+        <Link to="/cloth">
+          <BackIcon />
+        </Link>
         <CurrentCloth>옷장{">"}아우터</CurrentCloth>
       </Parent1>
       <Parent2>
@@ -264,13 +266,58 @@ function ClothdetailPage() {
           </MeasureNamebox>
         </Parent3>
       </Parent2>
-      {popupOpen == "ComparePopUp" && <ComparePopUp popupClose={popupClose} compareInputPopUpOpen={compareInputPopUpOpen} /> /* 팝업 열기 */}
-      {popupOpen == "CompareInputPopUp" && <CompareInputPopUp comparePopUpOpen={comparePopUpOpen} compareSearchPopUpOpen={compareSearchPopUpOpen} popupClose={popupClose} onSave={handleSave} /> /* 팝업 열기 */}
-      {popupOpen == "CompareSearchPopUp" && <CompareSearchPopUp compareInputPopUpOpen={compareInputPopUpOpen} popupClose={popupClose} compareData={compareData} cleanCompareData={cleanCompareData} compareLoadingOpen={compareLoadingOpen} /> /* 팝업 열기 */}
-      {popupOpen == "CompareLoading" && <CompareLoading popupClose={popupClose} compareSearchPopUpOpen={compareSearchPopUpOpen} cleanCompareData={cleanCompareData} compareResultOpen={compareResultOpen}/> /* 팝업 열기 */}
-      {popupOpen == "CompareResult" && <CompareResult popupClose={popupClose} compareData={compareData} cleanCompareData={cleanCompareData} compareLoadingOpen={compareLoadingOpen} compareSearchPopUpOpen={compareSearchPopUpOpen} /> /* 팝업 열기 */}
+      {
+        popupOpen == "ComparePopUp" && (
+          <ComparePopUp
+            popupClose={popupClose}
+            compareInputPopUpOpen={compareInputPopUpOpen}
+          />
+        ) /* 팝업 열기 */
+      }
+      {
+        popupOpen == "CompareInputPopUp" && (
+          <CompareInputPopUp
+            comparePopUpOpen={comparePopUpOpen}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+            popupClose={popupClose}
+            onSave={handleSave}
+          />
+        ) /* 팝업 열기 */
+      }
+      {
+        popupOpen == "CompareSearchPopUp" && (
+          <CompareSearchPopUp
+            compareInputPopUpOpen={compareInputPopUpOpen}
+            popupClose={popupClose}
+            compareData={compareData}
+            cleanCompareData={cleanCompareData}
+            compareLoadingOpen={compareLoadingOpen}
+          />
+        ) /* 팝업 열기 */
+      }
+      {
+        popupOpen == "CompareLoading" && (
+          <CompareLoading
+            popupClose={popupClose}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+            cleanCompareData={cleanCompareData}
+            compareResultOpen={compareResultOpen}
+          />
+        ) /* 팝업 열기 */
+      }
+      {
+        popupOpen == "CompareResult" && (
+          <CompareResult
+            popupClose={popupClose}
+            compareData={compareData}
+            cleanCompareData={cleanCompareData}
+            compareLoadingOpen={compareLoadingOpen}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+          />
+        ) /* 팝업 열기 */
+      }
     </div>
   );
-};
+}
 
 export default ClothdetailPage;
