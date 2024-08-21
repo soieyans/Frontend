@@ -1,17 +1,12 @@
-import Goods from "../Goods/Goods";
 import { Container } from "./Closet.style";
+import Goods from "../Goods/Goods"; // Goods 컴포넌트
 import EX_IMG from "../../../assets/EXadidas.svg";
-function Closet() {
+function Closet({ clothes }) {
   return (
     <Container>
-      <Goods src={EX_IMG} />
-      <Goods src={EX_IMG} />
-      <Goods src={EX_IMG} />
-      <Goods src={EX_IMG} />
-      <Goods src={EX_IMG} />
-      <Goods src={EX_IMG} />
-      <Goods src={EX_IMG} />
-      <Goods src={EX_IMG} />
+      {clothes.map((cloth) => (
+        <Goods key={cloth.id} src={EX_IMG} />
+      ))}
     </Container>
   );
 }

@@ -12,6 +12,7 @@ export const Container = styled.div`
 `
 
 export const Items = styled.div`
+    cursor: pointer;
     height:32px;
     position:relative;
     font-size:24px;
@@ -36,3 +37,5 @@ export const UnderLine = styled.div`
     opacity:0;
     z-index:-1;
 `
+
+

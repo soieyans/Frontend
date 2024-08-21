@@ -13,6 +13,7 @@ export const Container = styled.div`
 `
 
 export const SubTitleWrap = styled.div`
+    box-sizing:border-box;
     padding-top:140px;
     position:relative;
     display:flex;
@@ -42,7 +43,9 @@ export const Highlight = styled.div`
 `
 
 export const RecomUserWrap = styled.div`
-  width: 1108px;
+  box-sizing:border-box;
+  max-width: 1108px;
+  width:100%;
   padding-top: 26px;
   display: flex;
   flex-wrap: wrap; /* 줄바꿈 허용 */

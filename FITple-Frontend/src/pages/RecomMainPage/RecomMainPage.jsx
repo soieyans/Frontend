@@ -8,7 +8,7 @@ import {
   ShowAll,
   RecomUserWrap,
 } from "./RecomMainPage.style";
-import RecomStore from "../../store/RecomStore"; 
+import RecomStore from "../../../data/store"; 
 
 
 

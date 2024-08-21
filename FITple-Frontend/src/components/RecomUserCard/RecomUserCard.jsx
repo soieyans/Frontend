@@ -10,15 +10,14 @@ import {
 import SetUserImg from "/assets/UserImg.svg";
 
 import { useEffect } from "react";
-import RecomStore from "../../store/RecomStore";
-import { useStore } from "zustand";
+
 
 function RecomUser({ userId, userName, userProfile, userFit, userStyle, isFollowed }) {
-  const { fetchUsers } = RecomStore();
+  // const { fetchUsers } = RecomStore();
   
-  useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, [fetchUsers]);
 
   // const updateFollowStatus = useStore((state) => state.updateFollowStatus);
 
