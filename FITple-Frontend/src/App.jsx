@@ -31,6 +31,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import LayoutMain from "./layout/LayoutMain";
 import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
 import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 function App() {
   return (
     <>
@@ -71,6 +72,7 @@ function App() {
             path="/recommendUserSearch"
             element={<RecomUserSearchPage />}
           />
+          <Route path="/*" element={<NotFoundPage />} />
         </Route>
         {/* 파란색 Navbar 있는 layout */}
         <Route element={<LayoutNavBlue />}>
