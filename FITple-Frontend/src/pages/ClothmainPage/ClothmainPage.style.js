@@ -183,4 +183,7 @@ export const SerchTitle2 = styled.div`
   font-weight: 800;
   font-family: "SUIT Variable", sans-serif;
   color: #000000;
+
+export const SideBarWrap = styled.div`
+  margin-top: 40px;
 `;

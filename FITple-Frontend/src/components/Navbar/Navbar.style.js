@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 export const Container = styled.div`
-  background-color: ${(props) => (props.$blue ? "#0075FF" : "white")};
   display: flex;
   justify-content: center;
-  padding: 12px 114px;
+  background-color: ${(props) => (props.$blue ? "#0075FF" : "white")};
+  padding: 12px 0px;
   border-bottom: ${(props) => (props.$blue ? "none" : "1px solid #e0e0e0")};
 `;
 
@@ -12,7 +12,7 @@ export const NavBarBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 1200px;
 `;
 
 export const MainBox = styled.div`

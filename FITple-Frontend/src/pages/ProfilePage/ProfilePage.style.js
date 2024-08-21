@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 export const ProfileContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -15,11 +15,12 @@ export const ClothContainer = styled.div`
 
 export const OptionBtn = styled.button`
   cursor: pointer;
-  width: fit-content;
   height: fit-content;
+  width: 30px;
   background: none;
   border: none;
   padding: 0px;
+  margin-top: 37px;
   margin-left: 88px;
 `;
 
@@ -28,7 +29,7 @@ export const OptionBox = styled.div`
   height: 138px;
   position: absolute;
   right: 0;
-  top: 29px;
+  top: 66px;
   margin-top: 4px;
   border-radius: 10px;
   box-shadow: 8px 8px 20px 0px #c9c7c730;
@@ -37,9 +38,43 @@ export const OptionBox = styled.div`
 `;
 
 export const OptionItem = styled.div`
+  text-decoration: none;
+  color: black;
+  display: block;
   width: 230px;
   height: 46px;
   padding: 13px 0 13px 36px;
   box-sizing: border-box;
-  border-bottom: ${(props) => (props.$last ? "none" : "1px solid #d9d9d9")};
+  border-bottom: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #d9d9d9;
+  }
+  /* 처음일때 */
+  ${(props) =>
+    props.$first &&
+    css`
+      border-radius: 10px 10px 0 0;
+    `}
+  /* 마지막일때 */
+  ${(props) =>
+    props.$last &&
+    css`
+      border-bottom: "1px solid #d9d9d9";
+      border-radius: 0 0 10px 10px;
+    `}
+`;
+
+export const OptionItemA = styled.a`
+  display: block;
+  width: 230px;
+  height: 46px;
+  padding: 13px 0 13px 36px;
+  box-sizing: border-box;
+  border-bottom: none;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #d9d9d9;
+  }
 `;

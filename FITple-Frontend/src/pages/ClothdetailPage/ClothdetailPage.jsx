@@ -37,7 +37,12 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 import ComparePopUp from "../../components/ComparePopUp/ComparePopUp";
-const ClothdetailPage = () => {
+import CompareInputPopUp from "../../components/CompareInputPopUp/CompareInputPopUp";
+import CompareSearchPopUp from "../../components/CompareSearchPopUp/CompareSearchPopUp";
+import CompareLoading from "../../components/CompareLoading/CompareLoading";
+import CompareResult from "../../components/CompareResult/CompareResult";
+
+function ClothdetailPage() {
   //노트
   const [note, setNote] = useState("");
 
@@ -83,19 +88,42 @@ const ClothdetailPage = () => {
     setIsBookmark(!isBookmark);
   };
   //비교하기 팝업 열기
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const popupOpen = () => {
-    setIsPopupOpen(true);
+  const [popupOpen, setPopUpOpen] = useState("");
+  const comparePopUpOpen = () => {
+    setPopUpOpen("ComparePopUp");
+  };
+  const compareInputPopUpOpen = () => {
+    setPopUpOpen("CompareInputPopUp");
+  };
+  const compareSearchPopUpOpen = () => {
+    setPopUpOpen("CompareSearchPopUp");
+  };
+  const compareLoadingOpen = () => {
+    setPopUpOpen("CompareLoading");
+  };
+  const compareResultOpen = () => {
+    setPopUpOpen("CompareResult");
   };
   const popupClose = () => {
-    setIsPopupOpen(false);
+    setPopUpOpen("");
   };
-  const measuredefault = "-";
+
+  // CompareSearchCard에 들어갈 데이터를 관리할 상태
+  const [compareData, setCompareData] = useState([]);
+
+  // CompareInputPopUp에서 저장하기를 눌렀을 때 호출될 함수
+  const handleSave = (newData) => {
+    setCompareData([...compareData, ...newData]); // 기존 compareData와 새로운 newData를 합쳐서 상태로 저장
+  };
+
+  const cleanCompareData = () => {
+    setCompareData([]); // 기존 compareData clean시키기
+  };
 
   return (
     <div>
       <Parent1>
-        <ChangeButton onClick={popupOpen} />
+        <ChangeButton onClick={comparePopUpOpen} />
         {isBookmark ? (
           <FilledBookmark onClick={handleBookmark} />
         ) : (
@@ -236,9 +264,58 @@ const ClothdetailPage = () => {
           </MeasureNamebox>
         </Parent3>
       </Parent2>
-      {isPopupOpen && <ComparePopUp onClose={popupClose} /> /* 팝업 열기 */}
+      {
+        popupOpen == "ComparePopUp" && (
+          <ComparePopUp
+            popupClose={popupClose}
+            compareInputPopUpOpen={compareInputPopUpOpen}
+          />
+        ) /* 팝업 열기 */
+      }
+      {
+        popupOpen == "CompareInputPopUp" && (
+          <CompareInputPopUp
+            comparePopUpOpen={comparePopUpOpen}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+            popupClose={popupClose}
+            onSave={handleSave}
+          />
+        ) /* 팝업 열기 */
+      }
+      {
+        popupOpen == "CompareSearchPopUp" && (
+          <CompareSearchPopUp
+            compareInputPopUpOpen={compareInputPopUpOpen}
+            popupClose={popupClose}
+            compareData={compareData}
+            cleanCompareData={cleanCompareData}
+            compareLoadingOpen={compareLoadingOpen}
+          />
+        ) /* 팝업 열기 */
+      }
+      {
+        popupOpen == "CompareLoading" && (
+          <CompareLoading
+            popupClose={popupClose}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+            cleanCompareData={cleanCompareData}
+            compareResultOpen={compareResultOpen}
+          />
+        ) /* 팝업 열기 */
+      }
+      {
+        popupOpen == "CompareResult" && (
+          <CompareResult
+            popupClose={popupClose}
+            compareData={compareData}
+            cleanCompareData={cleanCompareData}
+            compareLoadingOpen={compareLoadingOpen}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+          />
+        ) /* 팝업 열기 */
+      }
     </div>
   );
-};
+}
 
 export default ClothdetailPage;
