@@ -5,17 +5,15 @@ import {
   SubTitle,
   SearchWrap,
   SearchBox,
-  SearchInputBox
+  SearchInputBox,
 } from "./RecomUserSearchPage.style";
 import SearchIcon from "/assets/SearchIcon.svg";
 import RecomUserCard from "../../components/RecomUserCard/RecomUserCard";
 
-
-
 function RecomUserSearchPage() {
   return (
     <Container>
-      <Blur/>
+      <Blur />
       <Title>검색결과</Title>
       <SubTitle>유저를 검색해보세요.</SubTitle>
       <SearchWrap>

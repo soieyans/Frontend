@@ -1,4 +1,3 @@
-import React from "react";
 import OptionIcon from "../../../assets/Option.svg";
 import {
   ProfileContainer,
@@ -7,6 +6,7 @@ import {
   ProfileBox,
   OptionBox,
   OptionItem,
+  OptionItemA,
 } from "./ProfilePage.style";
 import TabBox from "../../components/TabBox/TabBox";
 import { useState } from "react";
@@ -14,8 +14,10 @@ import ProfileLove from "../../components/ProfileLove/ProfileLove";
 import ProfileFavor from "../../components/ProfileFavor/ProfileFavor";
 import ProfileMyBody from "../../components/ProfileMyBody/ProfileMyBody";
 import Infom from "../../components/Infom/Infom";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const [selectItem, setSelectItem] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,6 +37,10 @@ const ProfilePage = () => {
     console.log(isOpen);
   };
 
+  const goToEdit = () => {
+    navigate("/profile/edit");
+  };
+
   return (
     <>
       {/* 위에 box */}
@@ -48,8 +54,17 @@ const ProfilePage = () => {
           </OptionBtn>
           {/* 옵션 내용 띄워줄 div */}
           <OptionBox $active={isOpen}>
-            <OptionItem>설정</OptionItem>
-            <OptionItem>문의하기</OptionItem>
+            <OptionItem $first onClick={goToEdit}>
+              설정
+            </OptionItem>
+            <OptionItem
+              as="a"
+              href="https://form.naver.com/response/ZqTvEg2PFSHkZ9AdbyTc8w"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              문의하기
+            </OptionItem>
             <OptionItem $last>로그아웃</OptionItem>
           </OptionBox>
         </ProfileBox>

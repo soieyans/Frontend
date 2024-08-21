@@ -1,52 +1,76 @@
 import { useState, useEffect } from "react";
 import SideBar from "../../components/SideBar/SideBar";
+import PlusOpen from "../../components/PlusOpen/PlusOpen";
 import {
   ProductDetail,
   ProductImage,
   ProductItem,
   ProductName,
+  ProductBrand,
   ProductContainer,
   Parent,
+  FilledHeart,
+  Imgcontainer,
+  PLUSbutton,
+  EditButtons,
+  EditButton,
+  ClothdebarContainer,
+  Clothdebar,
+  SideBarWrap,
 } from "./ClothmainPage.style";
+import { Link } from "react-router-dom";
+import Modal from "react-modal";
+import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 
 const clothData = [
   {
     id: 0,
-    name: "아디다스 풀 에센셜",
+    brand: "NERDY",
+    name: "NY 트랙탑",
     size: "XL",
     detail: "오버핏",
     type: "아우터",
+    wish: "찜",
   },
   {
     id: 1,
-    name: "나이키 풀 에센셜",
+    brand: "NIKE",
+    name: "풀 에센셜",
     size: "L",
     detail: "오버핏",
     type: "아우터",
+    wish: "찜",
   },
   {
     id: 2,
-    name: "아디다스 릴렉스핏 티셔츠",
+    brand: "ADIDAS",
+    name: "릴렉스핏 티셔츠",
     size: "M",
     detail: "여유로운 핏",
     type: "상의",
+    wish: "찜",
   },
   {
     id: 3,
-    name: "나이키 스포츠 반바지",
+    brand: "PUMA",
+    name: "스포츠 반바지",
     size: "L",
     detail: "짧고 편안함",
     type: "바지",
+    wish: "찜",
   },
   {
     id: 4,
-    name: "샤넬 플레어 스커트",
+    brand: "CHANEL",
+    name: "플레어 스커트",
     size: "38",
     detail: "여성스러운 디자인",
     type: "스커트",
+    wish: "찜",
   },
   {
     id: 5,
+    brand: "GUCCI",
     name: "गुच्ची 롱 원피스",
     size: "S",
     detail: "우아한 스타일",
@@ -54,13 +78,15 @@ const clothData = [
   },
   {
     id: 6,
-    name: "루이비통 머플러",
+    brand: "BURBERRY",
+    name: "머플러",
     detail: "따뜻하고 세련된 디자인",
     type: "액세서리",
   },
   {
     id: 7,
-    name: "나이키 운동화",
+    brand: "CONVERSE",
+    name: "운동화",
     size: "270",
     detail: "편안하고 가벼움",
     type: "신발",
@@ -69,7 +95,6 @@ const clothData = [
 
 const ClothmainPage = () => {
   const [filteredData, setFilteredData] = useState([]); // 필터링된 데이터 상태 관리
-
   // 카테고리 클릭 시 이벤트 처리 함수
   const handleCategoryClick = (category) => {
     if (category === "전체") {
@@ -87,23 +112,95 @@ const ClothmainPage = () => {
     setFilteredData(clothData);
   }, []);
 
+  //plusopen 클릭시 이벤트 처리 함수
+  const [isplusopen, setIsplusopen] = useState(false);
+  const handlePlusOpen = () => {
+    setIsplusopen(!isplusopen);
+  };
+  //수정하기,삭제하기 칸 열기
+
+  const [isEdit, setIsEdit] = useState(clothData.map(() => false));
+  const toggleEdit = (index) => {
+    setIsEdit((prev) => {
+      const newState = [...prev];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
+
+  const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
+  const handleDeleteCloth = () => {
+    setisDeletePopupOpen(!isDeletePopupOpen);
+  };
+
   return (
     <div>
       <Parent>
-        <SideBar onCategoryClick={handleCategoryClick} />
+        <SideBarWrap>
+          <SideBar onCategoryClick={handleCategoryClick} />
+        </SideBarWrap>
+
         <ProductContainer>
           {filteredData.length === 0 && <div>검색 결과가 없습니다.</div>}
-          {filteredData.map((item) => (
+          {filteredData.map((item, index) => (
             <ProductItem key={item.id}>
-              <ProductImage
-                image={`../../assets/${item.type}_${item.id}.jpg`}
-              />
+              <Imgcontainer>
+                <ProductImage
+                  image={`../../assets/${item.type}_${item.id}.jpg`}
+                />
+                {item.wish === "찜" && <FilledHeart />}
+              </Imgcontainer>
+
+              <ProductBrand>{item.brand}</ProductBrand>
+              <ClothdebarContainer
+                key={index}
+                onClick={() => toggleEdit(index)}
+              >
+                <Clothdebar />
+                <Clothdebar />
+                <Clothdebar />
+                {isEdit && (
+                  <EditButtons isEdit={isEdit[index]}>
+                    <Link to="/clothupdate">
+                      <EditButton>옷 정보 수정하기</EditButton>
+                    </Link>
+
+                    <EditButton onClick={handleDeleteCloth}>
+                      옷 정보 삭제하기
+                    </EditButton>
+                  </EditButtons>
+                )}
+                {isDeletePopupOpen && (
+                  <Modal
+                    isOpen={isDeletePopupOpen}
+                    onRequestClose={() => setisDeletePopupOpen(false)}
+                    style={{
+                      overlay: { backgroundColor: "rgba(81, 78, 78, 0.162)" },
+                      content: {
+                        border: "none",
+                        backgroundColor: "transparent",
+                        overflow: "hidden",
+                      },
+                    }}
+                  >
+                    <DeletePopUp
+                      isOpen={isDeletePopupOpen}
+                      onClose={() => setisDeletePopupOpen(false)}
+                    />
+                  </Modal>
+                )}
+              </ClothdebarContainer>
+
               <ProductName>{item.name}</ProductName>
+
               <ProductDetail>
                 {item.size}•{item.detail}
               </ProductDetail>
             </ProductItem>
           ))}
+          <PLUSbutton onClick={handlePlusOpen}>
+            {isplusopen && <PlusOpen isplusopen={isplusopen} />}
+          </PLUSbutton>
         </ProductContainer>
       </Parent>
     </div>

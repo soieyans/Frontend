@@ -12,6 +12,13 @@ export const ProductItem = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   padding: 20px;
+  margin-bottom: 10px;
+`;
+export const ProductBrand = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "SUIT Variable", sans-serif;
+  color: #000000;
 `;
 
 export const ProductImage = styled.img`
@@ -25,10 +32,14 @@ export const ProductImage = styled.img`
   background-size: cover; /* 이미지 크기 설정 */
   margin-bottom: 10px; /* 하단 여백 */
 `;
+export const Imgcontainer = styled.div`
+  display: flex;
+  position: relative;
+`;
 
 export const ProductName = styled.div`
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 800;
   margin-bottom: 10px; /* 하단 여백 */
 `;
 
@@ -42,10 +53,75 @@ export const ProductContainer = styled.div`
   justify-content: flex-start; /* 아이템 사이 공간 최대한 활용 */
   width: 90%;
   margin-bottom: auto;
+
   overflow: hidden;
 `;
 
 export const Parent = styled.div`
   display: flex;
   align-items: flex-start;
+  margin-left: 140px;
+`;
+
+export const FilledHeart = styled.div`
+  background: url(assets/filledheart.svg);
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 33.33px;
+  height: 30.58px;
+  z-index: 1;
+`;
+
+export const PLUSbutton = styled.div`
+  background: url(assets/plus.svg);
+  position: fixed;
+  width: 97px;
+  height: 97px;
+  right: 100px;
+  top: 500px;
+  cursor: pointer;
+`;
+//수정하기
+export const EditButtons = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  display: ${(props) => (props.isEdit ? "flex" : "none")};
+  z-index: 1;
+`;
+export const EditButton = styled.button`
+  padding: 10px 40px;
+  border: 1px solid #000000;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "SUIT Variable", sans-serif;
+  border-radius: 10px;
+  background-color: #efefef;
+  cursor: pointer;
+  &:hover {
+    background-color: #626262;
+  }
+`;
+export const ClothdebarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  cursor: pointer;
+
+  margin-left: 180px;
+  margin-top: 210px;
+`;
+export const Clothdebar = styled.div`
+  //옷 이름 옆 점 세개(추가,수정나오는칸)
+  background: url(assets/detailbar.svg);
+  width: 7px;
+  height: 7px;
+  margin-bottom: 3px;
+`;
+
+export const SideBarWrap = styled.div`
+  margin-top: 40px;
 `;

@@ -1,4 +1,3 @@
-import React from "react";
 import Logo from "/assets/Logo.svg";
 import SearchIcon from "/assets/SearchIcon.svg";
 import {
@@ -7,40 +6,47 @@ import {
   LogoBox,
   MainBox,
   MenuItem,
-  SearchBox,
-  SearchIconBox,
-  SearchInputBox,
+  SearchContainer,
   Container,
   LogoTitle,
+  LogoImg,
+  LoginBTN,
 } from "./Navbar.style";
+import SearchBox from "../SearchBox/SearchBox";
 
-const Navbar = () => {
+const Navbar = ({ ...props }) => {
   return (
-    <Container>
+    <Container {...props}>
       {/* 전체 Navbar 가운데 정렬 */}
       <NavBarBox>
         {/* 로고 & 메뉴 영역 */}
         <MainBox>
           {/* 로고 */}
           <LogoBox to="/cloth">
-            <img src={Logo} />
-            <LogoTitle>FITple</LogoTitle>
+            <LogoImg src={Logo} />
+            <LogoTitle {...props}>FITple</LogoTitle>
           </LogoBox>
           {/* 메뉴 */}
-          <MenuBox>
-            <MenuItem to="/cloth">옷장</MenuItem>
-            <MenuItem to="/recommend">추천</MenuItem>
-            <MenuItem>검색</MenuItem>
-            <MenuItem to="/profile">프로필</MenuItem>
+          <MenuBox {...props}>
+            <MenuItem to="/cloth" {...props}>
+              옷장
+            </MenuItem>
+            <MenuItem to="/recommend" {...props}>
+              추천
+            </MenuItem>
+            <MenuItem to="/search" {...props}>
+              검색
+            </MenuItem>
+            <MenuItem to="/profile" {...props}>
+              프로필
+            </MenuItem>
           </MenuBox>
         </MainBox>
-        {/* 오른쪽 검색 영역 */}
-        <SearchBox>
-          <SearchIconBox>
-            <img src={SearchIcon} />
-          </SearchIconBox>
-          <SearchInputBox placeholder="내 옷 검색하기" />
-        </SearchBox>
+        {/* search box */}
+        <SearchContainer {...props}>
+          {/* <SearchBox src={SearchIcon} placeholder={"내 옷 검색하기"} /> */}
+          <LoginBTN to="/login">로그인 / 회원가입</LoginBTN>
+        </SearchContainer>
       </NavBarBox>
     </Container>
   );

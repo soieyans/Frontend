@@ -20,15 +20,24 @@ export const FormWrapper = styled.div`
     margin: 15px 0 50px 0;
 `;
 
+export const InputText = styled.p`
+    width: 62%;
+    font-size: 18px;
+    padding: 0;
+    color: #0276FE;
+    margin-top: 10px;
+    font-weight: 500;
+`;
+
 export const InputBox = styled.input.attrs(props => ({
     type: props.type || 'text',
     id: props.id,
     placeholder: props.placeholder
 }))`
     width: 60%;
-    height: 30px;
-    margin-top: 25px;
-    border: 1px solid black;
+    height: 40px;
+    margin-top: 10px;
+    border: 1px solid #838383;
     border-radius: 10px;
     background-color: white;
     padding: 5px 15px;
@@ -37,38 +46,52 @@ export const InputBox = styled.input.attrs(props => ({
 `;
 
 export const ErrorText = styled.p`
-    color: ${props => (props.isError ? 'red' : '#0075FF')};
+    color: ${props => 
+        props.isError ? '#FF004C' : '#00E016'
+    };
     width: 62%;
-    margin: 5px 0 0 0;
+    margin: 10px 0 30px 0;
     padding: 0;
-    font-size: 17px;
+    font-size: 14px;
 `;
 
-export const MainText = styled.p`
-    width: 62%;
-    font-size: 20px;
-    margin: 25px 0 15px 0;
-    padding: 0;
-    font-weight: bold;
-`;
-
-export const ScrollBox = styled.div`
-    width: 59%;
-    height: 200px;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow-y: scroll;
-    background-color: #fcfcfc;
-`;
 
 export const CheckboxContainer = styled.div`
     width: 62%;
-    margin: 12px 0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
 `;
 
-export const Checkbox = styled.input`
+export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
     margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    cursor: pointer;
+    appearance: none;
+    background-color: white;
+    border: 1px solid #838383;
+    border-radius: 3px;
+    outline: none;
+    transition: background-color 0.2s, border-color 0.2s;
+    vertical-align: middle;
+
+    &:checked::after {
+        content: '✓';
+        font-size: 20px;
+        font-weight: 900;
+        position: absolute;
+        left: 2px;
+        top: -4px;
+        color: #0276FE;
+        transform: scale(1.2);
+    }
+`;
+
+export const CheckboxLabel = styled.p`
+    margin-top: 2px;
+    margin-right: 8px;
 `;
 
 export const SubmitButton = styled.button`

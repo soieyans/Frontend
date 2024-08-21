@@ -7,78 +7,89 @@ export const BackgroundContainer = styled.div`
     overflow-y: auto;  /* 추가: 스크롤 가능하도록 설정 */
 `;
 
-export const CompareSearchPopUpContainer = styled.div`
-    position: absolute;
-    top: 143px; left: 383px;
-    background-color: white;
+export const ComparePopUpContainer = styled.div`
     display: flex;
     flex-direction: column;
-    border-radius: 40px;
-    width: 674px;
-    height: 964px;
-`;
-
-export const CompareTitleContainer = styled.div`
-    margin-top : 28px;
-    width: 100%;
     align-items: center;
+`;
+
+export const ComparePopUpBackground = styled.div`
+    margin-top: 92px;
+    width: 400px;
+    height: 560px;
+    background: white;
+    border-radius: 41px;
+    border: 1px;
+    border-color: #838383;
+`;
+
+export const ComparePopUpInnerContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const ComparePopUpInnerMainContainer = styled.div`
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 50px;
 `;
 
-export const BackArrowBtn = styled.img`
-    margin-left: 48px;
-    height: 60px;
-    width: 30px;
-    cursor: pointer;
-`;
-
-export const CompareTitle = styled.div`
+export const ComparePopUpMainText = styled.div`
     font-family: 'SUIT Variable', sans-serif;
     color: #0276FE;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 700;
 `;
 
 export const CloseBtn = styled.img`
-    height: 30px;
-    width: 30px;
-    margin-right: 44px;
+    height: 20px;
+    width: 20px;
     cursor: pointer;
+    margin-right: 38px;
 `;
 
-export const CompareLodingContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+export const BackArrowBtn = styled.img`
+    height: 40px;
+    width: 20px;
+    cursor: pointer;
+    margin-left: 38px;
 `;
 
 export const FITpleLogo = styled.img`
     height: 97px;
     width: 62px;
-    margin-top: 135px;
+    margin-top: 100px;
 `;
 
 export const CompareLoadingText = styled.div`
-    font-family: 'SUIT Variable', sans-serif;
     color: black;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 700;
-    margin-top: 24px;
+    margin-top: 12px;
 `;
 
 export const CompareLoadingSubText = styled.div`
-    font-family: 'SUIT Variable', sans-serif;
     color: black;
     font-size: 16px;
     font-weight: 500;
-    margin-top: 4px;
+    margin-top: 8px;
 `;
 
-export const CompareLoadingBar = styled.img`
+export const CompareLoadingBar = styled.div`
     height: 15px;
-    width: 337px;
+    width: 288px;
+    border-radius: 50px;
     margin-top: 24px;
+    background-color: #EFEFEF;
+`;
+
+export const CompareLoadingInnerBar = styled.div`
+    height: 15px;
+    width: 170px;
+    border-radius: 50px;
+    background-color: #0276FE;
 `;
