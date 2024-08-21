@@ -90,6 +90,7 @@ const ClothdetailPage = () => {
   const popupClose = () => {
     setIsPopupOpen(false);
   };
+  const measuredefault = "-";
 
   return (
     <div>
@@ -208,28 +209,28 @@ const ClothdetailPage = () => {
           <MeasureNamebox>
             <MeasureName>암홀단면</MeasureName>
             <CurvedRectangle3>
-              <MeasureArea>-</MeasureArea>
+              <MeasureArea>{measuredefault}</MeasureArea>
             </CurvedRectangle3>
             <MeasureName>cm</MeasureName>
           </MeasureNamebox>
           <MeasureNamebox>
             <MeasureName>소매단면</MeasureName>
             <CurvedRectangle3>
-              <MeasureArea>-</MeasureArea>
+              <MeasureArea>{measuredefault}</MeasureArea>
             </CurvedRectangle3>
             <MeasureName>cm</MeasureName>
           </MeasureNamebox>
           <MeasureNamebox>
             <MeasureName>소매길이</MeasureName>
             <CurvedRectangle3>
-              <MeasureArea>-</MeasureArea>
+              <MeasureArea>{measuredefault}</MeasureArea>
             </CurvedRectangle3>
             <MeasureName>cm</MeasureName>
           </MeasureNamebox>
           <MeasureNamebox>
             <MeasureName>밑단단면</MeasureName>
             <CurvedRectangle3>
-              <MeasureArea>-</MeasureArea>
+              <MeasureArea>{measuredefault}</MeasureArea>
             </CurvedRectangle3>
             <MeasureName>cm</MeasureName>
           </MeasureNamebox>

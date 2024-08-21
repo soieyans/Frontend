@@ -16,6 +16,12 @@ import {
   EditButton,
   ClothdebarContainer,
   Clothdebar,
+  SerchContainer,
+  SearchIcon,
+  SearchBar,
+  SerchTitle,
+  SerchTitleContainer,
+  SerchTitle2,
 } from "./ClothmainPage.style";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
@@ -138,6 +144,14 @@ const ClothmainPage = () => {
         <SideBar onCategoryClick={handleCategoryClick} />
 
         <ProductContainer>
+          <SerchContainer>
+            <SerchTitleContainer>
+              <SerchTitle>내 옷</SerchTitle>
+              <SerchTitle2>을 검색해보세요.</SerchTitle2>
+            </SerchTitleContainer>
+            <SearchIcon />
+            <SearchBar placeholder="" />
+          </SerchContainer>
           {filteredData.length === 0 && <div>검색 결과가 없습니다.</div>}
           {filteredData.map((item, index) => (
             <ProductItem key={item.id}>

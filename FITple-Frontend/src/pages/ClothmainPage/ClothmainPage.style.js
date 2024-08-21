@@ -134,3 +134,53 @@ export const LoadMoreButton = styled.div`
   background-color: #f5f5f5;
   cursor: pointer;
 `;
+//검색창 만들기
+
+export const SerchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  margin-bottom: 20px;
+  margin-right: 100px;
+`;
+export const SearchIcon = styled.div`
+  background: url(assets/search.svg);
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 640px;
+  top: 145px;
+`;
+export const SearchBar = styled.input`
+  width: 400px;
+  height: 50px;
+  border: 1px solid #838383;
+  border-radius: 10px;
+  padding-left: 20px;
+  font-size: 20px;
+  font-family: "SUIT Variable", sans-serif;
+  color: #000000;
+`;
+
+export const SerchTitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+`;
+export const SerchTitle = styled.div`
+  font-size: 24px;
+  font-weight: 800;
+  font-family: "SUIT Variable", sans-serif;
+  color: #0276fe;
+`;
+export const SerchTitle2 = styled.div`
+  font-size: 24px;
+  font-weight: 800;
+  font-family: "SUIT Variable", sans-serif;
+  color: #000000;
+`;
