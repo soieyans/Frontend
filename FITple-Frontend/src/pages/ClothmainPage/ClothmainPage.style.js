@@ -121,3 +121,7 @@ export const Clothdebar = styled.div`
   height: 7px;
   margin-bottom: 3px;
 `;
+
+export const SideBarWrap = styled.div`
+  margin-top: 40px;
+`;

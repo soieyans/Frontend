@@ -2,14 +2,18 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 export const MainContainer = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 62px 0 41px 0;
   position: relative;
+  height: fit-content;
+  padding: 40px 0;
 `;
 export const TitleContainer = styled.div``;
 export const TitleBox = styled.div`
@@ -45,7 +49,6 @@ export const TitleBackground = styled.div`
 `;
 export const SearchContainer = styled.div`
   width: 504px;
-  margin-top: 72px;
 `;
 export const SearchText = styled.div`
   font-size: 24px;
@@ -54,15 +57,17 @@ export const SearchText = styled.div`
   margin-bottom: 20px;
 `;
 export const ItemContainer = styled.div`
-  height: 600px;
+  box-sizing: border-box;
+  padding: 50px 114px;
+  width: 100%;
 `;
 
 export const Blur = styled.div`
   position: absolute;
   width: 100%;
-  height: 536px;
+  height: 300px;
   top: -117px;
-  transform: scaleX(1.1);
+  transform: scaleX(1.2);
   z-index: -1;
   /* main/blue */
   background: #0075ff;
@@ -72,41 +77,55 @@ export const Blur = styled.div`
 export const SunIconImg = styled.img`
   position: absolute;
   left: 0;
-  top: 210px;
+  top: 190px;
 `;
 
 export const FireIconImg = styled.img`
   position: absolute;
-  left: 0;
-  top: 21px;
+  width: 120px;
+  height: auto;
+  left: 50px;
+  top: 0px;
 `;
 
 export const SpringIconImg = styled.img`
   position: absolute;
+  width: 100px;
   left: 201px;
-  top: 297px;
+  top: 277px;
 `;
 
 export const HeartIconImg = styled.img`
   position: absolute;
   left: 417px;
-  top: 141px;
+  top: 101px;
   z-index: -1;
 `;
 
 export const ThumbIconImg = styled.img`
   position: absolute;
   right: 97px;
-  top: 0px;
+  top: -10px;
+  width: 100px;
 `;
 
 export const ThunderIconImg = styled.img`
   position: absolute;
+  width: 120px;
   right: 5px;
-  top: 191px;
+  top: 151px;
 `;
 export const StartRedIconImg = styled.img`
   position: absolute;
+  width: 120px;
   right: 190px;
-  top: 295px;
+  top: 255px;
+`;
+export const SideBarWrap = styled.div``;
+
+export const ItemListWrap = styled.div``;
+export const Wrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;

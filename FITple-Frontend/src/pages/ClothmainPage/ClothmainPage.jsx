@@ -16,6 +16,7 @@ import {
   EditButton,
   ClothdebarContainer,
   Clothdebar,
+  SideBarWrap,
 } from "./ClothmainPage.style";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
@@ -135,7 +136,10 @@ const ClothmainPage = () => {
   return (
     <div>
       <Parent>
-        <SideBar onCategoryClick={handleCategoryClick} />
+        <SideBarWrap>
+          <SideBar onCategoryClick={handleCategoryClick} />
+        </SideBarWrap>
+
         <ProductContainer>
           {filteredData.length === 0 && <div>검색 결과가 없습니다.</div>}
           {filteredData.map((item, index) => (
