@@ -21,6 +21,25 @@ export const MainBox = styled.div`
   padding: 0 30px;
 `;
 
+export const ProfileImageWrapper = styled.div`
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 2px solid #0276FE;
+    margin-bottom: 20px;
+`;
+
+export const ProfileImage = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`;
+
 export const MainText = styled.p`
   font-size: 28px;
   font-weight: bold;
