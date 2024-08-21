@@ -36,13 +36,37 @@ import React from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import ItemList from "../../components/ItemList/ItemList";
 import { searchMain } from "../../../data/SearchMainApi";
+import { useState } from "react";
+import { useEffect } from "react";
+
+// 1. 데이터 갯수 확인하기
 
 const SearchMainPage = () => {
-  const getData = async () => {
-    const response = await searchMain(undefined, undefined, 5);
-    console.log(response);
+  const [dataCount, setDataCount] = useState(0);
+  const [itemData, setItemData] = useState([]);
+
+  // API 문제로 데이터 개수 가져오기
+  const getCount = async () => {
+    const response = await searchMain();
+    setDataCount(response.result.clothData[0].cloth_id + 1);
   };
-  getData();
+
+  const getData = async () => {
+    console.log("데이터확인", dataCount);
+    const response = await searchMain(undefined, dataCount);
+    console.log(response.result.clothData);
+    setItemData(response.result.clothData);
+  };
+
+  useEffect(() => {
+    getCount();
+  }, []);
+
+  useEffect(() => {
+    if (dataCount > 0) {
+      getData();
+    }
+  }, [dataCount]);
 
   return (
     <Container>
@@ -85,7 +109,7 @@ const SearchMainPage = () => {
             <SideBar />
           </SideBarWrap>
           <ItemListWrap>
-            <ItemList />
+            <ItemList $user data={itemData} />
           </ItemListWrap>
         </Wrap>
       </ItemContainer>

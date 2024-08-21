@@ -55,3 +55,7 @@ export const Wrap = styled.div`
   justify-content: space-between;
   width: 1250x;
 `;
+
+export const SizeWrap = styled.div`
+  display: flex;
+`;
