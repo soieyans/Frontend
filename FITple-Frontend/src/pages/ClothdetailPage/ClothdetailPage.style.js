@@ -6,7 +6,7 @@ export const Parent1 = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   margin-top: 20px;
-  margin-left: 150px;
+  margin-left: 220px;
 `;
 export const Parent2 = styled.div`
   display: flex;
@@ -108,7 +108,7 @@ export const Clothdebar = styled.div`
 
 export const BackIcon = styled.div`
   //뒤로가기 아이콘
-  width: 22.45px;
+  width: 12px;
   height: 38.83px;
   background: url(assets/back.svg);
   margin-left: 70px;

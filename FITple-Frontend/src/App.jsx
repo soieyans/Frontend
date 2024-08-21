@@ -51,13 +51,13 @@ function App() {
           <Route path="/findpw" element={<FindPwPage />} />
           <Route path="/findpw/showpw" element={<PwPage />} />
           <Route path="/repw" element={<RePwPage />} />
-          <Route path="/clothregister" element={<ClothregisterPage />} />
         </Route>
         {/* Navbar 있는 layout */}
         <Route element={<Layout />}>
           <Route path="/cloth" element={<ClothmainPage />} />
           <Route path="/clothdetail" element={<ClothdetailPage />} />
           <Route path="/clothupdate" element={<ClothupdatePage />} />
+          <Route path="/clothregister" element={<ClothregisterPage />} />
           {/* 프로필페이지 */}
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile/edit" element={<ProfileEditPage />} />

@@ -27,11 +27,12 @@ import {
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
+import useAuthStore from "../../../data/store/userAuthStore";
 
-const ClothmainPage = () => {
+function ClothmainPage() {
   const localhost = "http://localhost:3000";
   const [data, setData] = useState([]);
-  const [token, setToken] = useState(""); // 토큰 상태 추가
+  const { token } = useAuthStore();
   const [currentCategory, setCurrentCategory] = useState(null);
   const [isPlusOpen, setIsPlusOpen] = useState(false);
   const [isEdit, setIsEdit] = useState([]);
@@ -39,44 +40,21 @@ const ClothmainPage = () => {
   const [cursorId, setCursorId] = useState(null); // Cursor for pagination
   const [hasMore, setHasMore] = useState(true); // 더 로드할 데이터가 있는지 여부
 
-  // 토큰을 가져오는 함수
-  const fetchToken = async () => {
-    try {
-      const response = await fetch(`${localhost}/temp-token`, {
-        method: "POST", // POST 요청
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // 필요하다면, 요청 본문에 데이터를 추가
-          client_id: "your-client-id",
-          client_secret: "your-client-secret",
-        }),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to fetch token");
-      }
-      const data = await response.json();
-      setToken(data.token); // 가져온 토큰을 상태에 저장
-    } catch (error) {
-      console.error("Error fetching token:", error);
-    }
-  };
-
   // Fetch data from the API
-  const fetchData = async (
-    category = "",
-    clothId = "",
-    cursor = "",
-    size = 8
-  ) => {
+  const fetchData = async (category = "", cursorId = "", size = "") => {
+    if (!token) return; // token이 없으면 fetchData를 실행하지 않음
+
+    console.log("토큰", token);
+
     try {
       const query = new URLSearchParams();
       if (category) query.append("category", category);
-      if (clothId) query.append("clothId", clothId);
       if (size) query.append("size", size);
-      if (cursor) query.append("cursorId", cursor);
-
+      if (cursorId) query.append("cursorId", cursorId);
+      console.log(
+        "query",
+        `${localhost}/FITple/my/closet/main?${query.toString()}`
+      );
       const response = await fetch(
         `${localhost}/FITple/my/closet/main?${query.toString()}`,
         {
@@ -95,7 +73,7 @@ const ClothmainPage = () => {
 
       // Check if 'data' and 'closetData' are present in the result
       if (result && result.data && result.data.closetData) {
-        if (cursor) {
+        if (cursorId) {
           // If cursor exists, append new data
           setData((prevData) => [...prevData, ...result.data.closetData]);
         } else {
@@ -106,12 +84,12 @@ const ClothmainPage = () => {
         setHasMore(result.data.closetData.length > 0); // If no more data, stop pagination
       } else {
         console.error("Unexpected response structure:", result);
-        if (!cursor) setData([]); // Reset data if the structure is unexpected and no cursor
+        if (!cursorId) setData([]); // Reset data if the structure is unexpected and no cursor
         setHasMore(false);
       }
     } catch (error) {
       console.error("Error fetching cloth data:", error);
-      if (!cursor) setData([]); // Reset data in case of an error and no cursor
+      if (!cursorId) setData([]); // Reset data in case of an error and no cursor
       setHasMore(false);
     }
   };
@@ -145,16 +123,18 @@ const ClothmainPage = () => {
   // Load more data when the "Load More" button is clicked
   const loadMoreData = () => {
     if (hasMore) {
-      fetchData(currentCategory, null, cursorId);
+      fetchData(currentCategory, cursorId); // cursorId 위치 수정
     }
   };
 
-  // Fetch token on mount and then fetch data
+  // Fetch token on mount
+
+  // Fetch data whenever token or category changes
   useEffect(() => {
-    fetchToken().then(() => {
+    if (token) {
       fetchData(currentCategory);
-    });
-  }, [currentCategory]);
+    }
+  }, [currentCategory, token]);
 
   return (
     <Parent>
@@ -205,11 +185,10 @@ const ClothmainPage = () => {
         <PLUSbutton onClick={() => setIsPlusOpen((prev) => !prev)}>
           {isPlusOpen && <PlusOpen />}
         </PLUSbutton>
+        {hasMore && data.length > 0 && (
+          <LoadMoreButton onClick={loadMoreData}>더보기</LoadMoreButton>
+        )}
       </ProductContainer>
-
-      {hasMore && (
-        <LoadMoreButton onClick={loadMoreData}>더보기</LoadMoreButton>
-      )}
 
       {isDeletePopupOpen && (
         <Modal
@@ -229,6 +208,6 @@ const ClothmainPage = () => {
       )}
     </Parent>
   );
-};
+}
 
 export default ClothmainPage;
