@@ -119,6 +119,7 @@ function ClothdetailPage() {
   const cleanCompareData = () => {
     setCompareData([]); // 기존 compareData clean시키기
   };
+  const measuredefault = "-";
 
   return (
     <div>
