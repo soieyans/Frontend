@@ -44,6 +44,7 @@ import { useEffect } from "react";
 const SearchMainPage = () => {
   const [dataCount, setDataCount] = useState(0);
   const [itemData, setItemData] = useState([]);
+  const [category, setCategory] = useState(undefined);
 
   // API 문제로 데이터 개수 가져오기
   const getCount = async () => {
@@ -52,21 +53,20 @@ const SearchMainPage = () => {
   };
 
   const getData = async () => {
-    console.log("데이터확인", dataCount);
-    const response = await searchMain(undefined, dataCount);
-    console.log(response.result.clothData);
+    const response = await searchMain(category, dataCount);
+    console.log("카테고리 확인", category);
     setItemData(response.result.clothData);
   };
 
   useEffect(() => {
     getCount();
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     if (dataCount > 0) {
       getData();
     }
-  }, [dataCount]);
+  }, [dataCount, category]);
 
   return (
     <Container>
@@ -106,7 +106,7 @@ const SearchMainPage = () => {
       <ItemContainer>
         <Wrap>
           <SideBarWrap>
-            <SideBar />
+            <SideBar setCategory={setCategory} />
           </SideBarWrap>
           <ItemListWrap>
             <ItemList $user data={itemData} />

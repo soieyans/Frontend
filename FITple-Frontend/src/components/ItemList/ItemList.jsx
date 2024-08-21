@@ -6,7 +6,9 @@ const ItemList = ({ ...props }) => {
   return (
     <Container>
       {props.data ? (
-        props.data.map((item) => <UserItem {...props} item={item} />)
+        props.data.map((item, index) => (
+          <UserItem {...props} key={index} item={item} />
+        ))
       ) : (
         <>
           {/* profile을 위한 더미데이터 */}

@@ -23,7 +23,6 @@ const UserItem = ({ ...props }) => {
 
   const item = props.item || dummyItem; // props.item이 없을 경우 dummyItem 사용
 
-  console.log("props", item);
   return (
     <Container>
       {/* 아이템 이미지 */}
