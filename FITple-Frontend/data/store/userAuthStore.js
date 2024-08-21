@@ -1,9 +1,17 @@
-import { create } from 'zustand';
+import create from "zustand";
 
 const useAuthStore = create((set) => ({
-    token: null,
-    setToken: (newToken) => set({ token: newToken }),
-    clearToken: () => set({ token: null }),
+  token: localStorage.getItem("token") || null, // Rehydrate token from localStorage
+
+  setToken: (newToken) => {
+    localStorage.setItem("token", newToken);
+    set({ token: newToken });
+  },
+
+  clearToken: () => {
+    localStorage.removeItem("token");
+    set({ token: null });
+  },
 }));
 
 export default useAuthStore;

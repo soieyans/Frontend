@@ -16,110 +16,65 @@ import {
   EditButton,
   ClothdebarContainer,
   Clothdebar,
-  SideBarWrap,
+  SearchBar,
+  SearchIcon,
+  SerchContainer,
+  SerchTitle,
+  SerchTitle2,
+  SerchTitleContainer,
 } from "./ClothmainPage.style";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
-
-const clothData = [
-  {
-    id: 0,
-    brand: "NERDY",
-    name: "NY 트랙탑",
-    size: "XL",
-    detail: "오버핏",
-    type: "아우터",
-    wish: "찜",
-  },
-  {
-    id: 1,
-    brand: "NIKE",
-    name: "풀 에센셜",
-    size: "L",
-    detail: "오버핏",
-    type: "아우터",
-    wish: "찜",
-  },
-  {
-    id: 2,
-    brand: "ADIDAS",
-    name: "릴렉스핏 티셔츠",
-    size: "M",
-    detail: "여유로운 핏",
-    type: "상의",
-    wish: "찜",
-  },
-  {
-    id: 3,
-    brand: "PUMA",
-    name: "스포츠 반바지",
-    size: "L",
-    detail: "짧고 편안함",
-    type: "바지",
-    wish: "찜",
-  },
-  {
-    id: 4,
-    brand: "CHANEL",
-    name: "플레어 스커트",
-    size: "38",
-    detail: "여성스러운 디자인",
-    type: "스커트",
-    wish: "찜",
-  },
-  {
-    id: 5,
-    brand: "GUCCI",
-    name: "गुच्ची 롱 원피스",
-    size: "S",
-    detail: "우아한 스타일",
-    type: "원피스",
-  },
-  {
-    id: 6,
-    brand: "BURBERRY",
-    name: "머플러",
-    detail: "따뜻하고 세련된 디자인",
-    type: "액세서리",
-  },
-  {
-    id: 7,
-    brand: "CONVERSE",
-    name: "운동화",
-    size: "270",
-    detail: "편안하고 가벼움",
-    type: "신발",
-  },
-];
+import useAuthStore from "../../../data/store/userAuthStore";
 
 const ClothmainPage = () => {
-  const [filteredData, setFilteredData] = useState([]); // 필터링된 데이터 상태 관리
-  // 카테고리 클릭 시 이벤트 처리 함수
-  const handleCategoryClick = (category) => {
-    if (category === "전체") {
-      // 전체 데이터 표시
-      setFilteredData(clothData);
-    } else {
-      // 선택된 카테고리와 일치하는 데이터만 필터링
-      const filtered = clothData.filter((item) => item.type === category);
-      setFilteredData(filtered);
+  const [filteredData, setFilteredData] = useState([]);
+  const [isplusopen, setIsplusopen] = useState(false);
+  const [isEdit, setIsEdit] = useState([]);
+  const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
+
+  const { token } = useAuthStore();
+
+  // Fetch data from the API
+  const fetchClothData = async (category = "", clothId = "", size = 8) => {
+    console.log("토큰유효", token);
+
+    const params = new URLSearchParams({ category, clothId, size });
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/FITple/my/closet/main?${params.toString()}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `${token}`,
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setFilteredData(data.closetData || []);
+        setIsEdit(data.closetData.map(() => false));
+      } else {
+        console.error("Failed to fetch cloth data:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Failed to fetch cloth data:", error);
     }
   };
 
-  // 처음 페이지 로드 시 전체 데이터 표시
   useEffect(() => {
-    setFilteredData(clothData);
+    fetchClothData();
   }, []);
 
-  //plusopen 클릭시 이벤트 처리 함수
-  const [isplusopen, setIsplusopen] = useState(false);
   const handlePlusOpen = () => {
     setIsplusopen(!isplusopen);
   };
-  //수정하기,삭제하기 칸 열기
 
-  const [isEdit, setIsEdit] = useState(clothData.map(() => false));
   const toggleEdit = (index) => {
     setIsEdit((prev) => {
       const newState = [...prev];
@@ -128,7 +83,6 @@ const ClothmainPage = () => {
     });
   };
 
-  const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
   const handleDeleteCloth = () => {
     setisDeletePopupOpen(!isDeletePopupOpen);
   };
@@ -136,31 +90,33 @@ const ClothmainPage = () => {
   return (
     <div>
       <Parent>
-        <SideBarWrap>
-          <SideBar onCategoryClick={handleCategoryClick} />
-        </SideBarWrap>
+        <SideBar onCategoryClick={(category) => fetchClothData(category)} />
 
         <ProductContainer>
-          {filteredData.length === 0 && <div>검색 결과가 없습니다.</div>}
+          <SerchContainer>
+            <SerchTitleContainer>
+              <SerchTitle>내 옷</SerchTitle>
+              <SerchTitle2>을 검색해보세요.</SerchTitle2>
+            </SerchTitleContainer>
+            <SearchIcon />
+            <SearchBar placeholder="옷을 검색하세요" />
+          </SerchContainer>
           {filteredData.map((item, index) => (
-            <ProductItem key={item.id}>
+            <ProductItem key={item.cloth_id}>
               <Imgcontainer>
                 <ProductImage
-                  image={`../../assets/${item.type}_${item.id}.jpg`}
+                  image={`../../assets/${item.type}_${item.cloth_id}.jpg`}
                 />
-                {item.wish === "찜" && <FilledHeart />}
+                {item.likes > 0 && <FilledHeart />}
               </Imgcontainer>
 
               <ProductBrand>{item.brand}</ProductBrand>
-              <ClothdebarContainer
-                key={index}
-                onClick={() => toggleEdit(index)}
-              >
+              <ClothdebarContainer onClick={() => toggleEdit(index)}>
                 <Clothdebar />
                 <Clothdebar />
                 <Clothdebar />
-                {isEdit && (
-                  <EditButtons isEdit={isEdit[index]}>
+                {isEdit[index] && (
+                  <EditButtons>
                     <Link to="/clothupdate">
                       <EditButton>옷 정보 수정하기</EditButton>
                     </Link>
@@ -191,10 +147,10 @@ const ClothmainPage = () => {
                 )}
               </ClothdebarContainer>
 
-              <ProductName>{item.name}</ProductName>
+              <ProductName>{item.cloth_name}</ProductName>
 
               <ProductDetail>
-                {item.size}•{item.detail}
+                {item.size} • {item.fit}
               </ProductDetail>
             </ProductItem>
           ))}
