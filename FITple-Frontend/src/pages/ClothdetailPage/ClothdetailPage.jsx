@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+// Desc: ClothdetailPage
 import {
   BackIcon,
   CurrentCloth,
@@ -32,15 +32,17 @@ import {
   EmptyBookmark,
   FilledBookmark,
 } from "./ClothdetailPage.style";
-import { Link, useParams } from "react-router-dom"; // useParams 추가
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
-
+import ComparePopUp from "../../components/ComparePopUp/ComparePopUp";
 const ClothdetailPage = () => {
-  // 노트
+  //노트
   const [note, setNote] = useState("");
 
-  // 수정하기, 삭제하기 칸 열기
+  //수정하기,삭제하기 칸 열 기
+
   const [isEdit, setIsEdit] = useState(false);
   const toggleEdit = () => {
     setIsEdit(!isEdit);
@@ -55,12 +57,11 @@ const ClothdetailPage = () => {
     setNote(e.target.value);
   };
 
-  // 별점
+  //별점
   const [rating, setRating] = useState(0);
   const handleStarClick = (newRating) => {
     setRating(newRating);
   };
-
   const renderStars = () => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -76,59 +77,24 @@ const ClothdetailPage = () => {
     }
     return stars;
   };
-
-  // 찜하기
+  //찜하기
   const [isBookmark, setIsBookmark] = useState(false);
   const handleBookmark = () => {
     setIsBookmark(!isBookmark);
   };
-
-  // API에서 데이터 가져오기 위한 상태 관리
-  const [clothData, setClothData] = useState(null);
-  const { clothId } = useParams(); // URL에서 clothId 가져오기
-
-  useEffect(() => {
-    const fetchClothDetail = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3000/FITple/my/closet/${clothId}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: "Bearer your_access_token_here", // 실제 액세스 토큰으로 대체
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
-        const result = await response.json();
-
-        if (result && result.data && result.data.clothData) {
-          setClothData(result.data.clothData[0]); // 데이터를 상태로 설정
-        } else {
-          console.error("Unexpected response structure:", result);
-          setClothData(null);
-        }
-      } catch (error) {
-        console.error("Error fetching cloth detail:", error);
-        setClothData(null);
-      }
-    };
-
-    fetchClothDetail();
-  }, [clothId]);
-
-  if (!clothData) {
-    return <div>Loading...</div>; // 로딩 상태
-  }
+  //비교하기 팝업 열기
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const popupOpen = () => {
+    setIsPopupOpen(true);
+  };
+  const popupClose = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <div>
       <Parent1>
-        <ChangeButton />
+        <ChangeButton onClick={popupOpen} />
         {isBookmark ? (
           <FilledBookmark onClick={handleBookmark} />
         ) : (
@@ -138,24 +104,23 @@ const ClothdetailPage = () => {
         <CurrentCloth>옷장{">"}아우터</CurrentCloth>
       </Parent1>
       <Parent2>
-        <ProductDeImage
-          src={`../../assets/${clothData.cloth_name}_${clothData.cloth_id}.jpg`}
-        />
+        <ProductDeImage />
         <ProductContainer>
           <Imgcontainer>
-            <ProductDeImagemin
-              src={`../../assets/${clothData.cloth_name}_${clothData.cloth_id}_thumb.jpg`}
-            />
-            {/* 추가 이미지들이 필요하다면 여기에 추가 */}
+            <ProductDeImagemin />
+            <ProductDeImagemin />
+            <ProductDeImagemin />
+            <ProductDeImagemin />
+            <ProductDeImagemin />
+            <ProductDeImagemin />
           </Imgcontainer>
           <StarContainer>{renderStars()}</StarContainer>
         </ProductContainer>
         <Parent3>
           <ClothNamebox>
             <ClothName>
-              {clothData.brand}
-              <br></br>
-              <b>{clothData.cloth_name}</b>
+              아디다스<br></br>
+              <b>에센셜 풀집 후디</b>
             </ClothName>
 
             <ClothdebarContainer onClick={toggleEdit}>
@@ -196,18 +161,18 @@ const ClothdetailPage = () => {
           <DetailNamebox>
             <DetailName>사이즈</DetailName>
             <DetailName>핏</DetailName>
-            <DetailName>색상</DetailName>
+            <DetailName> 색상</DetailName>
             <DetailName>제품번호</DetailName>
           </DetailNamebox>
           <DetailboxContainer>
-            <Detailbox>{clothData.size}</Detailbox>
-            <Detailbox>{clothData.fit}</Detailbox>
-            <Detailbox>{clothData.color}</Detailbox>
-            <Detailbox>{clothData.product_code}</Detailbox>
+            <Detailbox>XL</Detailbox>
+            <Detailbox>오버</Detailbox>
+            <Detailbox>그레이</Detailbox>
+            <Detailbox>IL2516</Detailbox>
           </DetailboxContainer>
           <DetailName>URL</DetailName>
           <Detailbox>
-            <a href={clothData.URL}>{clothData.URL}</a>
+            <a href="https://www.adidas.co.kr/">https://www.adidas.co.kr/</a>
           </Detailbox>
           <DetailName>메모</DetailName>
           <CurvedRectangle>
@@ -218,17 +183,59 @@ const ClothdetailPage = () => {
               onChange={handleInputchange}
             />
           </CurvedRectangle>
-          <DetailName>실측 사이즈</DetailName>
+          <DetailName>실축 사이즈</DetailName>
           <MeasureNamebox>
             <MeasureName>총장</MeasureName>
             <CurvedRectangle3>
-              <MeasureArea>{clothData.length}</MeasureArea>
+              <MeasureArea>40</MeasureArea>
             </CurvedRectangle3>
             <MeasureName>cm</MeasureName>
           </MeasureNamebox>
-          {/* 다른 실측 사이즈도 비슷하게 렌더링 */}
+          <MeasureNamebox>
+            <MeasureName>어깨너비</MeasureName>
+            <CurvedRectangle3>
+              <MeasureArea>71</MeasureArea>
+            </CurvedRectangle3>
+            <MeasureName>cm</MeasureName>
+          </MeasureNamebox>
+          <MeasureNamebox>
+            <MeasureName>가슴단면</MeasureName>
+            <CurvedRectangle3>
+              <MeasureArea>73</MeasureArea>
+            </CurvedRectangle3>
+            <MeasureName>cm</MeasureName>
+          </MeasureNamebox>
+          <MeasureNamebox>
+            <MeasureName>암홀단면</MeasureName>
+            <CurvedRectangle3>
+              <MeasureArea>-</MeasureArea>
+            </CurvedRectangle3>
+            <MeasureName>cm</MeasureName>
+          </MeasureNamebox>
+          <MeasureNamebox>
+            <MeasureName>소매단면</MeasureName>
+            <CurvedRectangle3>
+              <MeasureArea>-</MeasureArea>
+            </CurvedRectangle3>
+            <MeasureName>cm</MeasureName>
+          </MeasureNamebox>
+          <MeasureNamebox>
+            <MeasureName>소매길이</MeasureName>
+            <CurvedRectangle3>
+              <MeasureArea>-</MeasureArea>
+            </CurvedRectangle3>
+            <MeasureName>cm</MeasureName>
+          </MeasureNamebox>
+          <MeasureNamebox>
+            <MeasureName>밑단단면</MeasureName>
+            <CurvedRectangle3>
+              <MeasureArea>-</MeasureArea>
+            </CurvedRectangle3>
+            <MeasureName>cm</MeasureName>
+          </MeasureNamebox>
         </Parent3>
       </Parent2>
+      {isPopupOpen && <ComparePopUp onClose={popupClose} /> /* 팝업 열기 */}
     </div>
   );
 };

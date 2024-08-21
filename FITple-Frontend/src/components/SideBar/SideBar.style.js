@@ -2,14 +2,16 @@ import styled from "styled-components";
 export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 140px;
+  width: 120px;
+  height: 400px;
+  justify-content: space-between;
 `;
 
 export const Menu = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  padding: 10px 15px;
+  padding: 10px 10px;
   font-family: "SUIT Variable", sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -22,12 +24,12 @@ export const Menu = styled.div`
   &::before {
     content: "";
     position: absolute;
-    width: 75%;
+    width: 65%;
     height: 35%;
     background-color: #0276fe;
     opacity: 0.3;
     bottom: 10px;
-    left: 14px;
+    left: 12px;
     display: ${(props) => (props.selected ? "block" : "none")};
   }
 `;

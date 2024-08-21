@@ -6,12 +6,12 @@ export const Parent1 = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   margin-top: 20px;
-  margin-left: 60px;
+  margin-left: 150px;
 `;
 export const Parent2 = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   margin-left: 80px;
 `;
 export const Parent3 = styled.div`
@@ -29,8 +29,7 @@ export const ProductContainer = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   flex-direction: column;
-  margin-left: 50px;
-  margin-bottom: 60px;
+  left: 310px;
 `;
 export const StarContainer = styled.div`
   display: flex;
