@@ -123,9 +123,35 @@ export const StartRedIconImg = styled.img`
 `;
 export const SideBarWrap = styled.div``;
 
-export const ItemListWrap = styled.div``;
+export const ItemListWrap = styled.div`
+  width: 1096px;
+  border: 2px solid red;
+`;
 export const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
 `;
+
+export const ResultText = styled.p`
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+`;
+
+export const BoldText = styled.span`
+  font-weight: 800;
+`;
+
+export const BlueText = styled.span`
+  color: #0276fe;
+  font-weight: 800;
+`;
+
+export const ItemWrap = styled.div`
+  margin-bottom: 100px;
+`;
+export const BrandWrap = styled.div`
+  margin-bottom: 100px;
+`;
+export const UserWrap = styled.div``;

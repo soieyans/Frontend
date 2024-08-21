@@ -8,15 +8,20 @@ import ThunderIcon from "../../../assets/Thunder.svg";
 import HeartRedIcon from "../../../assets/Heart-red.svg";
 import StarRedIcon from "../../../assets/Star-red.svg";
 import {
+  BlueText,
   Blur,
+  BoldText,
   Box,
+  BrandWrap,
   Container,
   FireIconImg,
   HeartIconImg,
   ImpactText,
   ItemContainer,
   ItemListWrap,
+  ItemWrap,
   MainContainer,
+  ResultText,
   SearchContainer,
   SearchText,
   SideBarWrap,
@@ -30,12 +35,14 @@ import {
   TitleBackground,
   TitleBox,
   TitleContainer,
+  UserWrap,
   Wrap,
 } from "./SearchMainPage.style";
 import React from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import ItemList from "../../components/ItemList/ItemList";
 import { searchMain } from "../../../data/SearchMainApi";
+import { searchTotal } from "../../../data/SearchTotalApi";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -45,17 +52,23 @@ const SearchMainPage = () => {
   const [dataCount, setDataCount] = useState(0);
   const [itemData, setItemData] = useState([]);
   const [category, setCategory] = useState(undefined);
+  const [keyword, setKeyword] = useState("");
 
   // API 문제로 데이터 개수 가져오기
   const getCount = async () => {
     const response = await searchMain();
     setDataCount(response.result.clothData[0].cloth_id + 1);
   };
-
+  // 데이터 메인 가져오기
   const getData = async () => {
     const response = await searchMain(category, dataCount);
-    console.log("카테고리 확인", category);
     setItemData(response.result.clothData);
+  };
+
+  //검색 데이터 가져오기
+  const getSearchData = async () => {
+    const response = await searchTotal(keyword);
+    console.log(response);
   };
 
   useEffect(() => {
@@ -67,6 +80,10 @@ const SearchMainPage = () => {
       getData();
     }
   }, [dataCount, category]);
+
+  useEffect(() => {
+    if (keyword !== "") getSearchData();
+  }, [keyword]);
 
   return (
     <Container>
@@ -96,6 +113,7 @@ const SearchMainPage = () => {
         <SearchContainer>
           <SearchText>내 아이템들을 검색해서 등록해보세요!</SearchText>
           <SearchBox
+            setKeyword={setKeyword}
             src={SearchIconWhite}
             placeholder={"ex) 아디다스 에센셜 풀집 후디"}
             $white
@@ -109,7 +127,30 @@ const SearchMainPage = () => {
             <SideBar setCategory={setCategory} />
           </SideBarWrap>
           <ItemListWrap>
-            <ItemList $user data={itemData} />
+            {/* <ItemList $user data={itemData} /> */}
+            <ItemWrap>
+              <ResultText>
+                <BoldText>제품이름</BoldText> 검색 결과
+                <BlueText> 10건</BlueText>
+              </ResultText>
+              <ItemList />
+            </ItemWrap>
+
+            <BrandWrap>
+              <ResultText>
+                <BoldText>브랜드</BoldText> 검색 결과
+                <BlueText> 1건</BlueText>
+              </ResultText>
+              <ItemList />
+            </BrandWrap>
+
+            <UserWrap>
+              <ResultText>
+                <BoldText>브랜드</BoldText> 검색 결과
+                <BlueText> 1건</BlueText>
+              </ResultText>
+              <ItemList />
+            </UserWrap>
           </ItemListWrap>
         </Wrap>
       </ItemContainer>
