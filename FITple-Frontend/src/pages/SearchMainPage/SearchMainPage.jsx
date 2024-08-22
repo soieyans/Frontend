@@ -82,7 +82,6 @@ const SearchMainPage = () => {
     const response = await searchTotal(keyword);
     console.log(response);
     setTotalData(response.result);
-    console.log(response.result.clothData[0]);
   };
 
   // 개수 불러오기
