@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   UserName,
@@ -26,7 +25,7 @@ function RecomUser({ ...props }) {
   // };
 
   return (
-    <Container to="/recommenduser">
+    <Container onClick={props.onClick}>
       <UserImg src={SetUserImg} alt="User Image" />
       <UserName>{props.userName}</UserName>
       <UserProfile>{props.userProfile}</UserProfile>

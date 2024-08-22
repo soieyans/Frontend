@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Container = styled(Link)`
+export const Container = styled.div`
   box-sizing: border-box;
   flex: 1 1 21%; /* 각 카드가 4개 열을 만들 수 있도록 설정 */
   max-width: 250px; 
@@ -17,6 +17,7 @@ export const Container = styled(Link)`
   padding: 24px;
   text-decoration: none; /* 기본 링크 스타일 제거 */
   color: inherit; 
+  cursor: pointer;
 `;
 
 export const UserImg = styled.img`

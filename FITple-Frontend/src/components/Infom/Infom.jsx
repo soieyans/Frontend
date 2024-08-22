@@ -7,18 +7,20 @@ import Follower from "../../components/Follower/Follower";
 import OneLine from "../../components/OneLine/OneLine";
 import FollowButton from "../../components/FollowButton/FollowButton";
 
-function Infom(showFollowButton={showFollowButton}) {
-
-
+function Infom({ data }) {
   return (
     <Container>
       <Wrap>
         <SubWrap>
           <UserImg src={SetUserImg}></UserImg>
         </SubWrap>
-        <UserName>핏플3</UserName>
+        <UserName>{data.userName}</UserName>
         <SubWrap>
-          <Profile />
+          <Profile
+            userProfile={`${data.userHeight}cm ${data.userWeight}kg`}
+            userFit={data.userFit}
+            userStyle={data.userStyle}
+          />
         </SubWrap>
         <SubWrap>
           <Follower />
@@ -27,7 +29,7 @@ function Infom(showFollowButton={showFollowButton}) {
       </Wrap>
       <Wrap>
         {/* showFollowButton이 True면 기본 값유지 False면 FollowButton제거하고  OneLine 크기증가*/}
-        {showFollowButton ? (
+        {!data.isFollowed ? (
           <>
             <OneLine />
             <FollowButton />

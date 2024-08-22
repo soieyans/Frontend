@@ -98,6 +98,7 @@ const favoriteClothesData = [
 function RecomUserFeedPage() {
   const location = useLocation();
   const data = location.state;
+  console.log(data);
 
   const [filteredClothes, setFilteredClothes] = useState(clothesData);
   const [isInCloset, setIsInCloset] = useState(true);
@@ -134,7 +135,7 @@ function RecomUserFeedPage() {
   return (
     <Container>
       <InformWrap>
-        <Infom />
+        <Infom data={data} />
       </InformWrap>
 
       <Wrap>
