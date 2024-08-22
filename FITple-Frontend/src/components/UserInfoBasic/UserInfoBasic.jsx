@@ -48,8 +48,8 @@ function UserInfoBasic({
                     {errorMessage && <SubText style={{ color: 'red' }}>{errorMessage}</SubText>}
                     <SubText>성별</SubText>
                     <GenderWrapper>
-                        <GenderButton isSelected={selectedGender === 'male'} onClick={() => setSelectedGender('male')}>남성</GenderButton>
-                        <GenderButton isSelected={selectedGender === 'female'} onClick={() => setSelectedGender('female')}>여성</GenderButton>
+                      <GenderButton isSelected={selectedGender === 0} onClick={() => setSelectedGender(0)}>남성</GenderButton>
+                      <GenderButton isSelected={selectedGender === 1} onClick={() => setSelectedGender(1)}>여성</GenderButton>
                     </GenderWrapper>
                     <SubText>선호 핏</SubText>
                     <FitWrapper>

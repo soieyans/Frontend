@@ -22,8 +22,8 @@ export const MainBox = styled.div`
 `;
 
 export const ProfileImageWrapper = styled.div`
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
@@ -31,7 +31,8 @@ export const ProfileImageWrapper = styled.div`
     justify-content: center;
     align-items: center;
     // border: 2px solid #0276FE;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    margin-top: 40px;
 `;
 
 export const ProfileImage = styled.img`

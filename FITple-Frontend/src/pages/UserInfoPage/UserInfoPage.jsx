@@ -35,12 +35,13 @@ function UserInfoPage() {
 
     const handleBodyInfoChange = (e) => {
         const { name, value } = e.target;
+        const numericValue = value === '' ? '' : parseInt(value, 10); // 신체 정보 입력값을 숫자로 변환
+    
         setBodyInfo((prevBodyInfo) => ({
             ...prevBodyInfo,
-            [name]: value
+            [name]: numericValue // 숫자로 변환된 값 저장
         }));
     };
-
     const handleFitClick = (fit) => {
         setSelectedFits((prevSelectedFits) => {
             if (prevSelectedFits.includes(fit)) {
@@ -74,21 +75,30 @@ function UserInfoPage() {
 
             const userInfo = {
                 nickname,
-                gender: selectedGender,
+                gender: selectedGender || 0,
                 perfer_fit: selectedFits,
                 perfer_style: selectedStyles,
                 one_line_info: document.getElementById('userinfo-infotext').value
             };
 
+            const convertedBodyInfo = {
+                height: bodyInfo.height || 0,
+                weight: bodyInfo.weight || 0,
+                shoulder_width: bodyInfo.shoulder_width || 0,
+                chest_circumference: bodyInfo.chest_circumference || 0,
+                arm_length: bodyInfo.arm_length || 0,
+                waist_circumference: bodyInfo.waist_circumference || 0,
+                thigh_circumference: bodyInfo.thigh_circumference || 0,
+                hip_circumference: bodyInfo.hip_circumference || 0,
+            };
+
             const data = {
                 userInfo,
-                bodyInfo
+                bodyInfo: convertedBodyInfo
             };
 
             console.log("제출할 데이터:", data);
-
             const response = await submitUserInfo(data, profileImage);
-
             console.log("서버 응답:", response);  // 서버 응답 로그 추가
 
             if (response.status === 200) {
