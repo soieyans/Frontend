@@ -1,13 +1,28 @@
 import styled from "styled-components";
+export const Container = styled.div`
+  min-height: 100vh;
+`;
+
+export const FirstContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const SecondContainer = styled.div``;
+export const SearchBarWrap = styled.div`
+  box-sizing: border-box;
+  width: 400px;
+  height: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
 export const ProductItem = styled.div`
   width: 250px;
   height: 250px;
   top: 50px;
   background: #fff;
   border-radius: 20px;
-
   display: flex;
-
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
@@ -70,6 +85,19 @@ export const FilledHeart = styled.div`
   width: 33.33px;
   height: 30.58px;
   z-index: 1;
+`;
+export const SideBarWrap = styled.div`
+  margin-right: 110px;
+`;
+export const Wrap = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 40px;
+`;
+export const ItemListWrap = styled.div`
+  width: 1096px;
+  margin-bottom: 100px;
 `;
 
 export const PLUSbutton = styled.div`
@@ -135,32 +163,27 @@ export const LoadMoreButton = styled.div`
 `;
 //검색창 만들기
 
-export const SerchContainer = styled.div`
+export const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 90px;
-  margin-bottom: 20px;
-  margin-right: 100px;
+  width: fit-content;
 `;
-export const SearchIcon = styled.div`
-  background: url(assets/search.svg);
+export const SearchImg = styled.img`
   width: 30px;
   height: 30px;
   position: absolute;
-  left: 660px;
-  top: 145px;
+  left: 16px;
 `;
 export const SearchBar = styled.input`
-  width: 400px;
-  height: 50px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   border: 1px solid #838383;
-  border-radius: 10px;
-  padding-left: 20px;
-  font-size: 20px;
-  font-family: "SUIT Variable", sans-serif;
+  border-radius: 30px;
+  font-size: 16px;
+  padding-left: 62px;
   color: #000000;
 `;
 

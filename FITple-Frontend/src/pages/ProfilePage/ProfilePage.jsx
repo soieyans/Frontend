@@ -23,7 +23,6 @@ const ProfilePage = () => {
   const [selectItem, setSelectItem] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const { token } = useAuthStore();
-  console.log("token 이거야 ", token);
 
   // render
   const renderContent = () => {

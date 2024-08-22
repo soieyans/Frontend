@@ -1,17 +1,27 @@
 import React from "react";
-import IMG from "../../../assets/EXadidas.svg";
+import HeartIcon from "../../../assets/filledheart.svg";
+import OptionIcon from "../../../assets/Option.svg";
 import {
   Brand,
+  BrandWrap,
   Container,
+  HeartImg,
+  ImgWrap,
   ItemImg,
   ItemName,
   ItemWrap,
+  OptionBTN,
+  OptionBox,
+  OptionImg,
+  OptionItem,
   Size,
   SizeWrap,
   UserImg,
   UserInfo,
 } from "./UserItem.style";
+import { useState } from "react";
 const UserItem = ({ ...props }) => {
+  const [isOpen, setIsOpen] = useState(false);
   // 더미데이터
   const dummyItem = {
     nickname: "Anonymous",
@@ -19,22 +29,52 @@ const UserItem = ({ ...props }) => {
     cloth_name: "Unknown Cloth",
     size: "Unknown Size",
     fit: "Unknown Fit",
+    cloth_image:
+      "https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8829244%2F88292446418.jpg&type=f372_372",
+    user_image:
+      "https://blog.kakaocdn.net/dn/mmiWC/btszy4hoVjM/JAHukeXLibgX76VaWsAqp1/img.jpg",
   };
 
   const item = props.item || dummyItem; // props.item이 없을 경우 dummyItem 사용
-
+  const showOptionBox = () => {
+    setIsOpen(!isOpen);
+    console.log(isOpen);
+  };
   return (
     <Container>
       {/* 아이템 이미지 */}
-      <ItemImg src="https://blog.kakaocdn.net/dn/mmiWC/btszy4hoVjM/JAHukeXLibgX76VaWsAqp1/img.jpg" />
+      <ImgWrap>
+        <ItemImg
+          src={
+            item.cloth_image ||
+            "https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8829244%2F88292446418.jpg&type=f372_372"
+          }
+        />
+        {item.likes == 1 && <HeartImg src={HeartIcon} />}
+      </ImgWrap>
+
       {/* 유저정보 */}
       <UserInfo {...props}>
         {/* 유저 프로필 */}
-        <UserImg src="https://blog.kakaocdn.net/dn/mmiWC/btszy4hoVjM/JAHukeXLibgX76VaWsAqp1/img.jpg" />
+        <UserImg
+          src={
+            item.user_image ||
+            "https://blog.kakaocdn.net/dn/mmiWC/btszy4hoVjM/JAHukeXLibgX76VaWsAqp1/img.jpg"
+          }
+        />
         <p>{item.nickname}</p>
       </UserInfo>
       <ItemWrap>
-        <Brand>{item.brand}</Brand>
+        <BrandWrap>
+          <Brand>{item.brand}</Brand>
+          <OptionBTN {...props} onClick={() => showOptionBox()}>
+            <OptionImg src={OptionIcon} />
+          </OptionBTN>
+          <OptionBox $active={isOpen}>
+            <OptionItem $first>옷 정보 수정하기</OptionItem>
+            <OptionItem $last>옷 정보 삭제하기</OptionItem>
+          </OptionBox>
+        </BrandWrap>
         <ItemName>{item.cloth_name}</ItemName>
         <SizeWrap>
           <Size>{item.size} ㆍ</Size>
