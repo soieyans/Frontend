@@ -5,7 +5,6 @@ export const searchTotal = async (keyword, category, cursorId, size) => {
     const url = new URL(
       `${localhost}/FITple/search?name=${encodeURIComponent(keyword)}`
     );
-    console.log("url", url);
 
     // 쿼리 파라미터 추가
     // if (category !== undefined) url.searchParams.append("category", category);
