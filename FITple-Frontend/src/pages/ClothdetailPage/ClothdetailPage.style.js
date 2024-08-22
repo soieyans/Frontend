@@ -2,18 +2,19 @@ import styled from "styled-components";
 
 export const Parent1 = styled.div`
   display: flex;
-  position: relative;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
   margin-top: 20px;
   margin-left: 190px;
+  z-index: 1;
 `;
 export const Parent2 = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-left: 280px;
+  z-index: 1;
 `;
 export const Parent3 = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ export const Parent3 = styled.div`
   flex-direction: column;
   margin-left: 80px;
   margin-top: 40px;
+  z-index: 1;
 `;
 export const ProductContainer = styled.div`
   display: flex;
@@ -115,7 +117,7 @@ export const BackIcon = styled.div`
   background: url(assets/back.svg);
   margin-left: 70px;
   margin-top: 20px;
-  z-index: 1;
+  z-index: 1000;
 `;
 
 export const CurrentCloth = styled.div`
@@ -179,7 +181,6 @@ export const DetailboxContainer = styled.div`
   margin-top: 10px;
 `;
 export const Detailbox = styled.div`
-  align-items: center;
   font-size: 25px;
   font-family: "SUIT Variable", sans-serif;
   font-weight: 700;
@@ -190,13 +191,13 @@ export const Detailbox = styled.div`
 
 /*수정하기 삭제하기*/
 export const EditButtons = styled.div`
-  display: ${(props) => (props.isEdit ? "flex" : "none")};
   display: flex;
   position: absolute;
   right: 390px;
   bottom: 330px;
   flex-direction: column;
   justify-content: center;
+  opacity: ${(props) => (props.isEdit ? 1 : 0)};
 `;
 export const EditButton = styled.button`
   padding: 10px 40px;
@@ -217,13 +218,13 @@ export const FullStar = styled.div`
   width: 38px;
   height: 37px;
   background: url(assets/Star8.svg);
-  z-index: 1;
+  z-index: 1000;
 `;
 export const EmptyStar = styled.div`
   width: 38px;
   height: 37px;
   background: url(assets/Star5.svg);
-  z-index: 1;
+  z-index: 1000;
 `;
 
 export const MeasureName = styled.div`
@@ -275,7 +276,7 @@ export const ChangeButton = styled.div`
   top: 450px;
   left: 1280px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 1000;
 `;
 // 하얀찜
 export const EmptyBookmark = styled.div`
@@ -286,7 +287,7 @@ export const EmptyBookmark = styled.div`
   top: 550px;
   left: 1280px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 1000;
 `;
 //파란색찜
 export const FilledBookmark = styled.div`
@@ -297,5 +298,5 @@ export const FilledBookmark = styled.div`
   top: 550px;
   left: 1280px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 1000;
 `;
