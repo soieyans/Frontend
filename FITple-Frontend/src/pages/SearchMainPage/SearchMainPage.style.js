@@ -125,7 +125,6 @@ export const SideBarWrap = styled.div``;
 
 export const ItemListWrap = styled.div`
   width: 1096px;
-  border: 2px solid red;
 `;
 export const Wrap = styled.div`
   display: flex;
@@ -149,9 +148,32 @@ export const BlueText = styled.span`
 `;
 
 export const ItemWrap = styled.div`
-  margin-bottom: 100px;
+  padding-bottom: 100px;
 `;
 export const BrandWrap = styled.div`
-  margin-bottom: 100px;
+  padding-bottom: 100px;
 `;
 export const UserWrap = styled.div``;
+export const RegisterBox = styled.div`
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const RegisterText = styled.p`
+  font-size: 32px;
+  font-weight: 700;
+`;
+
+export const RegisterBTN = styled.button`
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  border-radius: 40px;
+  margin-top: 24px;
+  padding: 15px 50px;
+  background-color: #0276fe;
+  border: none;
+  width: fit-content;
+`;

@@ -21,6 +21,9 @@ import {
   ItemListWrap,
   ItemWrap,
   MainContainer,
+  RegisterBTN,
+  RegisterBox,
+  RegisterText,
   ResultText,
   SearchContainer,
   SearchText,
@@ -38,19 +41,27 @@ import {
   UserWrap,
   Wrap,
 } from "./SearchMainPage.style";
-import React from "react";
+
 import SideBar from "../../components/SideBar/SideBar";
 import ItemList from "../../components/ItemList/ItemList";
 import { searchMain } from "../../../data/SearchMainApi";
 import { searchTotal } from "../../../data/SearchTotalApi";
-import { useState } from "react";
-import { useEffect } from "react";
+import { React, useState, useEffect } from "react";
+import UserList from "../../components/UserList/UserList";
+import BrandCard from "../../components/BrandCard/BrandCard";
+import BrandList from "../../components/BrandList/BrandList";
 
 // 1. 데이터 갯수 확인하기
 
 const SearchMainPage = () => {
   const [dataCount, setDataCount] = useState(0);
   const [itemData, setItemData] = useState([]);
+  // totalData - 이름, 브랜드, 유저 객체형식으로 저장
+  const [totalData, setTotalData] = useState({
+    clothData: [],
+    brandData: [],
+    userData: [],
+  });
   const [category, setCategory] = useState(undefined);
   const [keyword, setKeyword] = useState("");
 
@@ -62,6 +73,7 @@ const SearchMainPage = () => {
   // 데이터 메인 가져오기
   const getData = async () => {
     const response = await searchMain(category, dataCount);
+    console.log("response", response);
     setItemData(response.result.clothData);
   };
 
@@ -69,8 +81,11 @@ const SearchMainPage = () => {
   const getSearchData = async () => {
     const response = await searchTotal(keyword);
     console.log(response);
+    setTotalData(response.result);
+    console.log(response.result.clothData[0]);
   };
 
+  // 개수 불러오기
   useEffect(() => {
     getCount();
   }, [category]);
@@ -81,6 +96,7 @@ const SearchMainPage = () => {
     }
   }, [dataCount, category]);
 
+  // keyword가 ""일때만 API불러오기
   useEffect(() => {
     if (keyword !== "") getSearchData();
   }, [keyword]);
@@ -113,6 +129,7 @@ const SearchMainPage = () => {
         <SearchContainer>
           <SearchText>내 아이템들을 검색해서 등록해보세요!</SearchText>
           <SearchBox
+            keyword={keyword}
             setKeyword={setKeyword}
             src={SearchIconWhite}
             placeholder={"ex) 아디다스 에센셜 풀집 후디"}
@@ -127,30 +144,81 @@ const SearchMainPage = () => {
             <SideBar setCategory={setCategory} />
           </SideBarWrap>
           <ItemListWrap>
-            {/* <ItemList $user data={itemData} /> */}
-            <ItemWrap>
-              <ResultText>
-                <BoldText>제품이름</BoldText> 검색 결과
-                <BlueText> 10건</BlueText>
-              </ResultText>
-              <ItemList />
-            </ItemWrap>
+            {keyword ? (
+              <>
+                {totalData?.clothData[0] ===
+                "해당 제품은 등록되어 있지 않아요." ? (
+                  <ItemWrap>
+                    <ResultText>
+                      <BoldText>제품이름</BoldText> 검색 결과
+                      <BlueText> 0건</BlueText>
+                    </ResultText>
+                    <RegisterBox>
+                      <RegisterText>
+                        해당 제품은 등록되어 있지 않습니다.
+                      </RegisterText>
+                      <RegisterBTN>직접 등록하기</RegisterBTN>
+                    </RegisterBox>
+                  </ItemWrap>
+                ) : (
+                  <ItemWrap>
+                    <ResultText>
+                      <BoldText>제품이름</BoldText> 검색 결과
+                      <BlueText> {totalData.clothData.length}건</BlueText>
+                    </ResultText>
+                    <ItemList $user data={totalData.clothData} />
+                  </ItemWrap>
+                )}
 
-            <BrandWrap>
-              <ResultText>
-                <BoldText>브랜드</BoldText> 검색 결과
-                <BlueText> 1건</BlueText>
-              </ResultText>
-              <ItemList />
-            </BrandWrap>
+                {totalData?.brandData[0] ===
+                "해당 브랜드는 등록되어 있지 않아요." ? (
+                  <BrandWrap>
+                    <ResultText>
+                      <BoldText>브랜드</BoldText> 검색 결과
+                      <BlueText> 0건</BlueText>
+                    </ResultText>
+                    <RegisterBox>
+                      <RegisterText>
+                        해당 브랜드는 등록되어 있지 않습니다.
+                      </RegisterText>
+                      {/* <RegisterBTN>직접 등록하기</RegisterBTN> */}
+                    </RegisterBox>
+                  </BrandWrap>
+                ) : (
+                  <BrandWrap>
+                    <ResultText>
+                      <BoldText>브랜드</BoldText> 검색 결과
+                      <BlueText> {totalData.brandData.length}건</BlueText>
+                    </ResultText>
+                    <BrandList data={totalData.brandData} />
+                  </BrandWrap>
+                )}
 
-            <UserWrap>
-              <ResultText>
-                <BoldText>브랜드</BoldText> 검색 결과
-                <BlueText> 1건</BlueText>
-              </ResultText>
-              <ItemList />
-            </UserWrap>
+                {totalData?.userData[0] ===
+                "해당 유저는 등록되어 있지 않아요." ? (
+                  <UserWrap>
+                    <ResultText>
+                      <BoldText>유저</BoldText> 검색 결과
+                      <BlueText> 0건</BlueText>
+                    </ResultText>
+                    <RegisterBox>
+                      <RegisterText>해당 유저를 찾을 수 없습니다.</RegisterText>
+                      {/* <RegisterBTN>직접 등록하기</RegisterBTN> */}
+                    </RegisterBox>
+                  </UserWrap>
+                ) : (
+                  <UserWrap>
+                    <ResultText>
+                      <BoldText>유저</BoldText> 검색 결과
+                      <BlueText> {totalData.userData.length}건</BlueText>
+                    </ResultText>
+                    <UserList data={totalData.userData} />
+                  </UserWrap>
+                )}
+              </>
+            ) : (
+              <ItemList $user data={itemData} />
+            )}
           </ItemListWrap>
         </Wrap>
       </ItemContainer>
