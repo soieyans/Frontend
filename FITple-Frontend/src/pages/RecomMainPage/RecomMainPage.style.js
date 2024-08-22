@@ -6,9 +6,7 @@ export const Container = styled.div`
     box-sizing:border-box;
     width:100%;
     padding: 0 100px;
-    padding-bottom:124px;
-    cursor: pointer;
-    
+    padding-bottom:124px;    
 
 `
 

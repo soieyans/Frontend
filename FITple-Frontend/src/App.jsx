@@ -65,7 +65,6 @@ function App() {
           <Route path="/profile/edit/repw" element={<ChangepwdPage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
-          <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
           <Route path="/recommendclo" element={<RecomUserCloInfomPage/>}/>
           <Route path="/recommenduser" element={<RecomUserFeedPage />} />
           <Route path="/brand" element={<BrandPage />} />

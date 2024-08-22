@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   UserName,
@@ -11,10 +12,9 @@ import SetUserImg from "/assets/UserImg.svg";
 
 import { useEffect } from "react";
 
-
-function RecomUser({ userId, userName, userProfile, userFit, userStyle, isFollowed }) {
+function RecomUser({ ...props }) {
   // const { fetchUsers } = RecomStore();
-  
+
   // useEffect(() => {
   //   fetchUsers();
   // }, [fetchUsers]);
@@ -26,22 +26,22 @@ function RecomUser({ userId, userName, userProfile, userFit, userStyle, isFollow
   // };
 
   return (
-    <Container to={`/recommenduser`}>
+    <Container to="/recommenduser">
       <UserImg src={SetUserImg} alt="User Image" />
-      <UserName>{userName}</UserName>
-      <UserProfile>{userProfile}</UserProfile>
+      <UserName>{props.userName}</UserName>
+      <UserProfile>{props.userProfile}</UserProfile>
       <UserFit>
         <img src="/assets/Heart.svg" width={16} height={16} alt="Fit" />
-        {userFit}
+        {props.userFit}
       </UserFit>
       <UserStyle>
         <img src="/assets/Hanger.svg" width={16} height={16} alt="Style" />
-        {userStyle}
+        {props.userStyle}
       </UserStyle>
-      <Follow 
-        // isFollowed={isFollowed} 
-        // onClick={handleFollowClick} 
-        // disabled={isFollowed} // isFollowed에 따라 비활성화
+      <Follow
+      // isFollowed={isFollowed}
+      // onClick={handleFollowClick}
+      // disabled={isFollowed} // isFollowed에 따라 비활성화
       >
         팔로잉{/* {isFollowed ? "팔로잉" : "팔로우"} */}
       </Follow>

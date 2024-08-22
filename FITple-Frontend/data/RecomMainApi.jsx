@@ -1,45 +1,38 @@
-// const localhost = "http://localhost:3000";
-
-// export const searchMain = async (category, clothId, size) => {
+// export const RecomMainApi = async () => {
 //   try {
-//     const url = new URL(`${localhost}/FITple/search/main`);
-
-//     // 쿼리 파라미터 추가
-//     if (category !== undefined) url.searchParams.append("category", category);
-//     if (clothId !== undefined) url.searchParams.append("clothId", clothId);
-//     if (size !== undefined) url.searchParams.append("size", size);
-
-//     console.log("url", url);
-//     const response = await fetch(url, {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
+//     const response = await fetch('http://localhost:3000/FITple/my/closet/main', {
+//       method: 'GET',
+//       credentials: 'include', // 쿠키를 포함하여 요청합니다.
 //     });
 
 //     if (!response.ok) {
-//       throw new Error(`서버 오류: ${response.status}`);
+//       throw new Error('Network response was not ok');
 //     }
 
-//     return await response.json();
+//     const data = await response.json(); // 응답을 JSON으로 변환합니다.
+//     console.log(data); // 데이터 출력
+//     return data; // 필요에 따라 데이터를 반환합니다.
 //   } catch (error) {
-//     console.error("검색 요청 중 오류가 발생했습니다.", error);
-//     throw new Error("네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+//     console.error('There has been a problem with your fetch operation:', error);
 //   }
 // };
 
+export const RecomMainApi = async () => {
+  try {
+    const response = await fetch('/TestData/UserTestData.json', { // JSON 파일의 경로를 설정합니다.
+      method: 'GET',
+      credentials: 'include', // 쿠키를 포함하여 요청합니다.
+    });
 
-
-export const test = fetch("/TestData/UserTestData/")
-  .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    return response.json(); // JSON 형식으로 변환
-  })
-  .then(data => {
-    console.log(data); // 가져온 데이터 처리
-  })
-  .catch(error => {
+
+    const data = await response.json(); // 응답을 JSON으로 변환합니다.
+    console.log(data); // 데이터 출력
+    return data; // 필요에 따라 데이터를 반환합니다.
+  } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);
-  });
+  }
+};
+

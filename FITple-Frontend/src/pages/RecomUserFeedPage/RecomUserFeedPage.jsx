@@ -9,14 +9,13 @@ import Infom from "../../components/Infom/Infom";
 import FeedButton from "../../components/FeedButton/FeedButton";
 import FeedNav from "../../components/FeedNav/FeedNav";
 import Closet from "../../components/Closet/Closet";
-import { useParams, useLocation } from "react-router-dom";
 
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import CloIcon from "/assets/ClosetBlue.svg";
 import CloIconEmpty from "/assets/ClosetEmpty.svg";
 import HeartIcon from "/assets/HeartBlue.svg";
 import HeartIconEmpty from "/assets/HeartEmpty.svg";
-import { useState } from "react";
-
 
 const clothesData = [
   {
@@ -73,7 +72,7 @@ const clothesData = [
     name: "운동화",
     size: "270",
     detail: "편안하고 가벼움",
-    type: "원피스",
+    type: "신발",
   },
 ];
 
@@ -98,66 +97,66 @@ const favoriteClothesData = [
 
 function RecomUserFeedPage() {
   const location = useLocation();
-  const user = location.state;
+  const data = location.state;
 
-  const { userId } = useParams();
-  console.log({ userId });
-
-  // 필터링된 의류 데이터를 관리할 상태
-
-
-  // 옷장, 즐찾 의류 데이터
   const [filteredClothes, setFilteredClothes] = useState(clothesData);
+  const [isInCloset, setIsInCloset] = useState(true);
+  const [clothes, setClothes] = useState(clothesData);
+  const [selectedCategory, setSelectedCategory] = useState("전체"); // 선택된 카테고리 상태 추가
 
-  // 옷장, 즐찾 카테고리
-  const [isInCloset, setIsInCloset] = useState(true); // 초기값은 옷장
-
-
-  // 카테고리 클릭 시 필터링 로직
-  const handleCategoryClick = (category) => {
-    const dataToFilter = isInCloset ? clothesData : favoriteClothesData;
-
-    if (category === "전체") {
-      setFilteredClothes(dataToFilter);
+  // 카테고리 변경 시 filteredClothes 업데이트
+  useEffect(() => {
+    if (selectedCategory === "전체") {
+      setFilteredClothes(clothes); // 전체 선택 시 초기 데이터로 설정
     } else {
-      const filtered = dataToFilter.filter((item) => item.type === category);
+      const filtered = clothes.filter((item) => item.type === selectedCategory);
       setFilteredClothes(filtered);
     }
+  }, [selectedCategory, clothes]);
+  // selectedCategory와 clothes가 변경될 때마다 실행
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category); // 카테고리 선택 시 selectedCategory를 업데이트
   };
 
-  // 옷장/즐겨찾기 버튼 클릭 핸들러
-  const handleToggleCloset = () => {
-    setIsInCloset((prev) => !prev);
-    // 상태 변경 후 필터링된 데이터 설정
-    console.log(isInCloset)
-    if (isInCloset==true) {
-      setFilteredClothes(clothesData); // 옷장으로 전환 시 옷장 데이터
+  const handleToggleCloset = (isCloset) => {
+    if (isCloset) {
+      setIsInCloset(true);
+      setClothes(clothesData);
+      setSelectedCategory("전체"); // 카테고리 초기화
     } else {
-      setFilteredClothes(favoriteClothesData); // 즐겨찾기로 전환 시 즐겨찾기 데이터
+      setIsInCloset(false);
+      setClothes(favoriteClothesData);
+      setSelectedCategory("전체"); // 카테고리 초기화
     }
   };
 
   return (
     <Container>
       <InformWrap>
-        <Infom user={user} />
+        <Infom />
       </InformWrap>
 
       <Wrap>
         <IndividualWrap>
-          <FeedButton 
-            icon={isInCloset ? CloIcon : CloIconEmpty} 
-            alt="옷장" 
-            onClick={handleToggleCloset} 
+          <FeedButton
+            icon={isInCloset ? CloIcon : CloIconEmpty}
+            alt="옷장"
+            color={isInCloset ? '#0276FE' : '#838383'}
+            onClick={() => handleToggleCloset(true)}
           />
-          <FeedButton 
-            icon={isInCloset ? HeartIconEmpty : HeartIcon} 
-            alt="즐겨찾는 옷" 
-            onClick={handleToggleCloset} 
+          <FeedButton
+            icon={isInCloset ? HeartIconEmpty : HeartIcon}
+            alt="즐겨찾는 옷"
+            color={isInCloset ? '#838383' : '#0276FE'}
+            onClick={() => handleToggleCloset(false)}
           />
         </IndividualWrap>
         <SubWrap>
-          <FeedNav onCategoryClick={handleCategoryClick} />
+          <FeedNav
+            onCategoryClick={handleCategoryClick}
+            selectedCategory={selectedCategory} // selectedCategory를 props로 전달
+          />
           <Closet clothes={filteredClothes} />
         </SubWrap>
       </Wrap>

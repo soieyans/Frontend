@@ -37,6 +37,7 @@ function LoginPage() {
           setToken(data.result);  // 로그인 성공 시 토큰을 Zustand 스토어에 저장
           console.log('토큰 발급 완료');
           console.log(data.result);
+          console.log(data)
           alert("로그인 성공!");
           navigate('/cloth');
           break;

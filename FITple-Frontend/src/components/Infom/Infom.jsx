@@ -7,7 +7,9 @@ import Follower from "../../components/Follower/Follower";
 import OneLine from "../../components/OneLine/OneLine";
 import FollowButton from "../../components/FollowButton/FollowButton";
 
-function Infom({ showFollowButton = true }) {
+function Infom(showFollowButton={showFollowButton}) {
+
+
   return (
     <Container>
       <Wrap>

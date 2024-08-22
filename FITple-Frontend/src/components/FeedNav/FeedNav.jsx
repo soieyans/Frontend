@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Container, Items, UnderLine } from "./FeedNav.style";
-
-function FeedNav({ onCategoryClick }) {
+function FeedNav({ onCategoryClick, selectedCategory }) {
   const categories = ["전체", "아우터", "상의", "바지", "스커트", "원피스", "신발"];
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]); // 초기값은 "전체"
 
   const handleClick = (category) => {
-    setSelectedCategory(category); 
-    onCategoryClick(category); 
+    onCategoryClick(category);
   };
 
   return (
@@ -28,5 +25,4 @@ function FeedNav({ onCategoryClick }) {
     </Container>
   );
 }
-
 export default FeedNav;
