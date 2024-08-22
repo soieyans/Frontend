@@ -51,15 +51,31 @@ export const MenuBox = styled.div`
 `;
 
 export const MenuItem = styled(Link)`
-  color: black;
+  color: ${(props) => (props.$active ? "#0276fe" : "black")};
   cursor: pointer;
   text-decoration: none;
+  font-weight: ${(props) => (props.$active ? "800" : "700")};
+  transform: ${(props) => (props.$active ? "scale(1.2)" : "none")};
   &:hover {
     transform: scale(1.2);
     color: ${(props) => (props.$blue ? "white" : "#0276fe")};
     font-weight: 800;
   }
 `;
+
+export const MenuItemWhite = styled(Link)`
+  color: ${(props) => (props.$active ? "#FFFFFF" : "black")};
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: ${(props) => (props.$active ? "800" : "700")};
+  transform: ${(props) => (props.$active ? "scale(1.2)" : "none")};
+  &:hover {
+    transform: scale(1.2);
+    color: ${(props) => (props.$blue ? "white" : "#0276fe")};
+    font-weight: 800;
+  }
+`;
+
 export const SearchContainer = styled.div`
   display: ${(props) => (props.$login ? "flex" : "none")};
   align-items: center;
