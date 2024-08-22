@@ -58,7 +58,7 @@ function App() {
         {/* Navbar 있는 layout */}
         <Route element={<Layout />}>
           <Route path="/cloth" element={<ClothmainPage />} />
-          <Route path="/clothdetail" element={<ClothdetailPage />} />
+          <Route path="/clothdetail/:clothId" element={<ClothdetailPage />} />
           <Route path="/clothupdate" element={<ClothupdatePage />} />
           {/* 프로필페이지 */}
           <Route path="/profile" element={<ProfilePage />} />
