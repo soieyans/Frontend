@@ -8,16 +8,33 @@ import {
   ShowAll,
   RecomUserWrap,
 } from "./RecomMainPage.style";
-import RecomStore from "../../../data/store"; 
+
+
+//api 연결 하는 중 
+import RecomStore from "../../../data/store/store"; 
+import {RecomMainApi} from "../../../data/RecomMainApi";
+import UserData from "../../../public/TestData/UserTestData.json";
+
 
 
 
 function RecomMainPage() {
   const { userData, fetchUsers } = RecomStore(); // 스토어에서 필요한 데이터 가져오기
 
+  
   useEffect(() => {
     fetchUsers(); 
   }, [fetchUsers]);
+  
+  // const handleUser = async (category, clothId, size) => {
+  //   try{
+  //     const response =await RecomMainApi(category, clothId, size);
+  //     const data = await response.json();
+  //     console.log(data);
+  //   }catch (error){
+  //     alert(error.message);
+  //   }
+  // }
 
   //팔로우 안한 사람들만
   const bodyTypeUsers = userData.filter(user => !user.isFollowed);

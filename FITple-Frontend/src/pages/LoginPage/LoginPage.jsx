@@ -18,9 +18,9 @@ function LoginPage() {
   const [loginPw, setLoginPw] = useState("");
   const [isButtonActive, setIsButtonActive] = useState(false);
   const navigate = useNavigate();
-
-
+  
   const setToken = useAuthStore((state) => state.setToken); // Zustand 스토어에서 토큰 설정
+
   useEffect(() => {
     setIsButtonActive(!!(loginId && loginPw));
   }, [loginId, loginPw]);
@@ -31,7 +31,6 @@ function LoginPage() {
     try {
       const response = await login(loginId, loginPw);
       const data = await response.json();  // 응답 데이터를 JSON으로 파싱
-      console.log(response)
 
       switch (response.status) {
         case 200:
