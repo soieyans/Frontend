@@ -5,14 +5,23 @@ import UserItem from "../UserItem/UserItem";
 const ItemList = ({ ...props }) => {
   return (
     <Container>
-      <UserItem {...props} />
-      <UserItem {...props} />
-      <UserItem {...props} />
-      <UserItem {...props} />
-      <UserItem {...props} />
-      <UserItem {...props} />
-      <UserItem {...props} />
-      <UserItem {...props} />
+      {props.data ? (
+        props.data.map((item, index) => (
+          <UserItem {...props} key={index} item={item} />
+        ))
+      ) : (
+        <>
+          {/* profile을 위한 더미데이터 */}
+          <UserItem {...props} />
+          <UserItem {...props} />
+          <UserItem {...props} />
+          <UserItem {...props} />
+          <UserItem {...props} />
+          <UserItem {...props} />
+          <UserItem {...props} />
+          <UserItem {...props} />
+        </>
+      )}
     </Container>
   );
 };
