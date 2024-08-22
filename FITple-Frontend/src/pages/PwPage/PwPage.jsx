@@ -1,5 +1,6 @@
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../../../assets/Logo.svg";
-import { useNavigate } from "react-router-dom";
 import {
     PwPageWrapper,
     MainText,
@@ -12,6 +13,8 @@ import {
 
 function PwPage() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { id, name, email } = location.state || {}; 
 
     const handleRePwClick = () => {
         navigate('/repw');
@@ -23,16 +26,16 @@ function PwPage() {
             <MainText>FITple</MainText>
             <FormWrapper>
                 <TextWrapper $isLast={false}>
-                    <LabelText>이름</LabelText>
-                    <InfoText>핏플</InfoText>
+                    <LabelText>닉네임</LabelText>
+                    <InfoText>{name || "닉네임 받아오는 중"}</InfoText>
                 </TextWrapper>
                 <TextWrapper $isLast={false}>
                     <LabelText>이메일</LabelText>
-                    <InfoText>fitple@gmail.com</InfoText>
+                    <InfoText>{email || "이메일 받아오는 중"}</InfoText>
                 </TextWrapper>
                 <TextWrapper $isLast={true}>
                     <LabelText>아이디</LabelText>
-                    <InfoText>fitple</InfoText>
+                    <InfoText>{id || "아이디 받아오는 중"}</InfoText>
                 </TextWrapper>
                 <Button $isActive={true} onClick={handleRePwClick}>비밀번호 재설정</Button>
             </FormWrapper>
