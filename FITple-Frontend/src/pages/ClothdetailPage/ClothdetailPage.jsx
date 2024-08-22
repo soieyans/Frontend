@@ -231,6 +231,7 @@ function ClothdetailPage() {
         ) : (
           <EmptyBookmark onClick={handleBookmark} />
         )}
+
         <Link to="/cloth">
           <BackIcon />
         </Link>
@@ -263,7 +264,7 @@ function ClothdetailPage() {
               <Clothdebar />
               <Clothdebar />
               {isEdit && (
-                <EditButtons isEdit={isEdit}>
+                <EditButtons $isEdit={isEdit}>
                   <Link to="/clothupdate">
                     <EditButton>옷 정보 수정하기</EditButton>
                   </Link>
@@ -277,7 +278,10 @@ function ClothdetailPage() {
                   isOpen={isDeletePopupOpen}
                   onRequestClose={() => setisDeletePopupOpen(false)}
                   style={{
-                    overlay: { backgroundColor: "rgba(81, 78, 78, 0.162)" },
+                    overlay: {
+                      backgroundColor: "rgba(81, 78, 78, 0.162)",
+                      zIndex: 1000,
+                    },
                     content: {
                       border: "none",
                       backgroundColor: "transparent",

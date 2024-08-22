@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Parent1 = styled.div`
   display: flex;
+  position: relative;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
@@ -114,6 +115,7 @@ export const BackIcon = styled.div`
   background: url(assets/back.svg);
   margin-left: 70px;
   margin-top: 20px;
+  z-index: 1;
 `;
 
 export const CurrentCloth = styled.div`
@@ -177,6 +179,7 @@ export const DetailboxContainer = styled.div`
   margin-top: 10px;
 `;
 export const Detailbox = styled.div`
+  align-items: center;
   font-size: 25px;
   font-family: "SUIT Variable", sans-serif;
   font-weight: 700;
@@ -187,14 +190,13 @@ export const Detailbox = styled.div`
 
 /*수정하기 삭제하기*/
 export const EditButtons = styled.div`
+  display: ${(props) => (props.isEdit ? "flex" : "none")};
   display: flex;
   position: absolute;
   right: 390px;
   bottom: 330px;
   flex-direction: column;
   justify-content: center;
-  opacity: ${(props) => (props.isEdit ? 1 : 0)};
-  transition: opacity 0.2s ease-in-out;
 `;
 export const EditButton = styled.button`
   padding: 10px 40px;

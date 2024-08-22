@@ -32,7 +32,8 @@ import LayoutMain from "./layout/LayoutMain";
 import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
 import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import SearchTotalPage from "./pages/SearchTotalPage/SearchTotalPage";
+import Modal from "react-modal";
+Modal.setAppElement("#root"); // 모달이 root에 렌더링 되도록 설정
 function App() {
   return (
     <>
