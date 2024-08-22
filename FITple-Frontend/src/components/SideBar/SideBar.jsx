@@ -22,7 +22,7 @@ const SideBar = ({ onCategoryClick }) => {
 
   return (
     <SideBarContainer>
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <Menu
           key={category.id} // id를 key로 사용
           selected={selectedCategoryId === category.id} // ID로 선택 여부 판단
