@@ -1,14 +1,14 @@
 import React from "react";
 import { Container, SearchIconBox, SearchInputBox } from "./SearchBox.style";
 import { useNavigate } from "react-router-dom";
-const SearchBox = ({ setKeyword, src, placeholder, ...props }) => {
+const SearchBox = ({ keyword, setKeyword, src, placeholder, ...props }) => {
   const navigate = useNavigate();
   // enter 눌렀을 때
   const activeEnter = (e) => {
     if (e.key === "Enter") {
       console.log("hi", e.target.value);
       setKeyword(e.target.value);
-      navigate(`/search?keyword=1`);
+      navigate(`/search?keyword=${e.target.value}`);
     }
   };
   return (
