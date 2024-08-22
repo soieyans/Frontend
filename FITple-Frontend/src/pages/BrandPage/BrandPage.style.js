@@ -75,7 +75,6 @@ export const ItemWrap = styled.div`
 `;
 
 export const NonWrap = styled.div`
-  border: 1px solid red;
   padding: 152px 0;
   width: 1096px;
   display: flex;
