@@ -9,6 +9,7 @@ export const ItemImg = styled.img`
   height: 250px;
   border-radius: 20px;
   margin-bottom: 8px;
+  box-shadow: 8px 8px 20px 0px #c9c7c730;
 `;
 
 export const UserInfo = styled.div`

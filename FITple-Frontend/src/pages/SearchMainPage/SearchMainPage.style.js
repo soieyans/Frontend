@@ -58,7 +58,7 @@ export const SearchText = styled.div`
 `;
 export const ItemContainer = styled.div`
   box-sizing: border-box;
-  padding: 50px 114px;
+  padding-top: 40px;
   width: 100%;
 `;
 
@@ -121,14 +121,16 @@ export const StartRedIconImg = styled.img`
   right: 190px;
   top: 255px;
 `;
-export const SideBarWrap = styled.div``;
+export const SideBarWrap = styled.div`
+  margin-right: 110px;
+`;
 
 export const ItemListWrap = styled.div`
   width: 1096px;
 `;
 export const Wrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 `;
 
