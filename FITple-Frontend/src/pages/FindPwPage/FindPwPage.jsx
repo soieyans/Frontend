@@ -30,6 +30,10 @@ function FindPwPage() {
         navigate('/findpw/showpw');
     }
 
+    const handleLoginClick = () => {
+        navigate('/login');
+    }
+
     return (
         <FindPwPageWrapper>
         <img src={logo} width="50px" alt="FITple Logo" />
@@ -59,7 +63,7 @@ function FindPwPage() {
             <SubmitButton isActive={isButtonActive} onClick={handlePwFindClick}>비밀번호 찾기</SubmitButton>
         </FormWrapper>
         <OptionWrapper>
-            <OptionButton>로그인 화면으로 돌아가기</OptionButton>
+            <OptionButton onClick={handleLoginClick}>로그인 화면으로 돌아가기</OptionButton>
         </OptionWrapper>
         </FindPwPageWrapper>
     );

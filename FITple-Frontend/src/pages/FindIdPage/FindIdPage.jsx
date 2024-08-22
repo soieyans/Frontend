@@ -34,6 +34,14 @@ function FindIdPage() {
         }
     };
 
+    const handleLoginClick = () => {
+        navigate('/login');
+    };
+
+    const handlePwFindClick = () => {
+        navigate('/findpw');
+    };
+
     return (
         <FindIdPageWrapper>
             <img src={logo} width="50px" alt="FITple Logo" />
@@ -56,8 +64,8 @@ function FindIdPage() {
                 <SubmitButton isActive={isButtonActive} onClick={handleIdFindClick}>ID 찾기</SubmitButton>
             </FormWrapper>
             <OptionWrapper>
-                <OptionButton>로그인 화면으로 돌아가기</OptionButton>
-                <OptionButton>비밀번호 찾기</OptionButton>
+                <OptionButton onClick={handleLoginClick}>로그인 화면으로 돌아가기</OptionButton>
+                <OptionButton onClick={handlePwFindClick}>비밀번호 찾기</OptionButton>
             </OptionWrapper>
         </FindIdPageWrapper>
     );
