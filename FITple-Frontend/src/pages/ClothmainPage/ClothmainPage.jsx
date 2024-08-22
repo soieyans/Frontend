@@ -26,25 +26,43 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 
+const localhost = "http://localhost:3000";
+
 const ClothmainPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [isEdit, setIsEdit] = useState({});
   const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
 
+  useEffect(() => {
+    fetchClothData();
+  }, []);
+
   // Fetch data from the API
-  const fetchClothData = async () => {
+  const fetchClothData = async (category, cursorId, size) => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/FITple/my/closet/main?`,
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const url = new URL(`${localhost}/FITple/my/closet/main`);
+
+      // 쿼리 파라미터 추가
+      if (category) url.searchParams.append("category", category);
+      if (cursorId) url.searchParams.append("cursorId", cursorId);
+      if (size) url.searchParams.append("size", size);
+
+      const response = await fetch(url, {
+        method: "GET",
+        credentials: "include",
+      });
 
       if (response.ok) {
         const data = await response.json();
-        setFilteredData(data);
+        console.log(data);
+
+        // 'data.result.clothData'로 접근하여 데이터를 설정
+        if (data.result && Array.isArray(data.result.clothData)) {
+          setFilteredData(data.result.clothData);
+        } else {
+          console.error("Unexpected response format:", data.result.clothData);
+          setFilteredData([]); // 데이터가 배열이 아닌 경우, 빈 배열로 설정
+        }
       } else {
         console.error("Failed to fetch cloth data:", response.statusText);
       }
@@ -53,14 +71,10 @@ const ClothmainPage = () => {
     }
   };
 
-  useEffect(() => {
-    fetchClothData();
-  }, []);
-
   const toggleEdit = (clothId) => {
     setIsEdit((prev) => ({
       ...prev,
-      [clothId]: !prev[clothId],
+      [clothId]: !prev[clothId], // 현재 clothId의 값을 반전시킴
     }));
   };
 
@@ -85,10 +99,12 @@ const ClothmainPage = () => {
           {filteredData.map((item) => (
             <ProductItem key={item.cloth_id}>
               <Imgcontainer>
-                <ProductImage
-                  image={`../../assets/${item.type}_${item.cloth_id}.jpg`}
-                />
-                {item.likes > 0 && <FilledHeart />}
+                <Link to={`/clothdetail/${item.cloth_id}`}>
+                  <ProductImage
+                    image={`../../assets/${item.cloth_id}.jpg`} // 수정된 경로
+                  />
+                  {item.likes > 0 && <FilledHeart />}
+                </Link>
               </Imgcontainer>
 
               <ProductBrand>{item.brand}</ProductBrand>
@@ -96,6 +112,7 @@ const ClothmainPage = () => {
                 <Clothdebar />
                 <Clothdebar />
                 <Clothdebar />
+                {/* isEdit 상태를 활용해 Edit 버튼을 보여줌 */}
                 {isEdit[item.cloth_id] && (
                   <EditButtons>
                     <Link to="/clothupdate">
