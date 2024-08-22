@@ -11,6 +11,7 @@ export const Container = styled.div`
   border: 1px solid #d9d9d9;
   box-shadow: 8px 8px 20px rgba(201, 199, 199, 0.19);
   background-color: #fff;
+  cursor: pointer;
 `;
 export const Wrap = styled.div`
   display: flex;
