@@ -12,75 +12,70 @@ import {
   EditBTN,
 } from "../../pages/UserInfoPage/UserInfoPage.style";
 
-function UserBodyInfo({ ...props }) {
-  return (
-    <InfoContainer {...props}>
-      {/* 컴포넌트 작업을 위해서 div하나 추가 */}
-      <MainBox {...props}>
-        <MainText>체형 정보</MainText>
-        <EditBTN {...props}>수정</EditBTN>
-      </MainBox>
-
-      <BodyInfoContainer>
-        <InputSet>
-          <SubText>키</SubText>
-          <BodyInputWrapper>
-            <BodyInputBox placeholder="" />
-            <UnitText>cm</UnitText>
-          </BodyInputWrapper>
-        </InputSet>
-        <InputSet>
-          <SubText>몸무게</SubText>
-          <BodyInputWrapper>
-            <BodyInputBox placeholder="" />
-            <UnitText>kg</UnitText>
-          </BodyInputWrapper>
-        </InputSet>
-        <InputSet>
-          <SubText>어깨 너비</SubText>
-          <BodyInputWrapper>
-            <BodyInputBox placeholder="" />
-            <UnitText>cm</UnitText>
-          </BodyInputWrapper>
-        </InputSet>
-        <InputSet>
-          <SubText>가슴둘레</SubText>
-          <BodyInputWrapper>
-            <BodyInputBox placeholder="" />
-            <UnitText>cm</UnitText>
-          </BodyInputWrapper>
-        </InputSet>
-        <InputSet>
-          <SubText>팔 길이</SubText>
-          <BodyInputWrapper>
-            <BodyInputBox placeholder="" />
-            <UnitText>cm</UnitText>
-          </BodyInputWrapper>
-        </InputSet>
-        <InputSet>
-          <SubText>허리 둘레</SubText>
-          <BodyInputWrapper>
-            <BodyInputBox placeholder="" />
-            <UnitText>cm</UnitText>
-          </BodyInputWrapper>
-        </InputSet>
-        <InputSet>
-          <SubText>허벅지 둘레</SubText>
-          <BodyInputWrapper>
-            <BodyInputBox placeholder="" />
-            <UnitText>cm</UnitText>
-          </BodyInputWrapper>
-        </InputSet>
-        <InputSet>
-          <SubText>엉덩이 둘레</SubText>
-          <BodyInputWrapper>
-            <BodyInputBox placeholder="" />
-            <UnitText>cm</UnitText>
-          </BodyInputWrapper>
-        </InputSet>
-      </BodyInfoContainer>
-    </InfoContainer>
-  );
+function UserBodyInfo({ handleBodyInfoChange }) {
+    return (
+        <InfoContainer>
+            <MainText>체형 정보</MainText>
+            <BodyInfoContainer>
+                <InputSet>
+                    <SubText>키</SubText>
+                    <BodyInputWrapper>
+                        <BodyInputBox name="height" onChange={handleBodyInfoChange} />
+                        <UnitText>cm</UnitText>
+                    </BodyInputWrapper>
+                </InputSet>
+                <InputSet>
+                    <SubText>몸무게</SubText>
+                    <BodyInputWrapper>
+                        <BodyInputBox name="weight" onChange={handleBodyInfoChange} />
+                        <UnitText>kg</UnitText>
+                    </BodyInputWrapper>
+                </InputSet>
+                <InputSet>
+                    <SubText>어깨너비</SubText>
+                    <BodyInputWrapper>
+                        <BodyInputBox name="shoulder_width" onChange={handleBodyInfoChange} />
+                        <UnitText>cm</UnitText>
+                    </BodyInputWrapper>
+                </InputSet>
+                <InputSet>
+                    <SubText>가슴둘레</SubText>
+                    <BodyInputWrapper>
+                        <BodyInputBox name="chest_circumference" onChange={handleBodyInfoChange} />
+                        <UnitText>cm</UnitText>
+                    </BodyInputWrapper>
+                </InputSet>
+                <InputSet>
+                    <SubText>팔길이</SubText>
+                    <BodyInputWrapper>
+                        <BodyInputBox name="arm_length" onChange={handleBodyInfoChange} />
+                        <UnitText>cm</UnitText>
+                    </BodyInputWrapper>
+                </InputSet>
+                <InputSet>
+                    <SubText>허리둘레</SubText>
+                    <BodyInputWrapper>
+                        <BodyInputBox name="waist_circumference" onChange={handleBodyInfoChange} />
+                        <UnitText>cm</UnitText>
+                    </BodyInputWrapper>
+                </InputSet>
+                <InputSet>
+                    <SubText>허벅지둘레</SubText>
+                    <BodyInputWrapper>
+                        <BodyInputBox name="thigh_circumference" onChange={handleBodyInfoChange} />
+                        <UnitText>cm</UnitText>
+                    </BodyInputWrapper>
+                </InputSet>
+                <InputSet>
+                    <SubText>엉덩이둘레</SubText>
+                    <BodyInputWrapper>
+                        <BodyInputBox name="hip_circumference" onChange={handleBodyInfoChange} />
+                        <UnitText>cm</UnitText>
+                    </BodyInputWrapper>
+                </InputSet>
+            </BodyInfoContainer>
+        </InfoContainer>
+    );
 }
 
 export default UserBodyInfo;
