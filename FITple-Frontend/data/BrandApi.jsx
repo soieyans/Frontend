@@ -1,21 +1,16 @@
 const localhost = "http://localhost:3000";
 
-export const searchTotal = async (keyword, category, cursorId, size) => {
+export const BrandApi = async (id, category, cursorId, size) => {
   try {
-    const url = new URL(
-      `${localhost}/FITple/search?name=${encodeURIComponent(keyword)}`
-    );
+    const url = new URL(`${localhost}/FITple/search/brand/${id}`);
 
     // 쿼리 파라미터 추가
-    // if (category !== undefined) url.searchParams.append("category", category);
-    // if (cursorId !== undefined) url.searchParams.append("cursorId", cursorId);
-    // if (size !== undefined) url.searchParams.append("size", size);
+    if (category !== undefined) url.searchParams.append("category", category);
+    if (cursorId !== undefined) url.searchParams.append("cursorId", cursorId);
+    if (size !== undefined) url.searchParams.append("size", size);
 
     const response = await fetch(url, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
 
     if (!response.ok) {

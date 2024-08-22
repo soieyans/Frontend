@@ -6,7 +6,6 @@ const SearchBox = ({ keyword, setKeyword, src, placeholder, ...props }) => {
   // enter 눌렀을 때
   const activeEnter = (e) => {
     if (e.key === "Enter") {
-      console.log("hi", e.target.value);
       setKeyword(e.target.value);
       navigate(`/search?keyword=${e.target.value}`);
     }

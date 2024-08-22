@@ -54,7 +54,6 @@ import BrandList from "../../components/BrandList/BrandList";
 // 1. 데이터 갯수 확인하기
 
 const SearchMainPage = () => {
-  const [dataCount, setDataCount] = useState(0);
   const [itemData, setItemData] = useState([]);
   // totalData - 이름, 브랜드, 유저 객체형식으로 저장
   const [totalData, setTotalData] = useState({
@@ -65,15 +64,10 @@ const SearchMainPage = () => {
   const [category, setCategory] = useState(undefined);
   const [keyword, setKeyword] = useState("");
 
-  // API 문제로 데이터 개수 가져오기
-  const getCount = async () => {
-    const response = await searchMain();
-    setDataCount(response.result.clothData[0].cloth_id + 1);
-  };
   // 데이터 메인 가져오기
   const getData = async () => {
-    const response = await searchMain(category, dataCount);
-    console.log("response", response);
+    const response = await searchMain(category);
+    console.log("확인용", response);
     setItemData(response.result.clothData);
   };
 
@@ -82,19 +76,19 @@ const SearchMainPage = () => {
     const response = await searchTotal(keyword);
     console.log(response);
     setTotalData(response.result);
-    console.log(response.result.clothData[0]);
   };
 
-  // 개수 불러오기
+  // 젤처음 데이터 불러오기
   useEffect(() => {
-    getCount();
+    getData();
+    console.log("category", category);
   }, [category]);
 
-  useEffect(() => {
-    if (dataCount > 0) {
-      getData();
-    }
-  }, [dataCount, category]);
+  // useEffect(() => {
+  //   if (dataCount > 0) {
+  //     getData();
+  //   }
+  // }, [dataCount, ]);
 
   // keyword가 ""일때만 API불러오기
   useEffect(() => {

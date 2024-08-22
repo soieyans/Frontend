@@ -54,12 +54,12 @@ function App() {
           <Route path="/findpw" element={<FindPwPage />} />
           <Route path="/findpw/showpw" element={<PwPage />} />
           <Route path="/repw" element={<RePwPage />} />
-          <Route path="/clothregister" element={<ClothregisterPage />} />
         </Route>
         {/* Navbar 있는 layout */}
         <Route element={<Layout />}>
           <Route path="/cloth" element={<ClothmainPage />} />
           <Route path="/clothdetail/:clothId" element={<ClothdetailPage />} />
+          <Route path="/clothregister" element={<ClothregisterPage />} />
           <Route path="/clothupdate" element={<ClothupdatePage />} />
           {/* 프로필페이지 */}
           <Route path="/profile" element={<ProfilePage />} />
@@ -69,7 +69,7 @@ function App() {
           <Route path="/recommendall" element={<RecomAllPage />} />
           <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
           <Route path="/recommenduser" element={<RecomUserCloInfomPage />} />
-          <Route path="/brand" element={<BrandPage />} />
+          <Route path="/brand/:id" element={<BrandPage />} />
           <Route
             path="/recommendUserSearch"
             element={<RecomUserSearchPage />}
