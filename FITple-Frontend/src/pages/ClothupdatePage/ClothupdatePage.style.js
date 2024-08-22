@@ -47,7 +47,7 @@ export const ProductDeImage = styled.img`
   border-color: gray;
   border-radius: 10px;
   background-color: #efefef;
-
+  background-image: url();
   background-position: center;
   background-size: cover;
 `;
@@ -229,13 +229,13 @@ export const CurvedRectangle3 = styled.div`
   height: 20px;
   border: 1px solid #efefef;
   border-radius: 16px;
-  padding: 15px;
+  padding: 10px;
   margin-top: 20px;
   margin-left: 10px;
   margin-right: 10px;
   background-color: #efefef;
 `;
-export const MeasureArea = styled.input`
+export const MeasureArea = styled.textarea`
   width: 100%;
   height: 100%;
   resize: none;
@@ -245,9 +245,8 @@ export const MeasureArea = styled.input`
   font-size: 15px;
   font-weight: bold;
   background-color: transparent;
-  padding: 5px;
-  text-align: center; /* 텍스트 중앙 정렬 */
-  box-sizing: border-box; /* 패딩을 포함한 크기 계산 */
+  margin-left: 130px;
+  margin-right: 20px;
 `;
 export const StyledButton = styled.button`
   width: 500px;

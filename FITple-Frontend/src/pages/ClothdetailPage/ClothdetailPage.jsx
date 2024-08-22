@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useParams, Link } from "react-router-dom";
 import Modal from "react-modal";
-import { deleteCloth } from "../../../data/DeleteApi";
 import {
   BackIcon,
   CurrentCloth,
@@ -45,7 +43,6 @@ import CompareResult from "../../components/CompareResult/CompareResult";
 import useAuthStore from "../../../data/store/userAuthStore"; // 토큰을 가져오기 위해 zustand의 store import
 
 function ClothdetailPage() {
-  const navigate = useNavigate();
   const { clothId } = useParams(); // URL에서 clothId 가져오기
   const [clothData, setClothData] = useState(null); // 가져온 데이터를 저장할 상태
   const [note, setNote] = useState("");
@@ -91,21 +88,7 @@ function ClothdetailPage() {
 
     fetchClothDetail();
   }, [clothId, token]); // clothId 또는 token이 변경될 때마다 데이터를 다시 가져옴
-  const handleDeleteCloth = async () => {
-    try {
-      // 옷 정보 삭제 API 호출
-      await deleteCloth(clothId);
 
-      // 삭제 성공 시 알림 표시 및 메인 페이지로 이동
-      alert("옷 정보가 삭제되었습니다.");
-      navigate("/cloth"); // 삭제 후 메인 페이지로 이동
-    } catch (error) {
-      // 에러 처리
-      alert("옷 정보 삭제에 실패했습니다. 다시 시도해주세요.");
-    } finally {
-      setisDeletePopupOpen(false); // 팝업 닫기
-    }
-  };
   useEffect(() => {
     // 팝업이 열릴 때에도 기본 UI 요소가 사라지지 않도록 관리
     if (popupOpen) {
@@ -117,6 +100,10 @@ function ClothdetailPage() {
 
   const toggleEdit = () => {
     setIsEdit(!isEdit);
+  };
+
+  const handleDeleteCloth = () => {
+    setisDeletePopupOpen(!isDeletePopupOpen);
   };
 
   const handleInputchange = (e) => {
@@ -277,13 +264,9 @@ function ClothdetailPage() {
               <Clothdebar />
               {isEdit && (
                 <EditButtons isEdit={isEdit}>
-                  <Link
-                    to={`/clothupdate/${clothData.cloth_id}`}
-                    state={{ clothData }} // state는 이렇게 전달합니다.
-                  >
+                  <Link to="/clothupdate">
                     <EditButton>옷 정보 수정하기</EditButton>
                   </Link>
-
                   <EditButton onClick={handleDeleteCloth}>
                     옷 정보 삭제하기
                   </EditButton>
