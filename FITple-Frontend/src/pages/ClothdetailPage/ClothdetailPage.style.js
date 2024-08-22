@@ -215,11 +215,13 @@ export const FullStar = styled.div`
   width: 38px;
   height: 37px;
   background: url(assets/Star8.svg);
+  z-index: 1;
 `;
 export const EmptyStar = styled.div`
   width: 38px;
   height: 37px;
   background: url(assets/Star5.svg);
+  z-index: 1;
 `;
 
 export const MeasureName = styled.div`
@@ -271,6 +273,7 @@ export const ChangeButton = styled.div`
   top: 450px;
   left: 1280px;
   cursor: pointer;
+  z-index: 1;
 `;
 // 하얀찜
 export const EmptyBookmark = styled.div`
@@ -281,6 +284,7 @@ export const EmptyBookmark = styled.div`
   top: 550px;
   left: 1280px;
   cursor: pointer;
+  z-index: 1;
 `;
 //파란색찜
 export const FilledBookmark = styled.div`
@@ -291,4 +295,5 @@ export const FilledBookmark = styled.div`
   top: 550px;
   left: 1280px;
   cursor: pointer;
+  z-index: 1;
 `;

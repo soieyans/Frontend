@@ -83,7 +83,7 @@ export const BrandNameContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 30px;
 `;
 
 export const Brandname = styled.div`

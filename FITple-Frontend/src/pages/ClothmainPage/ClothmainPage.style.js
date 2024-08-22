@@ -38,15 +38,14 @@ export const ProductBrand = styled.div`
 
 export const ProductImage = styled.img`
   width: 200px;
-  height: 200px; /* 이미지 높이 설정 */
+  height: 200px;
   border-radius: 20px;
   border-color: gray;
   background-color: #d9d9d9;
-  background-image: url(); /* 이미지 URL 설정 */
-  background-position: center; /* 이미지 위치 설정 */
-  background-size: cover; /* 이미지 크기 설정 */
-  margin-bottom: 10px; /* 하단 여백 */
+  object-fit: cover;
+  margin-bottom: 10px;
 `;
+
 export const Imgcontainer = styled.div`
   display: flex;
   position: relative;
