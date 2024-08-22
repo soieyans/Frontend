@@ -31,8 +31,6 @@ export const ProfileImageWrapper = styled.div`
     justify-content: center;
     align-items: center;
     // border: 2px solid #0276FE;
-    margin-bottom: 0px;
-    margin-top: 40px;
 `;
 
 export const ProfileImage = styled.img`
@@ -45,6 +43,7 @@ export const MainText = styled.p`
   font-size: 28px;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 40px;
 `;
 
 export const EditBTN = styled.button`

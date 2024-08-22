@@ -24,6 +24,36 @@ function UserInfoBasic({
         }
     };
 
+    // 핏 버튼 클릭 핸들러
+    handleFitClick = (fit) => {
+        setSelectedFits(prevSelectedFits => {
+            if (prevSelectedFits.includes(fit)) {
+                return prevSelectedFits.filter(selectedFit => selectedFit !== fit);
+            } else {
+                // 최대 2개까지 선택 가능
+                if (prevSelectedFits.length >= 2) {
+                    return [...prevSelectedFits.slice(1), fit]; // 가장 오래된 항목 제거 후 새 항목 추가
+                }
+                return [...prevSelectedFits, fit];
+            }
+        });
+    };
+
+    // 스타일 버튼 클릭 핸들러
+    handleStyleClick = (style) => {
+        setSelectedStyles(prevSelectedStyles => {
+            if (prevSelectedStyles.includes(style)) {
+                return prevSelectedStyles.filter(selectedStyle => selectedStyle !== style);
+            } else {
+                // 최대 2개까지 선택 가능
+                if (prevSelectedStyles.length >= 2) {
+                    return [...prevSelectedStyles.slice(1), style]; // 가장 오래된 항목 제거 후 새 항목 추가
+                }
+                return [...prevSelectedStyles, style];
+            }
+        });
+    };
+
     return (
         <InfoContainer>
             <MainText>기본 정보</MainText>
@@ -48,13 +78,19 @@ function UserInfoBasic({
                     {errorMessage && <SubText style={{ color: 'red' }}>{errorMessage}</SubText>}
                     <SubText>성별</SubText>
                     <GenderWrapper>
-                      <GenderButton isSelected={selectedGender === 0} onClick={() => setSelectedGender(0)}>남성</GenderButton>
-                      <GenderButton isSelected={selectedGender === 1} onClick={() => setSelectedGender(1)}>여성</GenderButton>
+                        <GenderButton isSelected={selectedGender === 0} onClick={() => setSelectedGender(0)}>남성</GenderButton>
+                        <GenderButton isSelected={selectedGender === 1} onClick={() => setSelectedGender(1)}>여성</GenderButton>
                     </GenderWrapper>
                     <SubText>선호 핏</SubText>
                     <FitWrapper>
                         {fits.map((fit) => (
-                            <FitButton key={fit} isSelected={selectedFits.includes(fit)} onClick={() => handleFitClick(fit)}>{fit}</FitButton>
+                            <FitButton
+                                key={fit}
+                                isSelected={selectedFits.includes(fit)}
+                                onClick={() => handleFitClick(fit)}
+                            >
+                                {fit}
+                            </FitButton>
                         ))}
                     </FitWrapper>
                     <SubText>선호 스타일</SubText>
