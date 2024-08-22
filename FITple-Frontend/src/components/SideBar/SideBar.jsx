@@ -1,33 +1,34 @@
 import { Menu, SideBarContainer } from "./SideBar.style";
 import { useState } from "react";
 
+// 카테고리 이름과 ID를 매핑
 const categories = [
-  "전체",
-  "아우터",
-  "상의",
-  "바지",
-  "스커트",
-  "원피스",
-  "신발",
+  { id: null, name: "전체" }, // 전체 선택 시 category 파라미터 없이 요청
+  { id: 1, name: "아우터" },
+  { id: 2, name: "상의" },
+  { id: 3, name: "바지" },
+  { id: 4, name: "스커트" },
+  { id: 5, name: "원피스" },
+  { id: 6, name: "신발" },
 ];
 
 const SideBar = ({ onCategoryClick }) => {
   const [selectedCategory, setSelectedCategory] = useState("전체");
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    onCategoryClick(category);
+    setSelectedCategory(category.name);
+    onCategoryClick(category.id); // 카테고리 ID를 서버에 전달
   };
 
   return (
     <SideBarContainer>
       {categories.map((category) => (
         <Menu
-          key={category}
-          selected={selectedCategory === category}
+          key={category.name}
+          selected={selectedCategory === category.name}
           onClick={() => handleCategoryClick(category)}
         >
-          {category}
+          {category.name}
         </Menu>
       ))}
     </SideBarContainer>

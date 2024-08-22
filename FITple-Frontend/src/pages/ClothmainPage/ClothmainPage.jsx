@@ -38,13 +38,13 @@ const ClothmainPage = () => {
   }, []);
 
   // Fetch data from the API
-  const fetchClothData = async (category, cursorId, size) => {
+  const fetchClothData = async (category, clothId, size) => {
     try {
       const url = new URL(`${localhost}/FITple/my/closet/main`);
 
-      // 쿼리 파라미터 추가
+      // 카테고리 ID가 있을 때만 쿼리스트링에 category 추가
       if (category) url.searchParams.append("category", category);
-      if (cursorId) url.searchParams.append("cursorId", cursorId);
+      if (clothId) url.searchParams.append("clothId", clothId);
       if (size) url.searchParams.append("size", size);
 
       const response = await fetch(url, {
@@ -85,7 +85,9 @@ const ClothmainPage = () => {
   return (
     <div>
       <Parent>
-        <SideBar onCategoryClick={(category) => fetchClothData(category)} />
+        <SideBar
+          onCategoryClick={(categoryId) => fetchClothData(categoryId)} // 카테고리 ID를 그대로 category로 전달
+        />
 
         <ProductContainer>
           <SerchContainer>
