@@ -4,14 +4,12 @@ export const Container = styled.div`
 `;
 
 export const FirstContainer = styled.div`
-  border: 2px solid red;
   display: flex;
   justify-content: center;
 `;
 export const SecondContainer = styled.div``;
 export const SearchBarWrap = styled.div`
   box-sizing: border-box;
-  border: 1px solid black;
   width: 400px;
   height: 44px;
   position: relative;
@@ -95,12 +93,12 @@ export const SideBarWrap = styled.div`
 export const Wrap = styled.div`
   display: flex;
   justify-content: center;
-  border: 2px solid blue;
   width: 100%;
+  padding-top: 40px;
 `;
 export const ItemListWrap = styled.div`
   width: 1096px;
-  border: 2px solid red;
+  margin-bottom: 100px;
 `;
 
 export const PLUSbutton = styled.div`
@@ -167,7 +165,6 @@ export const LoadMoreButton = styled.div`
 //검색창 만들기
 
 export const SearchContainer = styled.div`
-  border: 2px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: center;

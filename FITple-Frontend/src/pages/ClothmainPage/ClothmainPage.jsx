@@ -34,11 +34,16 @@ import Modal from "react-modal";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 import { ClothApi } from "../../../data/ClothApi";
 import SearchIcon from "../../../assets/search.svg";
+import ItemList from "../../components/ItemList/ItemList";
+import { useNavigate } from "react-router-dom";
 
 const ClothmainPage = () => {
-  const [filteredData, setFilteredData] = useState([]);
+  const [category, setCategory] = useState(undefined);
   const [isEdit, setIsEdit] = useState({});
+  const [clothData, SetClothData] = useState([]);
   const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const toggleEdit = (clothId) => {
     setIsEdit((prev) => ({
@@ -47,16 +52,23 @@ const ClothmainPage = () => {
     }));
   };
 
+  const goToResister = () => {
+    navigate("/clothregister");
+  };
+
   const handleDeleteCloth = () => {
     setisDeletePopupOpen(!isDeletePopupOpen);
   };
 
   // Api 데이터 가져오기
   const getClothData = async () => {
-    const response = await ClothApi();
-    console.log("옷장확인", response);
+    const response = await ClothApi(category);
+    SetClothData(response.result.clothData);
+    console.log("옷장확인", response.result.clothData);
   };
-  getClothData();
+  useEffect(() => {
+    getClothData();
+  }, [category]);
 
   return (
     <Container>
@@ -79,10 +91,11 @@ const ClothmainPage = () => {
         /> */}
         <Wrap>
           <SideBarWrap>
-            <SideBar />
+            <SideBar setCategory={setCategory} />
           </SideBarWrap>
           <ItemListWrap>
-            <ProductContainer>
+            <ItemList $main data={clothData} />
+            {/* <ProductContainer>
               {filteredData.map((item) => (
                 <ProductItem key={item.cloth_id}>
                   <Imgcontainer>
@@ -100,9 +113,9 @@ const ClothmainPage = () => {
                   >
                     <Clothdebar />
                     <Clothdebar />
-                    <Clothdebar />
-                    {/* isEdit 상태를 활용해 Edit 버튼을 보여줌 */}
-                    {isEdit[item.cloth_id] && (
+                    <Clothdebar /> */}
+            {/* isEdit 상태를 활용해 Edit 버튼을 보여줌 */}
+            {/* {isEdit[item.cloth_id] && (
                       <EditButtons>
                         <Link to="/clothupdate">
                           <EditButton>옷 정보 수정하기</EditButton>
@@ -146,7 +159,8 @@ const ClothmainPage = () => {
               <Link to="/clothregister">
                 <PLUSbutton />
               </Link>
-            </ProductContainer>
+            </ProductContainer> */}
+            <PLUSbutton onClick={() => goToResister()} />
           </ItemListWrap>
         </Wrap>
       </SecondContainer>

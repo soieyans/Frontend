@@ -127,6 +127,7 @@ export const SideBarWrap = styled.div`
 
 export const ItemListWrap = styled.div`
   width: 1096px;
+  margin-bottom: 100px;
 `;
 export const Wrap = styled.div`
   display: flex;
