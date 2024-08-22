@@ -12,7 +12,7 @@ const categories = [
   { id: 6, name: "신발" },
 ];
 
-const SideBar = ({ onCategoryClick }) => {
+const SideBar = ({ onCategoryClick, setCategory }) => {
   const [selectedCategory, setSelectedCategory] = useState("전체");
 
   const handleCategoryClick = (category) => {
@@ -22,7 +22,7 @@ const SideBar = ({ onCategoryClick }) => {
 
   return (
     <SideBarContainer>
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <Menu
           key={category.name}
           selected={selectedCategory === category.name}

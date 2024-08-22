@@ -32,6 +32,7 @@ import LayoutMain from "./layout/LayoutMain";
 import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
 import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import SearchTotalPage from "./pages/SearchTotalPage/SearchTotalPage";
 function App() {
   return (
     <>
