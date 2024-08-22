@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Container,
   Text1,
@@ -23,7 +24,9 @@ const RegisterPopUp = ({ onClose }) => {
       <Text2>개인정보 등 민감한 정보는 수정해주세요!</Text2>
       <ButtonContainer>
         <Button onClick={handleClose}>뒤로가기</Button>
-        <Button2 onClick={handleRegister}>등록하기</Button2>
+        <Link to="/cloth">
+          <Button2 onClick={handleRegister}>등록하기</Button2>
+        </Link>
       </ButtonContainer>
     </Container>
   );

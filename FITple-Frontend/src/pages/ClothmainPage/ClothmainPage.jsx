@@ -1,170 +1,117 @@
 import { useState, useEffect } from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import {
-  ProductDetail,
-  ProductImage,
-  ProductItem,
-  ProductName,
-  ProductBrand,
-  ProductContainer,
-  Parent,
-  FilledHeart,
-  Imgcontainer,
-  PLUSbutton,
-  EditButtons,
-  EditButton,
-  ClothdebarContainer,
-  Clothdebar,
-  SearchBar,
-  SerchTitle,
-  SerchTitle2,
-  SerchTitleContainer,
-  Container,
-  FirstContainer,
-  SecondContainer,
-  SearchContainer,
-  SearchBarWrap,
-  SearchImg,
-  SideBarWrap,
-  Wrap,
-  ItemListWrap,
+  MainProductDetail as ProductDetail,
+  MainProductImage as ProductImage,
+  MainProductItem as ProductItem,
+  MainProductName as ProductName,
+  MainProductBrand as ProductBrand,
+  MainProductContainer as ProductContainer,
+  MainParent as Parent,
+  MainFilledHeart as FilledHeart,
+  MainImgContainer as Imgcontainer,
+  MainPLUSbutton as PLUSbutton,
+  MainClothdebarContainer as ClothdebarContainer,
+  MainClothdebar as Clothdebar,
+  MainSearchBar as SearchBar,
+  MainSearchIcon as SearchIcon,
+  MainSearchContainer as SerchContainer,
+  MainSerchTitle as SerchTitle,
+  MainSerchTitle2 as SerchTitle2,
+  MainSerchTitleContainer as SerchTitleContainer,
+  MainSideBarWrapper as SideBarWrapper,
 } from "./ClothmainPage.style";
 import { Link } from "react-router-dom";
-import Modal from "react-modal";
-import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
-import { ClothApi } from "../../../data/ClothApi";
-import SearchIcon from "../../../assets/search.svg";
-import ItemList from "../../components/ItemList/ItemList";
-import { useNavigate } from "react-router-dom";
 
 const ClothmainPage = () => {
-  const [category, setCategory] = useState(undefined);
-  const [isEdit, setIsEdit] = useState({});
-  const [clothData, SetClothData] = useState([]);
-  const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
+  const [filteredData, setFilteredData] = useState([]);
+  const [category, setCategory] = useState(undefined); // 선택된 카테고리 상태
 
-  const navigate = useNavigate();
+  // Fetch data from the API
+  const fetchClothData = async (category) => {
+    try {
+      const url = new URL(`http://localhost:3000/FITple/my/closet/main`);
 
-  const toggleEdit = (clothId) => {
-    setIsEdit((prev) => ({
-      ...prev,
-      [clothId]: !prev[clothId], // 현재 clothId의 값을 반전시킴
-    }));
+      // 선택된 카테고리가 있을 때만 쿼리스트링에 category 추가
+      if (category !== undefined) {
+        url.searchParams.append("category", category);
+      }
+
+      const response = await fetch(url, {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        if (data.result && Array.isArray(data.result.clothData)) {
+          setFilteredData(data.result.clothData); // 데이터 설정
+        } else {
+          console.error("Unexpected response format:", data.result);
+          setFilteredData([]); // 데이터가 배열이 아닌 경우 빈 배열 설정
+        }
+      } else {
+        console.error("Failed to fetch cloth data:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Failed to fetch cloth data:", error);
+    }
   };
 
-  const goToResister = () => {
-    navigate("/clothregister");
-  };
-
-  const handleDeleteCloth = () => {
-    setisDeletePopupOpen(!isDeletePopupOpen);
-  };
-
-  // Api 데이터 가져오기
-  const getClothData = async () => {
-    const response = await ClothApi(category);
-    SetClothData(response.result.clothData);
-    console.log("옷장확인", response.result.clothData);
-  };
+  // 선택된 카테고리가 변경될 때마다 데이터를 다시 로드
   useEffect(() => {
-    getClothData();
+    fetchClothData(category);
   }, [category]);
 
   return (
-    <Container>
-      {/* 위에 컨테이너 */}
-      <FirstContainer>
-        <SearchContainer>
+    <Parent>
+      <SideBarWrapper>
+        <SideBar setCategory={setCategory} />
+      </SideBarWrapper>
+
+      <ProductContainer>
+        <SerchContainer>
           <SerchTitleContainer>
             <SerchTitle>내 옷</SerchTitle>
             <SerchTitle2>을 검색해보세요.</SerchTitle2>
           </SerchTitleContainer>
-          <SearchBarWrap>
-            <SearchImg src={SearchIcon} />
-            <SearchBar placeholder="" />
-          </SearchBarWrap>
-        </SearchContainer>
-      </FirstContainer>
-      <SecondContainer>
-        {/* <SideBar
-          onCategoryClick={(categoryId) => fetchClothData(categoryId)} // 카테고리 ID를 그대로 category로 전달
-        /> */}
-        <Wrap>
-          <SideBarWrap>
-            <SideBar setCategory={setCategory} />
-          </SideBarWrap>
-          <ItemListWrap>
-            <ItemList $main data={clothData} />
-            {/* <ProductContainer>
-              {filteredData.map((item) => (
-                <ProductItem key={item.cloth_id}>
-                  <Imgcontainer>
-                    <Link to={`/clothdetail/${item.cloth_id}`}>
-                      <ProductImage
-                        image={`../../assets/${item.cloth_id}.jpg`} // 수정된 경로
-                      />
-                      {item.likes > 0 && <FilledHeart />}
-                    </Link>
-                  </Imgcontainer>
+          <SearchIcon />
+          <SearchBar placeholder="검색어를 입력하세요" />
+        </SerchContainer>
 
-                  <ProductBrand>{item.brand}</ProductBrand>
-                  <ClothdebarContainer
-                    onClick={() => toggleEdit(item.cloth_id)}
-                  >
-                    <Clothdebar />
-                    <Clothdebar />
-                    <Clothdebar /> */}
-            {/* isEdit 상태를 활용해 Edit 버튼을 보여줌 */}
-            {/* {isEdit[item.cloth_id] && (
-                      <EditButtons>
-                        <Link to="/clothupdate">
-                          <EditButton>옷 정보 수정하기</EditButton>
-                        </Link>
+        {filteredData.length > 0 ? (
+          filteredData.map((item) => (
+            <ProductItem key={item.cloth_id}>
+              <Imgcontainer>
+                <Link to={`/clothdetail/${item.cloth_id}`}>
+                  <ProductImage src={item.cloth_image} />
+                  {item.likes > 0 && <FilledHeart />}
+                </Link>
+              </Imgcontainer>
 
-                        <EditButton onClick={handleDeleteCloth}>
-                          옷 정보 삭제하기
-                        </EditButton>
-                      </EditButtons>
-                    )}
-                    {isDeletePopupOpen && (
-                      <Modal
-                        isOpen={isDeletePopupOpen}
-                        onRequestClose={() => setisDeletePopupOpen(false)}
-                        style={{
-                          overlay: {
-                            backgroundColor: "rgba(81, 78, 78, 0.162)",
-                          },
-                          content: {
-                            border: "none",
-                            backgroundColor: "transparent",
-                            overflow: "hidden",
-                          },
-                        }}
-                      >
-                        <DeletePopUp
-                          isOpen={isDeletePopupOpen}
-                          onClose={() => setisDeletePopupOpen(false)}
-                        />
-                      </Modal>
-                    )}
-                  </ClothdebarContainer>
+              <ProductBrand>{item.brand}</ProductBrand>
+              <ClothdebarContainer>
+                <Clothdebar />
+                <Clothdebar />
+                <Clothdebar />
+              </ClothdebarContainer>
 
-                  <ProductName>{item.cloth_name}</ProductName>
+              <ProductName>{item.cloth_name}</ProductName>
+              <ProductDetail>
+                {item.size} • {item.fit}
+              </ProductDetail>
+            </ProductItem>
+          ))
+        ) : (
+          <p>해당 카테고리에 옷이 없습니다.</p>
+        )}
 
-                  <ProductDetail>
-                    {item.size} • {item.fit}
-                  </ProductDetail>
-                </ProductItem>
-              ))}
-              <Link to="/clothregister">
-                <PLUSbutton />
-              </Link>
-            </ProductContainer> */}
-            <PLUSbutton onClick={() => goToResister()} />
-          </ItemListWrap>
-        </Wrap>
-      </SecondContainer>
-    </Container>
+        <Link to="/clothregister">
+          <PLUSbutton />
+        </Link>
+      </ProductContainer>
+    </Parent>
   );
 };
 

@@ -16,8 +16,8 @@ const SideBar = ({ setCategory }) => {
   const [selectedCategory, setSelectedCategory] = useState("전체");
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category.name);
-    setCategory(category.id);
+    setSelectedCategory(category.name); // 클릭된 카테고리 이름 업데이트
+    setCategory(category.id); // 클릭된 카테고리 ID 업데이트
   };
 
   return (

@@ -1,13 +1,8 @@
 const localhost = "http://localhost:3000";
 
-export const ClothApi = async (category, cursorId, size) => {
+export const ClothApi = async () => {
   try {
     const url = new URL(`${localhost}/FITple/my/closet/main`);
-
-    // 쿼리 파라미터 추가
-    if (category !== undefined) url.searchParams.append("category", category);
-    if (cursorId !== undefined) url.searchParams.append("cursorId", cursorId);
-    if (size !== undefined) url.searchParams.append("size", size);
 
     const response = await fetch(url, {
       method: "GET",
