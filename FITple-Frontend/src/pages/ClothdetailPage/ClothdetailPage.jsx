@@ -50,7 +50,7 @@ function ClothdetailPage() {
   const [isDeletePopupOpen, setisDeletePopupOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [isBookmark, setIsBookmark] = useState(false);
-  const [popupOpen, setPopUpOpen] = useState("");
+  const [popupOpen, setPopUpOpen] = useState(""); // 팝업 상태 관리
   const [compareData, setCompareData] = useState([]);
 
   // Zustand를 통해 token 가져오기
@@ -60,7 +60,7 @@ function ClothdetailPage() {
     const fetchClothDetail = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/FITple/my/closet/${clothId}`, // clothId를 사용해 요청
+          `http://localhost:3000/FITple/my/closet/${clothId}`, // API 주소
           {
             method: "GET",
             headers: {},
@@ -88,6 +88,15 @@ function ClothdetailPage() {
 
     fetchClothDetail();
   }, [clothId, token]); // clothId 또는 token이 변경될 때마다 데이터를 다시 가져옴
+
+  useEffect(() => {
+    // 팝업이 열릴 때에도 기본 UI 요소가 사라지지 않도록 관리
+    if (popupOpen) {
+      document.body.style.overflow = "hidden"; // 팝업이 열릴 때 스크롤 막기 (선택 사항)
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [popupOpen]);
 
   const toggleEdit = () => {
     setIsEdit(!isEdit);
@@ -146,7 +155,7 @@ function ClothdetailPage() {
   };
 
   const popupClose = () => {
-    setPopUpOpen("");
+    setPopUpOpen(""); // 팝업 상태 초기화
   };
 
   const handleSave = (newData) => {
@@ -155,6 +164,58 @@ function ClothdetailPage() {
 
   const cleanCompareData = () => {
     setCompareData([]);
+  };
+
+  const renderPopup = () => {
+    switch (popupOpen) {
+      case "ComparePopUp":
+        return (
+          <ComparePopUp
+            popupClose={popupClose}
+            compareInputPopUpOpen={compareInputPopUpOpen}
+          />
+        );
+      case "CompareInputPopUp":
+        return (
+          <CompareInputPopUp
+            comparePopUpOpen={comparePopUpOpen}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+            popupClose={popupClose}
+            onSave={handleSave}
+          />
+        );
+      case "CompareSearchPopUp":
+        return (
+          <CompareSearchPopUp
+            compareInputPopUpOpen={compareInputPopUpOpen}
+            popupClose={popupClose}
+            compareData={compareData}
+            cleanCompareData={cleanCompareData}
+            compareLoadingOpen={compareLoadingOpen}
+          />
+        );
+      case "CompareLoading":
+        return (
+          <CompareLoading
+            popupClose={popupClose}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+            cleanCompareData={cleanCompareData}
+            compareResultOpen={compareResultOpen}
+          />
+        );
+      case "CompareResult":
+        return (
+          <CompareResult
+            popupClose={popupClose}
+            compareData={compareData}
+            cleanCompareData={cleanCompareData}
+            compareLoadingOpen={compareLoadingOpen}
+            compareSearchPopUpOpen={compareSearchPopUpOpen}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   if (!clothData) {
@@ -176,11 +237,7 @@ function ClothdetailPage() {
         <CurrentCloth>옷장{">"}아우터</CurrentCloth>
       </Parent1>
       <Parent2>
-        <ProductDeImage
-          src={clothData.imageUrl || "기본 이미지 URL"}
-          alt="Cloth Image"
-        />{" "}
-        {/* 이미지 추가 */}
+        <ProductDeImage src={clothData.cloth_image} /> {/* 이미지 추가 */}
         <ProductContainer>
           <Imgcontainer>
             {/* 다중 이미지 로딩 가능 */}
@@ -315,56 +372,7 @@ function ClothdetailPage() {
           </MeasureNamebox>
         </Parent3>
       </Parent2>
-      {
-        popupOpen == "ComparePopUp" && (
-          <ComparePopUp
-            popupClose={popupClose}
-            compareInputPopUpOpen={compareInputPopUpOpen}
-          />
-        ) /* 팝업 열기 */
-      }
-      {
-        popupOpen == "CompareInputPopUp" && (
-          <CompareInputPopUp
-            comparePopUpOpen={comparePopUpOpen}
-            compareSearchPopUpOpen={compareSearchPopUpOpen}
-            popupClose={popupClose}
-            onSave={handleSave}
-          />
-        ) /* 팝업 열기 */
-      }
-      {
-        popupOpen == "CompareSearchPopUp" && (
-          <CompareSearchPopUp
-            compareInputPopUpOpen={compareInputPopUpOpen}
-            popupClose={popupClose}
-            compareData={compareData}
-            cleanCompareData={cleanCompareData}
-            compareLoadingOpen={compareLoadingOpen}
-          />
-        ) /* 팝업 열기 */
-      }
-      {
-        popupOpen == "CompareLoading" && (
-          <CompareLoading
-            popupClose={popupClose}
-            compareSearchPopUpOpen={compareSearchPopUpOpen}
-            cleanCompareData={cleanCompareData}
-            compareResultOpen={compareResultOpen}
-          />
-        ) /* 팝업 열기 */
-      }
-      {
-        popupOpen == "CompareResult" && (
-          <CompareResult
-            popupClose={popupClose}
-            compareData={compareData}
-            cleanCompareData={cleanCompareData}
-            compareLoadingOpen={compareLoadingOpen}
-            compareSearchPopUpOpen={compareSearchPopUpOpen}
-          />
-        ) /* 팝업 열기 */
-      }
+      {renderPopup()} {/* 팝업 렌더링 */}
     </div>
   );
 }

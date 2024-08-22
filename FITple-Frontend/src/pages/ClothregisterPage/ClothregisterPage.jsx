@@ -12,8 +12,8 @@ import {
   Imgcontainer,
   CurvedRectangle,
   DetailNamebox,
-  DetailName,
   Detailbox,
+  DetailName,
   NoteArea,
   FullStar,
   EmptyStar,
@@ -36,49 +36,38 @@ import {
 } from "./ClothregisterPage.style";
 import SearchIcon from "/assets/SearchIcon.svg";
 import BrandSearch from "../../components/BrandSearch/BrandSearch";
-import BrandNumberSearch from "../../components/BrandNumberSearch/BrandNumberSearch";
 import RegisterPopUp from "../../components/RegisterPopUp/RegisterPopUp";
 
 const localhost = "http://localhost:3000";
 
 const ClothregisterPage = () => {
-  // 더미 데이터
   const clothingCategories = [
-    { value: "아우터", label: "아우터" },
-    { value: "반소매 상의", label: "반소매 상의" },
-    { value: "긴소매 상의", label: "긴소매 상의" },
-    { value: "슬리브리스 상의", label: "슬리브리스 상의" },
-    { value: "롱팬츠", label: "롱팬츠" },
-    { value: "숏팬츠", label: "숏팬츠" },
-    { value: "스커트", label: "스커트" },
-    { value: "원피스", label: "원피스" },
-    { value: "신발", label: "신발" },
+    { value: 1, label: "아우터" },
+    { value: 2, label: "상의" },
+    { value: 3, label: "바지" },
+    { value: 4, label: "스커트" },
+    { value: 5, label: "원피스" },
+    { value: 6, label: "신발" },
   ];
 
   const fitOptions = [
-    { value: "세미", label: "세미" },
+    { value: "레귤러", label: "레귤러" },
     { value: "오버", label: "오버" },
     { value: "세미오버", label: "세미오버" },
+    { value: "슬림", label: "슬림" },
   ];
 
-  // 드롭다운 상태 관리
   const [dropdown, setDropdown] = useState({
-    category: {
-      isOpen: false,
-      value: "",
-    },
-    fit: {
-      isOpen: false,
-      value: "",
-    },
+    category: { isOpen: false, value: null },
+    fit: { isOpen: false, value: null },
   });
 
   const [imageUrl, setImageUrl] = useState("");
-  const [imageModalOpen, setImageModalOpen] = useState(false); // 이미지 모달 상태
-  const [tempImageUrl, setTempImageUrl] = useState(""); // 임시로 입력된 이미지 URL
-  const [brand, setBrand] = useState("");
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [tempImageUrl, setTempImageUrl] = useState("");
+  const [brand, setBrand] = useState(""); // 브랜드 이름 상태
   const [name, setName] = useState("");
-  const [productCode, setProductCode] = useState("");
+  const [productCode, setProductCode] = useState(""); // 제품 번호 입력
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [url, setUrl] = useState("");
@@ -95,38 +84,62 @@ const ClothregisterPage = () => {
   });
   const [registerpopup, setRegisterpopup] = useState(false);
   const [brandSearchOpen, setBrandSearchOpen] = useState(false);
-  const [numberSearchOpen, setNumberSearchOpen] = useState(false);
 
   // 이미지 URL 입력 모달 핸들러
   const handleImageModalOpen = () => setImageModalOpen(true);
   const handleImageModalClose = () => setImageModalOpen(false);
   const handleImageUrlSubmit = () => {
-    setImageUrl(tempImageUrl); // 입력된 URL을 최종 이미지 URL로 설정
+    setImageUrl(tempImageUrl);
     handleImageModalClose();
+  };
+
+  // 브랜드 검색 핸들러
+  const handleBrandSearch = () => {
+    setBrandSearchOpen(!brandSearchOpen);
+  };
+
+  // 브랜드 선택 시
+  const handleBrandSelect = (selectedBrandName) => {
+    setBrand(selectedBrandName);
+    setBrandSearchOpen(false);
   };
 
   // 옷 정보 등록 함수
   const handleRegister = async () => {
+    // 필수 값이 없는 경우 처리
+    if (
+      !name ||
+      !productCode ||
+      dropdown.category.value === null ||
+      !size ||
+      dropdown.fit.value === null
+    ) {
+      alert("필수 정보를 모두 입력해 주세요.");
+      return;
+    }
+
     const requestBody = {
-      image: imageUrl,
-      brand,
+      image: imageUrl || null,
+      brand: brand || null,
       name,
       product_code: productCode,
-      category: dropdown.category.value,
+      category: dropdown.category.value, // 숫자 값으로 전송
       size,
-      fit: dropdown.fit.value,
-      color,
-      url,
-      rating,
-      memo,
-      length: measurements.length,
-      shoulder: measurements.shoulder,
-      chest: measurements.chest,
-      armhole: measurements.armhole,
-      sleeve: measurements.sleeve,
-      sleeve_length: measurements.sleeve_length,
-      hem: measurements.hem,
+      fit: dropdown.fit.value, // 숫자 값으로 전송
+      color: color || null,
+      url: url || null,
+      rating: rating || null,
+      memo: memo || null,
+      length: measurements.length || null,
+      shoulder: measurements.shoulder || null,
+      chest: measurements.chest || null,
+      armhole: measurements.armhole || null,
+      sleeve: measurements.sleeve || null,
+      sleeve_length: measurements.sleeve_length || null,
+      hem: measurements.hem || null,
     };
+
+    console.log("Request Body:", requestBody); // 디버깅을 위해 출력
 
     try {
       const response = await fetch(`${localhost}/FITple/my/closet`, {
@@ -135,10 +148,11 @@ const ClothregisterPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(requestBody),
+        credentials: "include",
       });
 
       if (response.ok) {
-        setRegisterpopup(true); // 성공 시 팝업 표시
+        setRegisterpopup(true);
       } else {
         console.error("Failed to register clothing:", response.statusText);
       }
@@ -147,7 +161,6 @@ const ClothregisterPage = () => {
     }
   };
 
-  // 드롭다운 처리 함수들
   const handleDropdown = (type) => {
     setDropdown((prevstate) => ({
       ...prevstate,
@@ -169,7 +182,6 @@ const ClothregisterPage = () => {
     }));
   };
 
-  // 별점 처리 함수들
   const handleStarClick = (newRating) => {
     setRating(newRating);
   };
@@ -190,21 +202,6 @@ const ClothregisterPage = () => {
     return stars;
   };
 
-  // 브랜드 검색
-  const handleBrandSearch = () => {
-    setBrandSearchOpen(!brandSearchOpen);
-  };
-
-  // 제품번호 검색
-  const handleNumberSearch = () => {
-    setNumberSearchOpen(!numberSearchOpen);
-  };
-
-  // 옷 정보 등록 모달 핸들러
-  const handleRegisterModal = () => {
-    setRegisterpopup(!registerpopup);
-  };
-
   return (
     <div>
       <Parent1>
@@ -213,8 +210,18 @@ const ClothregisterPage = () => {
             <BackIcon />
           </Link>
           <ProductDeImage>
-            <Registerimage onClick={handleImageModalOpen} />
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt="Clothing"
+                style={{ width: "100%", height: "auto" }}
+                onClick={handleImageModalOpen}
+              />
+            ) : (
+              <Registerimage onClick={handleImageModalOpen} />
+            )}
           </ProductDeImage>
+
           <Imgcontainer>
             <ProductDeImagemin />
             <ProductDeImagemin />
@@ -253,6 +260,7 @@ const ClothregisterPage = () => {
           <DetailNamebox>
             <DetailName>브랜드</DetailName>
             <CurvedRectangle>
+              <NoteArea value={brand} readOnly />
               <SearchIconBox onClick={handleBrandSearch}>
                 <img src={SearchIcon} alt="브랜드 검색" />
               </SearchIconBox>
@@ -260,7 +268,7 @@ const ClothregisterPage = () => {
             {brandSearchOpen && (
               <Modal
                 isOpen={brandSearchOpen}
-                onRequestClose={() => setBrandSearchOpen(false)}
+                onRequestClose={handleBrandSearch}
                 style={{
                   overlay: { backgroundColor: "rgba(81, 78, 78, 0.162)" },
                   content: {
@@ -270,7 +278,10 @@ const ClothregisterPage = () => {
                   },
                 }}
               >
-                <BrandSearch onClose={handleBrandSearch} />
+                <BrandSearch
+                  onClose={handleBrandSearch}
+                  onSelectBrand={handleBrandSelect}
+                />
               </Modal>
             )}
           </DetailNamebox>
@@ -279,7 +290,6 @@ const ClothregisterPage = () => {
             <DetailName>
               제품명 <SS>*</SS>
             </DetailName>
-
             <CurvedRectangle>
               <NoteArea
                 value={name}
@@ -293,26 +303,11 @@ const ClothregisterPage = () => {
               제품번호<SS>*</SS>
             </DetailName>
             <CurvedRectangle>
-              <SearchIconBox onClick={handleNumberSearch}>
-                <img src={SearchIcon} alt="제품번호 검색" />
-              </SearchIconBox>
+              <NoteArea
+                value={productCode}
+                onChange={(e) => setProductCode(e.target.value)}
+              />
             </CurvedRectangle>
-            {numberSearchOpen && (
-              <Modal
-                isOpen={numberSearchOpen}
-                onRequestClose={() => setNumberSearchOpen(false)}
-                style={{
-                  overlay: { backgroundColor: "rgba(81, 78, 78, 0.162)" },
-                  content: {
-                    border: "none",
-                    backgroundColor: "transparent",
-                    overflow: "hidden",
-                  },
-                }}
-              >
-                <BrandNumberSearch onClose={handleNumberSearch} />
-              </Modal>
-            )}
           </DetailNamebox>
 
           <DetailNamebox>
@@ -330,8 +325,8 @@ const ClothregisterPage = () => {
                 {clothingCategories.map((category) => (
                   <DropdownItem
                     key={category.value}
-                    onClick={() =>
-                      handelDropdownSelect("category", category.value)
+                    onClick={
+                      () => handelDropdownSelect("category", category.value) // 숫자 값으로 선택
                     }
                   >
                     {category.label}
@@ -368,7 +363,7 @@ const ClothregisterPage = () => {
                 {fitOptions.map((fit) => (
                   <DropdownItem
                     key={fit.value}
-                    onClick={() => handelDropdownSelect("fit", fit.value)}
+                    onClick={() => handelDropdownSelect("fit", fit.value)} // 숫자 값으로 선택
                   >
                     {fit.label}
                   </DropdownItem>
@@ -390,12 +385,7 @@ const ClothregisterPage = () => {
           <DetailNamebox>
             <DetailName>URL</DetailName>
             <CurvedRectangle>
-              <Detailbox>
-                <NoteArea
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                />
-              </Detailbox>
+              <NoteArea value={url} onChange={(e) => setUrl(e.target.value)} />
             </CurvedRectangle>
           </DetailNamebox>
 
@@ -534,7 +524,7 @@ const ClothregisterPage = () => {
                   },
                 }}
               >
-                <RegisterPopUp onClose={handleRegisterModal} />
+                <RegisterPopUp onClose={() => setRegisterpopup(false)} />
               </Modal>
             )}
           </DetailNamebox>

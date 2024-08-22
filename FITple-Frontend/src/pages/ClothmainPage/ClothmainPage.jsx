@@ -38,14 +38,9 @@ const ClothmainPage = () => {
   }, []);
 
   // Fetch data from the API
-  const fetchClothData = async (category, clothId, size) => {
+  const fetchClothData = async () => {
     try {
-      const url = new URL(`${localhost}/FITple/my/closet/main`);
-
-      // 카테고리 ID가 있을 때만 쿼리스트링에 category 추가
-      if (category) url.searchParams.append("category", category);
-      if (clothId) url.searchParams.append("clothId", clothId);
-      if (size) url.searchParams.append("size", size);
+      const url = new URL(`${localhost}/FITple/my/closet/main`); // API 주소
 
       const response = await fetch(url, {
         method: "GET",
@@ -103,10 +98,11 @@ const ClothmainPage = () => {
               <Imgcontainer>
                 <Link to={`/clothdetail/${item.cloth_id}`}>
                   <ProductImage
-                    image={`../../assets/${item.cloth_id}.jpg`} // 수정된 경로
+                    src={item.cloth_image}
+                    // 수정된 경로
                   />
-                  {item.likes > 0 && <FilledHeart />}
                 </Link>
+                {item.likes > 0 && <FilledHeart />}
               </Imgcontainer>
 
               <ProductBrand>{item.brand}</ProductBrand>

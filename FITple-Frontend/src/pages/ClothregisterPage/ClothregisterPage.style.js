@@ -130,7 +130,7 @@ export const NoteArea = styled.textarea`
   font-size: 15px;
   font-weight: bold;
   background-color: transparent;
-  margin-left: 20px;
+  margin-left: 30px;
 `;
 export const DetailName = styled.div`
   display: flex;
@@ -227,7 +227,7 @@ export const MeasureName = styled.div`
 `;
 export const MeasureNamebox = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   margin-left: 70px;
   justify-content: center;
   align-items: center;
@@ -238,7 +238,7 @@ export const CurvedRectangle3 = styled.div`
   height: 20px;
   border: 1px solid #efefef;
   border-radius: 16px;
-  padding: 10px;
+  padding: 20px;
   margin-top: 20px;
   margin-left: 10px;
   margin-right: 10px;
@@ -254,8 +254,9 @@ export const MeasureArea = styled.textarea`
   font-size: 15px;
   font-weight: bold;
   background-color: transparent;
-  margin-left: 130px;
-  margin-right: 20px;
+  padding: 5px; /* 기본 패딩 추가 */
+  margin: 0; /* 기존 margin 제거 */
+  box-sizing: border-box;
 `;
 export const StyledButton = styled.button`
   width: 500px;
