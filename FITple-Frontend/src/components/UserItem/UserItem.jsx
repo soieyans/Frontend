@@ -46,20 +46,19 @@ const UserItem = ({ ...props }) => {
     console.log(isOpen);
   };
   return (
-    <Container>
-      {/* 아이템 이미지 */}
-      <ImgWrap onClick={navgateToDetail}>
-        <ItemImg
-          src={
-            item.cloth_image ||
-            "https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8829244%2F88292446418.jpg&type=f372_372"
-          }
-        />
-        {item.likes == 1 && <HeartImg src={HeartIcon} />}
-      </ImgWrap>
     <>
-  
-
+      {props.data[0] !== "해당 제품은 등록되어 있지 않아요." ? (
+        <Container>
+          {/* 아이템 이미지 */}
+          <ImgWrap onClick={navgateToDetail}>
+            <ItemImg
+              src={
+                item.cloth_image ||
+                "https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8829244%2F88292446418.jpg&type=f372_372"
+              }
+            />
+            {item.likes == 1 && <HeartImg src={HeartIcon} />}
+          </ImgWrap>
           {/* 유저정보 */}
           <UserInfo {...props}>
             {/* 유저 프로필 */}
@@ -90,7 +89,7 @@ const UserItem = ({ ...props }) => {
           </ItemWrap>
         </Container>
       ) : (
-        <div>상품이 없습니다</div>
+        <div>데이터가없습니다.</div>
       )}
     </>
   );
