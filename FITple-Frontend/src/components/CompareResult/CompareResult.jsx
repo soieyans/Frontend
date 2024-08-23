@@ -3,6 +3,14 @@ import { BackgroundContainer, ComparePopUpContainer, ComparePopUpBackground, Com
 
 function CompareResult({popupClose, compareData, cleanCompareData, compareSearchPopUpOpen}) {
 
+  const renderCompareRowText = (value) => {
+    return value === "100" ? (
+      <CompareTableCompareRowFitBackground>{value === "" ? "-" : value}</CompareTableCompareRowFitBackground>
+    ) : (
+      value === "" ? "-" : value
+    );
+  };
+
   return (
     <>
       <BackgroundContainer>
@@ -33,8 +41,8 @@ function CompareResult({popupClose, compareData, cleanCompareData, compareSearch
                   </CompareTableHeader>
                   <CompareTableFirstRow>
                     <CompareTableFirstRowTextContainer>
-                      <CompareTableFirstRowText>XXXXL</CompareTableFirstRowText>
-                      <CompareTableFirstRowText>69</CompareTableFirstRowText>
+                      <CompareTableFirstRowText>L</CompareTableFirstRowText>
+                      <CompareTableFirstRowText>100</CompareTableFirstRowText>
                       <CompareTableFirstRowText>71</CompareTableFirstRowText>
                       <CompareTableFirstRowText>73</CompareTableFirstRowText>
                       <CompareTableFirstRowText>75</CompareTableFirstRowText>
@@ -43,26 +51,18 @@ function CompareResult({popupClose, compareData, cleanCompareData, compareSearch
                       <CompareTableFirstRowText>100</CompareTableFirstRowText>
                     </CompareTableFirstRowTextContainer>
                   </CompareTableFirstRow>
-                  <CompareTableCompareRowTextContainer>
-                    <CompareTableCompareRowText>S</CompareTableCompareRowText>
-                    <CompareTableCompareRowText><CompareTableCompareRowFitBackground>67.5</CompareTableCompareRowFitBackground></CompareTableCompareRowText>
-                    <CompareTableCompareRowText>58</CompareTableCompareRowText>
-                    <CompareTableCompareRowText><CompareTableCompareRowFitBackground>62</CompareTableCompareRowFitBackground></CompareTableCompareRowText>
-                    <CompareTableCompareRowText>57.5</CompareTableCompareRowText>
-                    <CompareTableCompareRowText>100</CompareTableCompareRowText>
-                    <CompareTableCompareRowText><CompareTableCompareRowFitBackground>23</CompareTableCompareRowFitBackground></CompareTableCompareRowText>
-                    <CompareTableCompareRowText>40</CompareTableCompareRowText>
+                  {compareData.map((item, index) => (
+                    <CompareTableCompareRowTextContainer key={index}>
+                    <CompareTableCompareRowText>{renderCompareRowText(item.size)}</CompareTableCompareRowText>
+                    <CompareTableCompareRowText>{renderCompareRowText(item.totalLength)}</CompareTableCompareRowText>
+                    <CompareTableCompareRowText>{renderCompareRowText(item.shoulderWidth)}</CompareTableCompareRowText>
+                    <CompareTableCompareRowText>{renderCompareRowText(item.chestWidth)}</CompareTableCompareRowText>
+                    <CompareTableCompareRowText>{renderCompareRowText(item.armholeWidth)}</CompareTableCompareRowText>
+                    <CompareTableCompareRowText>{renderCompareRowText(item.sleeveWidth)}</CompareTableCompareRowText>
+                    <CompareTableCompareRowText>{renderCompareRowText(item.sleeveLength)}</CompareTableCompareRowText>
+                    <CompareTableCompareRowText>{renderCompareRowText(item.hemWidth)}</CompareTableCompareRowText>
                   </CompareTableCompareRowTextContainer>
-                  <CompareTableCompareRowTextContainer>
-                    <CompareTableCompareRowText>M</CompareTableCompareRowText>
-                    <CompareTableCompareRowText>67.5</CompareTableCompareRowText>
-                    <CompareTableCompareRowText><CompareTableCompareRowFitBackground>58</CompareTableCompareRowFitBackground></CompareTableCompareRowText>
-                    <CompareTableCompareRowText>62</CompareTableCompareRowText>
-                    <CompareTableCompareRowText><CompareTableCompareRowFitBackground>57.5</CompareTableCompareRowFitBackground></CompareTableCompareRowText>
-                    <CompareTableCompareRowText>100</CompareTableCompareRowText>
-                    <CompareTableCompareRowText>23</CompareTableCompareRowText>
-                    <CompareTableCompareRowText><CompareTableCompareRowFitBackground>40</CompareTableCompareRowFitBackground></CompareTableCompareRowText>
-                  </CompareTableCompareRowTextContainer>
+                  ))}
                 </CompareTableScrollContainer>
               </CompareTableContainer>
             </ComparePopUpInnerContainer>
