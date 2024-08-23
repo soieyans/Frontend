@@ -1,8 +1,8 @@
 const localhost = "http://localhost:3000";
 
-export const getProfile = async () => {
+export const ProfileBodyApi = async () => {
   try {
-    const url = new URL(`${localhost}/FITple/profile`);
+    const url = new URL(`${localhost}/FITple/profile/body_info`);
 
     const response = await fetch(url, {
       method: "GET",

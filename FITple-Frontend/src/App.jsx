@@ -32,8 +32,7 @@ import LayoutMain from "./layout/LayoutMain";
 import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
 import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import Modal from "react-modal";
-Modal.setAppElement("#root"); // 모달이 root에 렌더링 되도록 설정
+import SearchTotalPage from "./pages/SearchTotalPage/SearchTotalPage";
 function App() {
   return (
     <>
@@ -60,7 +59,7 @@ function App() {
           <Route path="/cloth" element={<ClothmainPage />} />
           <Route path="/clothdetail/:clothId" element={<ClothdetailPage />} />
           <Route path="/clothregister" element={<ClothregisterPage />} />
-          <Route path="/clothupdate/:clothId" element={<ClothupdatePage />} />
+          <Route path="/clothupdate" element={<ClothupdatePage />} />
           {/* 프로필페이지 */}
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile/edit" element={<ProfileEditPage />} />
@@ -68,7 +67,7 @@ function App() {
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
           <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
-          <Route path="/recommenduser" element={<RecomUserCloInfomPage />} />
+          <Route path="/recommendClo" element={<RecomUserCloInfomPage />} />
           <Route path="/brand/:id" element={<BrandPage />} />
           <Route
             path="/recommendUserSearch"

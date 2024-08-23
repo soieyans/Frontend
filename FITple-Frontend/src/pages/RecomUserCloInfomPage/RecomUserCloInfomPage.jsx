@@ -29,7 +29,12 @@ function RecomUserCloInfomPage() {
             <Root>핏플 아우터</Root>
           </Wrap>
           <ImgWrap>
-            <img src="/assets/ExImg (6).png" width={550} height={550} alt="Item"/>
+            <img
+              src="/assets/ExImg (6).png"
+              width={550}
+              height={550}
+              alt="Item"
+            />
             <Like src="/assets/Heart.svg" alt="Like" />
           </ImgWrap>
 
@@ -62,16 +67,16 @@ function RecomUserCloInfomPage() {
           </Wrap>
           <Wrap>
             <Item>
-              <InfomBox Name="사이즈" Infom="XL"></InfomBox>
+              <InfomBox Name="사이즈" Infom="XL"/>
             </Item>
             <Item>
-              <InfomBox Name="핏" Infom="오버"></InfomBox>
+              <InfomBox Name="핏" Infom="오버"/>
             </Item>
             <Item>
-              <InfomBox Name="색상" Infom="그레이"></InfomBox>
+              <InfomBox Name="색상" Infom="그레이"/>
             </Item>
             <Item>
-              <InfomBox Name="제품번호" Infom="IL2516"></InfomBox>
+              <InfomBox Name="제품번호" Infom="IL2516"/>
             </Item>
           </Wrap>
           <Wrap>
@@ -81,9 +86,7 @@ function RecomUserCloInfomPage() {
             <Item>메모</Item>
             <MemoBox>길이는 딱 맞고, 팔이 조금 길다.</MemoBox>
           </MemoWrap>
-          <Dimension></Dimension>
-
-          
+          <Dimension />
         </RightWrap>
       </Wrap>
     </Container>

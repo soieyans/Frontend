@@ -86,9 +86,6 @@ const ClothmainPage = () => {
         </SearchContainer>
       </FirstContainer>
       <SecondContainer>
-        {/* <SideBar
-          onCategoryClick={(categoryId) => fetchClothData(categoryId)} // 카테고리 ID를 그대로 category로 전달
-        /> */}
         <Wrap>
           <SideBarWrap>
             <SideBar setCategory={setCategory} />

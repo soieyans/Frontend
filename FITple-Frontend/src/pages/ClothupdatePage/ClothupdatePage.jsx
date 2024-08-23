@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 import {
   BackIcon,
   SS,
@@ -28,72 +26,25 @@ import {
   CurvedRectangle3,
   StyledButton,
 } from "./ClothupdatePage.style";
-import updateCloth from "../../../data/UpdateApi";
-
-// 카테고리와 핏 옵션을 상수로 관리
-const clothingCategories = [
-  { value: 1, label: "아우터" },
-  { value: 2, label: "상의" },
-  { value: 3, label: "바지" },
-  { value: 4, label: "스커트" },
-  { value: 5, label: "원피스" },
-  { value: 6, label: "신발" },
-];
-
-const fitOptions = [
-  { value: "레귤러", label: "레귤러" },
-  { value: "오버", label: "오버" },
-  { value: "세미오버", label: "세미오버" },
-  { value: "슬림", label: "슬림" },
-];
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ClothupdatePage = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { clothId } = useParams();
-
-  // detail 페이지에서 전달된 clothData를 state로 받아옴
-  const initialClothData = location.state?.clothData || {};
-
-  const [clothData, setClothData] = useState(initialClothData);
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-  const [isFitOpen, setIsFitOpen] = useState(false);
-  const [rating, setRating] = useState(initialClothData.rating || 0);
-
-  // 카테고리와 핏의 label을 찾기 위한 함수
-  const getLabelByValue = (options, value) => {
-    const option = options.find((opt) => opt.value === value);
-    return option ? option.label : "선택";
+  //드롭다운
+  const [isToggle, setIsToggle] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("아우터");
+  const handleToggle = () => {
+    setIsToggle(!isToggle);
   };
-
-  const handleCategorySelect = (value) => {
-    setClothData((prevData) => ({
-      ...prevData,
-      category: value,
-    }));
-    setIsCategoryOpen(false);
+  const handleSelect = (value) => {
+    setSelectedValue(value);
+    setIsToggle(false);
   };
-
-  const handleFitSelect = (value) => {
-    setClothData((prevData) => ({
-      ...prevData,
-      fit: value,
-    }));
-    setIsFitOpen(false);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setClothData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
+  //별점
+  const [rating, setRating] = useState(0);
   const handleStarClick = (newRating) => {
     setRating(newRating);
   };
-
   const renderStars = () => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -109,23 +60,6 @@ const ClothupdatePage = () => {
     }
     return stars;
   };
-
-  const handleUpdate = async () => {
-    try {
-      const updatedData = {
-        ...clothData,
-        cloth_image: clothData.cloth_image, // 이미지 필드를 명시적으로 포함
-        rating,
-      };
-      await updateCloth(clothId, updatedData);
-      alert("옷 정보가 성공적으로 수정되었습니다.");
-      navigate(`/clothdetail/${clothId}`); // 수정 후 상세 페이지로 이동
-    } catch (error) {
-      alert("옷 정보 수정에 실패했습니다. 다시 시도해주세요.");
-    }
-    console.log(clothData);
-  };
-
   return (
     <div>
       <Parent1>
@@ -133,7 +67,7 @@ const ClothupdatePage = () => {
           <Link to="/cloth">
             <BackIcon />
           </Link>
-          <ProductDeImage src={clothData.cloth_image} />
+          <ProductDeImage />
           <Imgcontainer>
             <ProductDeImagemin />
             <ProductDeImagemin />
@@ -147,11 +81,7 @@ const ClothupdatePage = () => {
           <DetailNamebox>
             <DetailName>브랜드</DetailName>
             <CurvedRectangle>
-              <NoteArea
-                name="brand"
-                value={clothData.brand}
-                onChange={handleInputChange}
-              />
+              <NoteArea>나이키</NoteArea>
             </CurvedRectangle>
           </DetailNamebox>
           <DetailNamebox>
@@ -160,11 +90,7 @@ const ClothupdatePage = () => {
             </DetailName>
 
             <CurvedRectangle>
-              <NoteArea
-                name="cloth_name"
-                value={clothData.cloth_name}
-                onChange={handleInputChange}
-              />
+              <NoteArea>에센셜 풀집 후디</NoteArea>
             </CurvedRectangle>
           </DetailNamebox>
           <DetailNamebox>
@@ -172,11 +98,7 @@ const ClothupdatePage = () => {
               제품번호<SS>*</SS>
             </DetailName>
             <CurvedRectangle>
-              <NoteArea
-                name="product_code"
-                value={clothData.product_code}
-                onChange={handleInputChange}
-              />
+              <NoteArea></NoteArea>
             </CurvedRectangle>
           </DetailNamebox>
           <DetailNamebox>
@@ -184,69 +106,59 @@ const ClothupdatePage = () => {
               분류<SS>*</SS>
             </DetailName>
             <CurvedRectangle>
-              <Dropdefault>
-                {getLabelByValue(clothingCategories, clothData.category)}
-              </Dropdefault>
-              <Toggledown onClick={() => setIsCategoryOpen(!isCategoryOpen)}>
-                &lt;
-              </Toggledown>
+              <Dropdefault>{selectedValue}</Dropdefault>
+              <Toggledown onClick={handleToggle}>&lt;</Toggledown>
             </CurvedRectangle>
-            <DropdownContainer isToggle={isCategoryOpen}>
+            <DropdownContainer isToggle={isToggle}>
               <DropdownList>
-                {clothingCategories.map((category) => (
-                  <DropdownItem
-                    key={category.value}
-                    onClick={() => handleCategorySelect(category.value)}
-                  >
-                    {category.label}
-                  </DropdownItem>
-                ))}
+                <DropdownItem onClick={() => handleSelect("아우터")}>
+                  아우터
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSelect("반소매 상의")}>
+                  반소매 상의
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSelect("긴소매 상의")}>
+                  긴소매 상의
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSelect("슬리브리스 상의")}>
+                  슬리브리스 상의
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSelect("롱팬츠")}>
+                  롱팬츠
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSelect("숏팬츠")}>
+                  숏팬츠
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSelect("스커트")}>
+                  스커트
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSelect("원피스")}>
+                  원피스
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSelect("신발")}>
+                  신발
+                </DropdownItem>
               </DropdownList>
             </DropdownContainer>
           </DetailNamebox>
           <DetailNamebox>
             <DetailName>사이즈</DetailName>
             <CurvedRectangle>
-              <NoteArea
-                name="size"
-                value={clothData.size}
-                onChange={handleInputChange}
-              />
+              <NoteArea></NoteArea>
             </CurvedRectangle>
           </DetailNamebox>
           <DetailNamebox>
             <DetailName>핏</DetailName>
             <CurvedRectangle>
-              <Dropdefault>
-                {getLabelByValue(fitOptions, clothData.fit)}
-              </Dropdefault>
-              <Toggledown onClick={() => setIsFitOpen(!isFitOpen)}>
-                &lt;
-              </Toggledown>
+              <NoteArea>세미</NoteArea>
             </CurvedRectangle>
-            <DropdownContainer isToggle={isFitOpen}>
-              <DropdownList>
-                {fitOptions.map((fit) => (
-                  <DropdownItem
-                    key={fit.value}
-                    onClick={() => handleFitSelect(fit.value)}
-                  >
-                    {fit.label}
-                  </DropdownItem>
-                ))}
-              </DropdownList>
-            </DropdownContainer>
           </DetailNamebox>
           <DetailNamebox>
             <DetailName>URL</DetailName>
             <CurvedRectangle>
               <Detailbox>
-                <a
-                  href={clothData.URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {clothData.URL}
+                <a href="https:://adidas.co.kr/1245">
+                  https:://adidas.co.kr/1245
                 </a>
               </Detailbox>
             </CurvedRectangle>
@@ -260,11 +172,7 @@ const ClothupdatePage = () => {
           <DetailNamebox>
             <DetailName>메모</DetailName>
             <CurvedRectangle2>
-              <NoteArea
-                name="memo"
-                value={clothData.memo}
-                onChange={handleInputChange}
-              />
+              <NoteArea>길이는 딱 맞고,팔이 조금 길다.</NoteArea>
             </CurvedRectangle2>
           </DetailNamebox>
           <DetailNamebox>
@@ -272,81 +180,53 @@ const ClothupdatePage = () => {
             <MeasureNamebox>
               <MeasureName>총장</MeasureName>
               <CurvedRectangle3>
-                <MeasureArea
-                  name="length"
-                  value={clothData.length}
-                  onChange={handleInputChange}
-                />
+                <MeasureArea>40</MeasureArea>
               </CurvedRectangle3>
               <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>어깨너비</MeasureName>
               <CurvedRectangle3>
-                <MeasureArea
-                  name="shoulder"
-                  value={clothData.shoulder}
-                  onChange={handleInputChange}
-                />
+                <MeasureArea>71</MeasureArea>
               </CurvedRectangle3>
               <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>가슴단면</MeasureName>
               <CurvedRectangle3>
-                <MeasureArea
-                  name="chest"
-                  value={clothData.chest}
-                  onChange={handleInputChange}
-                />
+                <MeasureArea>73</MeasureArea>
               </CurvedRectangle3>
               <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>암홀단면</MeasureName>
               <CurvedRectangle3>
-                <MeasureArea
-                  name="armhole"
-                  value={clothData.armhole}
-                  onChange={handleInputChange}
-                />
+                <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
               <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>소매단면</MeasureName>
               <CurvedRectangle3>
-                <MeasureArea
-                  name="sleeve"
-                  value={clothData.sleeve}
-                  onChange={handleInputChange}
-                />
+                <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
               <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>소매길이</MeasureName>
               <CurvedRectangle3>
-                <MeasureArea
-                  name="sleeve_length"
-                  value={clothData.sleeve_length}
-                  onChange={handleInputChange}
-                />
+                <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
               <MeasureName>cm</MeasureName>
             </MeasureNamebox>
             <MeasureNamebox>
               <MeasureName>밑단단면</MeasureName>
               <CurvedRectangle3>
-                <MeasureArea
-                  name="hem"
-                  value={clothData.hem}
-                  onChange={handleInputChange}
-                />
+                <MeasureArea>-</MeasureArea>
               </CurvedRectangle3>
               <MeasureName>cm</MeasureName>
             </MeasureNamebox>
-            <StyledButton onClick={handleUpdate}>옷 정보 수정하기</StyledButton>
+            <StyledButton>옷 정보 수정하기</StyledButton>
           </DetailNamebox>
         </Parent3>
       </Parent1>

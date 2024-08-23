@@ -1,4 +1,16 @@
-import { Container, Wrap, SubWrap, UserImg, UserName } from "./Infom.style";
+import {
+  Container,
+  Wrap,
+  SubWrap,
+  UserImg,
+  UserName,
+  InformContainer,
+  Items,
+  SubItems,
+  FollowContainer,
+  FollowerNum,
+  Text,
+} from "./Infom.style";
 import SetUserImg from "/assets/UserImg.svg";
 
 import Profile from "../../components/Profile/Profile";
@@ -7,20 +19,45 @@ import Follower from "../../components/Follower/Follower";
 import OneLine from "../../components/OneLine/OneLine";
 import FollowButton from "../../components/FollowButton/FollowButton";
 
-function Infom({ showFollowButton = true }) {
+function Infom({ showFollowButton = true, data }) {
   return (
     <Container>
       <Wrap>
         <SubWrap>
-          <UserImg src={SetUserImg}></UserImg>
+          <UserImg
+            src={data?.userData?.length > 0 && data.userData[0].user_image}
+          ></UserImg>
         </SubWrap>
-        <UserName>핏플3</UserName>
+        <UserName>
+          {data?.userData?.length > 0 && data.userData[0].nickname}
+        </UserName>
         <SubWrap>
-          <Profile />
+          <InformContainer>
+            <Items>
+              {data?.userData?.length > 0 && data.userData[0].height}cm{" "}
+              {data?.userData?.length > 0 && data.userData[0].weight}kg
+            </Items>
+            <SubItems>
+              <img src="/assets/HeartGray.svg" height={16} />
+              {data?.fit?.length > 0 && data.fit[0]},{" "}
+              {data?.fit?.length > 0 && data.fit[1]}
+            </SubItems>
+            <SubItems>
+              <img src="/assets/HangerGray.svg" height={16} />
+              {data?.style?.length > 0 && data.style[0]},{" "}
+              {data?.style?.length > 0 && data.style[1]}
+            </SubItems>
+          </InformContainer>
         </SubWrap>
         <SubWrap>
-          <Follower />
-          <Followcom />
+          <FollowContainer>
+            <FollowerNum>{data?.follower}</FollowerNum>
+            <Text>팔로워</Text>
+          </FollowContainer>
+          <FollowContainer>
+            <FollowerNum>{data?.following}</FollowerNum>
+            <Text>팔로잉</Text>
+          </FollowContainer>
         </SubWrap>
       </Wrap>
       <Wrap>

@@ -1,8 +1,8 @@
 import { Container } from "./FeedButton.style";
 
-function FeedButton({ icon, alt }) {
+function FeedButton({ icon, alt, onClick, color }) {
   return (
-    <Container>
+    <Container onClick={onClick} style={{color:color}}>
       <img src={icon} alt={alt} height={40} width={40} />
       {alt}
     </Container>

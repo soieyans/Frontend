@@ -57,36 +57,42 @@ const UserItem = ({ ...props }) => {
         />
         {item.likes == 1 && <HeartImg src={HeartIcon} />}
       </ImgWrap>
+    <>
+  
 
-      {/* 유저정보 */}
-      <UserInfo {...props}>
-        {/* 유저 프로필 */}
-        <UserImg
-          src={
-            item.user_image ||
-            "https://blog.kakaocdn.net/dn/mmiWC/btszy4hoVjM/JAHukeXLibgX76VaWsAqp1/img.jpg"
-          }
-        />
-        <p>{item.nickname}</p>
-      </UserInfo>
-      <ItemWrap>
-        <BrandWrap>
-          <Brand>{item.brand}</Brand>
-          <OptionBTN {...props} onClick={() => showOptionBox()}>
-            <OptionImg src={OptionIcon} />
-          </OptionBTN>
-          <OptionBox $active={isOpen}>
-            <OptionItem $first>옷 정보 수정하기</OptionItem>
-            <OptionItem $last>옷 정보 삭제하기</OptionItem>
-          </OptionBox>
-        </BrandWrap>
-        <ItemName>{item.cloth_name}</ItemName>
-        <SizeWrap>
-          <Size>{item.size} ㆍ</Size>
-          <Size> {item.fit}</Size>
-        </SizeWrap>
-      </ItemWrap>
-    </Container>
+          {/* 유저정보 */}
+          <UserInfo {...props}>
+            {/* 유저 프로필 */}
+            <UserImg
+              src={
+                item.user_image ||
+                "https://blog.kakaocdn.net/dn/mmiWC/btszy4hoVjM/JAHukeXLibgX76VaWsAqp1/img.jpg"
+              }
+            />
+            <p>{item.nickname}</p>
+          </UserInfo>
+          <ItemWrap>
+            <BrandWrap>
+              <Brand>{item.brand}</Brand>
+              <OptionBTN {...props} onClick={() => showOptionBox()}>
+                <OptionImg src={OptionIcon} />
+              </OptionBTN>
+              <OptionBox $active={isOpen}>
+                <OptionItem $first>옷 정보 수정하기</OptionItem>
+                <OptionItem $last>옷 정보 삭제하기</OptionItem>
+              </OptionBox>
+            </BrandWrap>
+            <ItemName>{item.cloth_name}</ItemName>
+            <SizeWrap>
+              <Size>{item.size} ㆍ</Size>
+              <Size> {item.fit}</Size>
+            </SizeWrap>
+          </ItemWrap>
+        </Container>
+      ) : (
+        <div>상품이 없습니다</div>
+      )}
+    </>
   );
 };
 

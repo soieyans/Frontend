@@ -1,38 +1,28 @@
+import { useState } from "react";
 import { Container, Items, UnderLine } from "./FeedNav.style";
+function FeedNav({ onCategoryClick, selectedCategory }) {
+  const categories = ["전체", "아우터", "상의", "바지", "스커트", "원피스", "신발"];
 
-function FeedNav() {
+  const handleClick = (category) => {
+    onCategoryClick(category);
+  };
+
   return (
     <Container>
-      <Items>
-        전체
-        <UnderLine />
-      </Items>
-      <Items>
-        <UnderLine />
-        아우터
-      </Items>
-      <Items>
-        <UnderLine />
-        상의
-      </Items>
-      <Items>
-        <UnderLine />
-        바지
-      </Items>
-      <Items>
-        <UnderLine />
-        스커트
-      </Items>
-      <Items>
-        <UnderLine />
-        원피스
-      </Items>
-      <Items>
-        <UnderLine />
-        신발
-      </Items>
+      {categories.map((category) => (
+        <Items 
+          key={category} 
+          onClick={() => handleClick(category)} 
+          style={{ 
+            fontSize: selectedCategory === category ? "32px" : "24px", 
+            fontWeight: selectedCategory === category ? "800" : "bold" 
+          }}
+        >
+          {category}
+          <UnderLine style={{ opacity: selectedCategory === category ? 1 : 0 }} />
+        </Items>
+      ))}
     </Container>
   );
 }
-
 export default FeedNav;
