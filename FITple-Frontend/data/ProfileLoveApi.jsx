@@ -1,9 +1,9 @@
 const localhost = "http://localhost:3000";
 
-export const getProfile = async () => {
+export const ProfileLoveApi = async (category) => {
   try {
-    const url = new URL(`${localhost}/FITple/profile`);
-
+    const url = new URL(`${localhost}/FITple/profile/likes`);
+    if (category) url.searchParams.append("category", category);
     const response = await fetch(url, {
       method: "GET",
       credentials: "include",

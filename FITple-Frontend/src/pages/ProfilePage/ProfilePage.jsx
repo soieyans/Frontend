@@ -17,11 +17,15 @@ import Infom from "../../components/Infom/Infom";
 import { useNavigate } from "react-router-dom";
 import { getProfile } from "../../../data/GetProfileApi";
 import useAuthStore from "../../../data/store/userAuthStore";
+import { useEffect } from "react";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const [selectItem, setSelectItem] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [profileData, setProfileData] = useState({});
+  const [profileLoveData, setProfileLoveData] = useState([]);
+
   const { token } = useAuthStore();
 
   // render
@@ -30,7 +34,7 @@ const ProfilePage = () => {
       case 0:
         return <ProfileLove />;
       case 1:
-        return <ProfileFavor />;
+        return <ProfileFavor data={profileLoveData} />;
       case 2:
         return <ProfileMyBody />;
     }
@@ -46,11 +50,12 @@ const ProfilePage = () => {
   };
 
   const getProfileData = async () => {
-    console.log("토큰확인", token);
     const response = await getProfile();
-    console.log(response);
+    setProfileData(response.result);
   };
-  getProfileData();
+  useEffect(() => {
+    getProfileData();
+  }, []);
 
   return (
     <>
@@ -58,7 +63,7 @@ const ProfilePage = () => {
       <ProfileContainer>
         <ProfileBox>
           {/* 컴포넌트 사용 */}
-          <Infom showFollowButton={false} />
+          <Infom showFollowButton={false} data={profileData} />
           {/* 옵션 버튼 */}
           <OptionBtn onClick={() => showOptionBox()}>
             <img src={OptionIcon} />
