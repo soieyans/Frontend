@@ -5,7 +5,7 @@ export const Container = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding: 100px 100px;
+    padding: 100px 5%;
 `;
 
 export const RightWrap = styled.div`
@@ -34,15 +34,23 @@ export const Wrap = styled.div`
     padding-bottom: 11px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    gap:100px;
+    justify-content: center;
     font-size: 25px;
 `;
+export const LineWrap = styled.div`
+    padding-bottom: 11px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+`
 
 export const Root = styled.h3`
     font-size: 25px;
 `;
 
-export const ImgWrap =styled.div`
+export const ImgWrap = styled.div`
     position:relative;
     width:550px;
     height:550px;

@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
   max-width:250px;
+  cursor: pointer;
 `;
 export const SetGoodsImg = styled.img`
   width: 250px;
@@ -11,6 +11,8 @@ export const SetGoodsImg = styled.img`
   background-color: #d9d9d9;
   border-radius: 20px;
   box-shadow: 8px 8px 20px #c9c7c7;
+  object-fit: cover;
+
 `;
 
 export const Brand = styled.h3`

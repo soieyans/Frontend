@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Container,
   Wrap,
@@ -9,109 +10,30 @@ import RecomInfom from "../../components/RecomInfom/RecomInfom";
 import FeedButton from "../../components/FeedButton/FeedButton";
 import FeedNav from "../../components/FeedNav/FeedNav";
 import Closet from "../../components/Closet/Closet";
-
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 import CloIcon from "/assets/ClosetBlue.svg";
 import CloIconEmpty from "/assets/ClosetEmpty.svg";
 import HeartIcon from "/assets/HeartBlue.svg";
 import HeartIconEmpty from "/assets/HeartEmpty.svg";
-
 import RecomFeedApi from "../../../data/RecomFeedApi";
 
-//더미
-const clothesData = [
-  {
-    id: 0,
-    brand: "NERDY",
-    name: "NY 트랙탑",
-    size: "XL",
-    detail: "오버핏",
-    type: "아우터",
-  },
-  {
-    id: 1,
-    brand: "NIKE",
-    name: "풀 에센셜",
-    size: "L",
-    detail: "오버핏",
-    type: "아우터",
-  },
-  {
-    id: 2,
-    brand: "ADIDAS",
-    name: "릴렉스핏 티셔츠",
-    size: "M",
-    detail: "여유로운 핏",
-    type: "상의",
-  },
-  {
-    id: 3,
-    brand: "PUMA",
-    name: "스포츠 반바지",
-    size: "L",
-    detail: "짧고 편안함",
-    type: "바지",
-  },
-  {
-    id: 4,
-    brand: "CHANEL",
-    name: "플레어 스커트",
-    size: "38",
-    detail: "여성스러운 디자인",
-    type: "스커트",
-  },
-  {
-    id: 5,
-    brand: "GUCCI",
-    name: "롱 원피스",
-    size: "S",
-    detail: "우아한 스타일",
-    type: "원피스",
-  },
-  {
-    id: 6,
-    brand: "CONVERSE",
-    name: "운동화",
-    size: "270",
-    detail: "편안하고 가벼움",
-    type: "신발",
-  },
-];
-
-const favoriteClothesData = [
-  {
-    id: 0,
-    brand: "NIKE",
-    name: "풀 에센셜",
-    size: "L",
-    detail: "오버핏",
-    type: "아우터",
-  },
-  {
-    id: 1,
-    brand: "ADIDAS",
-    name: "릴렉스핏 티셔츠",
-    size: "M",
-    detail: "여유로운 핏",
-    type: "상의",
-  },
-];
-
 function RecomUserFeedPage() {
+  //유저 프로필 정보
   const location = useLocation();
   const data = location.state;
-  console.log(data);
 
+  //유저 옷 정보
   const [cloData, setCloData] = useState([]);
   const [likeCloData, setLikeCloData] = useState([]);
+  const [filteredClothes, setFilteredClothes] = useState([]);
+  const [isInCloset, setIsInCloset] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState("전체");
 
   const DummyFetchUsers = async () => {
     try {
       const response = await RecomFeedApi();
       const data = await response;
       setCloData(data);
-      
     } catch (error) {
       alert(error.message);
     }
@@ -122,50 +44,45 @@ function RecomUserFeedPage() {
     setLikeCloData(filteredData);
   };
 
-useEffect(() => {
-  const fetchData = async () => {
-    await DummyFetchUsers(); // 데이터 가져오기
-    filterLikeClo(); // 데이터가 설정된 후에 필터링
-  };
-  fetchData();
-}, []); // 빈 배열로 초기 렌더링 시에만 실행
+  useEffect(() => {
+    const fetchData = async () => {
+      await DummyFetchUsers(); // 데이터 가져오기
+    };
+    fetchData();
+  }, []); // 빈 배열로 초기 렌더링 시에만 실행
 
+  useEffect(() => {
+    // cloData가 업데이트될 때마다 likeCloData를 필터링
+    filterLikeClo();
+  }, [cloData]);
 
-  
-  console.log("Test Data:", cloData); // 상태 출력
+  useEffect(() => {
+    // 초기 상태 설정
+    if (isInCloset) {
+      setFilteredClothes(cloData);
+    } else {
+      setFilteredClothes(likeCloData);
+    }
+  }, [isInCloset, cloData, likeCloData]); // 상태 변화에 따라 filteredClothes 업데이트
 
-  const [filteredClothes, setFilteredClothes] = useState(cloData);
-  const [isInCloset, setIsInCloset] = useState(true);
-  const [clothes, setClothes] = useState(cloData);
-  const [selectedCategory, setSelectedCategory] = useState("전체"); // 선택된 카테고리 상태 추가
-
-  // 카테고리 변경 시 filteredClothes 업데이트
   useEffect(() => {
     if (selectedCategory === "전체") {
-      setFilteredClothes(clothes); // 전체 선택 시 초기 데이터로 설정
+      setFilteredClothes(isInCloset ? cloData : likeCloData);
     } else {
-      const filtered = clothes.filter(
+      const filtered = (isInCloset ? cloData : likeCloData).filter(
         (item) => item.category === selectedCategory
       );
       setFilteredClothes(filtered);
     }
-  }, [selectedCategory, clothes]);
-  // selectedCategory와 clothes가 변경될 때마다 실행
+  }, [selectedCategory, cloData, likeCloData, isInCloset]);
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category); // 카테고리 선택 시 selectedCategory를 업데이트
+    setSelectedCategory(category);
   };
 
   const handleToggleCloset = (isCloset) => {
-    if (isCloset) {
-      setIsInCloset(true);
-      setClothes(cloData);
-      setSelectedCategory("전체"); // 카테고리 초기화
-    } else {
-      setIsInCloset(false);
-      setClothes(likeCloData);
-      setSelectedCategory("전체"); // 카테고리 초기화
-    }
+    setIsInCloset(isCloset);
+    setSelectedCategory("전체");
   };
 
   return (
@@ -173,7 +90,6 @@ useEffect(() => {
       <InformWrap>
         <RecomInfom data={data} />
       </InformWrap>
-
       <Wrap>
         <IndividualWrap>
           <FeedButton
@@ -192,7 +108,7 @@ useEffect(() => {
         <SubWrap>
           <FeedNav
             onCategoryClick={handleCategoryClick}
-            selectedCategory={selectedCategory} // selectedCategory를 props로 전달
+            selectedCategory={selectedCategory}
           />
           <Closet clothes={filteredClothes} />
         </SubWrap>
