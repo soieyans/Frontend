@@ -34,7 +34,7 @@ const ProfilePage = () => {
       case 0:
         return <ProfileLove />;
       case 1:
-        return <ProfileFavor data={profileLoveData} />;
+        return <ProfileFavor />;
       case 2:
         return <ProfileMyBody />;
     }

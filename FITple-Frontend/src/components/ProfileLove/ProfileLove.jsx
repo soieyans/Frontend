@@ -17,6 +17,7 @@ const ProfileLove = () => {
   const getProfileClothLoveData = async () => {
     const response = await ProfileLoveApi(category);
     setProfileLoveData(response.result.clothData);
+    console.log("response", response.result.clothData);
   };
   useEffect(() => {
     getProfileClothLoveData();
