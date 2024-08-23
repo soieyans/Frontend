@@ -86,80 +86,12 @@ const ClothmainPage = () => {
         </SearchContainer>
       </FirstContainer>
       <SecondContainer>
-        {/* <SideBar
-          onCategoryClick={(categoryId) => fetchClothData(categoryId)} // 카테고리 ID를 그대로 category로 전달
-        /> */}
         <Wrap>
           <SideBarWrap>
             <SideBar setCategory={setCategory} />
           </SideBarWrap>
           <ItemListWrap>
             <ItemList $main data={clothData} />
-            {/* <ProductContainer>
-              {filteredData.map((item) => (
-                <ProductItem key={item.cloth_id}>
-                  <Imgcontainer>
-                    <Link to={`/clothdetail/${item.cloth_id}`}>
-                      <ProductImage
-                        image={`../../assets/${item.cloth_id}.jpg`} // 수정된 경로
-                      />
-                      {item.likes > 0 && <FilledHeart />}
-                    </Link>
-                  </Imgcontainer>
-
-                  <ProductBrand>{item.brand}</ProductBrand>
-                  <ClothdebarContainer
-                    onClick={() => toggleEdit(item.cloth_id)}
-                  >
-                    <Clothdebar />
-                    <Clothdebar />
-                    <Clothdebar /> */}
-            {/* isEdit 상태를 활용해 Edit 버튼을 보여줌 */}
-            {/* {isEdit[item.cloth_id] && (
-                      <EditButtons>
-                        <Link to="/clothupdate">
-                          <EditButton>옷 정보 수정하기</EditButton>
-                        </Link>
-
-                        <EditButton onClick={handleDeleteCloth}>
-                          옷 정보 삭제하기
-                        </EditButton>
-                      </EditButtons>
-                    )}
-                    {isDeletePopupOpen && (
-                      <Modal
-                        isOpen={isDeletePopupOpen}
-                        onRequestClose={() => setisDeletePopupOpen(false)}
-                        style={{
-                          overlay: {
-                            backgroundColor: "rgba(81, 78, 78, 0.162)",
-                          },
-                          content: {
-                            border: "none",
-                            backgroundColor: "transparent",
-                            overflow: "hidden",
-                          },
-                        }}
-                      >
-                        <DeletePopUp
-                          isOpen={isDeletePopupOpen}
-                          onClose={() => setisDeletePopupOpen(false)}
-                        />
-                      </Modal>
-                    )}
-                  </ClothdebarContainer>
-
-                  <ProductName>{item.cloth_name}</ProductName>
-
-                  <ProductDetail>
-                    {item.size} • {item.fit}
-                  </ProductDetail>
-                </ProductItem>
-              ))}
-              <Link to="/clothregister">
-                <PLUSbutton />
-              </Link>
-            </ProductContainer> */}
             <PLUSbutton onClick={() => goToResister()} />
           </ItemListWrap>
         </Wrap>
