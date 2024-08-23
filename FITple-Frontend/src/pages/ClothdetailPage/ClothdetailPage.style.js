@@ -183,8 +183,8 @@ export const Detailbox = styled.div`
 export const EditButtons = styled.div`
   display: flex;
   position: absolute;
-  right: 390px;
-  bottom: 330px;
+  right: 350px;
+  bottom: 430px;
   flex-direction: column;
   justify-content: center;
   opacity: ${(props) => (props.isEdit ? 1 : 0)};
