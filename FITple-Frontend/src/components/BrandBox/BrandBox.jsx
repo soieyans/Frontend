@@ -7,13 +7,13 @@ import {
   TitleKor,
 } from "./BrandBox.style";
 import Logo from "../../../assets/Converse.svg";
-const BrandBox = () => {
+const BrandBox = ({ data }) => {
   return (
     <Container>
       <LogoImg src={Logo} />
       <TitleBox>
-        <TitleEng>CONVERSE</TitleEng>
-        <TitleKor>컨버스</TitleKor>
+        <TitleEng>{data.eng_name}</TitleEng>
+        <TitleKor>{data.brand_name}</TitleKor>
       </TitleBox>
     </Container>
   );

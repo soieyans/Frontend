@@ -34,7 +34,7 @@ function RecomMainPage() {
   
   const handleUserClick = (user) => {
     console.log(user);
-    navigate('/recommenduser', { state: user });
+    navigate('/recommendFeed', { state: user });
   };
 
   return (

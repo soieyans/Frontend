@@ -32,6 +32,7 @@ import LayoutMain from "./layout/LayoutMain";
 import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
 import ChangepwdPage from "./pages/ChangepwdPage/ChangepwdPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import SearchTotalPage from "./pages/SearchTotalPage/SearchTotalPage";
 function App() {
   return (
     <>
@@ -52,12 +53,12 @@ function App() {
           <Route path="/findpw" element={<FindPwPage />} />
           <Route path="/findpw/showpw" element={<PwPage />} />
           <Route path="/repw" element={<RePwPage />} />
-          <Route path="/clothregister" element={<ClothregisterPage />} />
         </Route>
         {/* Navbar 있는 layout */}
         <Route element={<Layout />}>
           <Route path="/cloth" element={<ClothmainPage />} />
-          <Route path="/clothdetail" element={<ClothdetailPage />} />
+          <Route path="/clothdetail/:clothId" element={<ClothdetailPage />} />
+          <Route path="/clothregister" element={<ClothregisterPage />} />
           <Route path="/clothupdate" element={<ClothupdatePage />} />
           {/* 프로필페이지 */}
           <Route path="/profile" element={<ProfilePage />} />
@@ -65,9 +66,9 @@ function App() {
           <Route path="/profile/edit/repw" element={<ChangepwdPage />} />
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
-          <Route path="/recommendclo" element={<RecomUserCloInfomPage/>}/>
-          <Route path="/recommenduser" element={<RecomUserFeedPage />} />
-          <Route path="/brand" element={<BrandPage />} />
+          <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
+          <Route path="/recommendClo" element={<RecomUserCloInfomPage />} />
+          <Route path="/brand/:id" element={<BrandPage />} />
           <Route
             path="/recommendUserSearch"
             element={<RecomUserSearchPage />}

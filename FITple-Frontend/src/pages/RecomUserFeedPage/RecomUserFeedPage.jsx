@@ -5,7 +5,7 @@ import {
   IndividualWrap,
   InformWrap,
 } from "./RecomUserFeedPage.style";
-import Infom from "../../components/Infom/Infom";
+import Infom from "../../components/RecomInfom/RecomInfom";
 import FeedButton from "../../components/FeedButton/FeedButton";
 import FeedNav from "../../components/FeedNav/FeedNav";
 import Closet from "../../components/Closet/Closet";
@@ -17,6 +17,9 @@ import CloIconEmpty from "/assets/ClosetEmpty.svg";
 import HeartIcon from "/assets/HeartBlue.svg";
 import HeartIconEmpty from "/assets/HeartEmpty.svg";
 
+import testClo from "../../../data/TestApi";
+
+//더미
 const clothesData = [
   {
     id: 0,
@@ -98,7 +101,21 @@ const favoriteClothesData = [
 function RecomUserFeedPage() {
   const location = useLocation();
   const data = location.state;
-  console.log(data);
+
+  const [testData, setTestData] = useState([]); // 초기값을 빈 배열로 설정
+
+  const getTestData = async () => {
+    const response = await testClo();
+    console.log(response); // 받아온 데이터 출력
+    setTestData(response);
+  };
+
+  useEffect(() => {
+    getTestData(); // 컴포넌트가 마운트될 때 데이터 가져오기
+  }, []); // 빈 배열을 넣어 한 번만 호출되도록 설정
+
+  console.log("Test Data:", testData); // 상태 출력
+
 
   const [filteredClothes, setFilteredClothes] = useState(clothesData);
   const [isInCloset, setIsInCloset] = useState(true);
@@ -143,13 +160,13 @@ function RecomUserFeedPage() {
           <FeedButton
             icon={isInCloset ? CloIcon : CloIconEmpty}
             alt="옷장"
-            color={isInCloset ? '#0276FE' : '#838383'}
+            color={isInCloset ? "#0276FE" : "#838383"}
             onClick={() => handleToggleCloset(true)}
           />
           <FeedButton
             icon={isInCloset ? HeartIconEmpty : HeartIcon}
             alt="즐겨찾는 옷"
-            color={isInCloset ? '#838383' : '#0276FE'}
+            color={isInCloset ? "#838383" : "#0276FE"}
             onClick={() => handleToggleCloset(false)}
           />
         </IndividualWrap>

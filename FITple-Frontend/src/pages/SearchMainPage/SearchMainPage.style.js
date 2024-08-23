@@ -58,7 +58,7 @@ export const SearchText = styled.div`
 `;
 export const ItemContainer = styled.div`
   box-sizing: border-box;
-  padding: 50px 114px;
+  padding-top: 40px;
   width: 100%;
 `;
 
@@ -121,11 +121,62 @@ export const StartRedIconImg = styled.img`
   right: 190px;
   top: 255px;
 `;
-export const SideBarWrap = styled.div``;
+export const SideBarWrap = styled.div`
+  margin-right: 110px;
+`;
 
-export const ItemListWrap = styled.div``;
+export const ItemListWrap = styled.div`
+  width: 1096px;
+  margin-bottom: 100px;
+`;
 export const Wrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
+`;
+
+export const ResultText = styled.p`
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+`;
+
+export const BoldText = styled.span`
+  font-weight: 800;
+`;
+
+export const BlueText = styled.span`
+  color: #0276fe;
+  font-weight: 800;
+`;
+
+export const ItemWrap = styled.div`
+  padding-bottom: 100px;
+`;
+export const BrandWrap = styled.div`
+  padding-bottom: 100px;
+`;
+export const UserWrap = styled.div``;
+export const RegisterBox = styled.div`
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const RegisterText = styled.p`
+  font-size: 32px;
+  font-weight: 700;
+`;
+
+export const RegisterBTN = styled.button`
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  border-radius: 40px;
+  margin-top: 24px;
+  padding: 15px 50px;
+  background-color: #0276fe;
+  border: none;
+  width: fit-content;
 `;

@@ -1,8 +1,8 @@
 const localhost = "http://localhost:3000";
 
-export const searchMain = async (category, cursorId, size) => {
+export const getProfile = async (category, cursorId, size) => {
   try {
-    const url = new URL(`${localhost}/FITple/search/main`);
+    const url = new URL(`${localhost}/FITple/my/closet/main`);
 
     // 쿼리 파라미터 추가
     if (category !== undefined) url.searchParams.append("category", category);
@@ -11,9 +11,7 @@ export const searchMain = async (category, cursorId, size) => {
 
     const response = await fetch(url, {
       method: "GET",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
+      credentials: "include",
     });
 
     if (!response.ok) {

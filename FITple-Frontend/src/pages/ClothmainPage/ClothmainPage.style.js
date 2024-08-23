@@ -1,13 +1,28 @@
 import styled from "styled-components";
+export const Container = styled.div`
+  min-height: 100vh;
+`;
+
+export const FirstContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const SecondContainer = styled.div``;
+export const SearchBarWrap = styled.div`
+  box-sizing: border-box;
+  width: 400px;
+  height: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
 export const ProductItem = styled.div`
   width: 250px;
   height: 250px;
   top: 50px;
   background: #fff;
   border-radius: 20px;
-
   display: flex;
-
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
@@ -23,15 +38,14 @@ export const ProductBrand = styled.div`
 
 export const ProductImage = styled.img`
   width: 200px;
-  height: 200px; /* 이미지 높이 설정 */
+  height: 200px;
   border-radius: 20px;
   border-color: gray;
   background-color: #d9d9d9;
-  background-image: url(); /* 이미지 URL 설정 */
-  background-position: center; /* 이미지 위치 설정 */
-  background-size: cover; /* 이미지 크기 설정 */
-  margin-bottom: 10px; /* 하단 여백 */
+  object-fit: cover;
+  margin-bottom: 10px;
 `;
+
 export const Imgcontainer = styled.div`
   display: flex;
   position: relative;
@@ -71,6 +85,19 @@ export const FilledHeart = styled.div`
   width: 33.33px;
   height: 30.58px;
   z-index: 1;
+`;
+export const SideBarWrap = styled.div`
+  margin-right: 110px;
+`;
+export const Wrap = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 40px;
+`;
+export const ItemListWrap = styled.div`
+  width: 1096px;
+  margin-bottom: 100px;
 `;
 
 export const PLUSbutton = styled.div`
@@ -121,7 +148,61 @@ export const Clothdebar = styled.div`
   height: 7px;
   margin-bottom: 3px;
 `;
+export const LoadMoreButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "SUIT Variable", sans-serif;
+  color: #000000;
+  background-color: #f5f5f5;
+  cursor: pointer;
+`;
+//검색창 만들기
 
-export const SideBarWrap = styled.div`
-  margin-top: 40px;
+export const SearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+`;
+export const SearchImg = styled.img`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 16px;
+`;
+export const SearchBar = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #838383;
+  border-radius: 30px;
+  font-size: 16px;
+  padding-left: 62px;
+  color: #000000;
+`;
+
+export const SerchTitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+`;
+export const SerchTitle = styled.div`
+  font-size: 24px;
+  font-weight: 800;
+  font-family: "SUIT Variable", sans-serif;
+  color: #0276fe;
+`;
+export const SerchTitle2 = styled.div`
+  font-size: 24px;
+  font-weight: 800;
+  font-family: "SUIT Variable", sans-serif;
+  color: #000000;
 `;
