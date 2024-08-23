@@ -7,16 +7,28 @@ import {
 } from "./ProfileLove.style";
 import SideBar from "../SideBar/SideBar";
 import ItemList from "../ItemList/ItemList";
+import { useState } from "react";
+import { ProfileLoveApi } from "../../../data/ProfileLoveApi";
+import { useEffect } from "react";
 
 const ProfileLove = () => {
+  const [category, setCategory] = useState(undefined);
+  const [profileLoveData, setProfileLoveData] = useState([]);
+  const getProfileClothLoveData = async () => {
+    const response = await ProfileLoveApi(category);
+    setProfileLoveData(response.result.clothData);
+  };
+  useEffect(() => {
+    getProfileClothLoveData();
+  }, [category]);
   return (
     <Container>
       <Wrap>
         <SideBarWrap>
-          <SideBar />
+          <SideBar setCategory={setCategory} />
         </SideBarWrap>
         <ItemListWrap>
-          <ItemList />
+          <ItemList data={profileLoveData} />
         </ItemListWrap>
       </Wrap>
     </Container>
