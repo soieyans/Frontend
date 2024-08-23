@@ -14,7 +14,7 @@ import { RecomMainApi } from "../../../data/RecomMainApi";
 function RecomMainPage() {
   const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
-  
+
   const DummyFetchUsers = async () => {
     try {
       const response = await RecomMainApi();
@@ -29,12 +29,13 @@ function RecomMainPage() {
     DummyFetchUsers();
   }, []);
 
-  const bodyTypeUsers = userData.filter((user) => !user.isFollowed);
 
   
+  const bodyTypeUsers = userData.filter((user) => !user.isFollowed);
+
   const handleUserClick = (user) => {
     console.log(user);
-    navigate('/recommendFeed', { state: user });
+    navigate("/recommendFeed", { state: user });
   };
 
   return (
@@ -59,6 +60,9 @@ function RecomMainPage() {
             userFit={user.userFit}
             userStyle={user.userStyle}
             isFollowed={user.isFollowed}
+            follower={user.follower}
+            follow={user.following}
+            img={user.userImg}
             key={user.userId}
             onClick={() => handleUserClick(user)} // 클릭 핸들러
           />
@@ -80,11 +84,13 @@ function RecomMainPage() {
       <RecomUserWrap>
         {bodyTypeUsers.slice(0, 8).map((user) => (
           <RecomUser
-            key={user.userId}
             userName={user.userName}
             userProfile={`${user.userHeight}cm ${user.userWeight}kg`}
             userFit={user.userFit}
             userStyle={user.userStyle}
+            isFollowed={user.isFollowed}
+            img={user.userImg}
+            key={user.userId}
             onClick={() => handleUserClick(user)} // 클릭 핸들러
           />
         ))}

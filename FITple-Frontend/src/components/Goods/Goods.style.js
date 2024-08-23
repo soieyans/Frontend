@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
+  max-width:250px;
 `;
 export const SetGoodsImg = styled.img`
   width: 250px;
@@ -13,14 +14,21 @@ export const SetGoodsImg = styled.img`
 `;
 
 export const Brand = styled.h3`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   margin-top: 12px;
+  overflow: hidden;              // 넘치는 부분 숨기기
+  text-overflow: ellipsis;      // 넘치는 부분에 ... 표시
+  white-space: nowrap;          // 줄 바꿈 방지
 `;
 export const GoodsName = styled.h3`
-  font-size: 20px;
+  width:100%;
+  font-size: 18px;
   font-weight: 800;
   margin-top: 4px;
+  overflow: hidden;              // 넘치는 부분 숨기기
+  text-overflow: ellipsis;      // 넘치는 부분에 ... 표시
+  white-space: nowrap;          // 줄 바꿈 방지
 `;
 export const GoodsSize = styled.h3`
   font-size: 186x;

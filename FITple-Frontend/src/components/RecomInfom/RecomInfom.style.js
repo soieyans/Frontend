@@ -26,6 +26,7 @@ export const SubWrap = styled.div`
 export const UserImg = styled.img`
   width: 140px;
   height: 140px;
+  border-radius:50%;
 `;
 
 export const UserName = styled.h3`

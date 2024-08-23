@@ -2,17 +2,19 @@ import { Container, Wrap, SubWrap, UserImg, UserName } from "./RecomInfom.style"
 import SetUserImg from "/assets/UserImg.svg";
 
 import Profile from "../../components/Profile/Profile";
-import Followcom from "../../components/Follow/Follow";
+import Follow from "../../components/Follow/Follow";
 import Follower from "../../components/Follower/Follower";
 import OneLine from "../../components/OneLine/OneLine";
 import FollowButton from "../../components/FollowButton/FollowButton";
 
-function Infom({ data }) {
+function RecomInfom({ data }) {
+  console.log(data);
+
   return (
     <Container>
       <Wrap>
         <SubWrap>
-          <UserImg src={SetUserImg}></UserImg>
+          <UserImg src={data.userImg}></UserImg>
         </SubWrap>
         <UserName>{data.userName}</UserName>
         <SubWrap>
@@ -23,8 +25,8 @@ function Infom({ data }) {
           />
         </SubWrap>
         <SubWrap>
-          <Follower />
-          <Followcom />
+          <Follower follower={data.follower} />
+          <Follow follow={data.following} />
         </SubWrap>
       </Wrap>
       <Wrap>
@@ -44,4 +46,4 @@ function Infom({ data }) {
   );
 }
 
-export default Infom;
+export default RecomInfom;

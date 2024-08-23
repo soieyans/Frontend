@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import RecomUser from "../../components/RecomUserCard/RecomUserCard";
 import {
   Container,
@@ -9,10 +9,16 @@ import {
 } from "./RecomAllPage.style";
 
 function RecomAllPage() {
+  const navigate = useNavigate();
   const location = useLocation();
   const { users, title } = location.state || { users: [], title: "" }; // title을 포함하도록 수정
 
   console.log(users);
+
+  const handleUserClick = (user) => {
+    console.log(user);
+    navigate("/recommendFeed", { state: user });
+  };
 
   return (
     <Container>
@@ -25,11 +31,14 @@ function RecomAllPage() {
         <RecomUserWrap>
           {users.map((user) => (
             <RecomUser
-              key={user.userId}
               userName={user.userName}
-              userProfile={`${user.userHeight}cm ${user.userWeight}kg`} // userWeight 수정
+              userProfile={`${user.userHeight}cm ${user.userWeight}kg`}
               userFit={user.userFit}
               userStyle={user.userStyle}
+              isFollowed={user.isFollowed}
+              img={user.userImg}
+              key={user.userId}
+              onClick={() => handleUserClick(user)} // 클릭 핸들러
             />
           ))}
         </RecomUserWrap>

@@ -26,7 +26,7 @@ function RecomUser({ ...props }) {
 
   return (
     <Container onClick={props.onClick}>
-      <UserImg src={SetUserImg} alt="User Image" />
+      <UserImg src={props.img} alt="User Image" />
       <UserName>{props.userName}</UserName>
       <UserProfile>{props.userProfile}</UserProfile>
       <UserFit>

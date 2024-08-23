@@ -5,7 +5,7 @@ import {
   IndividualWrap,
   InformWrap,
 } from "./RecomUserFeedPage.style";
-import Infom from "../../components/RecomInfom/RecomInfom";
+import RecomInfom from "../../components/RecomInfom/RecomInfom";
 import FeedButton from "../../components/FeedButton/FeedButton";
 import FeedNav from "../../components/FeedNav/FeedNav";
 import Closet from "../../components/Closet/Closet";
@@ -17,7 +17,7 @@ import CloIconEmpty from "/assets/ClosetEmpty.svg";
 import HeartIcon from "/assets/HeartBlue.svg";
 import HeartIconEmpty from "/assets/HeartEmpty.svg";
 
-import testClo from "../../../data/TestApi";
+import RecomFeedApi from "../../../data/RecomFeedApi";
 
 //더미
 const clothesData = [
@@ -101,25 +101,42 @@ const favoriteClothesData = [
 function RecomUserFeedPage() {
   const location = useLocation();
   const data = location.state;
+  console.log(data);
 
-  const [testData, setTestData] = useState([]); // 초기값을 빈 배열로 설정
+  const [cloData, setCloData] = useState([]);
+  const [likeCloData, setLikeCloData] = useState([]);
 
-  const getTestData = async () => {
-    const response = await testClo();
-    console.log(response); // 받아온 데이터 출력
-    setTestData(response);
+  const DummyFetchUsers = async () => {
+    try {
+      const response = await RecomFeedApi();
+      const data = await response;
+      setCloData(data);
+      
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
-  useEffect(() => {
-    getTestData(); // 컴포넌트가 마운트될 때 데이터 가져오기
-  }, []); // 빈 배열을 넣어 한 번만 호출되도록 설정
+  const filterLikeClo = () => {
+    const filteredData = cloData.filter((item) => item.like === "1");
+    setLikeCloData(filteredData);
+  };
 
-  console.log("Test Data:", testData); // 상태 출력
+useEffect(() => {
+  const fetchData = async () => {
+    await DummyFetchUsers(); // 데이터 가져오기
+    filterLikeClo(); // 데이터가 설정된 후에 필터링
+  };
+  fetchData();
+}, []); // 빈 배열로 초기 렌더링 시에만 실행
 
 
-  const [filteredClothes, setFilteredClothes] = useState(clothesData);
+  
+  console.log("Test Data:", cloData); // 상태 출력
+
+  const [filteredClothes, setFilteredClothes] = useState(cloData);
   const [isInCloset, setIsInCloset] = useState(true);
-  const [clothes, setClothes] = useState(clothesData);
+  const [clothes, setClothes] = useState(cloData);
   const [selectedCategory, setSelectedCategory] = useState("전체"); // 선택된 카테고리 상태 추가
 
   // 카테고리 변경 시 filteredClothes 업데이트
@@ -127,7 +144,9 @@ function RecomUserFeedPage() {
     if (selectedCategory === "전체") {
       setFilteredClothes(clothes); // 전체 선택 시 초기 데이터로 설정
     } else {
-      const filtered = clothes.filter((item) => item.type === selectedCategory);
+      const filtered = clothes.filter(
+        (item) => item.category === selectedCategory
+      );
       setFilteredClothes(filtered);
     }
   }, [selectedCategory, clothes]);
@@ -140,11 +159,11 @@ function RecomUserFeedPage() {
   const handleToggleCloset = (isCloset) => {
     if (isCloset) {
       setIsInCloset(true);
-      setClothes(clothesData);
+      setClothes(cloData);
       setSelectedCategory("전체"); // 카테고리 초기화
     } else {
       setIsInCloset(false);
-      setClothes(favoriteClothesData);
+      setClothes(likeCloData);
       setSelectedCategory("전체"); // 카테고리 초기화
     }
   };
@@ -152,7 +171,7 @@ function RecomUserFeedPage() {
   return (
     <Container>
       <InformWrap>
-        <Infom data={data} />
+        <RecomInfom data={data} />
       </InformWrap>
 
       <Wrap>

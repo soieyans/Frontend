@@ -1,9 +1,9 @@
 import { Container, FollowerNum, Text } from "./Follower.style";
 
-function Follower() {
+function Follower({ follower }) {
   return (
     <Container>
-      <FollowerNum>10</FollowerNum>
+      <FollowerNum>{follower}</FollowerNum>
       <Text>팔로워</Text>
     </Container>
   );
