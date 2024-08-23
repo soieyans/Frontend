@@ -20,7 +20,12 @@ import {
   UserInfo,
 } from "./UserItem.style";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const UserItem = ({ ...props }) => {
+  const navigate = useNavigate();
+  const navgateToDetail = () => {
+    navigate(`/clothdetail/${item.cloth_id}`);
+  };
   const [isOpen, setIsOpen] = useState(false);
   // 더미데이터
   const dummyItem = {
@@ -43,7 +48,7 @@ const UserItem = ({ ...props }) => {
   return (
     <Container>
       {/* 아이템 이미지 */}
-      <ImgWrap>
+      <ImgWrap onClick={navgateToDetail}>
         <ItemImg
           src={
             item.cloth_image ||

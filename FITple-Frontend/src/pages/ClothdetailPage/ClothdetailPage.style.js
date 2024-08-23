@@ -71,7 +71,6 @@ export const ProductDeImagemin = styled.img`
   margin-right: 10px;
   margin-bottom: 10px;
   background-color: #efefef;
-  background-image: url();
   background-position: center;
   background-size: cover;
 `;
@@ -99,19 +98,14 @@ export const ClothdebarContainer = styled.div`
     background-color: #f0f0f0;
   }
 `;
-export const Clothdebar = styled.div`
+export const Clothdebar = styled.img`
   //옷 이름 옆 점 세개(추가,수정나오는칸)
-  background: url(assets/detailbar.svg);
   width: 7px;
   height: 7px;
   margin-bottom: 3px;
 `;
 
-export const BackIcon = styled.div`
-  //뒤로가기 아이콘
-  width: 15px;
-  height: 38.83px;
-  background: url(assets/back.svg);
+export const BackIcon = styled.img`
   margin-left: 70px;
   margin-top: 20px;
 `;
@@ -211,16 +205,14 @@ export const EditButton = styled.button`
   }
 `;
 
-export const FullStar = styled.div`
+export const FullStar = styled.img.attrs({ src: "/assets/star8.svg" })`
   width: 38px;
   height: 37px;
-  background: url(assets/Star8.svg);
   z-index: 1;
 `;
-export const EmptyStar = styled.div`
+export const EmptyStar = styled.img.attrs({ src: "/assets/star5.svg" })`
   width: 38px;
   height: 37px;
-  background: url(assets/Star5.svg);
   z-index: 1;
 `;
 
@@ -265,9 +257,8 @@ export const MeasureArea = styled.textarea`
   margin-right: 20px;
 `;
 //비교
-export const ChangeButton = styled.div`
+export const ChangeButton = styled.img`
   position: fixed;
-  background: url(assets/changebutton.svg);
   width: 97px;
   height: 97px;
   top: 450px;
@@ -276,9 +267,8 @@ export const ChangeButton = styled.div`
   z-index: 1;
 `;
 // 하얀찜
-export const EmptyBookmark = styled.div`
+export const EmptyBookmark = styled.img`
   position: fixed;
-  background: url(assets/emptybookmark.svg);
   width: 97px;
   height: 97px;
   top: 550px;
@@ -287,9 +277,8 @@ export const EmptyBookmark = styled.div`
   z-index: 1;
 `;
 //파란색찜
-export const FilledBookmark = styled.div`
+export const FilledBookmark = styled.img`
   position: fixed;
-  background: url(assets/filledbookmark.svg);
   width: 97px;
   height: 97px;
   top: 550px;

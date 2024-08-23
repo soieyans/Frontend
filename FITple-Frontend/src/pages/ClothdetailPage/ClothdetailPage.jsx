@@ -238,14 +238,23 @@ function ClothdetailPage() {
   return (
     <div>
       <Parent1>
-        <ChangeButton onClick={comparePopUpOpen} />
+        <ChangeButton
+          onClick={comparePopUpOpen}
+          src="../assets/changebutton.svg"
+        />
         {isBookmark ? (
-          <FilledBookmark onClick={handleBookmark} />
+          <FilledBookmark
+            onClick={handleBookmark}
+            src="../assets/filledbookmark.svg"
+          />
         ) : (
-          <EmptyBookmark onClick={handleBookmark} />
+          <EmptyBookmark
+            onClick={handleBookmark}
+            src="../assets/emptybookmark.svg"
+          />
         )}
         <Link to="/cloth">
-          <BackIcon />
+          <BackIcon src="../assets/BackArrow.svg" />
         </Link>
         <CurrentCloth>옷장{">"}아우터</CurrentCloth>
       </Parent1>
@@ -272,9 +281,9 @@ function ClothdetailPage() {
             </ClothName>
 
             <ClothdebarContainer onClick={toggleEdit}>
-              <Clothdebar />
-              <Clothdebar />
-              <Clothdebar />
+              <Clothdebar src="../assets/detailbar.svg" />
+              <Clothdebar src="../assets/detailbar.svg" />
+              <Clothdebar src="../assets/detailbar.svg" />
               {isEdit && (
                 <EditButtons isEdit={isEdit}>
                   <Link
