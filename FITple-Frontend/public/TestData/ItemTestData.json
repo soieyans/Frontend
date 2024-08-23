@@ -2,6 +2,7 @@
   {
     "cloth_id": 1,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 5,
     "brand": "칼하트",
     "cloth_name": "칼하트 K122 미드웨이트 후드집업",
@@ -16,6 +17,7 @@
   {
     "cloth_id": 2,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 5,
     "brand": "헤일로샵",
     "cloth_name": "5도 쿨링 이글루 세미 와이드 데님팬츠",
@@ -30,6 +32,7 @@
   {
     "cloth_id": 3,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 2,
     "brand": "키뮤어",
     "cloth_name": "COOL 워셔블 하프 니트",
@@ -44,6 +47,7 @@
   {
     "cloth_id": 4,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 2,
     "brand": "MUSINSA STANDARD",
     "cloth_name": "라운지 스웨트 팬츠",
@@ -58,6 +62,7 @@
   {
     "cloth_id": 5,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 2,
     "brand": "DRAW FIT",
     "cloth_name": "소프 울 오버fit 니트 베스트",
@@ -72,6 +77,7 @@
   {
     "cloth_id": 6,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 3,
     "brand": "매니크",
     "cloth_name": "빈티지 스냅버튼 와이드 데님팬츠",
@@ -86,6 +92,7 @@
   {
     "cloth_id": 7,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 3,
     "brand": "러브이즈트루",
     "cloth_name": "IN LOVE TEE",
@@ -100,6 +107,7 @@
   {
     "cloth_id": 8,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 3,
     "brand": "파르티멘토",
     "cloth_name": "링클 체크 박시 오버fit 롤업 하프 셔츠",
@@ -114,6 +122,7 @@
   {
     "cloth_id": 9,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 3,
     "brand": "aeae",
     "cloth_name": "WEB LOGO T-SHIRT",
@@ -128,6 +137,7 @@
   {
     "cloth_id": 10,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 4,
     "brand": "랜덤오프",
     "cloth_name": "MOZZI MEONZI 반팔티",
@@ -142,6 +152,7 @@
   {
     "cloth_id": 11,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 4,
     "brand": "브렌슨",
     "cloth_name": "원턱 와이드 트레이닝 팬츠",
@@ -156,6 +167,7 @@
   {
     "cloth_id": 12,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 4,
     "brand": "모즈모즈",
     "cloth_name": "와이드 원턱 스웨트 쇼츠 세트",
@@ -170,6 +182,7 @@
   {
     "cloth_id": 13,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 4,
     "brand": "엘리메노",
     "cloth_name": "EL 하이 스피드 반팔티셔츠 멜란지",
@@ -184,6 +197,7 @@
   {
     "cloth_id": 14,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "ERTR(이알티알)",
     "cloth_name": "Big Basket Pants (Navy)",
@@ -198,6 +212,7 @@
   {
     "cloth_id": 15,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "스웨이드(SUADE)",
     "cloth_name": "CARPENTER DENIM SHORTS",
@@ -212,6 +227,7 @@
   {
     "cloth_id": 16,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "PunchDrunkParties(펀치드렁크파티즈)",
     "cloth_name": "Basic Logo Narrow T-shirt",
@@ -227,6 +243,7 @@
   {
     "cloth_id": 17,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "밀로 우먼",
     "cloth_name": "레터링 아카이브 티셔츠",
@@ -241,6 +258,7 @@
   {
     "cloth_id": 18,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "아디다스",
     "cloth_name": "파이어버드 숏 팬츠",
@@ -255,6 +273,7 @@
   {
     "cloth_id": 19,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "aeae",
     "cloth_name": "WEB LOGO T-SHIRTS",
@@ -269,6 +288,7 @@
   {
     "cloth_id": 20,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "스투시",
     "cloth_name": "BASIC STÜSSY TEE",
@@ -283,6 +303,7 @@
   {
     "cloth_id": 21,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "러브이즈트루",
     "cloth_name": "IN LOVE TEE",
@@ -297,6 +318,7 @@
   {
     "cloth_id": 22,
     "like": "1",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "파르티멘토",
     "cloth_name": "링클 체크 박시 오버핏 롤업 하프 셔츠",
@@ -311,6 +333,7 @@
   {
     "cloth_id": 23,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "aeae",
     "cloth_name": "WEB LOGO T-SHIRT",
@@ -325,6 +348,7 @@
   {
     "cloth_id": 24,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "인스턴트펑크",
     "cloth_name": "벨티드 더블 울 자켓",
@@ -339,6 +363,7 @@
   {
     "cloth_id": 25,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "인스턴트펑크",
     "cloth_name": "하트넥 슬림 라인 맨투맨",
@@ -353,6 +378,7 @@
   {
     "cloth_id": 26,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "스컬프터",
     "cloth_name": "Classic Logo Tee",
@@ -367,6 +393,7 @@
   {
     "cloth_id": 27,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "마뗑킴",
     "cloth_name": "MATIN LOGO CROP TOP",
@@ -381,6 +408,7 @@
   {
     "cloth_id": 28,
     "like": "0",
+    "clothImg": "../../assets/RecomImg/cloth ",
     "closet_num": 1,
     "brand": "로라로라(rolarola)",
     "cloth_name": "BASIC LETTERING T-SHIRT",

@@ -14,6 +14,6 @@ export const Title = styled.div`
 `
 
 export const Desc = styled.div`
-    font-size:32px;
+    font-size:28px;
     font-weight:800;
 `
