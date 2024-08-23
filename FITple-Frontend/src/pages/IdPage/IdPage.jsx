@@ -1,5 +1,7 @@
+import React from 'react';
 import logo from "../../../assets/Logo.svg";
 import { useNavigate } from "react-router-dom";
+import userStore from "../../../data/store/userStore";
 import {
     IdPageWrapper,
     MainText,
@@ -12,10 +14,15 @@ import {
 
 function IdPage() {
     const navigate = useNavigate();
+    const { nickname, email, user_id } = userStore((state) => state.userInfo);
+
+    const handleLoginClick = () => {
+        navigate('/login');
+    };
 
     const handleIdFindClick = () => {
         navigate('/findpw');
-    }
+    };
 
     return (
         <IdPageWrapper>
@@ -23,18 +30,18 @@ function IdPage() {
             <MainText>FITple</MainText>
             <FormWrapper>
                 <TextWrapper $isLast={false}>
-                    <LabelText>이름</LabelText>
-                    <InfoText>핏플</InfoText>
+                    <LabelText>닉네임</LabelText>
+                    <InfoText>{nickname}</InfoText>
                 </TextWrapper>
                 <TextWrapper $isLast={false}>
                     <LabelText>이메일</LabelText>
-                    <InfoText>fitple@gmail.com</InfoText>
+                    <InfoText>{email}</InfoText>
                 </TextWrapper>
                 <TextWrapper $isLast={true}>
                     <LabelText>아이디</LabelText>
-                    <InfoText>fitple</InfoText>
+                    <InfoText>{user_id}</InfoText>
                 </TextWrapper>
-                <Button $isActive={true}>로그인하기</Button>
+                <Button $isActive={true} onClick={handleLoginClick}>로그인하기</Button>
                 <Button $isActive={false} onClick={handleIdFindClick}>비밀번호 찾기</Button>
             </FormWrapper>
         </IdPageWrapper>

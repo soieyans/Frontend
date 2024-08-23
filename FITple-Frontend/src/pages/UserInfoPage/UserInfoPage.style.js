@@ -22,8 +22,8 @@ export const MainBox = styled.div`
 `;
 
 export const ProfileImageWrapper = styled.div`
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
@@ -31,7 +31,6 @@ export const ProfileImageWrapper = styled.div`
     justify-content: center;
     align-items: center;
     // border: 2px solid #0276FE;
-    margin-bottom: 20px;
 `;
 
 export const ProfileImage = styled.img`
@@ -44,6 +43,7 @@ export const MainText = styled.p`
   font-size: 28px;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 40px;
 `;
 
 export const EditBTN = styled.button`

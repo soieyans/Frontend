@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { resetPassword } from "../../../data/LoginApi"; 
 import logo from "../../../assets/Logo.svg";
 import {
     RePwPageWrapper,
@@ -23,10 +24,19 @@ function RePwPage() {
         }
     }, [pw, pw2]);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (isButtonActive) {
-            alert("비밀번호 변경이 완료됐습니다! 로그인 페이지로 이동합니다.");
-            navigate('/login'); 
+            try {
+                const response = await resetPassword(pw);
+                if (response.isSuccess) {
+                    alert("비밀번호 변경이 완료됐습니다! 로그인 페이지로 이동합니다.");
+                    navigate('/login'); 
+                } else {
+                    alert("비밀번호 변경에 실패했습니다.");
+                }
+            } catch (error) {
+                alert("오류가 발생했습니다. 다시 시도해주세요.");
+            }
         }
     };
 
@@ -49,12 +59,7 @@ function RePwPage() {
                     value={pw2}
                     onChange={(e) => setPw2(e.target.value)}
                 />
-                <SubmitButton 
-                    isActive={isButtonActive}
-                    onClick={handleSubmit}  // 저장하기 버튼 클릭 시 이벤트 연결
-                >
-                    저장하기
-                </SubmitButton>
+                <SubmitButton isActive={isButtonActive} onClick={handleSubmit}>저장하기</SubmitButton>
             </FormWrapper>
         </RePwPageWrapper>
     );
