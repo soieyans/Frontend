@@ -62,6 +62,11 @@ function UserInfoPage() {
         });
     };
 
+    const handleForceSubmit = () => {
+        alert("회원가입이 완료되었습니다.");
+        navigate('/login');
+    }
+
     const handleSubmit = async () => {
         try {
             if (!selectedGender || !nickname || selectedFits.length === 0 || selectedStyles.length === 0) {
@@ -163,7 +168,7 @@ function UserInfoPage() {
                 errorMessage={errorMessage}
             />
             <BodyInfo handleBodyInfoChange={handleBodyInfoChange} />
-            <SubmitButton onClick={handleSubmit}>저장</SubmitButton>
+            <SubmitButton onClick={handleForceSubmit}>저장</SubmitButton>
         </UserInfoPageWrapper>
     );
 }
