@@ -1,9 +1,9 @@
 import { Container, FollowNum, Text } from "./Follow.style";
 
-function Follow() {
+function Follow({follow}) {
   return (
     <Container>
-      <FollowNum>19</FollowNum>
+      <FollowNum>{follow}</FollowNum>
       <Text>팔로잉</Text>
     </Container>
   );

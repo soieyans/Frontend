@@ -67,7 +67,7 @@ function App() {
           <Route path="/recommend" element={<RecomMainPage />} />
           <Route path="/recommendall" element={<RecomAllPage />} />
           <Route path="/recommendFeed" element={<RecomUserFeedPage />} />
-          <Route path="/recommenduser" element={<RecomUserCloInfomPage />} />
+          <Route path="/recommendClo" element={<RecomUserCloInfomPage />} />
           <Route path="/brand/:id" element={<BrandPage />} />
           <Route
             path="/recommendUserSearch"

@@ -6,64 +6,44 @@ import {
   UserStyle,
   Follow,
   UserImg,
-  Wrap,
-  UserProfileWrap,
 } from "./RecomUserCard.style";
 import SetUserImg from "/assets/UserImg.svg";
 
-function RecomUser({ item }) {
-  // 더미데이터 확인용
-  const dummyItem = {
-    nickname: "닉네임",
-    height: 163,
-    weight: 50,
-    prefer_fit: ["세미오버", "오버"],
-    prefer_style: ["페미닌", "모던시크"],
-  };
+import { useEffect } from "react";
 
-  const items = item || dummyItem;
+function RecomUser({ ...props }) {
+  // const { fetchUsers } = RecomStore();
+
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, [fetchUsers]);
+
+  // const updateFollowStatus = useStore((state) => state.updateFollowStatus);
+
+  // const handleFollowClick = () => {
+  //   updateFollowStatus(userId, !isFollowed); // 팔로우 상태 업데이트
+  // };
 
   return (
-    <Container>
-      {/* Wrap으로 한번감싸줬습니다. */}
-      <Wrap>
-        <UserImg src={SetUserImg} alt="User Image" />
-        <UserName>{items.nickname}</UserName>
-        <UserProfileWrap>
-          <UserProfile>{items.height}cm</UserProfile>
-          <UserProfile>{items.weight}kg</UserProfile>
-        </UserProfileWrap>
-        {items.prefer_fit && items.prefer_fit.length > 0 && (
-          <UserFit>
-            <img
-              src="/assets/Heart.svg"
-              width={16}
-              height={16}
-              alt="Heart Icon"
-            />
-            {items.prefer_fit.map((fit, index) => (
-              <span key={index}>
-                {fit}
-                {index < items.prefer_fit.length - 1 && ", "}
-              </span>
-            ))}
-          </UserFit>
-        )}
-
-        {items.prefer_style && items.prefer_style.length > 0 && (
-          <UserStyle>
-            <img src="/assets/Hanger.svg" width={16} height={16} />
-            {items.prefer_style.map((style, index) => (
-              <span key={index}>
-                {style}
-                {index < items.prefer_style.length - 1 && ", "}
-              </span>
-            ))}
-          </UserStyle>
-        )}
-
-        <Follow>팔로우</Follow>
-      </Wrap>
+    <Container onClick={props.onClick}>
+      <UserImg src={props.img} alt="User Image" />
+      <UserName>{props.userName}</UserName>
+      <UserProfile>{props.userProfile}</UserProfile>
+      <UserFit>
+        <img src="/assets/Heart.svg" width={16} height={16} alt="Fit" />
+        {props.userFit}
+      </UserFit>
+      <UserStyle>
+        <img src="/assets/Hanger.svg" width={16} height={16} alt="Style" />
+        {props.userStyle}
+      </UserStyle>
+      <Follow
+      // isFollowed={isFollowed}
+      // onClick={handleFollowClick}
+      // disabled={isFollowed} // isFollowed에 따라 비활성화
+      >
+        팔로잉{/* {isFollowed ? "팔로잉" : "팔로우"} */}
+      </Follow>
     </Container>
   );
 }
