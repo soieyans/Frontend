@@ -163,14 +163,15 @@ export const DetailName = styled.div`
 `;
 export const DetailNamebox = styled.div`
   display: flex;
-  justify-content: center;
-  width: 25rem;
+  justify-content: space-between;
+  width: 27rem;
 `;
 export const DetailboxContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-left: 1.5%;
   margin-top: 0.625rem;
+  width: 26rem;
 `;
 export const Detailbox = styled.div`
   font-size: 1.5625rem;

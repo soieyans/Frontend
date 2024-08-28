@@ -315,7 +315,7 @@ function ClothdetailPage() {
             <Detailbox>{clothData.product_code}</Detailbox>
           </DetailboxContainer>
           <DetailName>URL</DetailName>
-          <Detailbox style={{ justifyContent: `flex-start` }}>
+          <Detailbox>
             <a href={clothData.URL} target="_blank" rel="noopener noreferrer">
               {clothData.URL}
             </a>
