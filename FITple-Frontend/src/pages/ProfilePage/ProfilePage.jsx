@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { getProfile } from "../../../data/GetProfileApi";
 import useAuthStore from "../../../data/store/userAuthStore";
 import { useEffect } from "react";
+import { logout } from "../../../data/LoginApi"; // 로그아웃 API를 가져옵니다.
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -57,6 +58,12 @@ const ProfilePage = () => {
     getProfileData();
   }, []);
 
+  // 로그아웃 핸들러 함수 추가
+const handleLogout = async () => {
+  await logout(); // 로그아웃 API 호출
+  navigate("/"); // "/"로 리다이렉트
+};
+
   return (
     <>
       {/* 위에 box */}
@@ -81,7 +88,7 @@ const ProfilePage = () => {
             >
               문의하기
             </OptionItem>
-            <OptionItem $last>로그아웃</OptionItem>
+            <OptionItem $last onClick={handleLogout}>로그아웃</OptionItem>
           </OptionBox>
         </ProfileBox>
       </ProfileContainer>
