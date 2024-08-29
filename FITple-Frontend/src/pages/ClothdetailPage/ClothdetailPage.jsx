@@ -41,7 +41,6 @@ import CompareSearchPopUp from "../../components/CompareSearchPopUp/CompareSearc
 import CompareLoading from "../../components/CompareLoading/CompareLoading";
 import CompareResult from "../../components/CompareResult/CompareResult";
 import useAuthStore from "../../../data/store/userAuthStore"; // 토큰을 가져오기 위해 zustand의 store import
-
 function ClothdetailPage() {
   const { clothId } = useParams(); // URL에서 clothId 가져오기
   const [clothData, setClothData] = useState(null); // 가져온 데이터를 저장할 상태
@@ -102,7 +101,7 @@ function ClothdetailPage() {
     setIsEdit(!isEdit);
   };
 
-  const handleDeleteCloth = () => {
+  const handleDeleteCloth = async () => {
     setisDeletePopupOpen(!isDeletePopupOpen);
   };
 
@@ -273,7 +272,10 @@ function ClothdetailPage() {
               <Clothdebar src="../assets/detailbar.svg" />
               {isEdit && (
                 <EditButtons isEdit={isEdit}>
-                  <Link to="/clothupdate/:clothId">
+                  <Link
+                    to={`/clothupdate/${clothData.cloth_id}`}
+                    state={{ clothData }}
+                  >
                     <EditButton>옷 정보 수정하기</EditButton>
                   </Link>
                   <EditButton onClick={handleDeleteCloth}>
@@ -297,6 +299,7 @@ function ClothdetailPage() {
                   <DeletePopUp
                     isOpen={isDeletePopupOpen}
                     onClose={() => setisDeletePopupOpen(false)}
+                    clothId={clothData.cloth_id}
                   />
                 </Modal>
               )}
