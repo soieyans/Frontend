@@ -59,8 +59,10 @@ const ProfilePage = () => {
   }, []);
 
   // 로그아웃 핸들러 함수 추가
-const handleLogout = async () => {
-  await logout(); // 로그아웃 API 호출
+const handleLogout =  () => {
+  console.log("현재 토큰:", useAuthStore.getState().token); // 현재 토큰 확인
+  useAuthStore.setState({ token: null });
+  console.log("현재 토큰:", useAuthStore.getState().token); // 현재 토큰 확인
   navigate("/"); // "/"로 리다이렉트
 };
 
