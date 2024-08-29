@@ -18,26 +18,6 @@ export const login = async (loginId, loginPw) => {
   }
 };
 
-// 로그아웃 함수
-export const logout = async () => {
-    try {
-      const response = await fetch(`${localhost}/FITple/logout`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
-  
-      if (!response.ok) {
-        throw new Error("로그아웃 요청에 실패했습니다.");
-      }
-    } catch (error) {
-      console.error("로그아웃 요청 중 오류가 발생했습니다.", error);
-      throw new Error("네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-    }
-  };
-
 export const findId = async (name, email) => {
     try {
         const response = await fetch(`${localhost}/FITple/auth/find-id`, {
