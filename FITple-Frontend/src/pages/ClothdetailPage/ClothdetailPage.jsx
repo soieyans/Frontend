@@ -273,7 +273,7 @@ function ClothdetailPage() {
               <Clothdebar src="../assets/detailbar.svg" />
               {isEdit && (
                 <EditButtons isEdit={isEdit}>
-                  <Link to="/clothupdate">
+                  <Link to="/clothupdate/:clothId">
                     <EditButton>옷 정보 수정하기</EditButton>
                   </Link>
                   <EditButton onClick={handleDeleteCloth}>
